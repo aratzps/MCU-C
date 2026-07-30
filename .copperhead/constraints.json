@@ -1,0 +1,125 @@
+{
+  "power.bus_voltage_range": {
+    "min": 48,
+    "max": 450,
+    "source": "SPEC.md §2.1",
+    "affects": [
+      "MOSFET VDS rating",
+      "gate driver isolation",
+      "current sense amplifier isolation",
+      "bus voltage divider rating"
+    ]
+  },
+  "power.continuous_current_48V": {
+    "min": 0,
+    "max": 312,
+    "source": "SPEC.md §2.1",
+    "affects": [
+      "MOSFET parallel count",
+      "shunt resistor power rating",
+      "thermal design"
+    ],
+    "deferred": [
+      "thermal design"
+    ]
+  },
+  "power.peak_current_48V": {
+    "min": 0,
+    "max": 729,
+    "source": "SPEC.md §2.1",
+    "affects": [
+      "MOSFET current rating",
+      "shunt resistor peak power",
+      "current sense amplifier bandwidth"
+    ]
+  },
+  "power.system_efficiency_min": {
+    "min": 97,
+    "max": 100,
+    "source": "SPEC.md §8",
+    "affects": [
+      "MOSFET RDS(on)",
+      "gate driver selection",
+      "thermal budget"
+    ],
+    "deferred": [
+      "thermal budget"
+    ]
+  },
+  "power.max_dissipation": {
+    "min": 0,
+    "max": 450,
+    "source": "SPEC.md §8",
+    "affects": [
+      "heat sink design",
+      "cooling method",
+      "thermal management"
+    ],
+    "deferred": [
+      "thermal management"
+    ]
+  },
+  "mcu.isolation_voltage": {
+    "min": 1500,
+    "max": 5000,
+    "source": "SPEC.md §7",
+    "affects": [
+      "gate driver isolation",
+      "current sense amplifier isolation",
+      "CAN transceiver isolation"
+    ]
+  },
+  "mcu.adc_resolution": {
+    "min": 12,
+    "max": 12,
+    "source": "SPEC.md §3",
+    "affects": [
+      "current sensing accuracy",
+      "voltage sensing accuracy"
+    ]
+  },
+  "mcu.can_fd": {
+    "value": "required",
+    "source": "SPEC.md §3, §9",
+    "affects": [
+      "CAN transceiver selection",
+      "VESC protocol support"
+    ]
+  },
+  "safety.bus_ovp_threshold": {
+    "min": 520,
+    "max": 520,
+    "source": "SPEC.md §10",
+    "affects": [
+      "TVS diode selection",
+      "overvoltage protection circuit"
+    ]
+  },
+  "thermal.mosfet_junction_temp_max": {
+    "min": 0,
+    "max": 150,
+    "source": "SPEC.md §8",
+    "affects": [
+      "heatsink design",
+      "cooling method",
+      "MOSFET parallel count"
+    ]
+  },
+  "pinout.boot0_state": {
+    "value": "BOOT0 must be pulled LOW for normal flash boot",
+    "source": "SPEC.md §12",
+    "affects": [
+      "BOOT0 pull-down resistor",
+      "boot mode configuration"
+    ]
+  },
+  "pinout.pwm_frequency_range": {
+    "min": 20,
+    "max": 100,
+    "source": "SPEC.md §2.2",
+    "affects": [
+      "TIM1 timer configuration",
+      "dead time calculation"
+    ]
+  }
+}
