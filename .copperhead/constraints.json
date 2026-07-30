@@ -1,0 +1,277 @@
+{
+  "power.bus_voltage_min": {
+    "min": 48,
+    "max": 48,
+    "unit": "V DC",
+    "source": "SPEC.md §2",
+    "affects": ["undervoltage lockout", "auxiliary supply input range", "gate drive supply regulation"]
+  },
+  "power.bus_voltage_nominal": {
+    "min": 250,
+    "max": 250,
+    "unit": "V DC",
+    "source": "SPEC.md §2",
+    "affects": ["power rating basis", "thermal design point", "DC link sizing"]
+  },
+  "power.bus_voltage_max": {
+    "min": 450,
+    "max": 450,
+    "unit": "V DC",
+    "source": "SPEC.md §2",
+    "affects": ["switch voltage class", "isolation rating", "creepage and clearance", "DC link voltage rating", "bus sense divider"]
+  },
+  "power.continuous_power_at_nominal": {
+    "min": 15000,
+    "max": 15000,
+    "unit": "W",
+    "source": "SPEC.md §2",
+    "affects": ["thermal design", "continuous current rating", "cooling method"]
+  },
+  "power.peak_power_at_nominal": {
+    "min": 35000,
+    "max": 35000,
+    "unit": "W",
+    "source": "SPEC.md §2",
+    "affects": ["peak current rating", "module selection", "DC link ripple"]
+  },
+  "power.peak_duration": {
+    "min": 10,
+    "max": 10,
+    "unit": "s",
+    "source": "SPEC.md §2",
+    "affects": ["thermal transient design", "module transient rating"]
+  },
+  "current.dc_continuous": {
+    "min": 0,
+    "max": 60,
+    "unit": "A",
+    "source": "SPEC.md §3.1 (derived: 15000 / 250)",
+    "affects": ["DC busbar sizing", "input fusing", "contactor rating"]
+  },
+  "current.dc_peak": {
+    "min": 0,
+    "max": 140,
+    "unit": "A",
+    "source": "SPEC.md §3.1 (derived: 35000 / 250)",
+    "affects": ["DC busbar sizing", "input fusing", "contactor rating"]
+  },
+  "current.phase_continuous_rms": {
+    "min": 0,
+    "max": 75,
+    "unit": "A rms",
+    "source": "SPEC.md §3.3",
+    "affects": ["module continuous rating", "thermal design", "phase busbar sizing"],
+    "deferred": ["target motor and duty cycle not yet known; 1.5x factor to be revisited"]
+  },
+  "current.phase_peak_rms": {
+    "min": 0,
+    "max": 175,
+    "unit": "A rms",
+    "source": "SPEC.md §3.3",
+    "affects": ["module peak rating", "gate drive", "current sense range"],
+    "deferred": ["target motor and duty cycle not yet known; 1.5x factor to be revisited"]
+  },
+  "current.phase_instantaneous_peak": {
+    "min": 0,
+    "max": 250,
+    "unit": "A",
+    "source": "SPEC.md §3.3 (derived: 175 * sqrt(2))",
+    "affects": ["current sense full scale", "overcurrent trip threshold"]
+  },
+  "current.sense_full_scale": {
+    "min": 300,
+    "max": 300,
+    "unit": "A",
+    "source": "SPEC.md §3.3",
+    "affects": ["shunt value", "isolated amplifier selection", "ADC scaling"]
+  },
+  "current.overcurrent_trip": {
+    "min": 280,
+    "max": 280,
+    "unit": "A",
+    "source": "SPEC.md §9.1",
+    "affects": ["comparator reference", "supervisor logic", "TIM1_BKIN path"]
+  },
+  "current.dc_link_ripple_rms": {
+    "min": 50,
+    "max": 105,
+    "unit": "A rms",
+    "source": "SPEC.md §3.4 (derived: 0.6 * phase rms)",
+    "affects": ["DC link capacitor technology", "capacitor ripple rating", "busbar design"]
+  },
+  "switch.voltage_class": {
+    "min": 1200,
+    "max": 1200,
+    "unit": "V",
+    "source": "SPEC.md §4.1",
+    "affects": ["module selection", "gate drive isolation", "creepage"]
+  },
+  "switch.topology": {
+    "value": "three-phase two-level bridge, single six-pack module",
+    "source": "SPEC.md §4.2",
+    "affects": ["thermal interface", "gate drive channel count", "mechanical layout"],
+    "deferred": ["Si IGBT vs SiC not yet decided"]
+  },
+  "dclink.capacitance_min": {
+    "min": 400,
+    "max": null,
+    "unit": "uF",
+    "source": "SPEC.md §6",
+    "affects": ["bus voltage ripple", "precharge energy", "mechanical volume"],
+    "deferred": ["to be confirmed against switching frequency and permitted bus ripple"]
+  },
+  "dclink.voltage_rating_min": {
+    "min": 800,
+    "max": null,
+    "unit": "V DC",
+    "source": "SPEC.md §6",
+    "affects": ["capacitor selection", "mechanical volume"]
+  },
+  "precharge.resistor_energy_min": {
+    "min": 40.5,
+    "max": null,
+    "unit": "J",
+    "source": "SPEC.md §7.1 (derived: 0.5 * 400uF * 450^2)",
+    "affects": ["precharge resistor selection", "precharge timing"]
+  },
+  "discharge.passive_time_max": {
+    "min": 0,
+    "max": 60,
+    "unit": "s",
+    "source": "SPEC.md §7.2",
+    "affects": ["bleeder resistor value", "continuous bleeder dissipation"]
+  },
+  "discharge.active_time_max": {
+    "min": 0,
+    "max": 5,
+    "unit": "s",
+    "source": "SPEC.md §7.2",
+    "affects": ["active discharge switch and resistor rating"]
+  },
+  "safety.bus_ovp_threshold": {
+    "min": 490,
+    "max": 490,
+    "unit": "V",
+    "source": "SPEC.md §9.1",
+    "affects": ["OVP comparator reference", "supervisor logic"]
+  },
+  "safety.bus_uvp_threshold": {
+    "min": 45,
+    "max": 45,
+    "unit": "V",
+    "source": "SPEC.md §9.1",
+    "affects": ["UVLO comparator reference", "gate drive inhibit"]
+  },
+  "safety.hardware_interlocks": {
+    "value": "overcurrent latch and shoot-through elimination must be firmware-independent, routed to TIM1_BKIN",
+    "source": "SPEC.md §9.2",
+    "affects": ["supervisor logic", "PB12 pin assignment", "gate drive enable path"]
+  },
+  "isolation.reinforced_min": {
+    "min": 3000,
+    "max": null,
+    "unit": "V rms",
+    "source": "SPEC.md §10",
+    "affects": ["gate driver selection", "current sense selection", "CAN transceiver", "bus sense"]
+  },
+  "isolation.creepage_reinforced_min": {
+    "min": 8.0,
+    "max": null,
+    "unit": "mm",
+    "source": "SPEC.md §10",
+    "affects": ["PCB layout", "connector selection", "board area"],
+    "deferred": ["final values pending compliance target"]
+  },
+  "isolation.creepage_basic_min": {
+    "min": 6.4,
+    "max": null,
+    "unit": "mm",
+    "source": "SPEC.md §10",
+    "affects": ["PCB layout", "power stage to control separation"],
+    "deferred": ["final values pending compliance target"]
+  },
+  "aux.input_range": {
+    "min": 48,
+    "max": 450,
+    "unit": "V DC",
+    "source": "SPEC.md §11.1",
+    "affects": ["flyback controller selection", "primary switch voltage rating"],
+    "deferred": ["controller supporting 9.4:1 range to be identified"]
+  },
+  "aux.primary_switch_rating_min": {
+    "min": 900,
+    "max": null,
+    "unit": "V",
+    "source": "SPEC.md §11.1",
+    "affects": ["auxiliary supply topology", "controller selection"]
+  },
+  "aux.external_input_required": {
+    "value": "12-24 V external auxiliary input required, independent of HV bus",
+    "source": "SPEC.md §11.3",
+    "affects": ["precharge sequencing", "bench bring-up", "connector count"]
+  },
+  "thermal.continuous_dissipation": {
+    "min": 300,
+    "max": 525,
+    "unit": "W",
+    "source": "SPEC.md §11.4",
+    "affects": ["cooling method", "cold plate design", "enclosure"]
+  },
+  "thermal.cooling_method": {
+    "value": "liquid cold plate baseline; forced air only at reduced characterised rating",
+    "source": "SPEC.md §11.4",
+    "affects": ["mechanical concept", "continuous power rating"]
+  },
+  "thermal.junction_temp_max": {
+    "min": 125,
+    "max": 150,
+    "unit": "degC",
+    "source": "SPEC.md §11.4",
+    "affects": ["module selection", "cold plate sizing", "derating"]
+  },
+  "mcu.part": {
+    "value": "STM32F405VGT6, LQFP100",
+    "source": "SPEC.md §12.1",
+    "affects": ["pin assignment", "firmware target", "package footprint"]
+  },
+  "mcu.can_fd": {
+    "value": "NOT AVAILABLE - STM32F405 has classic bxCAN 2.0B only. Do not specify CAN FD anywhere.",
+    "source": "SPEC.md §12.1",
+    "affects": ["CAN transceiver selection", "VESC protocol implementation"]
+  },
+  "mcu.pwm_frequency_range": {
+    "min": 20,
+    "max": 100,
+    "unit": "kHz",
+    "source": "SPEC.md §2",
+    "affects": ["TIM1 configuration", "dead time", "current sense bandwidth", "switching losses"]
+  },
+  "sensing.phase_current_channels": {
+    "min": 3,
+    "max": 3,
+    "source": "SPEC.md §8.1",
+    "affects": ["ADC allocation", "isolated amplifier count", "shunt count"]
+  },
+  "sensing.current_bandwidth_min": {
+    "min": 500,
+    "max": null,
+    "unit": "kHz",
+    "source": "SPEC.md §8.1",
+    "affects": ["isolated amplifier selection", "FOC loop performance"]
+  },
+  "sensing.bus_divider_construction": {
+    "value": "series string of at least 4 resistors; no single chip resistor may span 450 V",
+    "source": "SPEC.md §8.2",
+    "affects": ["divider layout", "resistor voltage rating", "creepage across parts"]
+  },
+  "sensing.position_interfaces": {
+    "value": "hall, ABI encoder, resolver via AD2S1205, SinCos/SSI - all four required",
+    "source": "SPEC.md §8.4",
+    "affects": ["pin budget", "MCU package choice", "connector count"]
+  },
+  "process.no_unverified_parts": {
+    "value": "No part number enters the BOM without datasheet verification against a stocked distributor part.",
+    "source": "SPEC.md §4.2",
+    "affects": ["BOM generation", "component selection"]
+  }
+}

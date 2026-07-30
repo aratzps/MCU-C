@@ -1,0 +1,41 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "359d497e-373c-49cb-890f-1f22aa577c0e")
+	(paper "A3")
+	(title_block
+		(title "MCU-C Integrated Inverter")
+		(date "2026-07-30")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "Power stage and DC link")
+	)
+
+	(lib_symbols)
+	(text "Power stage and DC link"
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "53cd81b7-05fd-4da2-8643-083c9405fde2")
+	)
+
+	(text "Placeholder. Requirements: SPEC.md 4, 6"
+		(exclude_from_sim no)
+		(at 20 27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1c13e592-0aa2-4271-9ed4-7963544414b1")
+	)
+
+	(embedded_fonts no)
+)

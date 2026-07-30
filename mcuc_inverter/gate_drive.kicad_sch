@@ -1,0 +1,41 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "49439ccd-1029-4608-be8c-e1c7a25add0a")
+	(paper "A3")
+	(title_block
+		(title "MCU-C Integrated Inverter")
+		(date "2026-07-30")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "Gate drive")
+	)
+
+	(lib_symbols)
+	(text "Gate drive"
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "fab5fd90-2828-4a7f-a97b-0ae34f06252c")
+	)
+
+	(text "Placeholder. Requirements: SPEC.md 5"
+		(exclude_from_sim no)
+		(at 20 27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "879c010a-962e-491a-92f7-29c533929699")
+	)
+
+	(embedded_fonts no)
+)

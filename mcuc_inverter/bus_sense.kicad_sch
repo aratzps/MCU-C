@@ -1,0 +1,41 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "06fe768b-56f6-4504-b248-728875a2deca")
+	(paper "A3")
+	(title_block
+		(title "MCU-C Integrated Inverter")
+		(date "2026-07-30")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "Bus voltage sensing")
+	)
+
+	(lib_symbols)
+	(text "Bus voltage sensing"
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "78d9c291-4628-4a34-b252-55f57a81097b")
+	)
+
+	(text "Placeholder. Requirements: SPEC.md 8.2"
+		(exclude_from_sim no)
+		(at 20 27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e63d549c-412b-4410-b7fd-48bdf395e702")
+	)
+
+	(embedded_fonts no)
+)

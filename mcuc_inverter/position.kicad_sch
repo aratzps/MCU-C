@@ -1,0 +1,41 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "5bf5c589-6ef5-43dd-8504-3edde11dafb3")
+	(paper "A3")
+	(title_block
+		(title "MCU-C Integrated Inverter")
+		(date "2026-07-30")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "Position feedback")
+	)
+
+	(lib_symbols)
+	(text "Position feedback"
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "48a26790-3618-4393-be72-56ed542e160d")
+	)
+
+	(text "Placeholder. Requirements: SPEC.md 8.4"
+		(exclude_from_sim no)
+		(at 20 27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6733d233-116c-48a4-a861-4ec7f2116f3b")
+	)
+
+	(embedded_fonts no)
+)
