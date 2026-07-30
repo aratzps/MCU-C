@@ -1,0 +1,10 @@
+{
+  "schematic": null,
+  "board": null,
+  "docs": "docs/",
+  "model": null,
+  "maxTurns": 40,
+  "maxRepairCycles": 5,
+  "budgets": {},
+  "_comment": "schematic and board are intentionally null. The 2017 boards under pcb_design/ and 'adaptor boards/' are KiCad 4 legacy format (EESchema Schematic File Version 2) and copperhead only edits modern .kicad_sch / .kicad_pcb s-expressions. Null here means ERC and DRC are skipped and copperhead never touches the legacy designs. Point these at a new KiCad 9 board when you start one. Model and endpoint live in .env (machine-specific)."
+}

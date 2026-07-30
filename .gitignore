@@ -1,3 +1,9 @@
 *bak
 *.wrl
 
+# copperhead: machine-specific model/endpoint config
+.env
+
+# copperhead: per-run logs, regenerated on every invocation
+.copperhead/runs/
+
