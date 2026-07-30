@@ -12,13 +12,17 @@ Ultra-wide input voltage range (48–450V) with 15kW continuous and 35kW peak po
 | Parameter | Min | Nom | Max | Unit | Notes |
 |---|---|---|---|---|---|
 | Bus voltage range | 48 | — | 450 | V | Ultra-wide; derate MOSFETs to ≥650V |
-| Continuous power | 15 | — | — | kW | At any voltage in range |
-| Peak power | — | — | 35 | kW | 10s duty, thermal limited |
-| Max continuous current @48V | — | 312 | — | A | 15kW / 48V |
-| Max peak current @48V | — | 729 | — | A | 35kW / 48V |
-| Max continuous current @450V | — | 33.3 | — | A | 15kW / 450V |
-| Max peak current @450V | — | 77.8 | — | A | 35kW / 450V |
+| Continuous power | — | 15 | — | kW | 15kW @ 250V nominal |
+| Peak power | — | 35 | — | kW | 35kW @ 250V nominal, 10s duty |
+| Max continuous current @250V | — | 60 | — | A | 15kW / 250V nominal |
+| Max peak current @250V | — | 140 | — | A | 35kW / 250V nominal |
+| Max continuous current @48V | — | 60 | — | A | V × I_limit: 48V × 60A = 2.88kW |
+| Max peak current @48V | — | 140 | — | A | V × I_limit: 48V × 140A = 6.72kW |
+| Max continuous current @450V | — | 60 | — | A | V × I_limit: 450V × 60A = 27kW |
+| Max peak current @450V | — | 140 | — | A | V × I_limit: 450V × 140A = 49kW |
 | Input protection | — | — | — | — | Reverse polarity, OVP, undervoltage lockout |
+
+**Note:** The 15kW continuous and 35kW peak power ratings are defined at 250V nominal. At other bus voltages, the current limit is fixed (60A continuous, 140A peak), so delivered power = V_bus × I_limit. At 48V this is ~2.9kW / ~6.7kW; at 450V this is ~27kW / ~49kW (limited by other factors such as gate drive timing, commutation, and thermal).
 
 ### 2.2 Motor Output
 
@@ -59,7 +63,7 @@ Ultra-wide input voltage range (48–450V) with 15kW continuous and 35kW peak po
 
 **Candidate:** STK8H122D (1200V, 122A, TO-247-3) or equivalent SiC MOSFETs (e.g., ROHM B3M120000J) for high-voltage efficiency.
 
-**Parallel MOSFETs at 48V:** At 729A peak, individual MOSFETs must be paralleled (minimum 4–6 per switch position depending on thermal design and RDS(on) matching).
+**Parallel MOSFETs:** At 140A peak current (250V nominal), 3 parallel MOSFETs per switch position (18 total) provides sufficient margin (140A / 3 = 47A per device, well within 122A rating). This accounts for RDS(on) mismatch and current sharing.
 
 ### 4.2 Gate Drivers
 
@@ -81,7 +85,7 @@ Ultra-wide input voltage range (48–450V) with 15kW continuous and 35kW peak po
 | Bandwidth | ≥100 kHz |
 | Candidate | TI AMC1301MOM (100kHz, ±2.5V output, 2kV isolation) or Allegro ACS780 (Hall-effect, ±500A, non-isolated — use AMC1301 for isolation) |
 
-**Note:** Shunt resistor must handle 729A peak. Power dissipation at peak: P = I²R. For R = 100µΩ: P = 729² × 0.0001 = 53W peak (pulsed). Continuous at 312A: 9.7W. Requires water cooling or large thermal mass.
+**Note:** Shunt resistor must handle 140A peak current. Power dissipation: P = I²R. For R = 100µΩ: P_peak = 140² × 0.0001 = 1.96W (pulsed), P_continuous = 60² × 0.0001 = 0.36W. A 5W–10W rated shunt with adequate thermal mass is sufficient.
 
 ## 6. Bus Voltage Sensing
 
@@ -107,11 +111,11 @@ Ultra-wide input voltage range (48–450V) with 15kW continuous and 35kW peak po
 | Parameter | Target |
 |---|---|
 | System efficiency @15kW | ≥97% |
-| Max power dissipation | ≤450 W |
+| Max power dissipation @15kW | ≤450 W (theoretical); actual ~30–60W depending on RDS(on) and switching |
 | MOSFET junction temp @peak | ≤150°C |
-| Heat sinking | Forced air or liquid cooling required |
+| Heat sinking | Forced air cooling likely sufficient at 250V nominal |
 
-**Rationale:** 97% efficiency at 15kW output = 450W loss. This requires active thermal management (forced air or liquid).
+**Rationale:** At 250V nominal with 140A peak, conduction losses (I²R) are dramatically lower than the 729A case. With 3 parallel MOSFETs per switch (RDS(on) ~5mΩ typical), each carries ~47A at peak: conduction ≈ 47² × 0.005 ≈ 11W per MOSFET, ~33W per switch position, ~100W peak total (3 positions active at a time). Continuous at 60A: ~60²/3 × 0.005 ≈ 6W per switch position, ~18W total. Forced air cooling is sufficient; liquid cooling is not required for nominal operation.
 
 ## 9. VESC Compatibility
 

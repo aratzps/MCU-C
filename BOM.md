@@ -14,12 +14,13 @@
 
 | RefDes | Part | Package | Qty | Notes |
 |---|---|---|---|---|
-| Q1–Q6 | STK8H122D (1200V, 122A) | TO-247-3 | 6 | Primary MOSFET candidate per leg |
-| Q1a–Q6a | STK8H122D | TO-247-3 | 6 | Parallel per switch for current sharing at 48V |
-| Rg1–Rg6 | 10Ω / 0.5W | 1206 | 6 | Gate resistor per MOSFET |
-| R1–R6 | 100kΩ / 0.25W | 1206 | 6 | Pull-down per MOSFET gate |
+| Q1–Q6 | STK8H122D (1200V, 122A) | TO-247-3 | 6 | Primary MOSFET per leg |
+| Q1a–Q6a | STK8H122D | TO-247-3 | 6 | Parallel per switch for current sharing at 250V nominal |
+| Q1b–Q6b | STK8H122D | TO-247-3 | 6 | Third parallel per switch (3 total per position) |
+| Rg1–Rg18 | 10Ω / 0.5W | 1206 | 18 | Gate resistor per MOSFET (3 per switch) |
+| R1–R18 | 100kΩ / 0.25W | 1206 | 18 | Pull-down per MOSFET gate (3 per switch) |
 
-**Rationale:** STK8H122D provides 1200V rating (well above 650V requirement) and 122A continuous. For 729A peak at 48V, 6 parallel MOSFETs per switch position (36 total) provides current sharing. Thermal design must ensure junction temp ≤150°C at peak.
+**Rationale:** STK8H122D provides 1200V rating (well above 650V requirement) and 122A continuous. For 140A peak at 250V nominal, 3 parallel MOSFETs per switch position (18 total) provides current sharing (47A per device at peak, well within 122A rating). Thermal design must ensure junction temp ≤150°C at peak.
 
 ## 3. Gate Drivers
 
@@ -34,7 +35,7 @@
 
 | RefDes | Part | Package | Qty | Notes |
 |---|---|---|---|---|
-| R_SHUNT | 100µΩ, 100W, 4-wire | Custom shunt | 1 | Bus-level shunt resistor |
+| R_SHUNT | 100µΩ, 5W–10W, 4-wire | Custom shunt | 1 | Bus-level shunt resistor (140A peak = 1.96W peak, 60A continuous = 0.36W) |
 | U8 | TI AMC1301MOM | SOIC-16 | 1 | Isolated amplifier, ±2.5V out, 2kV isolation |
 | R_CS1–R_CS2 | 10kΩ / 0.125W | 0603 | 2 | AMC1301 gain resistors |
 

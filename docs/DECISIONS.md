@@ -20,4 +20,9 @@
 - **Why:** 1000:1 divider reduces 450V max to 0.45V; rail-to-rail op-amp buffers to 0–3.3V range for MCU ADC1_IN3.
 - **Affects:** R_DIV1, R_DIV2, U9, bus voltage sense circuit
 
+## D006: Power ratings based on 250V nominal
+- **Why:** The 15kW continuous and 35kW peak power figures are specified at 250V nominal, not at 48V. This reduces peak current from 729A to 140A, continuous from 312A to 60A, MOSFET parallel count from 6 to 3 per switch, and shunt power rating from 100W to ~5W.
+- **Affects:** MOSFET quantities, shunt resistor rating, thermal design, current sense amplifier bandwidth requirement
+
 ---
+- 2026-07-30 [run 2026-07-30T19-43-05-288Z] Power ratings (15kW continuous, 35kW peak) are specified at 250V nominal, not 48V | why: 250V is the typical operating voltage for the target application; current limit is fixed at 60A/140A regardless of bus voltage | affects: MOSFET quantities, shunt resistor, thermal design, current sense amplifier
