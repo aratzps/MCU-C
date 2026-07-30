@@ -2,6 +2,16 @@
 
 Append-only, newest first.
 
+## 2026-07-30 — Supervisor logic design
+
+- Added `docs/supervisor.md`: full logic design for the hardware interlock block — overcurrent detect and latch, fault aggregation, PWM overlap elimination and dead time. 24-signal interface, gate budget, failure-mode review.
+- Two design decisions worth flagging: comparators run from **+5 V** because the LM2903's input common-mode ceiling on 3.3 V is 1.8 V, below the 3.05 V positive trip point — the positive-overcurrent channel would never have asserted. And **74HC** replaces the original's 74ACT, because the dead-time RC depends on a CMOS threshold at 0.5×VCC; TTL thresholds make the delay supply-dependent.
+- Added `tools/gen_skeleton.py`, which generates the KiCad skeleton and records the block interfaces.
+- Added ERC severities to `mcuc_inverter.kicad_pro`: `hier_label_mismatch` stays an error; `label_dangling` and `pin_not_connected` are warnings during build-out.
+- The interface is **not** emitted into the schematic yet (`EMIT_INTERFACE = False`). Emitting it into empty sheets produces 96 legitimate dangling-label violations, and copperhead fails on warnings, which would leave the gate permanently red. Rationale in `docs/supervisor.md` §9.
+- Verification: ERC 0 violations, `copperhead check` green. With the interface temporarily emitted, ERC confirmed **no `hier_label_mismatch`** — all 24 names and directions agree across sheet boundaries.
+- Also set `core.ignorecase=false`, after the `Power.sch`/`power.sch` collision silently deleted the working copy of `power.sch` during the PR #1 merge.
+
 ## 2026-07-30 — KiCad 9 project skeleton
 
 - Created `mcuc_inverter/` — a KiCad 9 project with a root schematic and 11 hierarchical sheets, one per functional block in `SPEC.md`: power stage/DC link, gate drive, precharge, current sense, bus sense, temperature, position feedback, supervisor, auxiliary power, MCU, communications.

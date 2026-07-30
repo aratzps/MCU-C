@@ -8,6 +8,18 @@
   "cvpcb": {
     "equivalence_files": []
   },
+  "erc": {
+    "erc_exclusions": [],
+    "meta": {
+      "version": 0
+    },
+    "rule_severities": {
+      "hier_label_mismatch": "error",
+      "label_dangling": "warning",
+      "pin_not_connected": "warning"
+    },
+    "_comment": "WIP severities. label_dangling and pin_not_connected are warnings because block interfaces are declared but the blocks are not yet populated - an empty sheet's hierarchical labels are legitimately unconnected. hier_label_mismatch stays an ERROR: a name or direction mismatch across a sheet boundary is always a real defect. Restore both to error once the blocks are populated. Tracked as an open item in docs/supervisor.md."
+  },
   "libraries": {
     "pinned_footprint_libs": [],
     "pinned_symbol_libs": []

@@ -2,7 +2,7 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid "689a95c8-82a6-4e82-9207-262af70daca3")
+	(uuid "bf2b1e33-8fc4-447a-8dc6-49e53bf48170")
 	(paper "A3")
 	(title_block
 		(title "MCU-C Integrated Inverter")
@@ -22,10 +22,10 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f728f60a-0058-471c-b8e9-cf3d99dc84e6")
+		(uuid "fb5a6ff1-1962-4812-9658-b328303cfb00")
 	)
 
-	(text "Block structure follows SPEC.md. Sheets are empty placeholders."
+	(text "Supervisor interface per docs/supervisor.md. Other blocks are placeholders."
 		(exclude_from_sim no)
 		(at 20 24 0)
 		(effects
@@ -34,12 +34,12 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "4839f9e8-e0a0-4ed5-bda8-da6c72646742")
+		(uuid "3c928d94-e6cc-4497-b276-ea5d22001dd2")
 	)
 
 	(sheet
-		(at 20.0 35.0)
-		(size 55.88 20.32)
+		(at 20.32 40.64)
+		(size 60.96 20.32)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -48,9 +48,9 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "9e4d481c-5349-431a-8284-8a5dd7d9e524")
+		(uuid "920d398a-e0d8-41bd-a573-9857f6642ee6")
 		(property "Sheetname" "Power stage and DC link"
-			(at 20.0 34.2884 0)
+			(at 20.32 39.9284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -59,7 +59,7 @@
 			)
 		)
 		(property "Sheetfile" "power_stage.kicad_sch"
-			(at 20.0 55.9046 0)
+			(at 20.32 61.5446 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -69,28 +69,28 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
 					(page "2")
 				)
 			)
 		)
 	)
 
-	(text "SPEC.md 4, 6"
+	(text "SPEC 4, 6"
 		(exclude_from_sim no)
-		(at 20.0 59.0 0)
+		(at 20.32 64.96000000000001 0)
 		(effects
 			(font
 				(size 1.0 1.0)
 			)
 			(justify left bottom)
 		)
-		(uuid "c738e477-c834-4d95-8dc1-6c34c6204fe0")
+		(uuid "778256e8-51fc-461e-b4fb-afe3d6b5de33")
 	)
 
 	(sheet
-		(at 160.0 35.0)
-		(size 55.88 20.32)
+		(at 20.32 72.39)
+		(size 60.96 22.86)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -99,9 +99,9 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "495159f9-0c11-4ecc-8a9b-81041e02e275")
+		(uuid "cf8e6de9-056f-41d9-becd-5ccaac6c19a4")
 		(property "Sheetname" "Gate drive"
-			(at 160.0 34.2884 0)
+			(at 20.32 71.6784 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -110,7 +110,7 @@
 			)
 		)
 		(property "Sheetfile" "gate_drive.kicad_sch"
-			(at 160.0 55.9046 0)
+			(at 20.32 95.8346 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -120,28 +120,28 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
 					(page "3")
 				)
 			)
 		)
 	)
 
-	(text "SPEC.md 5"
+	(text "SPEC 5"
 		(exclude_from_sim no)
-		(at 160.0 59.0 0)
+		(at 20.32 99.25 0)
 		(effects
 			(font
 				(size 1.0 1.0)
 			)
 			(justify left bottom)
 		)
-		(uuid "decd89f3-2a34-43ad-9cff-f286516f5dc8")
+		(uuid "7340fc72-09b8-477c-b0d6-fa7d7f55b0d1")
 	)
 
 	(sheet
-		(at 20.0 60.0)
-		(size 55.88 20.32)
+		(at 20.32 106.68)
+		(size 60.96 20.32)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -150,9 +150,9 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "16f3a11d-dd8b-406a-835e-16a4f162b732")
+		(uuid "e2d7f0ed-8c31-48c1-a04b-cc4834289c75")
 		(property "Sheetname" "Precharge and contactor"
-			(at 20.0 59.2884 0)
+			(at 20.32 105.9684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -161,7 +161,7 @@
 			)
 		)
 		(property "Sheetfile" "precharge.kicad_sch"
-			(at 20.0 80.90459999999999 0)
+			(at 20.32 127.5846 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -171,28 +171,28 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
 					(page "4")
 				)
 			)
 		)
 	)
 
-	(text "SPEC.md 7"
+	(text "SPEC 7"
 		(exclude_from_sim no)
-		(at 20.0 84.0 0)
+		(at 20.32 131.0 0)
 		(effects
 			(font
 				(size 1.0 1.0)
 			)
 			(justify left bottom)
 		)
-		(uuid "d4fc3cd7-958b-4a6b-8b57-e5329a6492f9")
+		(uuid "bfa8d6e4-02a1-40d1-9deb-be0ce4c26fc2")
 	)
 
 	(sheet
-		(at 160.0 60.0)
-		(size 55.88 20.32)
+		(at 20.32 138.43)
+		(size 60.96 20.32)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -201,9 +201,9 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "438b764a-db3e-4d65-baa7-b283e17510d2")
+		(uuid "1df46945-4c37-4bf9-a0b6-abcedc7d0041")
 		(property "Sheetname" "Phase current sensing"
-			(at 160.0 59.2884 0)
+			(at 20.32 137.7184 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -212,7 +212,7 @@
 			)
 		)
 		(property "Sheetfile" "current_sense.kicad_sch"
-			(at 160.0 80.90459999999999 0)
+			(at 20.32 159.3346 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -222,28 +222,28 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
 					(page "5")
 				)
 			)
 		)
 	)
 
-	(text "SPEC.md 8.1"
+	(text "SPEC 8.1"
 		(exclude_from_sim no)
-		(at 160.0 84.0 0)
+		(at 20.32 162.75 0)
 		(effects
 			(font
 				(size 1.0 1.0)
 			)
 			(justify left bottom)
 		)
-		(uuid "5f2728ac-2de0-476f-8f24-49848f8dbb70")
+		(uuid "b013f3f0-d413-42ba-bafb-3d80655c772b")
 	)
 
 	(sheet
-		(at 20.0 85.0)
-		(size 55.88 20.32)
+		(at 20.32 170.18)
+		(size 60.96 20.32)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -252,9 +252,9 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "e707f78c-23ce-46a2-9dd7-3627af3c12c5")
+		(uuid "bdfa44d8-3990-41a5-b932-7c11ab772af6")
 		(property "Sheetname" "Bus voltage sensing"
-			(at 20.0 84.2884 0)
+			(at 20.32 169.4684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -263,7 +263,7 @@
 			)
 		)
 		(property "Sheetfile" "bus_sense.kicad_sch"
-			(at 20.0 105.90459999999999 0)
+			(at 20.32 191.0846 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -273,28 +273,28 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
 					(page "6")
 				)
 			)
 		)
 	)
 
-	(text "SPEC.md 8.2"
+	(text "SPEC 8.2"
 		(exclude_from_sim no)
-		(at 20.0 109.0 0)
+		(at 20.32 194.5 0)
 		(effects
 			(font
 				(size 1.0 1.0)
 			)
 			(justify left bottom)
 		)
-		(uuid "7628f7bc-2f59-479c-acba-d4b0c1811ad8")
+		(uuid "728ba42f-76d3-4ced-88d0-006c5a895577")
 	)
 
 	(sheet
-		(at 160.0 85.0)
-		(size 55.88 20.32)
+		(at 20.32 201.93)
+		(size 60.96 20.32)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -303,9 +303,9 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "464d1c72-a8a9-4cbc-83cd-c5c7732e71a7")
+		(uuid "c566e7dd-8645-4acf-ae84-b571cdc6e2ff")
 		(property "Sheetname" "Temperature sensing"
-			(at 160.0 84.2884 0)
+			(at 20.32 201.2184 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -314,7 +314,7 @@
 			)
 		)
 		(property "Sheetfile" "temp_sense.kicad_sch"
-			(at 160.0 105.90459999999999 0)
+			(at 20.32 222.8346 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -324,28 +324,28 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
 					(page "7")
 				)
 			)
 		)
 	)
 
-	(text "SPEC.md 8.3"
+	(text "SPEC 8.3"
 		(exclude_from_sim no)
-		(at 160.0 109.0 0)
+		(at 20.32 226.25 0)
 		(effects
 			(font
 				(size 1.0 1.0)
 			)
 			(justify left bottom)
 		)
-		(uuid "08fa0471-8633-4d86-9d19-e64355dd2245")
+		(uuid "b65e436e-fb76-4a22-b0bd-a9c3c256b43c")
 	)
 
 	(sheet
-		(at 20.0 110.0)
-		(size 55.88 20.32)
+		(at 20.32 233.68)
+		(size 60.96 20.32)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -354,9 +354,9 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "653a6882-bc9f-4401-9b94-701a8a46ab64")
+		(uuid "bd17742a-3609-4e0b-bd68-07cda1439c77")
 		(property "Sheetname" "Position feedback"
-			(at 20.0 109.2884 0)
+			(at 20.32 232.9684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -365,7 +365,7 @@
 			)
 		)
 		(property "Sheetfile" "position.kicad_sch"
-			(at 20.0 130.9046 0)
+			(at 20.32 254.5846 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -375,28 +375,28 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
 					(page "8")
 				)
 			)
 		)
 	)
 
-	(text "SPEC.md 8.4"
+	(text "SPEC 8.4"
 		(exclude_from_sim no)
-		(at 20.0 134.0 0)
+		(at 20.32 258.0 0)
 		(effects
 			(font
 				(size 1.0 1.0)
 			)
 			(justify left bottom)
 		)
-		(uuid "4247ac99-d340-4132-9b60-a17758826cfd")
+		(uuid "5b42d62c-6c5d-405e-9f6d-77e72e88de54")
 	)
 
 	(sheet
-		(at 160.0 110.0)
-		(size 55.88 20.32)
+		(at 120.65 40.64)
+		(size 60.96 30.48)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -405,111 +405,9 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "e9e7075d-ad1b-4ac6-b65f-2d1e17ea8b0f")
-		(property "Sheetname" "Supervisor and interlocks"
-			(at 160.0 109.2884 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "supervisor.kicad_sch"
-			(at 160.0 130.9046 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
-					(page "9")
-				)
-			)
-		)
-	)
-
-	(text "SPEC.md 9.2"
-		(exclude_from_sim no)
-		(at 160.0 134.0 0)
-		(effects
-			(font
-				(size 1.0 1.0)
-			)
-			(justify left bottom)
-		)
-		(uuid "511565c6-3dd9-42c4-bb3e-f07884205c45")
-	)
-
-	(sheet
-		(at 20.0 135.0)
-		(size 55.88 20.32)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "7bf3cccd-c90e-484c-b880-48af121a05fa")
-		(property "Sheetname" "Auxiliary power"
-			(at 20.0 134.2884 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "aux_power.kicad_sch"
-			(at 20.0 155.9046 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
-					(page "10")
-				)
-			)
-		)
-	)
-
-	(text "SPEC.md 11"
-		(exclude_from_sim no)
-		(at 20.0 159.0 0)
-		(effects
-			(font
-				(size 1.0 1.0)
-			)
-			(justify left bottom)
-		)
-		(uuid "5fcba491-6332-47da-9d70-44b2f24ca4f7")
-	)
-
-	(sheet
-		(at 160.0 135.0)
-		(size 55.88 20.32)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "cf4c33cf-43f9-478b-899e-44632328b324")
+		(uuid "baa78099-391e-41e3-a688-75a11e373202")
 		(property "Sheetname" "MCU"
-			(at 160.0 134.2884 0)
+			(at 120.65 39.9284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -518,7 +416,7 @@
 			)
 		)
 		(property "Sheetfile" "mcu.kicad_sch"
-			(at 160.0 155.9046 0)
+			(at 120.65 71.7046 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -528,28 +426,28 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
-					(page "11")
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+					(page "9")
 				)
 			)
 		)
 	)
 
-	(text "SPEC.md 12"
+	(text "SPEC 12"
 		(exclude_from_sim no)
-		(at 160.0 159.0 0)
+		(at 120.65 75.12 0)
 		(effects
 			(font
 				(size 1.0 1.0)
 			)
 			(justify left bottom)
 		)
-		(uuid "348d9d50-85c1-42be-89e6-3641120e18dc")
+		(uuid "29cb06eb-f9d6-449c-9499-3249854198b3")
 	)
 
 	(sheet
-		(at 20.0 160.0)
-		(size 55.88 20.32)
+		(at 120.65 80.01)
+		(size 60.96 20.32)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -558,9 +456,9 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "4dc2c26d-9cd6-4bc1-b89d-f55610f33015")
+		(uuid "dc8a3015-a2d5-41d2-8bfb-0026b2523cd3")
 		(property "Sheetname" "Communications"
-			(at 20.0 159.2884 0)
+			(at 120.65 79.2984 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -569,7 +467,7 @@
 			)
 		)
 		(property "Sheetfile" "comms.kicad_sch"
-			(at 20.0 180.9046 0)
+			(at 120.65 100.91460000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -579,23 +477,125 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
-					(page "12")
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+					(page "10")
 				)
 			)
 		)
 	)
 
-	(text "SPEC.md 12, 13"
+	(text "SPEC 12, 13"
 		(exclude_from_sim no)
-		(at 20.0 184.0 0)
+		(at 120.65 104.33000000000001 0)
 		(effects
 			(font
 				(size 1.0 1.0)
 			)
 			(justify left bottom)
 		)
-		(uuid "5ab57d21-422f-4c02-bfbd-12d762174dc7")
+		(uuid "2e1fca99-6095-4464-a495-de59f6955d3f")
+	)
+
+	(sheet
+		(at 120.65 111.76)
+		(size 60.96 20.32)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "01226f5d-9579-495f-8601-fe74de5c4549")
+		(property "Sheetname" "Auxiliary power"
+			(at 120.65 111.0484 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "aux_power.kicad_sch"
+			(at 120.65 132.6646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+					(page "11")
+				)
+			)
+		)
+	)
+
+	(text "SPEC 11"
+		(exclude_from_sim no)
+		(at 120.65 136.08 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "02b69266-0554-4f8a-9bbb-e6e44cdd62d3")
+	)
+
+	(sheet
+		(at 229.87 40.64)
+		(size 76.2 48.26)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "986328d6-139f-4fbd-b3aa-2ccc91e85d05")
+		(property "Sheetname" "Supervisor and interlocks"
+			(at 229.87 39.9284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "supervisor.kicad_sch"
+			(at 229.87 89.4846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+					(page "12")
+				)
+			)
+		)
+	)
+
+	(text "SPEC 9.2"
+		(exclude_from_sim no)
+		(at 229.87 92.9 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "6e3e31c2-aa16-48b3-b2e2-9844c01a4491")
 	)
 
 	(sheet_instances
