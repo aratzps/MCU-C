@@ -1,0 +1,41 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "8aade6ca-eb7a-4251-a7a4-d82c8005d07a")
+	(paper "A3")
+	(title_block
+		(title "MCU-C Integrated Inverter")
+		(date "2026-07-30")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "Precharge and contactor")
+	)
+
+	(lib_symbols)
+	(text "Precharge and contactor"
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "77f13003-ce78-4618-a7c4-adf95ca3c066")
+	)
+
+	(text "Placeholder. Requirements: SPEC.md 7"
+		(exclude_from_sim no)
+		(at 20 27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4fa5d05b-7b41-44e2-9d4d-1a5104da98bb")
+	)
+
+	(embedded_fonts no)
+)

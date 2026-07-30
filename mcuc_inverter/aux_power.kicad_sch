@@ -1,0 +1,41 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "67f2a368-c5bd-49d9-8224-035c24271cc3")
+	(paper "A3")
+	(title_block
+		(title "MCU-C Integrated Inverter")
+		(date "2026-07-30")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "Auxiliary power")
+	)
+
+	(lib_symbols)
+	(text "Auxiliary power"
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "49554cf8-778c-459d-a64c-fb2481433e77")
+	)
+
+	(text "Placeholder. Requirements: SPEC.md 11"
+		(exclude_from_sim no)
+		(at 20 27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1649dc91-1b2c-4327-87ff-f8f80c5d35f7")
+	)
+
+	(embedded_fonts no)
+)

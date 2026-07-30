@@ -1,0 +1,41 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "5f46a96f-a608-4b98-9bba-da5ad07e8b3a")
+	(paper "A3")
+	(title_block
+		(title "MCU-C Integrated Inverter")
+		(date "2026-07-30")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "Phase current sensing")
+	)
+
+	(lib_symbols)
+	(text "Phase current sensing"
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "f3f8815f-0f74-4e1e-acf8-c7f93e3f7d4f")
+	)
+
+	(text "Placeholder. Requirements: SPEC.md 8.1"
+		(exclude_from_sim no)
+		(at 20 27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f5fafc14-f363-49f4-adc5-4e8149025d58")
+	)
+
+	(embedded_fonts no)
+)

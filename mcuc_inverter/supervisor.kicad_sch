@@ -1,0 +1,41 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "9db57077-fa2c-498e-a4fc-61d15ea12f2d")
+	(paper "A3")
+	(title_block
+		(title "MCU-C Integrated Inverter")
+		(date "2026-07-30")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "Supervisor and interlocks")
+	)
+
+	(lib_symbols)
+	(text "Supervisor and interlocks"
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "4df2502c-f4ac-4fb3-9a56-9ee8b679cab1")
+	)
+
+	(text "Placeholder. Requirements: SPEC.md 9.2"
+		(exclude_from_sim no)
+		(at 20 27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b9281d49-e086-489d-ab49-5f6c7cf42f06")
+	)
+
+	(embedded_fonts no)
+)

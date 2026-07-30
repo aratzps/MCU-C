@@ -2,6 +2,16 @@
 
 Append-only, newest first.
 
+## 2026-07-30 — KiCad 9 project skeleton
+
+- Created `mcuc_inverter/` — a KiCad 9 project with a root schematic and 11 hierarchical sheets, one per functional block in `SPEC.md`: power stage/DC link, gate drive, precharge, current sense, bus sense, temperature, position feedback, supervisor, auxiliary power, MCU, communications.
+- Sheets are empty placeholders. No symbols, no nets, no components yet.
+- `HV_BUS` net class pre-defined with 2.0 mm clearance and 3.0 mm track width, per `SPEC.md` §10.
+- Pointed `.copperhead/config.json` `schematic` at the new root sheet.
+- Verification: **ERC runs and passes** (0 violations), hierarchy traverses under `kicad-cli sch export pdf`, `copperhead check` reports `ERC ✓ / drift ✓ / constraints ✓`. DRC still skipped — no `.kicad_pcb` yet.
+
+This is the first artifact in the project that verification can actually act on. Everything before it was documents only.
+
 ## 2026-07-30 — Architecture baseline from scratch
 
 - Scope set to **fully integrated inverter** (control + gate drive + DC link + precharge + power stage on one assembly).

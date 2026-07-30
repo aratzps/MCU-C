@@ -1,0 +1,41 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "4899e18d-7359-4e18-a74e-a44b8f80d89d")
+	(paper "A3")
+	(title_block
+		(title "MCU-C Integrated Inverter")
+		(date "2026-07-30")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "Temperature sensing")
+	)
+
+	(lib_symbols)
+	(text "Temperature sensing"
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left bottom)
+		)
+		(uuid "b81b8b69-cec3-487b-a027-cbf64298f23b")
+	)
+
+	(text "Placeholder. Requirements: SPEC.md 8.3"
+		(exclude_from_sim no)
+		(at 20 27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7135a342-d6e6-4923-894e-d3c2030e1a25")
+	)
+
+	(embedded_fonts no)
+)
