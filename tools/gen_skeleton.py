@@ -28,18 +28,17 @@ COMPANY = "MCU-C"
 P = 2.54
 STUB = 5.08
 
-# Emit the block interfaces into the schematic?
+# Which interface signals to emit into the schematic.
 #
-# False until the blocks contain components. A hierarchical label inside an
-# empty sheet is legitimately unconnected, so emitting the interface early
-# produces ~96 unavoidable dangling-label warnings. copperhead's check fails
-# on warnings as well as errors, which would leave the verification gate
-# permanently red and therefore ignored.
+# Only signals whose consuming block already has components are emitted. A
+# hierarchical label inside an empty sheet is legitimately unconnected, so
+# emitting the whole 24-signal interface early produces ~96 dangling-label
+# warnings. Add signals here as the blocks that use them get built.
 #
-# The interface itself is specified in docs/supervisor.md section 2, which is
-# the authoritative source. Flip this to True in the same change that places
-# the components, so the labels have something to connect to.
-EMIT_INTERFACE = False
+# The full interface is specified in docs/supervisor.md section 2, which
+# remains the authoritative source. Set to set(IFACE-wide) once every block
+# is populated.
+EMIT_SIGNALS = {"ISENSE_A", "ISENSE_B", "ISENSE_C"}
 
 PWM = ["PWM_AH", "PWM_AL", "PWM_BH", "PWM_BL", "PWM_CH", "PWM_CL"]
 GD = ["GD_AH", "GD_AL", "GD_BH", "GD_BL", "GD_CH", "GD_CL"]
@@ -135,7 +134,9 @@ def build_root():
 
     extras, page = [], 2
     for name, stem, ref, x, y, w, h in LAYOUT:
-        pins_in, pins_out = IFACE.get(stem, ([], [])) if EMIT_INTERFACE else ([], [])
+        pi, po = IFACE.get(stem, ([], []))
+        pins_in = [n for n in pi if n in EMIT_SIGNALS]
+        pins_out = [n for n in po if n in EMIT_SIGNALS]
         body = [f'\t(sheet\n\t\t(at {x} {y})\n\t\t(size {w} {h})\n',
                 '\t\t(fields_autoplaced yes)\n',
                 '\t\t(stroke\n\t\t\t(width 0.1524)\n\t\t\t(type solid)\n\t\t)\n',
@@ -174,7 +175,9 @@ def build_root():
 
 
 def build_subsheet(name, stem, ref):
-    li, lo = IFACE.get(stem, ([], [])) if EMIT_INTERFACE else ([], [])
+    _i, _o = IFACE.get(stem, ([], []))
+    li = [n for n in _i if n in EMIT_SIGNALS]
+    lo = [n for n in _o if n in EMIT_SIGNALS]
     out = ["(kicad_sch", f"\t(version {VERSION})", '\t(generator "eeschema")',
            f'\t(generator_version "{GEN_VER}")', f'\t(uuid "{uid()}")',
            '\t(paper "A3")', title_block(name), "\t(lib_symbols)",
@@ -205,8 +208,7 @@ for name, stem, ref, *_ in LAYOUT:
     build_subsheet(name, stem, ref)
 
 n_sig = sum(len(a) + len(b) for a, b in IFACE.values())
-if EMIT_INTERFACE:
-    print(f"root + {len(LAYOUT)} sheets; {n_sig} sheet pins across {len(IFACE)} interfaced blocks")
-else:
-    print(f"root + {len(LAYOUT)} sheets; interfaces NOT emitted (EMIT_INTERFACE=False)")
-    print(f"  {n_sig} pins across {len(IFACE)} blocks are defined but held back - see the note above")
+emitted = sum(len([n for n in a if n in EMIT_SIGNALS]) + len([n for n in b if n in EMIT_SIGNALS])
+              for a, b in IFACE.values())
+print(f"root + {len(LAYOUT)} sheets; {emitted}/{n_sig} interface pins emitted")
+print(f"  emitting: {sorted(EMIT_SIGNALS)}")

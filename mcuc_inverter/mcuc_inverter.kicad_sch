@@ -2,7 +2,7 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid "bf2b1e33-8fc4-447a-8dc6-49e53bf48170")
+	(uuid "c2a3c707-c5cb-4b38-83d3-7f8307d61589")
 	(paper "A3")
 	(title_block
 		(title "MCU-C Integrated Inverter")
@@ -22,7 +22,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "fb5a6ff1-1962-4812-9658-b328303cfb00")
+		(uuid "2567b9d9-827a-4109-88cc-6da871373d4b")
 	)
 
 	(text "Supervisor interface per docs/supervisor.md. Other blocks are placeholders."
@@ -34,7 +34,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "3c928d94-e6cc-4497-b276-ea5d22001dd2")
+		(uuid "f9b17e28-4839-4e9d-a712-9d0daad61abd")
 	)
 
 	(sheet
@@ -48,7 +48,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "920d398a-e0d8-41bd-a573-9857f6642ee6")
+		(uuid "39fcc4c5-83a0-4aef-b6f9-cefaa23215ff")
 		(property "Sheetname" "Power stage and DC link"
 			(at 20.32 39.9284 0)
 			(effects
@@ -69,7 +69,7 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "2")
 				)
 			)
@@ -85,7 +85,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "778256e8-51fc-461e-b4fb-afe3d6b5de33")
+		(uuid "8345a601-ef82-4f3c-8551-9f7e38b778e3")
 	)
 
 	(sheet
@@ -99,7 +99,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "cf8e6de9-056f-41d9-becd-5ccaac6c19a4")
+		(uuid "76ba0a8b-e0fc-47f7-848c-86620339ccd7")
 		(property "Sheetname" "Gate drive"
 			(at 20.32 71.6784 0)
 			(effects
@@ -120,7 +120,7 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "3")
 				)
 			)
@@ -136,7 +136,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "7340fc72-09b8-477c-b0d6-fa7d7f55b0d1")
+		(uuid "591699ea-2fc5-49bc-8eb0-9e2fe05c9316")
 	)
 
 	(sheet
@@ -150,7 +150,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "e2d7f0ed-8c31-48c1-a04b-cc4834289c75")
+		(uuid "c8294b78-6737-4b32-bf46-5707ebaeaf4d")
 		(property "Sheetname" "Precharge and contactor"
 			(at 20.32 105.9684 0)
 			(effects
@@ -171,7 +171,7 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "4")
 				)
 			)
@@ -187,7 +187,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "bfa8d6e4-02a1-40d1-9deb-be0ce4c26fc2")
+		(uuid "7ff2436b-489f-4b76-9fc7-c7d6a26ee735")
 	)
 
 	(sheet
@@ -201,7 +201,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "1df46945-4c37-4bf9-a0b6-abcedc7d0041")
+		(uuid "5be2082c-ecf6-488c-a285-e4e6c64a78d5")
 		(property "Sheetname" "Phase current sensing"
 			(at 20.32 137.7184 0)
 			(effects
@@ -220,9 +220,39 @@
 				(justify left top)
 			)
 		)
+		(pin "ISENSE_A" output
+			(at 81.28 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "01e09d26-efb2-4d9a-be8d-c64908d26a20")
+		)
+		(pin "ISENSE_B" output
+			(at 81.28 143.51000000000002 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "97d972c0-df26-43d9-b71e-ad397a06037c")
+		)
+		(pin "ISENSE_C" output
+			(at 81.28 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "cd933507-592d-412f-bb76-1c876c2c62a2")
+		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "5")
 				)
 			)
@@ -238,7 +268,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b013f3f0-d413-42ba-bafb-3d80655c772b")
+		(uuid "710ed0a2-b265-41b2-afbc-0b9fc2f1d0be")
 	)
 
 	(sheet
@@ -252,7 +282,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "bdfa44d8-3990-41a5-b932-7c11ab772af6")
+		(uuid "e28c9b3c-d22d-4c53-8dbd-9fb4e53d5383")
 		(property "Sheetname" "Bus voltage sensing"
 			(at 20.32 169.4684 0)
 			(effects
@@ -273,7 +303,7 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "6")
 				)
 			)
@@ -289,7 +319,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "728ba42f-76d3-4ced-88d0-006c5a895577")
+		(uuid "48cc0007-6419-415e-b28b-5c1486a2d655")
 	)
 
 	(sheet
@@ -303,7 +333,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "c566e7dd-8645-4acf-ae84-b571cdc6e2ff")
+		(uuid "1827e6fe-35bd-43de-a2eb-a29d689c8547")
 		(property "Sheetname" "Temperature sensing"
 			(at 20.32 201.2184 0)
 			(effects
@@ -324,7 +354,7 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "7")
 				)
 			)
@@ -340,7 +370,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b65e436e-fb76-4a22-b0bd-a9c3c256b43c")
+		(uuid "01634634-c151-4a34-8227-d55d7f898549")
 	)
 
 	(sheet
@@ -354,7 +384,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "bd17742a-3609-4e0b-bd68-07cda1439c77")
+		(uuid "17702dd6-3447-4568-aa68-cdf925d4b9c9")
 		(property "Sheetname" "Position feedback"
 			(at 20.32 232.9684 0)
 			(effects
@@ -375,7 +405,7 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "8")
 				)
 			)
@@ -391,7 +421,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "5b42d62c-6c5d-405e-9f6d-77e72e88de54")
+		(uuid "625b0694-29e3-45d8-b5e1-346beb673fde")
 	)
 
 	(sheet
@@ -405,7 +435,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "baa78099-391e-41e3-a688-75a11e373202")
+		(uuid "6b71d695-a4c6-47f3-95de-e61baa696401")
 		(property "Sheetname" "MCU"
 			(at 120.65 39.9284 0)
 			(effects
@@ -426,7 +456,7 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "9")
 				)
 			)
@@ -442,7 +472,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "29cb06eb-f9d6-449c-9499-3249854198b3")
+		(uuid "dbd5e724-2f74-43ba-b721-80a896b79fb5")
 	)
 
 	(sheet
@@ -456,7 +486,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "dc8a3015-a2d5-41d2-8bfb-0026b2523cd3")
+		(uuid "d0b9f7ab-0f4c-429d-9d4f-48a66f126982")
 		(property "Sheetname" "Communications"
 			(at 120.65 79.2984 0)
 			(effects
@@ -477,7 +507,7 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "10")
 				)
 			)
@@ -493,7 +523,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "2e1fca99-6095-4464-a495-de59f6955d3f")
+		(uuid "3918d2d8-0404-4eba-9865-5fac9bbf5ee7")
 	)
 
 	(sheet
@@ -507,7 +537,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "01226f5d-9579-495f-8601-fe74de5c4549")
+		(uuid "ed787a80-19be-4e76-a006-efe94cfa3d1f")
 		(property "Sheetname" "Auxiliary power"
 			(at 120.65 111.0484 0)
 			(effects
@@ -528,7 +558,7 @@
 		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "11")
 				)
 			)
@@ -544,7 +574,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "02b69266-0554-4f8a-9bbb-e6e44cdd62d3")
+		(uuid "d6cc064f-7f93-49b3-8f6e-8c8622c9ee8a")
 	)
 
 	(sheet
@@ -558,7 +588,7 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "986328d6-139f-4fbd-b3aa-2ccc91e85d05")
+		(uuid "6bba8880-6511-41f7-9085-8cad47881424")
 		(property "Sheetname" "Supervisor and interlocks"
 			(at 229.87 39.9284 0)
 			(effects
@@ -577,9 +607,39 @@
 				(justify left top)
 			)
 		)
+		(pin "ISENSE_A" input
+			(at 229.87 43.18 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "79346dae-3226-4f50-8f90-c403fec33a11")
+		)
+		(pin "ISENSE_B" input
+			(at 229.87 45.72 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e41f987f-1a73-4c8d-8c62-c9d9ff06d243")
+		)
+		(pin "ISENSE_C" input
+			(at 229.87 48.26 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9a86c7b9-2cf3-478d-aaa3-506757c2f471")
+		)
 		(instances
 			(project "mcuc_inverter"
-				(path "/bf2b1e33-8fc4-447a-8dc6-49e53bf48170"
+				(path "/c2a3c707-c5cb-4b38-83d3-7f8307d61589"
 					(page "12")
 				)
 			)
@@ -595,7 +655,145 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "6e3e31c2-aa16-48b3-b2e2-9844c01a4491")
+		(uuid "394c7a33-7a24-4b68-a89a-99f1040acf3e")
+	)
+
+	(wire
+		(pts
+			(xy 81.28 140.97) (xy 86.36 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70904a44-068d-4af4-b921-775268ab2666")
+	)
+
+	(label "ISENSE_A"
+		(at 86.36 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cdaa17fe-f946-41d0-bfe0-ecc3f963fa9e")
+	)
+
+	(wire
+		(pts
+			(xy 81.28 143.51000000000002) (xy 86.36 143.51000000000002)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be37748b-7ef2-4071-a75b-9ac3e1d38eab")
+	)
+
+	(label "ISENSE_B"
+		(at 86.36 143.51000000000002 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2d1dae0a-3c6c-4589-a8f1-894744ff567b")
+	)
+
+	(wire
+		(pts
+			(xy 81.28 146.05) (xy 86.36 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e12db839-4b71-4c36-a5a0-c727d19c26eb")
+	)
+
+	(label "ISENSE_C"
+		(at 86.36 146.05 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5d2881bf-36b6-4799-8af0-da1b44825902")
+	)
+
+	(wire
+		(pts
+			(xy 229.87 43.18) (xy 224.79 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "69c3689a-9acc-4536-951e-4051a0863a5f")
+	)
+
+	(label "ISENSE_A"
+		(at 224.79 43.18 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a6c18889-faee-40cd-b201-993bf58e3b7b")
+	)
+
+	(wire
+		(pts
+			(xy 229.87 45.72) (xy 224.79 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c78b5654-0fe9-4493-9e11-a940ad7e096e")
+	)
+
+	(label "ISENSE_B"
+		(at 224.79 45.72 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ab2d0704-16b2-4058-b35d-0426604a51aa")
+	)
+
+	(wire
+		(pts
+			(xy 229.87 48.26) (xy 224.79 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "685a19f1-33d0-42d9-a727-b146f6b132df")
+	)
+
+	(label "ISENSE_C"
+		(at 224.79 48.26 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "42e63b40-1ac4-45aa-bc80-09a0e9176187")
 	)
 
 	(sheet_instances

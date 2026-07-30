@@ -16,9 +16,10 @@
     "rule_severities": {
       "hier_label_mismatch": "error",
       "label_dangling": "warning",
-      "pin_not_connected": "warning"
+      "pin_not_connected": "warning",
+      "pin_not_driven": "warning"
     },
-    "_comment": "WIP severities. label_dangling and pin_not_connected are warnings because block interfaces are declared but the blocks are not yet populated - an empty sheet's hierarchical labels are legitimately unconnected. hier_label_mismatch stays an ERROR: a name or direction mismatch across a sheet boundary is always a real defect. Restore both to error once the blocks are populated. Tracked as an open item in docs/supervisor.md."
+    "_comment": "WIP severities. label_dangling, pin_not_connected and pin_not_driven are warnings because block interfaces are declared before the blocks that drive them exist - an empty sheet's hierarchical labels are legitimately unconnected, and a signal whose source block is not yet built genuinely has no driver. hier_label_mismatch stays an ERROR: a name or direction mismatch across a sheet boundary is always a real defect regardless of build state, and it is the check that proves the interface is self-consistent. Restore the three warnings to error once every block is populated. Tracked in docs/supervisor.md section 9."
   },
   "libraries": {
     "pinned_footprint_libs": [],

@@ -2,7 +2,7 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid "4c46ca18-7185-41e5-9b8f-7a4d70c36587")
+	(uuid "120fb8dc-4bfa-4c99-8b65-43e013b5a86f")
 	(paper "A3")
 	(title_block
 		(title "MCU-C Integrated Inverter")
@@ -22,10 +22,10 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "5920e5af-b288-4048-b6b0-d7247df9df93")
+		(uuid "a44834c8-3e71-429b-b3a7-131e2e07cb5a")
 	)
 
-	(text "Placeholder. Requirements: SPEC 8.1"
+	(text "Interface defined for the supervisor boundary. Block not yet designed."
 		(exclude_from_sim no)
 		(at 20 27 0)
 		(effects
@@ -34,7 +34,58 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "e1811407-29f8-42cd-a279-67109fe27e33")
+		(uuid "2c71f008-80ef-4e74-a787-1bd863f41983")
+	)
+
+	(text "OUTPUTS"
+		(exclude_from_sim no)
+		(at 149.86 40.64 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left bottom)
+		)
+		(uuid "b3a164f4-66df-400e-bb23-747e4ef435f0")
+	)
+
+	(hierarchical_label "ISENSE_A"
+		(shape output)
+		(at 149.86 45.72 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "31cfd70d-6556-4811-8de9-945ffce59eeb")
+	)
+
+	(hierarchical_label "ISENSE_B"
+		(shape output)
+		(at 149.86 48.26 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3a97105e-e55d-43b5-9b70-4719d46c261f")
+	)
+
+	(hierarchical_label "ISENSE_C"
+		(shape output)
+		(at 149.86 50.8 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b71c8612-26d9-489c-aa28-302be62c9a78")
 	)
 
 	(embedded_fonts no)

@@ -2,6 +2,16 @@
 
 Append-only, newest first.
 
+## 2026-07-30 -- Comparator front end placed
+
+- Placed the overcurrent comparator front end in `mcuc_inverter/supervisor.kicad_sch`: 13 components (threshold divider, three LM2903 packages giving six channels, wired-OR trip node with pull-up and filter), via `tools/gen_supervisor_frontend.py`.
+- A single three-resistor string (1k / 11k / 1k off +3V3) generates both thresholds -- 3.046 V and 0.254 V -- keeping them ratiometric with the rail the current sense is referenced to.
+- Verified by netlist export, not assumption: `OC_TRIP_N` has 8 nodes (six comparator outputs plus pull-up and filter), `V_TH_POS` and `V_TH_NEG` 6 each, each `ISENSE_x` reaches `Ux.2` and `Ux.5`, `GND` 10. ERC reports **0 errors**.
+- `tools/gen_skeleton.py` now emits interface signals selectively (`EMIT_SIGNALS`), currently the three ISENSE lines, so warnings stay proportional to what is actually built.
+- Six warnings remain (3 `label_dangling`, 3 `pin_not_driven`), all saying that `current_sense` is not yet built so nothing drives ISENSE. Left in place deliberately.
+- `pin_not_driven` added to the WIP warning severities. `hier_label_mismatch` remains an error.
+- Note: `copperhead check` fails on warnings as well as errors, so it reads red while any block is unbuilt. `kicad-cli sch erc --severity-error` is the meaningful gate during build-out and currently reports 0.
+
 ## 2026-07-30 — Supervisor logic design
 
 - Added `docs/supervisor.md`: full logic design for the hardware interlock block — overcurrent detect and latch, fault aggregation, PWM overlap elimination and dead time. 24-signal interface, gate budget, failure-mode review.

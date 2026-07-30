@@ -2,7 +2,7 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid "ee47c4a1-df86-4e9f-af25-8642b7660295")
+	(uuid "524ac342-ad8a-4bcf-ab9f-a16c6aa62885")
 	(paper "A3")
 	(title_block
 		(title "MCU-C Integrated Inverter")
@@ -22,7 +22,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "58e018d4-cabc-4364-b6eb-f6d04f6f5f36")
+		(uuid "56366b08-a7a3-45d2-a5e2-e76c9b9c96ec")
 	)
 
 	(text "Placeholder. Requirements: SPEC 8.4"
@@ -34,7 +34,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c8cb3a3e-38a6-4c6e-8461-0787ddab5933")
+		(uuid "5f95aea5-099c-4f00-b906-b8a3b9b4c100")
 	)
 
 	(embedded_fonts no)
