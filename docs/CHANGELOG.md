@@ -1,23 +1,19 @@
 # Design changelog
 
-Append-only, newest first. One entry per committed copperhead run.
+Append-only, newest first.
 
-## 2026-07-30 — let's review some of this. The 35kW power figure is at 250V Nominal, please adjust the project accordingly. This should fix the current and at other voltages the power it is what it is
+## 2026-07-30 — Architecture baseline from scratch
 
-- Change: recalculate-power-for-250v-nominal
-- Files: SPEC.md, .copperhead/constraints.json, BOM.md, docs/DECISIONS.md, docs/CHANGELOG.md, docs\DECISIONS.md
-- Verification: ERC not required
+- Scope set to **fully integrated inverter** (control + gate drive + DC link + precharge + power stage on one assembly).
+- MCU set to **STM32F405VGT6, LQFP100**. All four rotor position interfaces required.
+- Rewrote `SPEC.md` as the architecture baseline: ratings, DC vs phase current derivation, power stage, gate drive, DC link, precharge/discharge, sensing, protection, isolation, auxiliary power, thermal, MCU/VESC compatibility.
+- Created `docs/DECISIONS.md` (D001–D010) and reset `.copperhead/constraints.json` from the new spec.
+- Verification: none. No schematic exists yet; ERC and DRC cannot run.
 
-## 2026-07-30 — I want to design a new MCU based on this project. It has to be VESC compatible. Specs: Voltage range 48-450V, continuous power 15kW, peak power 35kW. Let's start there
+## 2026-07-30 — Removed autonomous-run documents
 
-- Change: initial-spec-and-architecture
-- Files: SPEC.md, BOM.md, PINOUT.md, docs/DECISIONS.md
-- Verification: ERC not required
+Deleted `SPEC.md`, `BOM.md`, `PINOUT.md`, `openspec/changes/*` and the previous `docs/DECISIONS.md` / `docs/CHANGELOG.md` produced by autonomous copperhead runs.
 
+Reason: fabricated part numbers (including a non-existent MOSFET as the central BOM item), a pinout with 96 invented power pins and universal GPIO collisions, and component selections that would destroy hardware on power-up (a 35 V-max regulator on a 48–450 V bus, a 45 V TVS across the bus, a 60 V gate driver at 450 V). No verification ran on any of it because no schematic existed, so the ERC/DRC gate was inert and the proposals self-approved.
 
-## 2026-07-30 — Recalculate power ratings for 250V nominal basis
-
-- Change: recalculate-power-for-250v-nominal
-- Files: SPEC.md, BOM.md, docs/DECISIONS.md, .copperhead/constraints.json
-- Verification: ERC, check_drift
-- Summary: Moved 35kW peak / 15kW continuous power ratings from 48V to 250V nominal. Peak current: 729A → 140A. Continuous current: 312A → 60A. MOSFETs: 6 parallel/switch (36 total) → 3 parallel/switch (18 total). Shunt resistor: 100W → 5W–10W. Thermal: liquid cooling no longer mandatory, forced air sufficient.
+No BOM has been recreated. Component selection follows architecture, not the other way round.
