@@ -174,7 +174,7 @@ Every part number must be verified against a live datasheet and stocked distribu
 | I_C continuous @ T_c = 80 °C | ≥ 200 A |
 | Sustained 190 A rms for 120 s | Required — quasi-steady-state thermally, see §2 and §11.4 |
 | Repetitive peak | ≥ 270 A instantaneous |
-| Integrated NTC | Required |
+| Integrated temperature sensor | Required — the selected G2 module provides a **sense diode per phase** (TS1–TS3 pin pairs), not an NTC |
 | Isolated baseplate | Required |
 | Configuration | Six-pack (3 half-bridges) |
 
@@ -186,16 +186,31 @@ Every part number must be verified against a live datasheet and stocked distribu
 |---|---|---|
 | Topology | Isolated, per switch position | **[SEL]** |
 | Isolation | ≥ 3 kV rms, reinforced | **[DER]** from §10 |
-| Drive voltage | SiC per module datasheet — CoolSiC class: +15 V on, 0…−5 V off | **[TBV]** with driver selection |
-| CMTI | ≥ 100 V/ns | **[SEL]** — SiC dv/dt |
-| Peak gate current | ≥ 8 A | **[SEL]** |
+| Drive voltage | **+18 V on / −5 V off** — the module datasheet's switching condition. (+15 V on is permitted but costs +26 % conduction loss: R_DS,on 2.40 mΩ vs 1.90 mΩ) | **[DER]** — FS02MR12A8MA2B datasheet |
+| CMTI | ≥ 100 V/ns (module's actual dv/dt ≈ 14 V/ns — margin is comfortable) | **[SEL]** |
+| Peak gate current | ≥ 8 A available | **[SEL]** — Q_G = 1.19 µC; datasheet-matched switching (R_G,on 12 Ω, R_G,int 0.66 Ω) draws only ~2 A peak, so 8 A is margin for faster external R_G, not a hard need |
 | Desaturation detection | Required, per switch | **[SEL]** |
 | Active Miller clamp | Required | **[SEL]** |
 | Soft turn-off on fault | Required | **[SEL]** |
 | Fault reporting | Per-channel, aggregated to supervisor | **[SEL]** |
 | Dead time | Hardware-enforced, see §9.2 | **[REQ]** |
 
-**Candidates [TBV]:** with SiC decided (D016), the driver must be SiC-capable (CMTI ≥ 100 V/ns, SiC-appropriate desat blanking and gate levels) and mechanically/electrically matched to the chosen module family — for the HybridPACK Drive G2 baseline, Infineon's matching driver stage is the natural first candidate. Discrete isolated SiC drivers (Infineon 1ED34xx/2ED-series, TI UCC217xx, Skyworks Si828x class) are the alternative. The 2SP0115T2A SCALE-2 driver characterised in `adaptor boards/power_integrations_2SP0115T2A/` is IGBT-oriented; its measured dead-time/propagation data remains useful reference, but it is not the SiC candidate.
+**Module gate-interface facts (FS02MR12A8MA2B datasheet, verified 2026-07-31):** Q_G 1.19 µC; R_G,int 0.66 Ω; per-switch gate, dual Kelvin-source and drain-sense pins (PressFIT — the PCB needs the AN-G2-ASSEMBLY drill/heat-stake pattern); the drain-sense pins are the DESAT connection. Module isolation 4.2 kV rms.
+
+**Driver candidates — datasheet- and stock-verified 2026-07-31:**
+
+| Rank | Part | Key figures | Price / stock |
+|---|---|---|---|
+| 1 | **Infineon 1ED3491MC12M** (EiceDRIVER X3 Analog) | Reinforced 1767 V pk VIORM (IEC 60747-17) / 5.7 kV rms; **200 V/ns**; ±9–11 A; adjustable DESAT blanking; CLAMPDRV Miller clamp; 16-step current-source soft-off; FLT_N + RDYC per channel; +15/−5 explicitly supported | $6.31 / **2,670 in stock** |
+| 2 | TI UCC21755-Q1 | Reinforced 2121 V pk; 150 V/ns; ±10 A; **5.0 V SiC-optimised DESAT threshold**; internal 4 A clamp; soft-off; AEC-Q100 grade 1 | $8.61 / 1,510 |
+| 3 | TI UCC21750 | Same family, 9.15 V DESAT, industrial | $4.69 / 8,996 |
+| — | Infineon 1EDI3035AS (the automotive part on Infineon's own EV GB HPD2 SIC driver board for this exact module) | Reinforced 8 kV pk; 150 V/ns; 20 A; DESAT+BIST, ASC, ASIL-B SEooC | $4.06 / **0 stock** — the reference design to copy, not the purchasable part today |
+
+Ruled out: Skyworks Si828x (no VDE 0884 VIORM — reinforced only per IEC 62368 at 600 V working; effectively out of stock), ADI ADuM4136 (VIORM 849 V pk — below the reinforced working-voltage bar; no Miller clamp), Broadcom ACPL-355JC (0 stock, 25 wk, not automotive), onsemi NCD57000 (CMTI unverifiable), ST STGAP3S (VDE cert unverifiable — revisit if ST documentation confirms).
+
+**Isolated gate supplies [TBV]:** each channel needs +18/−5 V class isolated DC/DC. Murata MGJ2-series is purpose-built (+15/−5 variant $8.96) but **0 stock / 19-wk lead** — baseline is therefore a discrete push-pull (TI SN6505B + gate-drive transformer, per-channel), with Infineon's eval-board approach (boost + self-oscillating half-bridge + transformers) as the volume alternative. Supply span must match the final gate levels.
+
+The 2SP0115T2A SCALE-2 driver characterised in `adaptor boards/power_integrations_2SP0115T2A/` is IGBT-oriented; its measured dead-time/propagation data remains useful reference only.
 
 ---
 
@@ -298,7 +313,7 @@ The divider must map 500 V to most of the 0–3.3 V ADC range (i.e. ~150:1, givi
 
 | Sensor | Location | Purpose |
 |---|---|---|
-| Module NTC | Inside power module | Junction proxy, fastest response |
+| Module temp-sense diode ×3 (TS1–TS3) | Inside power module, one per phase | Junction proxy, fastest response. 2.624 V @ 0.2 mA / 25 °C, −ΔV with temperature; needs a current-source bias front end, **not** an NTC divider **[DER]** from module datasheet |
 | Heatsink/coldplate NTC | Thermal path | Cooling system health |
 | Board NTC | Near control electronics | Ambient/enclosure |
 | **Motor winding, KTY 81/210** | Inside motor stator (§2.2) | Motor thermal protection; input via motor connector |
@@ -389,8 +404,8 @@ The previous draft had no viable path from a 48–450 V bus to control power. Th
 
 | Rail | Voltage | Isolation | Load |
 |---|---|---|---|
-| Gate drive, high side ×3 | +15 / 0…−5 V (SiC, **[TBV]** with driver) | Independent, reinforced | Per-channel |
-| Gate drive, low side | +15 / 0…−5 V (SiC, **[TBV]** with driver) | Common (shared source) | 3 channels |
+| Gate drive, high side ×3 | +18 / −5 V (see §5) | Independent, reinforced | Per-channel |
+| Gate drive, low side | +18 / −5 V (see §5) | Common (shared source) | 3 channels |
 | Control logic | +5 V, +3.3 V | Secondary | MCU, sensing |
 | Isolated CAN | +5 V | Independent | Transceiver |
 | Contactor / fan | +12 V | Secondary | External loads |

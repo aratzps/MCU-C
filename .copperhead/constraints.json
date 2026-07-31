@@ -514,5 +514,39 @@
     "affects": [
       "gate driver selection"
     ]
+  },
+  "gate_drive.levels": {
+    "value": "+18 V on / -5 V off (FS02MR12A8MA2B datasheet switching condition; +15 V on permitted but +26% conduction loss)",
+    "source": "SPEC.md §5, docs/DECISIONS.md D017",
+    "affects": [
+      "isolated gate supplies",
+      "driver selection",
+      "UVLO thresholds"
+    ]
+  },
+  "gate_drive.driver_candidate": {
+    "value": "Infineon 1ED3491MC12M primary (reinforced IEC 60747-17, 200 V/ns, adj. DESAT, Miller clamp, soft-off, stocked); alternates TI UCC21755-Q1 / UCC21750; 1EDI3035AS = Infineon's own pairing but 0 stock (reference design)",
+    "source": "docs/DECISIONS.md D017",
+    "affects": [
+      "gate_drive sheet",
+      "fault aggregation to supervisor"
+    ]
+  },
+  "module.temp_sense": {
+    "value": "Per-phase sense DIODE (TS1-TS3 pin pairs), 2.624 V @ 0.2 mA / 25 C, negative tempco. NOT an NTC - needs current-source bias front end.",
+    "source": "SPEC.md §8.3 (FS02MR12A8MA2B datasheet)",
+    "affects": [
+      "temp_sense sheet",
+      "ADC scaling",
+      "overtemp protection"
+    ]
+  },
+  "module.pcb_interface": {
+    "value": "PressFIT signal pins (gate, dual Kelvin source, drain-sense per switch); PCB drill/heat-stake pattern per Infineon AN-G2-ASSEMBLY; 1.6 mm PCB",
+    "source": "SPEC.md §5 (FS02MR12A8MA2B datasheet)",
+    "affects": [
+      "power PCB layout",
+      "mechanical concept"
+    ]
   }
 }

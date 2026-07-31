@@ -115,6 +115,14 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Sourcing note:** 51 pcs stocked, 39-week factory lead behind them — buy prototype modules at design commit, not at layout completion.
 - **Affects:** SPEC.md §4, §5, §6, §9.1, §11.2, §11.4; gate_drive and power_stage sheets; cold plate concept.
 
+## D017: Gate driver — Infineon 1ED3491MC12M (candidate level); gate levels +18/−5 V
+
+- **Decision:** 1ED3491MC12M (EiceDRIVER X3 Analog) as primary gate driver, six channels. Alternates: TI UCC21755-Q1 (SiC-tuned DESAT, AEC-Q) and UCC21750. Gate levels +18 V / −5 V. Isolated per-channel supplies: discrete push-pull (SN6505B + transformer) baseline, Murata MGJ2 preferred if lead time allows.
+- **Why:** Verified against the FS02MR12A8MA2B datasheet: recommended VGS(on) 15–18 V with R_DS,on 1.90 mΩ at 18 V vs 2.40 mΩ at 15 V (+26 % conduction loss — hence +18 V), VGS(off) −5…0 V, Q_G 1.19 µC. The 1ED3491 is reinforced per IEC 60747-17, 200 V/ns CMTI (module dv/dt ≈ 14 V/ns), adjustable DESAT, Miller clamp pre-driver, current-source soft-off, per-channel fault, $6.31 with 2,670 in stock. Infineon's own automotive pairing (1EDI3035AS, used on their EV GB HPD2 SIC board for this exact module) has zero distribution stock — kept as the reference design to copy.
+- **Ruled out on verified grounds:** Skyworks Si828x (no VDE 0884 VIORM), ADuM4136 (VIORM 849 V pk, no Miller clamp), ACPL-355JC (no stock, not automotive), NCD57000 / STGAP3S (key certs unverifiable).
+- **Also learned from the module datasheet:** temp sensing is a **diode per phase** (TS1–TS3), not an NTC — §8.3 corrected, needs current-source bias; no integrated current sense (external phase sensors stay per §8.1); PressFIT PCB requires the AN-G2-ASSEMBLY mating pattern — a hard mechanical constraint on the power PCB.
+- **Affects:** SPEC.md §5, §8.3, §11.2, gate_drive sheet, power PCB mechanical.
+
 ---
 
 ## Superseded

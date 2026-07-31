@@ -2,6 +2,11 @@
 
 Append-only, newest first.
 
+## 2026-07-31 — Gate driver selected at candidate level (D017)
+
+- 1ED3491MC12M primary (reinforced, 200 V/ns, adjustable DESAT/soft-off, stocked), UCC21755-Q1/UCC21750 alternates; Infineon's zero-stock automotive 1EDI3035AS kept as reference design. Gate levels fixed at +18/−5 V from the module datasheet (+15 V costs +26 % conduction loss). Isolated supplies: discrete push-pull baseline (Murata MGJ2 19-wk lead).
+- Module datasheet corrections into SPEC: temp sensing is a per-phase **diode** (TS1–TS3, current-source bias), not an NTC; no integrated current sense; PressFIT PCB must follow AN-G2-ASSEMBLY pattern.
+
 ## 2026-07-31 — SiC selected (D016); GaN ruled out (D015); volume analysis
 
 - **Power stage technology decided: SiC** (owner decision on the `docs/SI_VS_SIC.md` analysis). Baseline module Infineon FS02MR12A8MA2B (HybridPACK Drive G2). Consequences propagated: f_sw 25 kHz baseline, DC link stays 400 µF, gate drive to SiC levels (+15/0…−5 V TBV, CMTI ≥ 100 V/ns), overtemp 150 °C, thermal design point 300 W cont / 700 W @ 120 s, pin-fin coolant-jacket mechanical concept.
