@@ -395,8 +395,8 @@
 	)
 
 	(sheet
-		(at 160.0 110.0)
-		(size 55.88 20.32)
+		(at 243.84 135.0)
+		(size 55.88 45.72)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -407,7 +407,7 @@
 		)
 		(uuid "e9e7075d-ad1b-4ac6-b65f-2d1e17ea8b0f")
 		(property "Sheetname" "Supervisor and interlocks"
-			(at 160.0 109.2884 0)
+			(at 243.84 134.2884 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -416,13 +416,203 @@
 			)
 		)
 		(property "Sheetfile" "supervisor.kicad_sch"
-			(at 160.0 130.9046 0)
+			(at 243.84 181.3046 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left top)
 			)
+		)
+		(pin "PWM_HS_1" input
+			(at 243.84 147.32 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "579c1dec-b2b4-46f8-8e97-8b555b26b578")
+		)
+		(pin "PWM_HS_2" input
+			(at 243.84 149.86 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "eb762372-dad8-4389-8381-e911153e6e91")
+		)
+		(pin "PWM_HS_3" input
+			(at 243.84 152.4 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "72edff6c-1a37-4172-b77b-755b875f65c1")
+		)
+		(pin "PWM_LS_1" input
+			(at 243.84 154.94 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "bd517688-a78a-4a41-9ba1-d38214760089")
+		)
+		(pin "PWM_LS_2" input
+			(at 243.84 157.48 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "84a86929-0d91-49bf-8bd8-d35ada0410d8")
+		)
+		(pin "PWM_LS_3" input
+			(at 243.84 160.02 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "7512037f-89f7-4990-a247-74683636219b")
+		)
+		(pin "FAULT_BKIN" output
+			(at 243.84 162.56 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "2e839ef8-97f5-4372-a43c-876547af5ff4")
+		)
+		(pin "PWM_HS_1_GATED" output
+			(at 299.72 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "fb6e2341-890c-4f51-98d5-c19130edaed5")
+		)
+		(pin "PWM_HS_2_GATED" output
+			(at 299.72 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "2ee2401d-817b-4480-ac8d-550e500d47c0")
+		)
+		(pin "PWM_HS_3_GATED" output
+			(at 299.72 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "6fe772e6-d6c5-45a0-821e-a965537f4c5c")
+		)
+		(pin "PWM_LS_1_GATED" output
+			(at 299.72 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9be488b5-3a62-4f4e-b23d-e1d3a62af525")
+		)
+		(pin "PWM_LS_2_GATED" output
+			(at 299.72 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "64896cdb-1fb8-4d39-bf91-791e8a277cf0")
+		)
+		(pin "PWM_LS_3_GATED" output
+			(at 299.72 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "461ebfb3-23fe-4b3a-8be3-f1b1abb98e81")
+		)
+		(pin "DRV_RST_OUT" output
+			(at 299.72 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "0c202306-8d89-491c-8d17-15cd5be055d6")
+		)
+		(pin "OC_LATCHED" output
+			(at 299.72 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e9fa8efe-9df0-4922-83fc-69503f78e0b3")
+		)
+		(pin "OC_TRIP" input
+			(at 299.72 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "7146d059-4330-42d6-809e-1419f21bd15f")
+		)
+		(pin "DRV_FAULT_IN" input
+			(at 299.72 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "ad49cc44-c784-4251-b490-bb9036a4c8a9")
+		)
+		(pin "DRV_RST_IN" input
+			(at 299.72 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9c3b9c12-fd4e-41cf-a4ad-ff1eb56661aa")
+		)
+		(pin "FAULT_RESET" input
+			(at 299.72 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "3cea2f52-3b8a-474a-a213-55d7598ec783")
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -435,7 +625,7 @@
 
 	(text "SPEC.md 9.2"
 		(exclude_from_sim no)
-		(at 160.0 134.0 0)
+		(at 243.84 184.5 0)
 		(effects
 			(font
 				(size 1.0 1.0)
@@ -736,6 +926,77 @@
 			(justify left bottom)
 		)
 		(uuid "5ab57d21-422f-4c02-bfbd-12d762174dc7")
+	)
+
+	(wire
+		(pts
+			(xy 215.88 147.32) (xy 243.84 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e8c0472-7157-4338-9619-ef3ed39403bd")
+	)
+	(wire
+		(pts
+			(xy 215.88 149.86) (xy 243.84 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9843bad-4365-4776-b50a-92f32a0b7808")
+	)
+	(wire
+		(pts
+			(xy 215.88 152.4) (xy 243.84 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b41e6c6-d886-4d55-8e9c-4a831dc7caf4")
+	)
+	(wire
+		(pts
+			(xy 215.88 154.94) (xy 243.84 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8e172b0-7012-4454-95c4-91ea92efda6a")
+	)
+	(wire
+		(pts
+			(xy 215.88 157.48) (xy 243.84 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0c97977-11f6-4c26-a9fc-b64e9134a6ea")
+	)
+	(wire
+		(pts
+			(xy 215.88 160.02) (xy 243.84 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cbd08c92-841e-4a3e-9d26-0ffba4cc47a1")
+	)
+	(wire
+		(pts
+			(xy 215.88 162.56) (xy 243.84 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f83d605-a1bf-46d6-9e57-938e113beda4")
 	)
 
 	(sheet_instances
