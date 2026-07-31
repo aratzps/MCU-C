@@ -173,15 +173,12 @@
     ]
   },
   "switch.topology": {
-    "value": "three-phase two-level bridge, single six-pack module",
+    "value": "three-phase two-level bridge, single 1200 V SiC module",
     "source": "SPEC.md §4.2",
     "affects": [
       "thermal interface",
       "gate drive channel count",
       "mechanical layout"
-    ],
-    "deferred": [
-      "Si IGBT vs SiC not yet decided"
     ]
   },
   "dclink.capacitance_min": {
@@ -195,7 +192,7 @@
       "mechanical volume"
     ],
     "deferred": [
-      "final value follows Si vs SiC / switching frequency decision"
+      "confirmed at f_sw 25 kHz (SiC); 114 A / 120 s ripple duty still to verify against capacitor thermal model"
     ]
   },
   "dclink.voltage_rating_min": {
@@ -339,9 +336,9 @@
   },
   "thermal.continuous_dissipation": {
     "min": 300,
-    "max": 525,
+    "max": 300,
     "unit": "W",
-    "source": "SPEC.md §11.4",
+    "source": "SPEC.md §11.4 (SiC selected, ~98% at 15 kW)",
     "affects": [
       "cooling method",
       "cold plate design",
@@ -357,10 +354,10 @@
     ]
   },
   "thermal.junction_temp_max": {
-    "min": 125,
+    "min": 150,
     "max": 150,
     "unit": "degC",
-    "source": "SPEC.md §11.4",
+    "source": "SPEC.md §11.4 (SiC)",
     "affects": [
       "module selection",
       "cold plate sizing",
@@ -466,13 +463,12 @@
   },
   "thermal.peak_dissipation_120s": {
     "min": 700,
-    "max": 1225,
+    "max": 700,
     "unit": "W",
-    "source": "SPEC.md §11.4 (35 kW peak, 120 s = quasi-steady-state; SiC ~98% / Si ~96.5%)",
+    "source": "SPEC.md §11.4 (SiC at 35 kW, 120 s quasi-steady-state; sizes the cold plate)",
     "affects": [
       "cold plate sizing",
-      "pump and loop capacity",
-      "Si vs SiC decision"
+      "pump and loop capacity"
     ]
   },
   "dclink.ripple_current_rating_min": {
@@ -486,6 +482,37 @@
     ],
     "deferred": [
       "114 A / 120 s duty to be verified against manufacturer thermal model"
+    ]
+  },
+  "switch.technology": {
+    "value": "SiC MOSFET (D016). Baseline module: Infineon FS02MR12A8MA2B, HybridPACK Drive G2, 1.9 mOhm, 390 A class. Buy prototypes at design commit (39-wk lead behind current stock).",
+    "source": "SPEC.md §4.2, docs/DECISIONS.md D016",
+    "affects": [
+      "gate drive levels and CMTI",
+      "switching frequency",
+      "cold plate concept",
+      "overtemp threshold"
+    ]
+  },
+  "power.switching_frequency_baseline": {
+    "min": 25,
+    "max": 25,
+    "unit": "kHz",
+    "source": "SPEC.md §6.1 (D016 SiC; inaudible, DC-link 400 uF valid)",
+    "affects": [
+      "DC link capacitance",
+      "dead time",
+      "current sense bandwidth",
+      "TIM1 configuration"
+    ]
+  },
+  "gate_drive.cmti_min": {
+    "min": 100,
+    "max": null,
+    "unit": "V/ns",
+    "source": "SPEC.md §5 (SiC dv/dt)",
+    "affects": [
+      "gate driver selection"
     ]
   }
 }

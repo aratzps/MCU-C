@@ -107,6 +107,14 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Re-evaluate if:** avalanche-rated vertical GaN or ≥ 900 V / ≥ 200 A-class GaN modules reach distribution.
 - **Affects:** SPEC.md §4 (unchanged — Si vs SiC remains the open choice), docs/SI_VS_SIC.md §6.
 
+## D016: SiC power stage
+
+- **Decision:** SiC MOSFET module. Baseline part: Infineon FS02MR12A8MA2B (HybridPACK Drive G2, CoolSiC, 1.9 mΩ, 390 A class, $767 stocked). Right-sized alternative if stock appears: Microchip MSCSM120TAM11CTPAG.
+- **Why:** Owner decision, informed by `docs/SI_VS_SIC.md`: at qty 1 SiC costs ~$635 more (~$280 net after DC-link/cooling/battery offsets); at 10 k/yr the net premium falls to ~$70–200/unit. SiC buys inaudible 25 kHz switching, ~½ the peak-condition heat (700 W vs 1225 W for the 120 s peak, which sizes the cold plate per D012), less mass, and better 450 V-bus behaviour.
+- **Consequence:** f_sw baseline 25 kHz → DC-link stays 400 µF (D013). Gate drive becomes SiC-class: +15 V / 0…−5 V (per module datasheet, TBV), CMTI ≥ 100 V/ns, SiC-tuned desat. Module overtemp threshold 150 °C. Thermal design point: 300 W continuous / 700 W for 120 s. The HybridPACK G2's pin-fin baseplate means the "cold plate" is a coolant jacket sealing against the module, not a flat plate — this shapes the whole mechanical concept (§14 item 8). The 2SP0115T2A IGBT driver data stays as reference only.
+- **Sourcing note:** 51 pcs stocked, 39-week factory lead behind them — buy prototype modules at design commit, not at layout completion.
+- **Affects:** SPEC.md §4, §5, §6, §9.1, §11.2, §11.4; gate_drive and power_stage sheets; cold plate concept.
+
 ---
 
 ## Superseded

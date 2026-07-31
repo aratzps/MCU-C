@@ -2,6 +2,12 @@
 
 Append-only, newest first.
 
+## 2026-07-31 — SiC selected (D016); GaN ruled out (D015); volume analysis
+
+- **Power stage technology decided: SiC** (owner decision on the `docs/SI_VS_SIC.md` analysis). Baseline module Infineon FS02MR12A8MA2B (HybridPACK Drive G2). Consequences propagated: f_sw 25 kHz baseline, DC link stays 400 µF, gate drive to SiC levels (+15/0…−5 V TBV, CMTI ≥ 100 V/ns), overtemp 150 °C, thermal design point 300 W cont / 700 W @ 120 s, pin-fin coolant-jacket mechanical concept.
+- `docs/SI_VS_SIC.md` extended with 10 k/yr volume estimates (net SiC premium ~$70–200/unit at scale) and a GaN evaluation; D015 records GaN as unviable for the power stage on 2026 product data (no ≥900 V GaN above 34 A ever shipped, now obsolete; no avalanche rating; no benefit at 25 kHz).
+- Verification: document-level; distributor and datasheet figures cited in the doc.
+
 ## 2026-07-31 — Peak matched to motor; DC-link derived; verified sourcing research
 
 - **Peak duration 10 s → 120 s [REQ]**, matched to the motor's S2 2 min rating (D012). Consequence: the 120 s peak is quasi-steady-state for the cooling loop — cold plate must be sized for ~700 W (SiC) / ~1225 W (Si) at 35 kW, and the module continuous criterion rises to ≥ 200 A.

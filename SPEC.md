@@ -146,7 +146,7 @@ Bus maximum is 450 V. With switching overshoot, stray inductance and regenerativ
 
 ### 4.2 Topology **[SEL]**
 
-Three-phase two-level bridge, six switch positions. Baseline is a **single 1200 V six-pack power module** rather than discretes:
+Three-phase two-level bridge, six switch positions. Baseline is a **single 1200 V SiC MOSFET module** (technology decided — D016) rather than discretes:
 
 - One thermal interface instead of 18+
 - Manufacturer-controlled internal layout and stray inductance
@@ -155,13 +155,14 @@ Three-phase two-level bridge, six switch positions. Baseline is a **single 1200 
 
 **Candidates — verified stocked parts, DigiKey 2026-07-31 (full analysis in `docs/SI_VS_SIC.md`):**
 
-| Technology | Part | Rating | Price qty 1 | Note |
-|---|---|---|---|---|
-| Si IGBT | **Infineon FS200R12KT4R**, EconoPACK 3 | 200 A @ Tc 80 °C | $131.88 (18 pcs) | Meets §4.3 exactly; flat base, conventional cold plate |
-| SiC | **Infineon FS02MR12A8MA2B**, HybridPACK Drive G2 | 1.9 mΩ, 390 A class | $767.12 (51 pcs) | Automotive pin-fin direct-cooled base — different cold-plate concept |
-| SiC (alt) | Microchip MSCSM120TAM11CTPAG, SP6-P | 251 A | $769.08 | Out of stock, orderable |
+**Technology: SiC (D016).** Module candidates, verified stocked (DigiKey 2026-07-31, analysis in `docs/SI_VS_SIC.md`):
 
-Stocked SiC six-packs below $300 are all 48–90 A class — too small for the 190 A / 120 s requirement. The Si-vs-SiC decision (§14 item 2) is therefore a ~$635 module premium, analysed against battery compensation and system offsets in `docs/SI_VS_SIC.md`.
+| Rank | Part | Rating | Price qty 1 | Note |
+|---|---|---|---|---|
+| 1 | **Infineon FS02MR12A8MA2B**, HybridPACK Drive G2, CoolSiC | 1.9 mΩ, 390 A class | $767.12 (51 pcs, 39-wk lead after stock) | Stocked today; automotive pin-fin direct-cooled base — the cold plate becomes a coolant jacket sealing against the module's pin-fin baseplate, not a flat plate. **Buy at design commit, not at layout completion** |
+| 2 | Microchip MSCSM120TAM11CTPAG, SP6-P | 10.4 mΩ, 251 A | $769.08 | Right-sized, flat base, but zero stock — orderable, lead unknown |
+
+At 10 k/yr scale, RFQ custom right-sized six-packs from Infineon / Semikron-Danfoss / onsemi instead of catalog parts.
 
 Every part number must be verified against a live datasheet and stocked distributor part before entering a BOM. **No part enters the BOM on the strength of a plausible-looking part number.**
 
@@ -185,7 +186,8 @@ Every part number must be verified against a live datasheet and stocked distribu
 |---|---|---|
 | Topology | Isolated, per switch position | **[SEL]** |
 | Isolation | ≥ 3 kV rms, reinforced | **[DER]** from §10 |
-| Drive voltage | +15 V / −8 V (IGBT) or +18 V / −4 V (SiC) | **[SEL]** |
+| Drive voltage | SiC per module datasheet — CoolSiC class: +15 V on, 0…−5 V off | **[TBV]** with driver selection |
+| CMTI | ≥ 100 V/ns | **[SEL]** — SiC dv/dt |
 | Peak gate current | ≥ 8 A | **[SEL]** |
 | Desaturation detection | Required, per switch | **[SEL]** |
 | Active Miller clamp | Required | **[SEL]** |
@@ -193,7 +195,7 @@ Every part number must be verified against a live datasheet and stocked distribu
 | Fault reporting | Per-channel, aggregated to supervisor | **[SEL]** |
 | Dead time | Hardware-enforced, see §9.2 | **[REQ]** |
 
-**Candidates [TBV]:** discrete isolated gate drivers with integrated desat (Infineon 1EDI/2ED-series, Broadcom ACPL-339J class), or a SCALE-2 driver core such as the 2SP0115T2A already characterised in `adaptor boards/power_integrations_2SP0115T2A/` in this repo. The existing scope captures at 80 A with 1.4 µs dead time are real measured data on that driver — worth reusing rather than rediscovering.
+**Candidates [TBV]:** with SiC decided (D016), the driver must be SiC-capable (CMTI ≥ 100 V/ns, SiC-appropriate desat blanking and gate levels) and mechanically/electrically matched to the chosen module family — for the HybridPACK Drive G2 baseline, Infineon's matching driver stage is the natural first candidate. Discrete isolated SiC drivers (Infineon 1ED34xx/2ED-series, TI UCC217xx, Skyworks Si828x class) are the alternative. The 2SP0115T2A SCALE-2 driver characterised in `adaptor boards/power_integrations_2SP0115T2A/` is IGBT-oriented; its measured dead-time/propagation data remains useful reference, but it is not the SiC candidate.
 
 ---
 
@@ -201,7 +203,7 @@ Every part number must be verified against a live datasheet and stocked distribu
 
 | Parameter | Value | Tag |
 |---|---|---|
-| Capacitance | ≥ 400 µF (SiC @ ≥ 25 kHz) / ≥ 750 µF (Si @ 12 kHz) | **[DER]** — see §6.1 |
+| Capacitance | ≥ 400 µF — SiC selected (D016), f_sw baseline 25 kHz | **[DER]** — see §6.1 |
 | Voltage rating | ≥ 800 V DC | **[DER]** — 450 V + transients + margin |
 | Ripple current rating | ≥ 80 A rms @ 70 °C (bank) | **[DER]** — see §6.1 |
 | Technology | Metallised polypropylene film, parallel bank | **[SEL]** |
@@ -328,7 +330,7 @@ All four interfaces are required.
 | Desaturation | Per gate driver | Soft turn-off + latch |
 | Bus overvoltage | 490 V | Latched shutdown |
 | Bus undervoltage | 45 V | Inhibit switching |
-| Overtemperature | Module 125 °C (IGBT) / 150 °C (SiC) | Derate, then shutdown |
+| Overtemperature | Module 150 °C (SiC, D016) | Derate, then shutdown |
 | Gate supply UVLO | Per driver | Inhibit |
 | Watchdog timeout | — | Latched shutdown |
 
@@ -387,8 +389,8 @@ The previous draft had no viable path from a 48–450 V bus to control power. Th
 
 | Rail | Voltage | Isolation | Load |
 |---|---|---|---|
-| Gate drive, high side ×3 | +15 / −8 V | Independent, reinforced | Per-channel |
-| Gate drive, low side | +15 / −8 V | Common (shared emitter) | 3 channels |
+| Gate drive, high side ×3 | +15 / 0…−5 V (SiC, **[TBV]** with driver) | Independent, reinforced | Per-channel |
+| Gate drive, low side | +15 / 0…−5 V (SiC, **[TBV]** with driver) | Common (shared source) | 3 channels |
 | Control logic | +5 V, +3.3 V | Secondary | MCU, sensing |
 | Isolated CAN | +5 V | Independent | Transceiver |
 | Contactor / fan | +12 V | Secondary | External loads |
@@ -411,8 +413,10 @@ A **12–24 V external auxiliary input [SEL]** is required in addition to the HV
 
 | Case | Efficiency | Loss @ 15 kW cont | Loss @ 35 kW, 120 s peak |
 |---|---|---|---|
-| Si IGBT | ~96.5 % | ~525 W | ~1225 W |
-| SiC MOSFET | ~98 % | ~300 W | ~700 W |
+| Si IGBT (not selected, reference) | ~96.5 % | ~525 W | ~1225 W |
+| **SiC MOSFET (selected, D016)** | ~98 % | **~300 W** | **~700 W** |
+
+**Design point (SiC): 300 W continuous, 700 W for 120 s** — and per §2 the 120 s figure sizes the cold plate.
 
 **The 120 s peak (§2) is quasi-steady-state for the cooling system**, so the cold plate, pump and coolant loop must be sized to hold junction temperature at the *peak-condition* losses — 700 W (SiC) to 1225 W (Si) — with the junction-temperature margin below, not merely at the continuous figures. This roughly doubles the cooling requirement relative to a short-transient peak and is a significant cost/mass factor in the Si vs SiC comparison (§14 item 2).
 
@@ -488,7 +492,7 @@ Ordered by how much they would change the design.
 | # | Item | Blocks |
 |---|---|---|
 | 1 | ~~Target motor~~ **Resolved: EMRAX 188 HV (§2.2).** Remaining: confirm winding variant and cooling configuration at motor order; duty cycle still unstated | §3.3 finalisation |
-| 2 | Power module selection: Si IGBT vs SiC — **verified parts and full cost analysis (incl. battery compensation) ready in `docs/SI_VS_SIC.md`; awaiting owner decision** | Efficiency, cooling, gate drive, cost |
+| 2 | ~~Si vs SiC~~ **Resolved: SiC (D016).** Remaining: final module part commitment (FS02MR12A8MA2B baseline) and gate driver selection | Gate drive, cold plate concept |
 | 3 | Derating curve for 250–450 V operation | Safe operating area at high bus |
 | 4 | Compliance target (industrial / automotive / none) | §10 creepage, certification |
 | 5 | ~~DC-link capacitance vs f_sw~~ **Resolved conditionally (§6.1):** 400 µF @ ≥ 25 kHz (SiC) or ≥ 750 µF @ 12 kHz (Si). Remaining: 114 A / 120 s ripple duty vs manufacturer thermal model | Capacitor part selection |
