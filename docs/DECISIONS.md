@@ -100,6 +100,13 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Open:** Transformer design; 48 V full-load power is interpolated from the 30/60 V datasheet columns and must be confirmed; 650 V max recommended rail vs our 500 V transient is fine but noted.
 - **Affects:** SPEC.md §11.2, §14 item 7, aux_power schematic sheet.
 
+## D015: GaN ruled out for the power stage
+
+- **Decision:** No GaN in the main power stage. GaN stays where it already is: the aux flyback's 900 V PowiGaN InnoSwitch3-AQ (D014).
+- **Why:** Verified against shipping products (2026-07-31): no GaN device ≥ 900 V at ≥ 50 A exists in distribution (Transphorm's 900 V line is obsolete, was 34 A max); no GaN six-pack/half-bridge module suits a 450 V bus at 190 A rms; lateral GaN has no avalanche capability, which matters for regen transients; and a 25 kHz FOC drive gains nothing from GaN's switching speed while its dv/dt stresses motor insulation and bearings. The only >400 V-bus GaN path (650 V devices, 3-level topology) doubles switch count for no benefit here.
+- **Re-evaluate if:** avalanche-rated vertical GaN or ≥ 900 V / ≥ 200 A-class GaN modules reach distribution.
+- **Affects:** SPEC.md §4 (unchanged — Si vs SiC remains the open choice), docs/SI_VS_SIC.md §6.
+
 ---
 
 ## Superseded
