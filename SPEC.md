@@ -41,7 +41,9 @@ This is deliberately different from the existing `pcb_design/` board in this rep
 | Maximum bus voltage | V_max | 450 | V DC | **[REQ]** |
 | Continuous power @ V_nom | P_cont | 15 | kW | **[REQ]** |
 | Peak power @ V_nom | P_peak | 35 | kW | **[REQ]** |
-| Peak duration | t_peak | 10 | s | **[SEL]** |
+| Peak duration | t_peak | 120 | s | **[REQ]** — matched to the motor's S2 2 min peak rating (§2.2) |
+
+**Thermal consequence of the 120 s peak:** the power module baseplate, cold plate and coolant loop have thermal time constants of tens of seconds, so a 120 s peak is **quasi-steady-state** for them. The cooling system must be sized for peak-condition losses (§11.4), not continuous-rated losses. Only the silicon junction itself (τ ~ ms–s) sees the peak as a transient.
 
 ### 2.1 Power at other bus voltages
 
@@ -114,7 +116,7 @@ The earlier 1.5× guess (75/175 A rms) is superseded. With the target motor know
 | Parameter | Value | Basis |
 |---|---|---|
 | Continuous phase current | 100 A rms | Motor continuous current, HV winding |
-| Peak phase current (10 s) | 190 A rms | Motor peak current. Motor rates this S2 2 min; the board's 10 s peak (§2) is the shorter of the two and governs |
+| Peak phase current (120 s) | 190 A rms | Motor peak current, S2 2 min; board peak duration matched to the motor (§2) |
 | Instantaneous phase peak | 270 A | 190 × √2, rounded |
 | Current sense full scale | ±325 A | Instantaneous peak + 20 % headroom |
 | Hardware overcurrent trip | 300 A, adjustable | Above legitimate 270 A peak, below sense saturation |
@@ -165,8 +167,9 @@ Every part number must be verified against a live datasheet and stocked distribu
 | Parameter | Requirement |
 |---|---|
 | V_CES / V_DS | ≥ 1200 V |
-| I_C continuous @ T_c = 80 °C | ≥ 150 A |
-| I_C peak, 10 s | ≥ 270 A |
+| I_C continuous @ T_c = 80 °C | ≥ 200 A |
+| Sustained 190 A rms for 120 s | Required — quasi-steady-state thermally, see §2 and §11.4 |
+| Repetitive peak | ≥ 270 A instantaneous |
 | Integrated NTC | Required |
 | Isolated baseplate | Required |
 | Configuration | Six-pack (3 half-bridges) |
@@ -195,15 +198,31 @@ Every part number must be verified against a live datasheet and stocked distribu
 
 | Parameter | Value | Tag |
 |---|---|---|
-| Capacitance | ≥ 400 µF | **[SEL]** |
+| Capacitance | ≥ 400 µF (SiC @ ≥ 25 kHz) / ≥ 750 µF (Si @ 12 kHz) | **[DER]** — see §6.1 |
 | Voltage rating | ≥ 800 V DC | **[DER]** — 450 V + transients + margin |
-| Ripple current rating | ≥ 65 A rms @ 70 °C | **[DER]** from §3.4 |
-| Technology | Metallised polypropylene film | **[SEL]** |
+| Ripple current rating | ≥ 80 A rms @ 70 °C (bank) | **[DER]** — see §6.1 |
+| Technology | Metallised polypropylene film, parallel bank | **[SEL]** |
 | ESL | As low as achievable; laminated busbar to module | **[SEL]** |
 
 Film rather than electrolytic: the 60–114 A rms ripple from §3.4 is impractical for electrolytics at this voltage without a large parallel bank, and film gives far better lifetime at temperature.
 
-400 µF is a starting point from the ~10–20 µF/kW rule of thumb. It must be confirmed against the actual switching frequency and the permitted bus voltage ripple. **[TBV]**
+### 6.1 Sizing derivation **[DER]**
+
+**Voltage ripple sets capacitance.** Worst-case bound for a two-level VSI, with permitted peak-to-peak bus ripple ΔV_pp = 1.5 % of V_nom = 3.75 V:
+
+```
+C ≥ I_ph,pk / (8 × f_sw × ΔV_pp)
+
+f_sw = 25 kHz:  C ≥ 270 / (8 × 25 000 × 3.75) = 360 µF  →  400 µF OK
+f_sw = 20 kHz:  C ≥ 450 µF                              →  400 µF gives 1.7 %
+f_sw = 12 kHz:  C ≥ 750 µF                              →  400 µF gives 2.8 %
+```
+
+So **400 µF is confirmed for f_sw ≥ ~23 kHz**, which a SiC module supports comfortably (VESC default zones are 20–30 kHz). A 1200 V Si IGBT module realistically switches at 10–15 kHz at these currents, which roughly doubles the required capacitance — a cost/volume input to the Si-vs-SiC decision (§14 item 2).
+
+At 48 V bus the same absolute ripple is ~8 % of bus. Deliverable power there is ≤ 2.9 kW and VESC samples bus voltage every cycle, so this is acceptable, but it is a real limit on control margin at minimum voltage — flagged, not hidden.
+
+**Ripple current sets the bank, and is the binding constraint.** 60 A rms continuous plus 114 A rms held for the full 120 s peak (§3.4). Film capacitor hotspot time constants are minutes, so a 120 s peak at ~2× rating is *not* automatically safe. Bank rating ≥ 80 A rms @ 70 °C, with the 114 A / 120 s repetitive duty verified against the manufacturer's thermal model **[TBV]**. Practically: 4–6 parallel 80–120 µF / 900 V film blocks at 20–30 A rms each, which lands at ≥ 400 µF anyway.
 
 ---
 
@@ -218,6 +237,8 @@ Energy dissipated in the precharge resistor is independent of its value:
 ```
 E = ½ C V²  =  0.5 × 400e-6 × 450²  =  40.5 J
 ```
+
+(If the Si path is taken and capacitance rises to 750 µF per §6.1, this becomes 76 J and the resistor pulse rating below scales with it. **[TBV]**)
 
 | Parameter | Value | Derivation |
 |---|---|---|
@@ -377,12 +398,14 @@ A **12–24 V external auxiliary input [SEL]** is required in addition to the HV
 
 ### 11.4 Thermal
 
-| Case | Efficiency | Loss @ 15 kW |
-|---|---|---|
-| Si IGBT | ~96.5 % | ~525 W |
-| SiC MOSFET | ~98 % | ~300 W |
+| Case | Efficiency | Loss @ 15 kW cont | Loss @ 35 kW, 120 s peak |
+|---|---|---|---|
+| Si IGBT | ~96.5 % | ~525 W | ~1225 W |
+| SiC MOSFET | ~98 % | ~300 W | ~700 W |
 
-**300–525 W of continuous dissipation requires liquid cooling.** A cold plate is the baseline. Forced air is viable only at a substantially reduced continuous rating, which would need to be characterised and stated. The previous draft's claim that forced air suffices rested on a fabricated 5 mΩ figure for a 1200 V device; real 1200 V devices are 25–80 mΩ, an order of magnitude higher.
+**The 120 s peak (§2) is quasi-steady-state for the cooling system**, so the cold plate, pump and coolant loop must be sized to hold junction temperature at the *peak-condition* losses — 700 W (SiC) to 1225 W (Si) — with the junction-temperature margin below, not merely at the continuous figures. This roughly doubles the cooling requirement relative to a short-transient peak and is a significant cost/mass factor in the Si vs SiC comparison (§14 item 2).
+
+**Liquid cooling is required in all cases.** A cold plate is the baseline. Forced air is viable only at a substantially reduced continuous rating, which would need to be characterised and stated. The previous draft's claim that forced air suffices rested on a fabricated 5 mΩ figure for a 1200 V device; real 1200 V devices are 25–80 mΩ, an order of magnitude higher.
 
 | Parameter | Target |
 |---|---|
@@ -457,7 +480,7 @@ Ordered by how much they would change the design.
 | 2 | Power module selection: Si IGBT vs SiC | Efficiency, cooling, gate drive, cost |
 | 3 | Derating curve for 250–450 V operation | Safe operating area at high bus |
 | 4 | Compliance target (industrial / automotive / none) | §10 creepage, certification |
-| 5 | DC-link capacitance vs switching frequency and bus ripple | §6 |
+| 5 | ~~DC-link capacitance vs f_sw~~ **Resolved conditionally (§6.1):** 400 µF @ ≥ 25 kHz (SiC) or ≥ 750 µF @ 12 kHz (Si). Remaining: 114 A / 120 s ripple duty vs manufacturer thermal model | Capacitor part selection |
 | 6 | Cooling: cold plate design and coolant availability | §11.4 |
 | 7 | Isolated aux supply controller supporting 9.4:1 input range | §11.1 |
 | 8 | Whether the DC-link and power module are on this PCB or a busbar sub-assembly | Whole mechanical concept |

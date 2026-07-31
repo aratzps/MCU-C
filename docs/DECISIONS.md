@@ -79,6 +79,20 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Open:** Winding variant must be confirmed at motor order time; if it changes, §3.3 is re-derived. Duty cycle still unstated — 10 s board peak vs motor's 2 min S2 rating noted in §3.3.
 - **Affects:** SPEC.md §2.2, §3.3, §3.4, §4.3, §6, §8.1, §8.3, §9.1, module selection, thermal.
 
+## D012: Peak duration 120 s, matched to the motor's S2 rating
+
+- **Decision:** t_peak = 120 s (was 10 s [SEL]). Owner directive: match the inverter peak time to the motor's S2 2 min rating.
+- **Why:** The motor sustains 190 A rms / 100 Nm for 2 min; a 10 s board limit would waste that capability.
+- **Consequence:** 120 s is quasi-steady-state for the module baseplate, cold plate and coolant loop (thermal τ of tens of seconds). Cooling must therefore be sized for peak-condition losses — ~700 W (SiC) to ~1225 W (Si) at 35 kW — not the 300–525 W continuous figures. Module continuous-class criterion raised to ≥ 200 A. DC-link ripple duty (114 A rms) must be held for the full 120 s, which drives the capacitor bank rating.
+- **Affects:** SPEC.md §2, §3.3, §4.3, §6, §11.4. Strengthens the SiC side of open item 2.
+
+## D013: DC-link capacitance confirmed conditionally on switching frequency
+
+- **Decision:** 400 µF stands **if** f_sw ≥ ~23 kHz (SiC path, 25 kHz baseline). If Si IGBT at ~12 kHz, capacitance must rise to ≥ 750 µF for the same 1.5 % bus ripple.
+- **Why:** Derivation in SPEC.md §6.1 — C ≥ I_ph,pk/(8·f_sw·ΔV_pp) with 270 A instantaneous peak and 3.75 V pp permitted at 250 V.
+- **Consequence:** Capacitor voltage-ripple sizing is settled; the binding constraint is ripple *current* — a bank rated ≥ 80 A rms @ 70 °C with the 114 A / 120 s repetitive duty verified against the manufacturer's thermal model. Si path also carries a capacitor cost/volume penalty, which enters the Si-vs-SiC comparison.
+- **Affects:** SPEC.md §6, §7.1 (precharge energy scales with C), open item 2.
+
 ---
 
 ## Superseded

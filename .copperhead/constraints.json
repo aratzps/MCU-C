@@ -57,13 +57,15 @@
     ]
   },
   "power.peak_duration": {
-    "min": 10,
-    "max": 10,
+    "min": 120,
+    "max": 120,
     "unit": "s",
-    "source": "SPEC.md §2",
+    "source": "SPEC.md §2 (matched to motor S2 2 min rating)",
     "affects": [
-      "thermal transient design",
-      "module transient rating"
+      "thermal design point",
+      "module rating",
+      "DC link ripple duty",
+      "cold plate sizing"
     ]
   },
   "current.dc_continuous": {
@@ -106,7 +108,7 @@
     "min": 0,
     "max": 190,
     "unit": "A rms",
-    "source": "SPEC.md §3.3 (EMRAX 188 HV peak motor current; board peak duration 10 s governs)",
+    "source": "SPEC.md §3.3 (EMRAX 188 HV peak motor current, sustained 120 s per §2)",
     "affects": [
       "module peak rating",
       "gate drive",
@@ -186,14 +188,14 @@
     "min": 400,
     "max": null,
     "unit": "uF",
-    "source": "SPEC.md §6",
+    "source": "SPEC.md §6.1 (derived: C >= I_ph_pk/(8*f_sw*dV); 400 uF valid for f_sw >= ~23 kHz; >= 750 uF if Si at 12 kHz)",
     "affects": [
       "bus voltage ripple",
       "precharge energy",
       "mechanical volume"
     ],
     "deferred": [
-      "to be confirmed against switching frequency and permitted bus ripple"
+      "final value follows Si vs SiC / switching frequency decision"
     ]
   },
   "dclink.voltage_rating_min": {
@@ -460,6 +462,30 @@
       "motor connector",
       "ADC allocation",
       "VESC motor temp limiting"
+    ]
+  },
+  "thermal.peak_dissipation_120s": {
+    "min": 700,
+    "max": 1225,
+    "unit": "W",
+    "source": "SPEC.md §11.4 (35 kW peak, 120 s = quasi-steady-state; SiC ~98% / Si ~96.5%)",
+    "affects": [
+      "cold plate sizing",
+      "pump and loop capacity",
+      "Si vs SiC decision"
+    ]
+  },
+  "dclink.ripple_current_rating_min": {
+    "min": 80,
+    "max": null,
+    "unit": "A rms @ 70 C (bank)",
+    "source": "SPEC.md §6.1 (60 A cont + 114 A for 120 s repetitive)",
+    "affects": [
+      "capacitor bank size",
+      "film capacitor selection"
+    ],
+    "deferred": [
+      "114 A / 120 s duty to be verified against manufacturer thermal model"
     ]
   }
 }
