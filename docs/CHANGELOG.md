@@ -2,6 +2,12 @@
 
 Append-only, newest first.
 
+## 2026-07-31 — Supervisor sheet ported from PALTA; dead-time claim corrected (D018)
+
+- `mcuc_inverter/supervisor.kicad_sch` captured from the legacy `pcb_design/supervisor.sch`: overlap-elimination gating, overcurrent latch (AUP1G74), driver-fault conditioning to FAULT_BKIN, driver-reset chain. Root sheet wires the six PWM nets and FAULT_BKIN between MCU and supervisor sheets; netlist-verified that FAULT_BKIN lands on PB12/TIM1_BKIN.
+- Verification: ERC 0 errors on the root hierarchy; 24/24 gate-by-gate netlist checks against the legacy netlist; PDF export clean.
+- **Finding:** the original supervisor performs overlap elimination only — it never inserted dead time. SPEC §9.2 corrected: dead time = TIM1 silicon generator + planned RC turn-on delay network in the gate_drive sheet (D018).
+
 ## 2026-07-31 — Gate driver selected at candidate level (D017)
 
 - 1ED3491MC12M primary (reinforced, 200 V/ns, adjustable DESAT/soft-off, stocked), UCC21755-Q1/UCC21750 alternates; Infineon's zero-stock automotive 1EDI3035AS kept as reference design. Gate levels fixed at +18/−5 V from the module datasheet (+15 V costs +26 % conduction loss). Isolated supplies: discrete push-pull baseline (Murata MGJ2 19-wk lead).
