@@ -93,6 +93,13 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Consequence:** Capacitor voltage-ripple sizing is settled; the binding constraint is ripple *current* — a bank rated ≥ 80 A rms @ 70 °C with the 114 A / 120 s repetitive duty verified against the manufacturer's thermal model. Si path also carries a capacitor cost/volume penalty, which enters the Si-vs-SiC comparison.
 - **Affects:** SPEC.md §6, §7.1 (precharge energy scales with C), open item 2.
 
+## D014: Auxiliary supply controller — InnoSwitch3-AQ (candidate level)
+
+- **Decision:** Power Integrations InnoSwitch3-AQ INN3990CQ (900 V PowiGaN, integrated FET) as primary candidate; INN3999CQ as alternate; discrete UCC28C42 + 1200 V SiC FET as fallback.
+- **Why:** Only family found with a datasheet-guaranteed 30 V DC start covering the full 48–450 V (9.4:1) range at 20–30 W. Every other candidate fails on hard numbers: InnoSwitch3-EP min DC input 90 V and UV/OV pin ratio 4.4:1; LinkSwitch-XT2 11 W ceiling; InnoSwitch4 tops at 750 V; ST VIPer 800 V; onsemi NCP107x 700 V; MPS HFC0500 brown-in ≥ 95 V. Verified in stock (DigiKey, 2026-07-31).
+- **Open:** Transformer design; 48 V full-load power is interpolated from the 30/60 V datasheet columns and must be confirmed; 650 V max recommended rail vs our 500 V transient is fine but noted.
+- **Affects:** SPEC.md §11.2, §14 item 7, aux_power schematic sheet.
+
 ---
 
 ## Superseded

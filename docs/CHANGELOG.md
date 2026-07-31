@@ -2,6 +2,14 @@
 
 Append-only, newest first.
 
+## 2026-07-31 — Peak matched to motor; DC-link derived; verified sourcing research
+
+- **Peak duration 10 s → 120 s [REQ]**, matched to the motor's S2 2 min rating (D012). Consequence: the 120 s peak is quasi-steady-state for the cooling loop — cold plate must be sized for ~700 W (SiC) / ~1225 W (Si) at 35 kW, and the module continuous criterion rises to ≥ 200 A.
+- **DC-link capacitance derived (D013, SPEC §6.1):** 400 µF confirmed for f_sw ≥ ~23 kHz (SiC path); ≥ 750 µF if Si at ~12 kHz. Binding constraint is ripple current: bank ≥ 80 A rms @ 70 °C, 114 A / 120 s duty to verify against manufacturer thermal model.
+- **Si vs SiC priced with real stocked parts (`docs/SI_VS_SIC.md`):** Si FS200R12KT4R $132 vs SiC FS02MR12A8MA2B $767 — a ~$635 premium, against ~1.6 % battery compensation plus DC-link/cooling offsets; net SiC premium ≈ $280 for a 20 kWh pack. Decision remains with owner.
+- **Aux supply candidate resolved (D014):** InnoSwitch3-AQ INN3990CQ — the only verified family with 30 V DC start covering 48–450 V; all other candidates fail on datasheet numbers.
+- Verification: document-level; prices and datasheet figures from live distributor/manufacturer pages, cited in the docs.
+
 ## 2026-07-31 — Target motor fixed: EMRAX 188 HV; currents re-derived
 
 - Recorded the EMRAX 188 (HV winding) as the target motor (`SPEC.md` §2.2, D011), with figures verified against the manufacturer's datasheet v1.6 — not from memory.

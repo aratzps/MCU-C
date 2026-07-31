@@ -153,12 +153,15 @@ Three-phase two-level bridge, six switch positions. Baseline is a **single 1200 
 - Integrated NTC
 - Removes the paralleling/current-sharing problem entirely
 
-**Candidates [TBV]:**
+**Candidates — verified stocked parts, DigiKey 2026-07-31 (full analysis in `docs/SI_VS_SIC.md`):**
 
-| Technology | Example class | Trade-off |
-|---|---|---|
-| Si IGBT six-pack, 1200 V / ~200 A | Infineon EconoPACK / Semikron MiniSKiiP | Lower cost, ~96.5 % efficiency, more heat |
-| SiC MOSFET six-pack, 1200 V | onsemi / Microchip / Wolfspeed modules | ~98 % efficiency, higher switching frequency, higher cost |
+| Technology | Part | Rating | Price qty 1 | Note |
+|---|---|---|---|---|
+| Si IGBT | **Infineon FS200R12KT4R**, EconoPACK 3 | 200 A @ Tc 80 °C | $131.88 (18 pcs) | Meets §4.3 exactly; flat base, conventional cold plate |
+| SiC | **Infineon FS02MR12A8MA2B**, HybridPACK Drive G2 | 1.9 mΩ, 390 A class | $767.12 (51 pcs) | Automotive pin-fin direct-cooled base — different cold-plate concept |
+| SiC (alt) | Microchip MSCSM120TAM11CTPAG, SP6-P | 251 A | $769.08 | Out of stock, orderable |
+
+Stocked SiC six-packs below $300 are all 48–90 A class — too small for the 190 A / 120 s requirement. The Si-vs-SiC decision (§14 item 2) is therefore a ~$635 module premium, analysed against battery compensation and system offsets in `docs/SI_VS_SIC.md`.
 
 Every part number must be verified against a live datasheet and stocked distributor part before entering a BOM. **No part enters the BOM on the strength of a plausible-looking part number.**
 
@@ -390,7 +393,15 @@ The previous draft had no viable path from a 48–450 V bus to control power. Th
 | Isolated CAN | +5 V | Independent | Transceiver |
 | Contactor / fan | +12 V | Secondary | External loads |
 
-**Candidates [TBV]:** Power Integrations InnoSwitch3-EP or LinkSwitch families with 900 V integrated FETs, or a discrete flyback with a 1000 V MOSFET. Wide-range input at 9.4:1 is the difficult requirement — verify the chosen controller supports it at full load.
+**Candidates — verified against datasheets and DigiKey stock, 2026-07-31:**
+
+| Rank | Part | Why | Caveat |
+|---|---|---|---|
+| 1 | **PI InnoSwitch3-AQ INN3990CQ** (900 V PowiGaN, integrated) | Only family with a datasheet-guaranteed **30 V DC start** and "30 V to >1200 V DC" input; ~32 W available at 48 V (interpolated from the 30/60 V power-table columns), 100 W at 400 V; AEC-Q100; reinforced isolation per IEC 60747-17; $8.93, ~1.5 k in stock | Max recommended DC rail 650 V (covers our 500 V transient); 48 V power figure is interpolated, not a datasheet point — confirm in design **[TBV]**; primary inductance < 500 µH and Kp ≈ 0.9 at V_min per design guide |
+| 2 | INN3999CQ (same family) | ~24 W at 48 V, $7.79, ~1.9 k in stock | Less power headroom at minimum line |
+| 3 | Discrete: TI UCC28C42 (or UCC28700) + 1200 V SiC FET (Wolfspeed C3M0350120J $6.39 / Infineon IMW120R350M1H $6.36, both stocked) | Fully flexible, automotive -Q1 variants exist, 94–96 % max duty handles 9.4:1 | Needs HV startup current source (a 48 V-sized startup resistor burns ~90× more at 450 V), aux bias winding clamped across the line swing, opto + TL431 |
+
+**Ruled out with reasons:** InnoSwitch3-EP (datasheet minimum DC input 90 V; UV/OV pin ratio 4.4:1 cannot span 9.4:1), LinkSwitch-XT2 (11 W ceiling), InnoSwitch4 (750 V max, no 900 V part exists), ST VIPerPlus (800 V max), onsemi NCP107x (700 V), MPS HFC0500 (hard brown-in at ≥ 95 V — never starts at 48 V). The 1700 V SiC InnoSwitch3-AQ (INN3949CQ, $15.11, stocked) is a valid oversized fallback if the 650 V rail recommendation of the 900 V parts becomes a concern.
 
 ### 11.3 Auxiliary input
 
@@ -477,12 +488,12 @@ Ordered by how much they would change the design.
 | # | Item | Blocks |
 |---|---|---|
 | 1 | ~~Target motor~~ **Resolved: EMRAX 188 HV (§2.2).** Remaining: confirm winding variant and cooling configuration at motor order; duty cycle still unstated | §3.3 finalisation |
-| 2 | Power module selection: Si IGBT vs SiC | Efficiency, cooling, gate drive, cost |
+| 2 | Power module selection: Si IGBT vs SiC — **verified parts and full cost analysis (incl. battery compensation) ready in `docs/SI_VS_SIC.md`; awaiting owner decision** | Efficiency, cooling, gate drive, cost |
 | 3 | Derating curve for 250–450 V operation | Safe operating area at high bus |
 | 4 | Compliance target (industrial / automotive / none) | §10 creepage, certification |
 | 5 | ~~DC-link capacitance vs f_sw~~ **Resolved conditionally (§6.1):** 400 µF @ ≥ 25 kHz (SiC) or ≥ 750 µF @ 12 kHz (Si). Remaining: 114 A / 120 s ripple duty vs manufacturer thermal model | Capacitor part selection |
 | 6 | Cooling: cold plate design and coolant availability | §11.4 |
-| 7 | Isolated aux supply controller supporting 9.4:1 input range | §11.1 |
+| 7 | ~~Aux supply controller~~ **Resolved at candidate level (§11.2):** InnoSwitch3-AQ INN3990CQ, verified 30 V start and stock. Remaining: transformer design and 48 V full-load confirmation | §11.1 |
 | 8 | Whether the DC-link and power module are on this PCB or a busbar sub-assembly | Whole mechanical concept |
 
 ---
