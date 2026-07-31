@@ -1,6 +1,6 @@
 # MCU-C — Integrated 3-Phase Inverter, System Specification
 
-**Revision:** 0.1 (architecture baseline)
+**Revision:** 0.2 (target motor fixed; currents re-derived from EMRAX 188 HV)
 **Status:** Requirements and architecture fixed. Component selection is candidate-level and flagged where verification is outstanding.
 
 ---
@@ -55,6 +55,32 @@ The power figures are defined **at 250 V nominal only**. The board enforces *cur
 
 At 450 V the current limits alone would permit 49 kW peak. The board is **not** rated to deliver this — switching losses scale with bus voltage, and the thermal design in §11 is sized for the 250 V rated point. Operation above 250 V must be derated. Quantifying that derating requires the loss model in §11.4 and is an open item.
 
+### 2.2 Target motor **[REQ]**
+
+**EMRAX 188, High Voltage winding, or similar.** Figures below are from the EMRAX 188 datasheet v1.6 (verified 2026-07-31, emrax.com):
+
+| Parameter | Value | Note |
+|---|---|---|
+| Type | Axial flux PMSM, 10 pole pairs, star | 188 × 79 mm, 7.1–7.9 kg |
+| Peak power | 60 kW, S2 2 min | At 6500 rpm; requires 660 V DC (HV winding) |
+| Continuous power | 27 / 34 / 37 kW | Air / liquid / combined cooling |
+| Peak torque | 100 Nm | = 190 A rms × Kt |
+| Continuous torque | 40 / 52 / 56 Nm | Air / liquid / combined cooling |
+| Max speed | 8000 rpm | 1333 Hz electrical at 10 pole pairs |
+| **Peak motor current (HV)** | **190 A rms** | S2 2 min |
+| **Continuous motor current (HV)** | **100 A rms** | |
+| Kt (HV) | 0.54 Nm/A rms | |
+| Kv at nominal load (HV) | 13.61 rpm/V DC | 17.73 no-load, 9.81 at peak load |
+| Phase resistance (HV, 25 °C) | 14.37 mΩ | |
+| Ld, one phase (HV) | 188.5 µH | |
+| Winding temperature sensor | **KTY 81/210** | Board must provide an input — see §8.3 |
+| Position sensor options | Resolver / encoder | Matches §8.4; AD2S1205 carry-over applies |
+| Max test voltage | 833 V | All variants |
+
+**Why the HV winding [SEL]:** at 250 V nominal bus the HV winding reaches ≈ 3400 rpm under load (13.61 × 250), and 100 Nm at 3400 rpm ≈ 35.6 kW — the motor's envelope at our bus lands almost exactly on the 35 kW peak rating point of §2. At 450 V it reaches ≈ 6100 rpm. The MV winding would need 310 A rms peak and the LV variants 390–900 A rms — all far beyond a sensible power stage for this power level. The full 60 kW / 6500 rpm motor capability requires 660 V and is not reachable on this 450 V bus; this is accepted.
+
+**Winding variant must be confirmed at motor order time.** If a different variant or motor is chosen, §3.3 must be re-derived.
+
 ---
 
 ## 3. Current ratings — DC bus vs phase
@@ -81,25 +107,29 @@ I_ph,peak = (35 000 × 0.97) / (1.732 × 176.8 × 0.95) = 116.7 A rms
 
 **These are the values at full modulation, i.e. at high speed.** They are *not* the design maximum. At low speed the motor needs the same current for the same torque while the output voltage is small, so phase current — not power — is the binding constraint. The power stage must therefore be sized above the figures above to deliver full torque at low speed.
 
-### 3.3 Design current capability **[SEL]**
+### 3.3 Design current capability **[DER]** — from the EMRAX 188 HV ratings
+
+The earlier 1.5× guess (75/175 A rms) is superseded. With the target motor known (§2.2), the power stage is sized to the motor's own current ratings, making the system motor-limited rather than inverter-limited:
 
 | Parameter | Value | Basis |
 |---|---|---|
-| Continuous phase current | 75 A rms | 1.5 × I_ph,cont — full torque at low speed |
-| Peak phase current (10 s) | 175 A rms | 1.5 × I_ph,peak |
-| Instantaneous phase peak | 250 A | 175 × √2, rounded |
-| Current sense full scale | ±300 A | Instantaneous peak + 20 % headroom |
-| Hardware overcurrent trip | 280 A, adjustable | Below sense saturation, above legitimate peak |
+| Continuous phase current | 100 A rms | Motor continuous current, HV winding |
+| Peak phase current (10 s) | 190 A rms | Motor peak current. Motor rates this S2 2 min; the board's 10 s peak (§2) is the shorter of the two and governs |
+| Instantaneous phase peak | 270 A | 190 × √2, rounded |
+| Current sense full scale | ±325 A | Instantaneous peak + 20 % headroom |
+| Hardware overcurrent trip | 300 A, adjustable | Above legitimate 270 A peak, below sense saturation |
 
-The 1.5× factor is a judgement call. If the target motor and duty cycle are known, this should be revisited — it directly sets device count and cost.
+Full 100 Nm peak torque needs 100 / 0.54 = 185 A rms — inside the 190 A peak limit. Full continuous torque (56 Nm, combined-cooled motor) needs 104 A rms; at the 100 A board limit, continuous torque is 54 Nm — accepted, the difference is within the motor's cooling-configuration spread.
+
+**[TBV]** Confirmed only for the HV winding. Re-derive if the winding variant changes at order time.
 
 ### 3.4 DC-link ripple current **[DER]**
 
 Worst-case DC-link RMS ripple in a 3-phase inverter approaches `0.6 × I_ph,rms`:
 
 ```
-Continuous: 0.6 × 75  =  45 A rms
-Peak:       0.6 × 175 = 105 A rms
+Continuous: 0.6 × 100 =  60 A rms
+Peak:       0.6 × 190 = 114 A rms
 ```
 
 This is the dominant constraint on DC-link capacitor selection — see §6.
@@ -135,8 +165,8 @@ Every part number must be verified against a live datasheet and stocked distribu
 | Parameter | Requirement |
 |---|---|
 | V_CES / V_DS | ≥ 1200 V |
-| I_C continuous @ T_c = 80 °C | ≥ 100 A |
-| I_C peak, 10 s | ≥ 250 A |
+| I_C continuous @ T_c = 80 °C | ≥ 150 A |
+| I_C peak, 10 s | ≥ 270 A |
 | Integrated NTC | Required |
 | Isolated baseplate | Required |
 | Configuration | Six-pack (3 half-bridges) |
@@ -167,11 +197,11 @@ Every part number must be verified against a live datasheet and stocked distribu
 |---|---|---|
 | Capacitance | ≥ 400 µF | **[SEL]** |
 | Voltage rating | ≥ 800 V DC | **[DER]** — 450 V + transients + margin |
-| Ripple current rating | ≥ 50 A rms @ 70 °C | **[DER]** from §3.4 |
+| Ripple current rating | ≥ 65 A rms @ 70 °C | **[DER]** from §3.4 |
 | Technology | Metallised polypropylene film | **[SEL]** |
 | ESL | As low as achievable; laminated busbar to module | **[SEL]** |
 
-Film rather than electrolytic: the 45–105 A rms ripple from §3.4 is impractical for electrolytics at this voltage without a large parallel bank, and film gives far better lifetime at temperature.
+Film rather than electrolytic: the 60–114 A rms ripple from §3.4 is impractical for electrolytics at this voltage without a large parallel bank, and film gives far better lifetime at temperature.
 
 400 µF is a starting point from the ~10–20 µF/kW rule of thumb. It must be confirmed against the actual switching frequency and the permitted bus voltage ripple. **[TBV]**
 
@@ -216,14 +246,14 @@ Passive bleeding alone at 5 s would dissipate >30 W continuously — unacceptabl
 | Parameter | Requirement |
 |---|---|
 | Channels | 3 (one per phase) |
-| Range | ±300 A instantaneous |
+| Range | ±325 A instantaneous |
 | Isolation | Reinforced, ≥ 3 kV rms |
 | Bandwidth | ≥ 500 kHz (≥ 5× max PWM frequency) |
 | Latency | < 2 µs to ADC-ready |
 
 **Three phase measurements, not one bus measurement.** VESC FOC reconstructs the current vector from per-phase samples; a single DC-link shunt cannot provide this.
 
-**Candidates [TBV]:** isolated shunt amplifier (AMC1301/AMC1311 class) with a ~0.5 mΩ shunt, or closed-loop Hall/fluxgate transducers (LEM class). If shunts are used, the shunt value must be chosen so full-scale current maps to most of the amplifier's input range — at ±300 A into a ±250 mV input, that is ~0.8 mΩ, not the 100 µΩ that would waste 94 % of the range.
+**Candidates [TBV]:** isolated shunt amplifier (AMC1301/AMC1311 class) with a ~0.5 mΩ shunt, or closed-loop Hall/fluxgate transducers (LEM class). If shunts are used, the shunt value must be chosen so full-scale current maps to most of the amplifier's input range — at ±325 A into a ±250 mV input, that is ~0.75 mΩ, not the 100 µΩ that would waste 94 % of the range.
 
 ### 8.2 Bus voltage
 
@@ -245,6 +275,9 @@ The divider must map 500 V to most of the 0–3.3 V ADC range (i.e. ~150:1, givi
 | Module NTC | Inside power module | Junction proxy, fastest response |
 | Heatsink/coldplate NTC | Thermal path | Cooling system health |
 | Board NTC | Near control electronics | Ambient/enclosure |
+| **Motor winding, KTY 81/210** | Inside motor stator (§2.2) | Motor thermal protection; input via motor connector |
+
+The EMRAX 188 ships with a KTY 81/210 silicon PTC in the stator. VESC supports motor temperature limiting; the board must provide the bias network and ADC input for it, and the front end should accommodate common alternatives (PT1000, NTC 10k) by resistor choice. **[SEL]**
 
 ### 8.4 Rotor position
 
@@ -267,7 +300,7 @@ All four interfaces are required.
 
 | Function | Threshold | Response |
 |---|---|---|
-| Overcurrent (hardware) | 280 A instantaneous | Latched shutdown, < 1 µs |
+| Overcurrent (hardware) | 300 A instantaneous | Latched shutdown, < 1 µs |
 | Desaturation | Per gate driver | Soft turn-off + latch |
 | Bus overvoltage | 490 V | Latched shutdown |
 | Bus undervoltage | 45 V | Inhibit switching |
@@ -420,7 +453,7 @@ Ordered by how much they would change the design.
 
 | # | Item | Blocks |
 |---|---|---|
-| 1 | Target motor and duty cycle — sets the §3.3 1.5× current factor | Device count, cost, thermal |
+| 1 | ~~Target motor~~ **Resolved: EMRAX 188 HV (§2.2).** Remaining: confirm winding variant and cooling configuration at motor order; duty cycle still unstated | §3.3 finalisation |
 | 2 | Power module selection: Si IGBT vs SiC | Efficiency, cooling, gate drive, cost |
 | 3 | Derating curve for 250–450 V operation | Safe operating area at high bus |
 | 4 | Compliance target (industrial / automotive / none) | §10 creepage, certification |

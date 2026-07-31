@@ -2,6 +2,15 @@
 
 Append-only, newest first.
 
+## 2026-07-31 — Target motor fixed: EMRAX 188 HV; currents re-derived
+
+- Recorded the EMRAX 188 (HV winding) as the target motor (`SPEC.md` §2.2, D011), with figures verified against the manufacturer's datasheet v1.6 — not from memory.
+- Re-derived design currents from motor ratings, superseding the 1.5× placeholder: 100 A rms continuous, 190 A rms peak, 270 A instantaneous, ±325 A sense full scale, 300 A hardware trip. Module selection criteria raised to ≥ 150 A continuous / ≥ 270 A peak; DC-link ripple requirement now 60/114 A rms (cap rating ≥ 65 A rms @ 70 °C).
+- Added a motor winding temperature input (KTY 81/210, EMRAX standard) to `SPEC.md` §8.3 — previously missing entirely.
+- Updated `.copperhead/constraints.json` to match.
+- Open item 1 (target motor) resolved; remaining: confirm winding variant at motor order time.
+- Verification: document-level only. Schematic sheets are still empty; ERC has nothing new to check.
+
 ## 2026-07-30 — KiCad 9 project skeleton
 
 - Created `mcuc_inverter/` — a KiCad 9 project with a root schematic and 11 hierarchical sheets, one per functional block in `SPEC.md`: power stage/DC link, gate drive, precharge, current sense, bus sense, temperature, position feedback, supervisor, auxiliary power, MCU, communications.

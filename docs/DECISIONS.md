@@ -71,6 +71,14 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Why:** 300–525 W continuous dissipation at 15 kW depending on Si vs SiC. This is a physical consequence of realistic device losses, not a preference.
 - **Affects:** SPEC.md §11.4, mechanical concept, enclosure.
 
+## D011: Target motor — EMRAX 188, High Voltage winding
+
+- **Decision:** EMRAX 188 (or similar class), HV winding assumed. Figures verified against EMRAX 188 datasheet v1.6 (2026-07-31): peak 190 A rms / 100 Nm (S2 2 min), continuous 100 A rms, Kt 0.54 Nm/A, Kv 13.61 rpm/V at nominal load, 10 pole pairs, 8000 rpm max, KTY 81/210 stator temperature sensor, resolver/encoder feedback.
+- **Why:** Owner's choice of motor. HV winding is the engineering recommendation: at 250 V nominal the HV envelope (100 Nm at ≈ 3400 rpm ≈ 35.6 kW) lands on the board's 35 kW rated point, and its 190/100 A rms currents match a sensible power stage. MV needs 310 A rms peak, LV 390–900 A — both oversize the inverter. The motor's full 60 kW at 6500 rpm needs 660 V and is unreachable on a 450 V bus; accepted.
+- **Consequence:** §3.3 re-derived from motor ratings, superseding the 1.5× guess (D006): 100 A rms continuous, 190 A rms peak (10 s), 270 A instantaneous, ±325 A sense, 300 A hardware trip. Module criteria rise to ≥ 150 A continuous / ≥ 270 A peak. DC-link ripple rises to 60/114 A rms. A motor temperature input (KTY 81/210) is added to §8.3.
+- **Open:** Winding variant must be confirmed at motor order time; if it changes, §3.3 is re-derived. Duty cycle still unstated — 10 s board peak vs motor's 2 min S2 rating noted in §3.3.
+- **Affects:** SPEC.md §2.2, §3.3, §3.4, §4.3, §6, §8.1, §8.3, §9.1, module selection, thermal.
+
 ---
 
 ## Superseded
