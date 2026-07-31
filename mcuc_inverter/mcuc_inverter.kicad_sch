@@ -498,7 +498,7 @@
 
 	(sheet
 		(at 160.0 135.0)
-		(size 55.88 20.32)
+		(size 55.88 40.64)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -518,13 +518,153 @@
 			)
 		)
 		(property "Sheetfile" "mcu.kicad_sch"
-			(at 160.0 155.9046 0)
+			(at 160.0 176.2246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left top)
 			)
+		)
+		(pin "NRST" bidirectional
+			(at 215.88 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "2a781f5b-1746-49e9-8545-b7d9c250ec84")
+		)
+		(pin "SWDIO" bidirectional
+			(at 215.88 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "8a6bdd32-dd1f-454d-851e-9e0dfa6f17ff")
+		)
+		(pin "SWCLK" input
+			(at 215.88 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "3229b26f-9bdc-44aa-9844-894404917cc9")
+		)
+		(pin "PWM_HS_1" output
+			(at 215.88 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "d4c62a48-4785-4943-8a92-096e2e039b43")
+		)
+		(pin "PWM_HS_2" output
+			(at 215.88 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "48b56c60-9420-4a4f-a062-9ef0da27d340")
+		)
+		(pin "PWM_HS_3" output
+			(at 215.88 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "84e8fd36-62bb-4cf5-830e-b29f4f25fc32")
+		)
+		(pin "PWM_LS_1" output
+			(at 215.88 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "6b849c45-0a41-43e6-9dbe-61d648708259")
+		)
+		(pin "PWM_LS_2" output
+			(at 215.88 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "752011eb-ea82-4d34-b8fc-13319a9412f5")
+		)
+		(pin "PWM_LS_3" output
+			(at 215.88 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "5e06f395-2cfa-4c06-8ba6-336e0c5e02d9")
+		)
+		(pin "FAULT_BKIN" input
+			(at 215.88 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "0c91634e-0728-491d-b3bf-1643608ee1be")
+		)
+		(pin "CAN1_RX" input
+			(at 215.88 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "5b294ec7-5179-4ad0-80aa-c1d59e5e3363")
+		)
+		(pin "CAN1_TX" output
+			(at 215.88 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "cb4abecd-7592-4e4e-b811-a2e4728f51bf")
+		)
+		(pin "USB_DM" bidirectional
+			(at 215.88 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "f4919f10-02a0-4dd2-b763-f2f06c9d41c4")
+		)
+		(pin "USB_DP" bidirectional
+			(at 215.88 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "dd9a13fc-47e1-4d8b-accf-0c4a109269aa")
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -537,7 +677,7 @@
 
 	(text "SPEC.md 12"
 		(exclude_from_sim no)
-		(at 160.0 159.0 0)
+		(at 160.0 179.0 0)
 		(effects
 			(font
 				(size 1.0 1.0)
