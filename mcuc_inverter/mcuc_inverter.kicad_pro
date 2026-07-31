@@ -57,5 +57,15 @@
     "VBUS_MAX": "450V",
     "P_CONT": "15kW",
     "P_PEAK": "35kW"
+  },
+  "erc": {
+    "rule_severities": {
+      "pin_not_connected": "warning",
+      "label_dangling": "warning"
+    },
+    "erc_exclusions": [],
+    "meta": {
+      "version": 0
+    }
   }
 }
