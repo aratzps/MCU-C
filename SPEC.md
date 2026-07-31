@@ -34,11 +34,14 @@ This is deliberately different from the existing `pcb_design/` board in this rep
 
 ## 2. Top-level ratings
 
+> **Revision 2026-07-30 — pack architecture decided: 88S1P dual-chemistry.** Two SKUs share one fixture and one inverter: LFP 22 Ah "Life" (281.6 V nom, 220–321 V, 6.2 kWh) and NMC 32 Ah "Range" (325.6 V nom, 264–370 V, 10.4 kWh), Desten 10135170 pouches, both 6C-charge rated. Evidence: OrekaVault `01-knowledge/engineering/ARCHITECTURE-2026-07-30-dual-sku.md` and the bus-voltage A/B study. The original 48–450 V / 250 V-nominal envelope below is retained as hardware capability; operating numbers supersede it. Derived-current sections (§3) were computed at 250 V and remain conservative for both SKUs (at 281.6–325.6 V the same power draws less current); they will be re-derived when the motor winding is fixed.
+
 | Parameter | Symbol | Value | Unit | Tag |
 |---|---|---|---|---|
-| Minimum bus voltage | V_min | 48 | V DC | **[REQ]** |
-| Nominal bus voltage | V_nom | 250 | V DC | **[REQ]** |
-| Maximum bus voltage | V_max | 450 | V DC | **[REQ]** |
+| Minimum bus voltage (operating) | V_min | 220 (LFP SKU empty; 176 abs at 2.0 V/cell) | V DC | **[REQ]** rev 2026-07-30 |
+| Nominal bus voltage | V_nom | 281.6 (LFP SKU) / 325.6 (NMC SKU) | V DC | **[REQ]** rev 2026-07-30 |
+| Maximum bus voltage | V_max | 370 (NMC SKU full charge 369.6) | V DC | **[REQ]** rev 2026-07-30 |
+| Hardware-capable envelope | — | 48–450 | V DC | **[SEL]** design retains original envelope as margin |
 | Continuous power @ V_nom | P_cont | 15 | kW | **[REQ]** |
 | Peak power @ V_nom | P_peak | 35 | kW | **[REQ]** |
 | Peak duration | t_peak | 10 | s | **[SEL]** |
@@ -269,13 +272,13 @@ All four interfaces are required.
 |---|---|---|
 | Overcurrent (hardware) | 280 A instantaneous | Latched shutdown, < 1 µs |
 | Desaturation | Per gate driver | Soft turn-off + latch |
-| Bus overvoltage | 490 V | Latched shutdown |
-| Bus undervoltage | 45 V | Inhibit switching |
+| Bus overvoltage | 400 V (rev 2026-07-30; was 490 V for the 450 V envelope) | Latched shutdown |
+| Bus undervoltage | 200 V (rev 2026-07-30; below LFP SKU empty, above chargers' floor region) | Inhibit switching |
 | Overtemperature | Module 125 °C (IGBT) / 150 °C (SiC) | Derate, then shutdown |
 | Gate supply UVLO | Per driver | Inhibit |
 | Watchdog timeout | — | Latched shutdown |
 
-Bus OVP is set at **490 V**, above V_max = 450 V and well below the 1200 V device rating — not at an arbitrary higher number. The margin exists to catch regenerative overvoltage before the devices see it.
+Bus OVP is set at **400 V** (rev 2026-07-30): above the NMC SKU's 369.6 V full-charge voltage plus regen margin, and far below the 1200 V device rating. One threshold covers both SKUs. The margin exists to catch regenerative overvoltage before the devices see it.
 
 ### 9.2 Hardware interlocks — carry over from PALTA
 
@@ -322,7 +325,7 @@ The previous draft had no viable path from a 48–450 V bus to control power. Th
 
 | Parameter | Value |
 |---|---|
-| Input range | 48–450 V DC (9.4:1), tolerant to 500 V |
+| Input range | 220–370 V DC (1.7:1), tolerant to 450 V (rev 2026-07-30 — was 48–450 V / 9.4:1) |
 | Topology | Isolated flyback **[SEL]** |
 | Primary switch rating | ≥ 900 V **[DER]** |
 

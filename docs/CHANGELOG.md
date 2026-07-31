@@ -2,6 +2,13 @@
 
 Append-only, newest first.
 
+## 2026-07-30 — Pack architecture decided: 88S1P dual-chemistry (D011)
+
+- SPEC §2 operating window now 220–370 V (LFP "Life" 281.6 V nom / NMC "Range" 325.6 V nom, Desten 10135170 pouches, both 6C). Original 48–450 V envelope retained as hardware capability.
+- OVP 490 → 400 V; UVLO 45 → 200 V; aux input range 48–450 V (9.4:1) → 220–370 V (1.7:1) — the §14 hard flyback problem dissolves.
+- Constraints regenerated. Decision record and evidence live in the OrekaVault (`ARCHITECTURE-2026-07-30-dual-sku.md` + bus-voltage A/B study).
+- Verification: ERC unchanged (no schematic edits in this change); copperhead constraints check green.
+
 ## 2026-07-30 — KiCad 9 project skeleton
 
 - Created `mcuc_inverter/` — a KiCad 9 project with a root schematic and 11 hierarchical sheets, one per functional block in `SPEC.md`: power stage/DC link, gate drive, precharge, current sense, bus sense, temperature, position feedback, supervisor, auxiliary power, MCU, communications.

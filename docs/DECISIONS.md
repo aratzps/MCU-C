@@ -71,6 +71,14 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Why:** 300–525 W continuous dissipation at 15 kW depending on Si vs SiC. This is a physical consequence of realistic device losses, not a preference.
 - **Affects:** SPEC.md §11.4, mechanical concept, enclosure.
 
+
+## D011: 88S1P dual-chemistry pack; operating window 220–370 V
+
+- **Decision:** Pack is 88S1P Desten 10135170 pouch, in two chemistry SKUs sharing one fixture: LFP 22 Ah "Life" (281.6 V nominal, 220–321 V, 6.2 kWh) and NMC 32 Ah "Range" (325.6 V nominal, 264–370 V, 10.4 kWh). Both 6C-charge rated per datasheet. OVP moves 490 → 400 V; UVLO 45 → 200 V; aux-supply input range collapses to 220–370 V (1.7:1).
+- **Why:** DCFC compatibility decided the bus class (CCS floors 150/200 V; every production DCFC motorcycle ≥300 V; sub-window packs cannot charge). 88S clears both defects of 80S (peak C-rate inside the 132 A cell rating; 220 V empty clears the legacy 200 V floor) and saves ~137 mm of stack vs 100S. Both SKUs bracket one ~280–320 V motor winding class (EMRAX LV+100% as COTS reference).
+- **Caveats:** LFP SKU peak ≈ 33–34 kW through the shared winding (−4%), tapering below ~20% SoC; rapid charge window 15–45 °C makes pack pre-heating a launch requirement; LFP datasheet's 160 Wh/kg headline unreconciled (use 142).
+- **Affects:** SPEC §2, §9.1, §11.1; current-sense scaling (§8.1) now unblockable; charge-port section to be added (§13).
+
 ---
 
 ## Superseded
