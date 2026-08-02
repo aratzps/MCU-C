@@ -2,6 +2,13 @@
 
 Append-only, newest first.
 
+## 2026-08-01 — precharge, current_sense and aux_power sheets captured; D019/D020
+
+- **D019:** phase current sensing = 3× LEM HOYS 200-S/SP33 (shunts rejected: 27 W at 0.75 mΩ; ΔΣ route blocked — STM32F405 has no DFSDM; AMC1302 fallback unstocked). 300 A trip via per-phase LM2903-class window comparators (2.340/0.960 V thresholds), open-drain wire-OR onto the supervisor's OC_TRIP; the transducers' own OCD outputs join the same net as an independent ~584 A backup. Bandwidth/latency spec re-derived for 25 kHz switching (≥150 kHz, <5 µs).
+- **D020:** aux power architecture fully part-verified: INN3990CQ flyback (DER-948Q pattern) → 15 V; LM5175 buck-boost from the 12–24 V aux input OR'd in via LM74610-Q1; LMR51430 bucks (5 V, 12 V); TLV1117-33; 4× SN6505B + Würth 750316856 (23 V, zener-split +18/−5) gate supplies off the 5 V rail; Murata NXE2S0505MC isolated CAN 5 V. Verified traps: SN6505B is 5 V-only; plain boost can't serve a 24 V aux input.
+- **Sheets captured** (7 of 11 now live): precharge (relay path, contactor driver, 4-series bleeder, opto-driven C3M0350120J active discharge; HV/LV separation asserted in netlist), current_sense (69/69 netlist checks; phase busbar paths explicit), aux_power (all 7 blocks; all 12 VGD nets verified to span aux_power → gate_drive; the 3.3 V rail's PWR_FLAG moved from the MCU sheet to its true source, the TLV1117).
+- Verification: ERC 0 errors after each sheet; netlist machine-checks per block; independent re-verification before each commit.
+
 ## 2026-07-31 — power_stage and gate_drive sheets captured
 
 - **power_stage**: FS02MR12A8MA2B module as a custom 39-pin symbol in the new project library (`mcuc_inverter.kicad_sym`), pin map extracted from datasheet Fig. 1/3/4 (odd=HS/even=LS, 1/2=U 3/4=V 5/6=W); per-phase DC terminals tied on-sheet with a laminated-busbar note; DC-link bank C201–C205 (5 × 100 µF 900 V film [TBV]) with the §6.1 duty note.
