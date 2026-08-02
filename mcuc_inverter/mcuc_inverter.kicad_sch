@@ -991,8 +991,8 @@
 	)
 
 	(sheet
-		(at 160.0 60.0)
-		(size 55.88 20.32)
+		(at 160.0 55.0)
+		(size 55.88 25.4)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -1003,7 +1003,7 @@
 		)
 		(uuid "438b764a-db3e-4d65-baa7-b283e17510d2")
 		(property "Sheetname" "Phase current sensing"
-			(at 160.0 59.2884 0)
+			(at 160.0 54.2884 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1012,13 +1012,143 @@
 			)
 		)
 		(property "Sheetfile" "current_sense.kicad_sch"
-			(at 160.0 80.90459999999999 0)
+			(at 160.0 81.3046 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left top)
 			)
+		)
+		(pin "PHASE_U_OUT" passive
+			(at 160.0 58.42 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b101")
+		)
+		(pin "PHASE_V_OUT" passive
+			(at 160.0 60.96 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b102")
+		)
+		(pin "PHASE_W_OUT" passive
+			(at 160.0 63.5 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b103")
+		)
+		(pin "I_PH_1" output
+			(at 160.0 66.04 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b104")
+		)
+		(pin "I_PH_2" output
+			(at 160.0 68.58 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b105")
+		)
+		(pin "I_PH_3" output
+			(at 160.0 71.12 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b106")
+		)
+		(pin "I_REF_1" output
+			(at 160.0 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b107")
+		)
+		(pin "I_REF_2" output
+			(at 160.0 76.2 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b108")
+		)
+		(pin "I_REF_3" output
+			(at 160.0 78.74 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b109")
+		)
+		(pin "PHASE_U" passive
+			(at 215.88 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b10a")
+		)
+		(pin "PHASE_V" passive
+			(at 215.88 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b10b")
+		)
+		(pin "PHASE_W" passive
+			(at 215.88 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b10c")
+		)
+		(pin "OC_TRIP" output
+			(at 215.88 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b10d")
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -2119,6 +2249,147 @@
 			(type default)
 		)
 		(uuid "719a7b9c-e9fe-4c5b-8a65-7bffba092f1b")
+	)
+
+	(wire
+		(pts
+			(xy 215.88 58.42) (xy 232.41 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f10001")
+	)
+	(wire
+		(pts
+			(xy 232.41 58.42) (xy 232.41 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f10002")
+	)
+	(wire
+		(pts
+			(xy 232.41 48.26) (xy 243.84 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f10003")
+	)
+	(wire
+		(pts
+			(xy 215.88 60.96) (xy 234.95 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f10004")
+	)
+	(wire
+		(pts
+			(xy 234.95 60.96) (xy 234.95 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f10005")
+	)
+	(wire
+		(pts
+			(xy 234.95 50.8) (xy 243.84 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f10006")
+	)
+	(wire
+		(pts
+			(xy 215.88 63.5) (xy 237.49 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f10007")
+	)
+	(wire
+		(pts
+			(xy 237.49 63.5) (xy 237.49 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f10008")
+	)
+	(wire
+		(pts
+			(xy 237.49 53.34) (xy 243.84 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f10009")
+	)
+	(wire
+		(pts
+			(xy 215.88 71.12) (xy 226.06 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f1000a")
+	)
+	(wire
+		(pts
+			(xy 226.06 71.12) (xy 226.06 189.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f1000b")
+	)
+	(wire
+		(pts
+			(xy 226.06 189.23) (xy 313.69 189.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f1000c")
+	)
+	(wire
+		(pts
+			(xy 313.69 189.23) (xy 313.69 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f1000d")
+	)
+	(wire
+		(pts
+			(xy 313.69 170.18) (xy 299.72 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7a2c440-51f3-4f2e-9d31-0a4be2f1000e")
 	)
 
 	(sheet_instances
