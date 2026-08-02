@@ -139,6 +139,13 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Sourcing note:** only 5 pcs at DigiKey at check — order with the module and drivers at design commit.
 - **Affects:** SPEC.md §8.1, §9.1 trip implementation, current_sense sheet, motor phase routing (aperture transducers — busbars pass through), BOM.
 
+## D020: Auxiliary power secondary architecture
+
+- **Decision:** INN3990CQ flyback (DER-948Q 15 V pattern: RCD clamp, Schottky secondary — SR FET optional, FB divider at 1.265 V, Lp < 500 µH) → 15 V main rail; LM5175 buck-boost from the 12–24 V aux input, ideal-diode-OR'd (LM74610-Q1) into the same rail; LMR51430 bucks to 5 V (3 A) and 12 V [TBV]; TLV1117-33 for 3.3 V; four SN6505B push-pull stages **from the 5 V rail** with Würth 750316856 transformers (1:4.67 → 23 V, zener-split to +18/−5 V) for the gate supplies; Murata NXE2S0505MC for isolated CAN 5 V.
+- **Why (verified facts that shaped it):** SN6505B is 5 V-only — 15 V-input push-pull needs SN6507 but no stocked transformer reaches +18/−5 from 15 V, while the 5 V-input 750316856 hits 23 V total exactly and is AEC-Q200; a plain boost for the aux input cannot regulate at 24 V in / 15 V out — the LM5175 4-switch buck-boost is the verified correct topology; Mornsun's B0505S CAN module is NRND/unstocked, Murata's NXE2S is stocked with 3 kV isolation.
+- **Consequences:** the 5 V rail carries the ~8 W gate-supply load (within LMR51430's 3 A); gate-supply transformer isolation is functional-grade, reinforced barrier stays in the driver ICs (§5, D017 caveat); 12 V rail buck is the one unverified block [TBV].
+- **Affects:** SPEC.md §11.2b/§11.3, aux_power sheet, precharge sheet (+12 V rail), BOM.
+
 ---
 
 ## Superseded

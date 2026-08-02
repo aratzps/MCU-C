@@ -426,9 +426,27 @@ The previous draft had no viable path from a 48–450 V bus to control power. Th
 
 **Ruled out with reasons:** InnoSwitch3-EP (datasheet minimum DC input 90 V; UV/OV pin ratio 4.4:1 cannot span 9.4:1), LinkSwitch-XT2 (11 W ceiling), InnoSwitch4 (750 V max, no 900 V part exists), ST VIPerPlus (800 V max), onsemi NCP107x (700 V), MPS HFC0500 (hard brown-in at ≥ 95 V — never starts at 48 V). The 1700 V SiC InnoSwitch3-AQ (INN3949CQ, $15.11, stocked) is a valid oversized fallback if the 650 V rail recommendation of the 900 V parts becomes a concern.
 
+### 11.2b Secondary architecture (D020 — parts verified 2026-07-31)
+
+```
+HV bus 48–450 V ──INN3990CQ flyback (RCD clamp, Schottky rectifier,
+                  FB divider @1.265 V ref, Lp<500 µH, DER-948Q pattern)──► 15 V main rail
+                                                                              │
+12–24 V aux ──LM5175 4-switch buck-boost → 15 V ──ideal-diode OR (LM74610-Q1)─┤
+                                                                              │
+        15 V ──LMR51430 buck──► 5 V (3 A)                                     │
+        15 V ──LMR51430 buck──► 12 V (contactor/fan) [TBV]  ◄─────────────────┘
+        5 V ──TLV1117-33──► 3.3 V logic
+        5 V ──4× SN6505B + Würth 750316856 (1:4.67 → 23 V, AEC-Q200,
+              zener-split at centre tap)──► +18 / −5 V gate rails (3× HS + 1× LS)
+        5 V ──Murata NXE2S0505MC (2 W, 3 kV)──► isolated CAN 5 V
+```
+
+Key verified constraints: SN6505B accepts **5 V only** (2.25–5.5 V) — gate supplies run from the 5 V rail, which therefore carries ~8 W of gate-drive load (LMR51430's 3 A covers it, noted); a plain boost for the aux input is **invalid** (cannot regulate with 24 V in > 15 V out) — hence the buck-boost; the gate-supply transformer's 2.5 kV AC test rating is functional isolation, with the reinforced barrier in the driver ICs per §5. All parts stocked at DigiKey at check; the 12 V rail buck is the one unverified block **[TBV]**.
+
 ### 11.3 Auxiliary input
 
-A **12–24 V external auxiliary input [SEL]** is required in addition to the HV-derived supply. Control electronics must be able to power up before the DC bus is live, to sequence precharge and to permit safe bench work and diagnostics on a de-energised bus.
+A **12–24 V external auxiliary input [SEL]** is required in addition to the HV-derived supply. Control electronics must be able to power up before the DC bus is live, to sequence precharge and to permit safe bench work and diagnostics on a de-energised bus. Implementation per §11.2b: LM5175 buck-boost into the 15 V rail through an ideal-diode OR.
 
 ### 11.4 Thermal
 
