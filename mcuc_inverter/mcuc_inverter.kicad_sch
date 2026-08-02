@@ -38,8 +38,8 @@
 	)
 
 	(sheet
-		(at 20.0 35.0)
-		(size 55.88 20.32)
+		(at 243.84 35.0)
+		(size 55.88 88.9)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -50,7 +50,7 @@
 		)
 		(uuid "9e4d481c-5349-431a-8284-8a5dd7d9e524")
 		(property "Sheetname" "Power stage and DC link"
-			(at 20.0 34.2884 0)
+			(at 243.84 34.2884 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -59,13 +59,303 @@
 			)
 		)
 		(property "Sheetfile" "power_stage.kicad_sch"
-			(at 20.0 55.9046 0)
+			(at 243.84 124.4846 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left top)
 			)
+		)
+		(pin "DC_BUS_P" passive
+			(at 243.84 40.64 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "46316ab6-b941-4532-9479-f3488ea134a2")
+		)
+		(pin "DC_BUS_N" passive
+			(at 243.84 43.18 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "75aff6eb-4f0d-4d6f-890f-61cbc20cee05")
+		)
+		(pin "PHASE_U" passive
+			(at 243.84 48.26 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "612dfd6f-6d80-4127-a1ea-635a6e31476e")
+		)
+		(pin "PHASE_V" passive
+			(at 243.84 50.8 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "13e5927a-e5c5-403d-a41e-9fc113882d1e")
+		)
+		(pin "PHASE_W" passive
+			(at 243.84 53.34 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "c9fa85d7-2e94-4fad-add9-bad2cf105ebd")
+		)
+		(pin "GATE_HS_1" input
+			(at 299.72 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "02aeb437-88ec-47bc-9784-3a71d24a7867")
+		)
+		(pin "GATE_HS_2" input
+			(at 299.72 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "bb7b508d-3fbd-4a12-88e7-085bb9ac3825")
+		)
+		(pin "GATE_HS_3" input
+			(at 299.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "2e063c8a-e599-4f95-b513-56260ea7beac")
+		)
+		(pin "GATE_LS_1" input
+			(at 299.72 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "867b1635-d6a4-4767-8594-70a356f72d74")
+		)
+		(pin "GATE_LS_2" input
+			(at 299.72 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "35daec4e-2493-4ad3-8f39-0c7420c487a2")
+		)
+		(pin "GATE_LS_3" input
+			(at 299.72 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "5ae2e8fb-9ff9-4f5c-ab6a-610dd8751c0f")
+		)
+		(pin "KSRC_HS_1" passive
+			(at 299.72 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "07e693fc-4d81-418c-b445-8c7881f652ab")
+		)
+		(pin "KSRC_HS_2" passive
+			(at 299.72 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "cfbfe8da-74db-425f-9d77-19cfa744607b")
+		)
+		(pin "KSRC_HS_3" passive
+			(at 299.72 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "84d13948-f81a-48c9-88e1-a39402e1c035")
+		)
+		(pin "KSRC_LS_1" passive
+			(at 299.72 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "aa11703e-f368-47ad-a7ba-d47a611c65ea")
+		)
+		(pin "KSRC_LS_2" passive
+			(at 299.72 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "247ae29f-ecf5-4a30-b162-ede2439a4bb5")
+		)
+		(pin "KSRC_LS_3" passive
+			(at 299.72 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "db2d23e1-cc22-45ee-9f6c-c81cd1d60c04")
+		)
+		(pin "DSENSE_HS_1" passive
+			(at 299.72 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "79b52dae-8bda-4796-b45c-6719fea4706b")
+		)
+		(pin "DSENSE_HS_2" passive
+			(at 299.72 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "3899b50f-c590-4f1f-916a-8b66724b040a")
+		)
+		(pin "DSENSE_HS_3" passive
+			(at 299.72 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "f8be4012-474f-4751-ad51-b1b61e5d944d")
+		)
+		(pin "DSENSE_LS_1" passive
+			(at 299.72 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "b7f12964-5c3a-4af2-a0a1-5bf34b905ab2")
+		)
+		(pin "DSENSE_LS_2" passive
+			(at 299.72 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "1ec05714-041d-4b57-a3ee-a7a9b03bc36b")
+		)
+		(pin "DSENSE_LS_3" passive
+			(at 299.72 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "174ba938-280f-404b-990c-1797096d4ed6")
+		)
+		(pin "TS_1_P" passive
+			(at 299.72 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "457e6b40-912a-4021-b9df-a49ec0c7804e")
+		)
+		(pin "TS_1_N" passive
+			(at 299.72 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "ac2861aa-25bc-42f4-a74d-54abf1882fee")
+		)
+		(pin "TS_2_P" passive
+			(at 299.72 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "96c28e83-1851-4e73-bd7e-e33f9246e650")
+		)
+		(pin "TS_2_N" passive
+			(at 299.72 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "56287c6c-dcb8-4ba3-b84f-c7d39030c63a")
+		)
+		(pin "TS_3_P" passive
+			(at 299.72 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "1e527236-c1fd-49f6-88d6-07d0816479f1")
+		)
+		(pin "TS_3_N" passive
+			(at 299.72 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "1f44a55c-c527-431c-b850-9dffca969780")
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -78,7 +368,7 @@
 
 	(text "SPEC.md 4, 6"
 		(exclude_from_sim no)
-		(at 20.0 59.0 0)
+		(at 243.84 128.0 0)
 		(effects
 			(font
 				(size 1.0 1.0)
