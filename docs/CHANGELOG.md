@@ -2,6 +2,13 @@
 
 Append-only, newest first.
 
+## 2026-07-31 — power_stage and gate_drive sheets captured
+
+- **power_stage**: FS02MR12A8MA2B module as a custom 39-pin symbol in the new project library (`mcuc_inverter.kicad_sym`), pin map extracted from datasheet Fig. 1/3/4 (odd=HS/even=LS, 1/2=U 3/4=V 5/6=W); per-phase DC terminals tied on-sheet with a laminated-busbar note; DC-link bank C201–C205 (5 × 100 µF 900 V film [TBV]) with the §6.1 duty note.
+- **gate_drive**: six 1ED3491MC12M channels (pinout verified from datasheet v1.20 — single IN pin, not IN±): D018 turn-on RC delay networks (~250 ns target, retune note on-sheet), split 12 Ω/3.3 Ω gate resistors, external BSS138 Miller clamp to **VEE2** per datasheet §4.5.4.1, DESAT via 2× US1M to the module drain-sense pins with ADJA/ADJB set resistors (349 mA soft-off, 650 ns LEB [TBV]), per-channel +18/−5 rails (LS shared), FLT_N wired-AND into the supervisor's DRV_FAULT_IN, RDYC bus (dual-function ready/fault-clear) coupled to the supervisor reset chain through a 1 k series resistor.
+- Root sheet now wires supervisor → gate_drive (6× gated PWM, fault, reset) and gate_drive → power_stage (6× gate, 6× Kelvin, 6× DESAT). VGD_* supply rails await the aux_power sheet.
+- Verification: ERC 0 errors on the full hierarchy; netlist machine-checks — power_stage 49 pins/29 nets, gate_drive 244/244 channel checks; independently re-run before commit. 4 of 11 sheets now captured.
+
 ## 2026-07-31 — Supervisor sheet ported from PALTA; dead-time claim corrected (D018)
 
 - `mcuc_inverter/supervisor.kicad_sch` captured from the legacy `pcb_design/supervisor.sch`: overlap-elimination gating, overcurrent latch (AUP1G74), driver-fault conditioning to FAULT_BKIN, driver-reset chain. Root sheet wires the six PWM nets and FAULT_BKIN between MCU and supervisor sheets; netlist-verified that FAULT_BKIN lands on PB12/TIM1_BKIN.
