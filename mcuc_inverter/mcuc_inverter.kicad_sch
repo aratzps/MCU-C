@@ -839,6 +839,136 @@
 				(justify left top)
 			)
 		)
+		(pin "PRECHARGE_EN" input
+			(at 20.0 63.5 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "7b107998-c936-4311-a16f-235447fea493")
+		)
+		(pin "CONTACTOR_EN" input
+			(at 20.0 66.04 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "92a298c4-d904-4151-9624-98d7e37af12a")
+		)
+		(pin "DISCHARGE_EN" input
+			(at 20.0 68.58 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "c6ec27af-8fcc-426e-a6d2-dc27c18eae5a")
+		)
+		(pin "+12V" passive
+			(at 20.0 71.12 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "417f72d3-0674-4970-8fe4-71764fe88e0a")
+		)
+		(pin "+3.3V" passive
+			(at 20.0 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "604256de-1ddc-46e7-b42c-bd9386a1a37f")
+		)
+		(pin "GND" passive
+			(at 20.0 76.2 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "5d00f4a0-c045-4c58-9e24-9eb42953b4e1")
+		)
+		(pin "DC_BUS_P" passive
+			(at 75.88 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "59ce63e7-3016-4a84-a14b-c330684e6126")
+		)
+		(pin "DC_BUS_N" passive
+			(at 75.88 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "93d050b3-d5d0-4dd6-8d3a-4a0cc429fecb")
+		)
+		(pin "DC_INPUT_P" passive
+			(at 75.88 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "b72070d1-71ac-48f0-96b9-9bdb4876fcd0")
+		)
+		(pin "CONTACTOR_P" passive
+			(at 75.88 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "c3721575-2e56-4a4e-b573-78806129c213")
+		)
+		(pin "CONTACTOR_N" passive
+			(at 75.88 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e18bcd84-fd1c-473c-8dc4-d74d2a2220d1")
+		)
+		(pin "VDISCH_P" passive
+			(at 75.88 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "fde0f7be-d77a-41bc-97d3-4e1f9d9ab195")
+		)
+		(pin "VDISCH_N" passive
+			(at 75.88 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "740cd3d7-3457-451f-8850-762b45dc7a4b")
+		)
 		(instances
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
@@ -1928,6 +2058,67 @@
 			(type default)
 		)
 		(uuid "fd6caed6-ab7e-4fbc-a346-4bbc4d576759")
+	)
+
+	(wire
+		(pts
+			(xy 75.88 63.5) (xy 86.36 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46582aff-e50b-4c95-81f2-2a511abeae65")
+	)
+	(wire
+		(pts
+			(xy 86.36 40.64) (xy 86.36 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7dc46456-a019-4170-9767-c7b944d1f772")
+	)
+	(wire
+		(pts
+			(xy 86.36 40.64) (xy 243.84 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a931223-b38d-4926-94e7-7c7fa6cdeb81")
+	)
+	(wire
+		(pts
+			(xy 75.88 66.04) (xy 88.9 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72b8d713-1caa-44b6-b507-d7c145fefd1e")
+	)
+	(wire
+		(pts
+			(xy 88.9 43.18) (xy 88.9 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb6c09ae-42fe-4dbc-81bf-d0a28293f936")
+	)
+	(wire
+		(pts
+			(xy 88.9 43.18) (xy 243.84 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "719a7b9c-e9fe-4c5b-8a65-7bffba092f1b")
 	)
 
 	(sheet_instances
