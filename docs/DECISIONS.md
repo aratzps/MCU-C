@@ -131,6 +131,14 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Port deviations (recorded on-sheet):** all-3.3 V logic (the original BOM quietly fitted 5 V SN74ACT08 despite the schematic saying ALVC08 — revisit only if the chosen gate driver needs 5 V inputs; the 1ED3491 does not); single OC_TRIP open-drain input replacing the three wired-OR comparators (comparator lives with current sensing); added boot pullups on FAULT_RESET / DRV_RST_IN.
 - **Affects:** SPEC.md §9.2, gate_drive sheet (RC delay network), D008 (corrected, not superseded — the latch and BKIN routing claims were accurate and are now netlist-verified).
 
+## D019: Phase current sensing — LEM HOYS 200-S/SP33 aperture transducers
+
+- **Decision:** Three LEM HOYS 200-S/SP33 (±500 A range, 3.3 V ratiometric, 1.65 V ref) on the phase outputs; 300 A hardware trip via an external window comparator per phase, open-drain wire-OR onto the supervisor's OC_TRIP. Spec bandwidth/latency re-derived for 25 kHz switching: ≥ 150 kHz / < 5 µs.
+- **Why:** The shunt path died twice over: 0.75 mΩ (sized for ±250 mV amps) dissipates 27 W at the 120 s peak, and the low-dissipation 0.1 mΩ + ΔΣ route is blocked because the STM32F405 has no DFSDM peripheral (verified, ST AN4821) — the analog AMC1302 fallback was unstocked with 16-week lead. HOYS is the only verified in-stock transducer meeting range + reinforced isolation (IEC 61800-5-1, 5.4 kV rms tested) + native 3.3 V ADC mapping. Precedent: the VESC-based Axiom 100 kW inverter uses LEM aperture transducers for the same reasons.
+- **Trade-offs accepted:** 180 kHz / 3 µs (fine at 25 kHz FOC); ±1.25 % @ 25 °C growing to ±4.55 % @ 105 °C (FOC uses relative phase balance; absolute accuracy affects torque calibration, acceptable for this application); the built-in OCD (584 A) is unusable for the 300 A trip — external comparators restore the PALTA per-phase comparator structure.
+- **Sourcing note:** only 5 pcs at DigiKey at check — order with the module and drivers at design commit.
+- **Affects:** SPEC.md §8.1, §9.1 trip implementation, current_sense sheet, motor phase routing (aperture transducers — busbars pass through), BOM.
+
 ---
 
 ## Superseded

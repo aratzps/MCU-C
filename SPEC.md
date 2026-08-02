@@ -291,12 +291,16 @@ Passive bleeding alone at 5 s would dissipate >30 W continuously — unacceptabl
 | Channels | 3 (one per phase) |
 | Range | ±325 A instantaneous |
 | Isolation | Reinforced, ≥ 3 kV rms |
-| Bandwidth | ≥ 500 kHz (≥ 5× max PWM frequency) |
-| Latency | < 2 µs to ADC-ready |
+| Bandwidth | ≥ 150 kHz | 
+| Latency | < 5 µs to ADC-ready |
+
+Bandwidth/latency re-derived for the actual 25 kHz switching (D016): 5× f_sw = 125 kHz; the original ≥ 500 kHz / < 2 µs figures assumed 100 kHz PWM. VESC samples currents synchronised to the PWM midpoint, so 3 µs transducer response at a 40 µs period is comfortable. **[DER]**
 
 **Three phase measurements, not one bus measurement.** VESC FOC reconstructs the current vector from per-phase samples; a single DC-link shunt cannot provide this.
 
-**Candidates [TBV]:** isolated shunt amplifier (AMC1301/AMC1311 class) with a ~0.5 mΩ shunt, or closed-loop Hall/fluxgate transducers (LEM class). If shunts are used, the shunt value must be chosen so full-scale current maps to most of the amplifier's input range — at ±325 A into a ±250 mV input, that is ~0.75 mΩ, not the 100 µΩ that would waste 94 % of the range.
+**Selection (D019, candidate level — verified 2026-07-31):** **LEM HOYS 200-S/SP33** ×3 — Ipn 200 A rms, range ±500 A, 2.3 mV/A from a 1.65 V reference on a single 3.3 V supply (natively ADC-mapped, ratiometric), 180 kHz, 3 µs response, reinforced per IEC 61800-5-1 (tested 5.4 kV rms), $37.11 qty 1, stocked. Its built-in OCD pin trips at 2.92 × Ipn ≈ 584 A — too high for the 300 A hardware trip — so **the §9.1 trip comes from an external window comparator per phase** on the analog output (±0.69 V about V_ref at 300 A), open-drain wire-OR onto the supervisor's OC_TRIP, restoring the original PALTA three-comparator structure.
+
+**Shunt route — evaluated and rejected [DER]:** at ±250 mV full scale the required 0.75 mΩ dissipates 27 W at 190 A rms (not a PCB part). A 0.1 mΩ busbar shunt (1 W cont / 3.6 W peak) works electrically, but the clean readout is a ΔΣ modulator (AMC1306M05) and **the STM32F405 has no DFSDM peripheral** — it cannot filter a ΔΣ bitstream without consuming the CPU (confirmed against ST AN4821). The analog fallback (AMC1302, 280 kHz, 1.6–2.5 µs) had zero stock / 16-week lead at check. Precedent agrees: Tesla's shunt+ΔΣ phase sensing rides on a C2000 with hardware SDFM; the VESC-based Axiom (100 kW, 400 V) uses LEM aperture transducers; Infineon's own G2 eval uses coreless TLE4973 modules that are not purchasable at distribution (MOQ 5000 / Tier-1 only).
 
 ### 8.2 Bus voltage
 
