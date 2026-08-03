@@ -357,6 +357,62 @@
       {
         "netclass": "GATE",
         "pattern": "/VGD_LS_COM"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R603-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R612-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R613-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R614-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R615-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R616-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R617-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R618-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R619-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(D620-K)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(D620-A)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*CLAMP_NODE"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*V_SENSE"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*Q403_G"
       }
     ]
   },
