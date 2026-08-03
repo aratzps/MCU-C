@@ -107,13 +107,38 @@ Working voltage 450 V DC, IEC 60664-1 basis (PD2, OVC II, material IIIa) ⏳ fin
 
 Every schematic sheet gated on: kicad-cli ERC **0 errors** on the full hierarchy, per-block netlist machine-assertions (supervisor 24/24 against the legacy PALTA netlist; power_stage 49 pins/29 nets; gate_drive 244/244; precharge 40/40 incl. HV/LV separation; current_sense 69/69 incl. 11-node OC_TRIP membership; aux_power full block set incl. all 12 VGD rails spanning source→load), and independent re-verification by a second netlist export before each commit. PDF export of the hierarchy succeeds at every step.
 
-## 13. ⏳ Pending sections (updated as phases complete)
+## 13. MCU pin assignment
 
-- Final BOM with line-item pricing and suppliers (task #3)
-- MCU pin assignment table with AF-table citations (task #2)
-- PCB layout: stackup, HV zones, clearance verification, DRC record (task #4)
+Complete table with per-pin citations in `docs/PINOUT.md`, generated against the post-wiring netlist. Highlights: the three phase-current ADC inputs sit on **PC0/PC1/PC2 = ADC123_IN10/11/12**, the exact channels VESC's `hw_100_250` converts at rank 1 of ADC1/ADC2/ADC3 in triple-regular-simultaneous mode — so the custom `hw_mcuc.h` can copy that ADC vector nearly verbatim. Encoder on TIM3 (PC6/7/8), PPM on PB6 (TIM4_CH1, VESC convention), resolver on SPI3 with PA15 as chip select (its reset-state pull-up holds CS deasserted through boot; costs full JTAG, which this board never uses). PA4/PA5 are the only non-5 V-tolerant pins used and carry analog only.
+
+**D023 — no phase-voltage sensing:** VESC's SENS1/2/3 assume a controller floating at battery potential with direct phase dividers. This control domain is isolated, so those dividers are impossible; isolated phase sensing would cost three more AMC1311 channels plus per-phase HV supplies for features (phase filters, BEMF startup assist) that FOC with three current sensors and four position interfaces does not need. PA0/PA1/PA2 stay reserved.
+
+## 14. Physical realisation
+
+**Two boards plus a busbar assembly (D021, D024).** Power current never flows through the control PCB:
+
+| Item | Form |
+|---|---|
+| Control/driver board | 200 × 132 mm, 4-layer (F.Cu / GND / power islands / B.Cu), 1.6 mm ±0.16 (PressFIT requirement), mounted on the module via its PressFIT signal pins and the AN-G2-ASSEMBLY screw/heat-stake pattern |
+| DC-link carrier | 320 × 100 mm, 2-layer 2 oz, solid DC+ front / DC− back zones, SOLID pad connections (no thermal reliefs), M6 lugs to module and busbar. **Complete: ERC 0/0, DRC 0 violations** |
+| Laminated busbar | Mechanical part (drawing, not gerbers): battery → carrier → module screw terminals; phase bars pass through the HOYS transducer apertures to M6 studs |
+| Chassis-mounted | Precharge resistor (50 W), discharge bank (4 × 25 W), coldplate NTC — all connectorised |
+
+**Isolation is enforced, not documented.** `mcuc_inverter.kicad_dru` carries a custom `HV_to_LV` rule at 6.4 mm (SPEC §10 basic insulation at 450 V working) with narrow relax rules for intra-string segments that legitimately sit at ~124 V, plus 14 copper keepout areas under every isolator body. The rule was proven live: a probe track planted 4.68 mm from an HV pin produced exactly one violation and its removal returned the board to zero. Placement passes DRC with **0 clearance and 0 courtyard violations**.
+
+Known geometry exceptions, recorded rather than hidden: the VOM1271's SOP-4 package creepage (~5 mm) is below the 6.4 mm board target — a package limit, flagged for the review pass; and the precharge relay's coil-to-contact spacing rides the relay's own certified barrier.
+
+## 15. Bill of materials
+
+`docs/BOM.md` carries every part with its verified supplier, price at qty 1/100 and stock caveats; `docs/BOM_*.csv` are the refdes-level exports (165 line items / 474 parts on the control board, 13 of them deliberately off-board; 11 items on the carrier). Rough qty-1 cost ≈ **$1.4 k**, of which the SiC module is 55 % — consistent with the §3 economics.
+
+The sourcing sweeps caught several parts that would have failed at purchase or fabrication: a fictitious "REDCUBE THR M6" terminal (M6 exists only in the press-fit family), a Würth inductor P/N that returns 404, an obsolete AO3400 (the A suffix is the live part), the EOL'd KTY 81/210, an NFND board NTC, unstocked Nexperia small-signal parts, an SS310 package mismatch, and a Vishay capacitor P/N whose "C61010" code decodes to 10 µF rather than the intended 100 µF. **Order-early list** (long leads behind current stock): the module (39 wk), AD2S1205 (20 wk), HOYS transducers (5 pcs at check), the STM32 (dry at DigiKey/Mouser; Newark holds it), and the Hongfa relay (non-DigiKey channel).
+
+## 16. ⏳ Pending sections
+
+- Routing completion and final DRC record (task #4, Phase B in progress)
 - Fabrication package contents and PCBWay ordering parameters (task #5)
-- Adversarial review findings and dispositions (task #7)
+- Adversarial review findings and dispositions (task #7, in progress)
 - Bring-up plan and open risks
 
 *Draft maintained under version control; see git history for provenance of every change.*
