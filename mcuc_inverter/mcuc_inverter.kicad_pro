@@ -276,10 +276,6 @@
       },
       {
         "netclass": "HV_BUS",
-        "pattern": "/Auxiliary power/DC_BUS_N"
-      },
-      {
-        "netclass": "HV_BUS",
         "pattern": "/Precharge and contactor/DC_INPUT_P"
       },
       {
@@ -324,10 +320,6 @@
       },
       {
         "netclass": "HV_BUS",
-        "pattern": "Net-(C603-Pad2)"
-      },
-      {
-        "netclass": "HV_BUS",
         "pattern": "Net-(D601-A)"
       },
       {
@@ -368,18 +360,6 @@
       },
       {
         "netclass": "HV_BUS",
-        "pattern": "Net-(R613-Pad2)"
-      },
-      {
-        "netclass": "HV_BUS",
-        "pattern": "Net-(R614-Pad2)"
-      },
-      {
-        "netclass": "HV_BUS",
-        "pattern": "Net-(R615-Pad2)"
-      },
-      {
-        "netclass": "HV_BUS",
         "pattern": "Net-(R616-Pad2)"
       },
       {
@@ -392,15 +372,7 @@
       },
       {
         "netclass": "HV_BUS",
-        "pattern": "Net-(R619-Pad2)"
-      },
-      {
-        "netclass": "HV_BUS",
         "pattern": "Net-(D620-K)"
-      },
-      {
-        "netclass": "HV_BUS",
-        "pattern": "Net-(D620-A)"
       },
       {
         "netclass": "HV_BUS",
@@ -413,6 +385,26 @@
       {
         "netclass": "HV_BUS",
         "pattern": "*Q403_G"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*DC_BUS_N"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*DC_BUS_P"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*DC_INPUT_P"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*PRECHG_R_CHASSIS"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*DISCHG_R_RET"
       }
     ]
   },

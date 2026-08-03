@@ -108,3 +108,26 @@ Three fix agents worked with strict file ownership. Where an agent's verificatio
 
 - **CR-3** was left open by the first implementer rather than guessed at: it required a footprint for the transformer that **bridges the reinforced isolation barrier**, and inventing that geometry is precisely the failure class this review exists to prevent. Implemented separately once verified land-pattern data (rendered from the manufacturer drawing) was available.
 - **MN-14** (aux input TVS and reverse-polarity element) deferred rather than fitted with unverified parameters.
+
+---
+
+# Layout-phase finding: netclass patterns that matched nothing (2026-08-03)
+
+Found during PCB re-import, and the most dangerous defect of the whole project.
+
+**What was wrong.** Seven `HV_BUS` netclass patterns in `mcuc_inverter.kicad_pro` matched **no real net**, including `/Auxiliary power/DC_BUS_N` where the actual net is `/Precharge and contactor/DC_BUS_N`. So **the board's main DC negative rail — the return for the entire high-voltage domain — was silently unclassified**, taking the 0.2 mm default clearance instead of the 2.0 mm HV rule and the 6.4 mm barrier rule. The adversarial fix pass had also created new nets at bus potential (the RCD clamp string, a new UV/OV divider, a renamed clamp node, the discharge gate, the bus-sense tap) that no pattern covered at all.
+
+**Why nothing caught it.**
+
+- ERC passes — the schematic is correct; this is a *board configuration* fault.
+- DRC passes — the rules were not violated because they were **not being applied** to those nets.
+- Nothing looks wrong on screen: the nets exist, they are named, they connect correctly.
+- **A netclass pattern that matches nothing produces no warning.** It fails open, silently.
+
+The same trap bit the first repair attempt: KiCad prefixes sheet-local net names with their sheet path, so a bare `CLAMP_NODE` pattern is inert — the working form is `*CLAMP_NODE`. That correction, too, produced no error when it matched nothing; it was caught only because the violation count moved the wrong way.
+
+**How it was found.** Not by a checker — by an agent cross-checking the netclass configuration against the *actual exported net list* rather than assuming the configuration was current. That comparison is now a standing check: **every HV pattern must match at least one real net**, asserted programmatically.
+
+**What it exposed.** Correct classification surfaced violations in three waves: 43 → (LV stitching removed) 37 → (placement repaired) 0 → (DC_BUS_N finally classified) 72. Each wave was real spacing that would have been fabricated. The last wave revealed a structural error the earlier passes had only worked around: **the bus-sense high-side block, including its barrier-crossing transformer, had been placed in low-voltage territory** because no pocket existed in the HV zone.
+
+**The lesson worth keeping.** Automated checks verify that a design satisfies the rules it was given. They cannot verify that it was given the right rules. Every rule that selects by pattern — netclasses, DRC custom rules, keepout scopes — needs an explicit test that the selector actually selects something.
