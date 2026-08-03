@@ -13,3 +13,6 @@
 *.kicad_prl
 *-backups/
 fp-info-cache
+_tmp_verify.*
+*.kicad_pcb.kicad_pro
+*.kicad_pcb.bak
