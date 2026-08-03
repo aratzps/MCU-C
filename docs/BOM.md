@@ -6,6 +6,7 @@
 
 | Part | Why | Stock at check |
 |---|---|---|
+| **Hongfa HFE80V relay** | **26-wk lead, zero stock globally — longest lead in the design** | **0** |
 | FS02MR12A8MA2B (module) | 39-wk factory lead behind stock | 51 @ DigiKey |
 | AD2S1205WSTZ | 0 stock / 20-wk (TME residual) | 0 @ DigiKey |
 | LEM HOYS 200-S/SP33 | thin stock | 5 @ DigiKey |
@@ -70,7 +71,7 @@
 
 | Qty | Part | Function | Unit $ (1/100) | Supplier | Notes |
 |---|---|---|---|---|---|
-| 1 | Hongfa **HFE80V-20C/450-12-HTPAJ** | Precharge relay, 450 V DC | 18.92 | **Rutronik/RS** | purpose-built EV precharge; DigiKey fallback: TE LEV100A4ANG $145 |
+| 1 | Hongfa **HFE80V-20C/450-12-HTPAJ** | Precharge relay, 450 V DC | 18.92 | **Rutronik/RS** | purpose-built EV precharge. **⚠ 0 stock globally at 2026-08-03, 26-week lead — now the longest-lead item in the design, ahead of the module.** DigiKey-stocked fallback: TE LEV100A4ANG $145 |
 | 1 | Vishay **VOM1271T** | Discharge FET photovoltaic driver | 2.08 / 1.25 | DigiKey | eliminates floating supply (refinement queued) |
 | 1 | Wolfspeed **C3M0350120J** | Active discharge FET | 6.39 / 3.08 | DigiKey | ~0.3–0.5 W at 8 V gate, current-limited duty OK |
 | 1 | 1.25 kΩ ≥50 W pulse wirewound (chassis) | Precharge resistor ≥41 J | ~8–15 | DigiKey (final P/N at BOM export) | chassis-mount |
