@@ -1190,17 +1190,6 @@
 		)
 		(uuid "86bb7312-83c4-49e0-8abf-2d259f911387")
 	)
-	(text "SCALING: V_BUS = Vbus x (12.0k/3012k) x 0.75 = 2.988 mV/V.\n500 V -> 1.494 V | 250 V -> 0.747 V | 490 V (OV trip, SPEC 9.1) -> 1.464 V.\nAMC1311 input clips at 2.00 V = 502 V bus, so V_BUS saturates at ~1.50 V:\nalways < 3.3 V ADC full scale by design (headroom deliberate, not an error)."
-		(exclude_from_sim no)
-		(at 20 39.37 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9090abc6-75d5-4dbd-baf3-9c1da9e8bcd2")
-	)
 	(text "HV ZONE - divider + AMC1311 high side + LDO. Layout: SPEC 10 creepage, D021 HV zone. Strict series string: every intermediate node has exactly two resistor pins (voltage grading)."
 		(exclude_from_sim no)
 		(at 20 48.26 0)
@@ -1301,6 +1290,16 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "1%"
+				(at 45.72 63.5 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+		)
 		(instances
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
@@ -1376,6 +1375,16 @@
 				(justify left)
 				(hide yes)
 			)
+		)
+		(property "Tolerance" "1%"
+				(at 45.72 73.66 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -1453,6 +1462,16 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "1%"
+				(at 45.72 83.82 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+		)
 		(instances
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
@@ -1528,6 +1547,16 @@
 				(justify left)
 				(hide yes)
 			)
+		)
+		(property "Tolerance" "1%"
+				(at 45.72 93.98 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -1620,6 +1649,16 @@
 				(justify left)
 				(hide yes)
 			)
+		)
+		(property "Tolerance" "0.1%"
+				(at 45.72 106.68 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -1761,6 +1800,16 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "1%"
+				(at 55.88 100.33 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+		)
 		(instances
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
@@ -1814,7 +1863,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "100pF"
 			(at 66.04 105.41 0)
 			(effects
 				(font
@@ -1871,17 +1920,6 @@
 			(type default)
 		)
 		(uuid "f78f6f3c-fa76-42bf-8447-130c6556dbc2")
-	)
-	(text "R706/C703: input RC ahead of IN (fc ~ 120 Hz with the 12.0k tap;\nTI Fig. 9-2 fits only 100 pF - value TBV vs required sense bandwidth).\nDO NOT fit clamp/protection diodes on IN: AMC1311 datasheet 9.3\n(diode leakage corrupts the reading; ESD cells + divider impedance\nare the specified protection)."
-		(exclude_from_sim no)
-		(at 55.88 133.35 0)
-		(effects
-			(font
-				(size 1.0 1.0)
-			)
-			(justify left bottom)
-		)
-		(uuid "a629a953-79d5-45bd-8afd-e06cb7c0b895")
 	)
 	(symbol
 		(lib_id "mcuc:AMC1311BDWV")
@@ -2651,17 +2689,6 @@
 		)
 		(uuid "707e7f50-6a77-407b-bafd-56ff95671f28")
 	)
-	(text "HV-side 3.3 V: MCP1804T-3302I/OT (2-28 V in, 150 mA, verified stocked 2026-08-02)\nfrom the +18 V low-side gate rail VGD_LS_P, referenced to VGD_LS_COM [TBV - noise\nreview, D022]. AMC1311 GND1 ties to DC_BUS_N (divider bottom). VGD_LS_COM and\nDC_BUS_N join only at the module low-side source Kelvin / N-terminal copper -\nsupply return path is through that joint. Kelvin split + LDO PSRR review [TBV]."
-		(exclude_from_sim no)
-		(at 130.81 74.93 0)
-		(effects
-			(font
-				(size 1.0 1.0)
-			)
-			(justify left bottom)
-		)
-		(uuid "fc94b3bd-a19f-42ad-b2e3-6ecf5ac8c1bd")
-	)
 	(wire
 		(pts
 			(xy 114.3 95.25) (xy 121.92 95.25)
@@ -2955,6 +2982,16 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "0.1%"
+				(at 137.16 100.33 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+		)
 		(instances
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
@@ -3018,7 +3055,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "7.50k"
+		(property "Value" "15.0k"
 			(at 143.51000000000002 113.03 0)
 			(effects
 				(font
@@ -3056,6 +3093,16 @@
 				(justify left)
 				(hide yes)
 			)
+		)
+		(property "Tolerance" "0.1%"
+				(at 146.05 111.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -3198,6 +3245,16 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "0.1%"
+				(at 137.16 105.41 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+		)
 		(instances
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
@@ -3271,7 +3328,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "7.50k"
+		(property "Value" "15.0k"
 			(at 163.83 86.868 270)
 			(effects
 				(font
@@ -3309,6 +3366,16 @@
 				(justify left)
 				(hide yes)
 			)
+		)
+		(property "Tolerance" "0.1%"
+				(at 160.02 90.17 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -4106,17 +4173,6 @@
 		)
 		(uuid "cd0efe26-1a56-46af-a27e-b10243b61713")
 	)
-	(text "Diff-to-SE: Vout = (7.50k/10.0k) x (OUTP-OUTN) = 0.75 x VIN (OUTP/OUTN swing +/-1 V about VCM 1.44 V; common mode rejected by the 4-resistor stage,\noutput referenced to GND). E96 0.1% for R707-R710 (CMRR set by ratio match). Op amp: any RRIO 3.3 V single in SOT-23-5 (TLV9061IDBVR primary / OPA320 [TBV])."
-		(exclude_from_sim no)
-		(at 130.81 127.0 0)
-		(effects
-			(font
-				(size 1.0 1.0)
-			)
-			(justify left bottom)
-		)
-		(uuid "f6dca0bb-8f51-4a19-aabb-51ed3084a360")
-	)
 	(text "AMC1311 failsafe: OUTP-OUTN = -2.5 V (V_BUS pulled to 0 V) when the high side is unpowered\nor SHTDN asserted - firmware reads a dead bus, which is the safe direction for the 45 V UV inhibit."
 		(exclude_from_sim no)
 		(at 130.81 133.35 0)
@@ -4127,6 +4183,71 @@
 			(justify left bottom)
 		)
 		(uuid "30068781-c74f-40ca-a1cd-8be100b7cc47")
+	)
+	(wire
+		(pts
+			(xy 111.76 60.96) (xy 111.76 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ed68c67-bac9-40f0-b061-4becfd2cabb3")
+	)
+	(text "SCALING (MJ-22 fixed): V_BUS = Vbus x (12.0k/3012k) x 1.50 = 5.976 mV/V.\n500 V -> 2.988 V | 490 V (OV trip, SPEC 9.1) -> 2.928 V | 250 V -> 1.494 V.\nAMC1311 input clips at 2.00 V = 502 V bus -> V_BUS saturates at 3.000 V.\n12-bit ADC on a 3.3 V reference: 805.7 uV/LSB = 0.135 V of bus per LSB.\nWas 0.75x (500 V -> 1.494 V), which wasted 55% of the ADC range."
+		(exclude_from_sim no)
+		(at 20 39.37 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "687f4645-e8b2-4f0c-82f1-de635a3428ea")
+	)
+	(text "MJ-5 FIXED: C703 100 nF -> 100 pF (TI Fig. 9-2 value).\nSource impedance = R706 1.0k + (12.0k || 3000k) = 12.95k.\n  100 nF -> tau 1.30 ms, fc 123 Hz : the 490 V OVP arrived ~1-3 ms late\n            (363 V of lag at the 140 A regen dV/dt).\n  100 pF -> tau 1.30 us, fc 123 kHz, inside the AMC1311B >=220 kHz bandwidth.\nDO NOT fit clamp/protection diodes on IN: AMC1311 datasheet 9.3 (diode leakage\ncorrupts the reading; ESD cells + divider impedance are the specified protection)."
+		(exclude_from_sim no)
+		(at 55.88 133.35 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "0e00225e-c14d-4418-9e04-b5aa45348ca5")
+	)
+	(text "Diff-to-SE: Vout = (R709/R707) x (OUTP-OUTN) = 1.50 x VIN.  R707=R708=10.0k,\nR709=R710=15.0k, all 0.1% E96 (CMRR is set by the ratio match).\nWHY NOT 16.2k (gain 1.62): 490 V would sit at 3.162 V, and a TLV1117 3.3 V rail at\nits -4% limit is 3.168 V - an RRIO output cannot reproduce that, so the OVP\nthreshold would be unreachable.  At gain 1.50 the maximum output is 3.000 V, i.e.\n168 mV of headroom even on the worst-case rail, and 90.5% of the ADC span is used.\nOp amp: RRIO 3.3 V single in SOT-23-5 (TLV9061IDBVR primary / OPA320 [TBV]);\nload is 200 uA, so the output swings to within ~20 mV of the rails."
+		(exclude_from_sim no)
+		(at 130.81 127 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "e3f299e9-3e0c-4f2e-8c91-1f193456ecc1")
+	)
+	(text "ACCURACY (MJ-6 / MN-19): Tolerance fields are now explicit on every resistor -\n0.1% on R705 and R707-R710 (they set the ratio), 1% on the 750k string and R706.\nOPEN, NOT FIXABLE ON THIS SHEET: the SPEC 8.2 +/-1% figure is also gated by the ADC\nreference.  VREF+ is the TLV1117-33 rail at +/-4%, which alone is 4x the budget.\nFit a REF3033 (or equivalent) on VREF+, or calibrate the gain in firmware.\nThis is an MCU-sheet / SPEC change and is reported, not implemented here."
+		(exclude_from_sim no)
+		(at 20 152.4 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "5709d3a3-17a6-458a-a86c-03c803ac6b94")
+	)
+	(text "*** CR-3 OPEN - HV-SIDE 3.3 V SUPPLY IS STILL WRONG AS DRAWN ***\nU702 takes VIN from VGD_LS_P and GND from VGD_LS_COM (the module low-side Kelvin\nsource pins) while C701/C702, the AMC1311 GND1 and the divider bottom R705 all sit\non DC_BUS_N.  Those nets join only through the module internals, so tens of volts\nappear across that loop on every switching edge, and a Kelvin sense node is being\nused as a power node.  Moving only U702 GND to DC_BUS_N does not fix it - the same\ntransient then appears across VIN-GND.\nREQUIRED (TI SBAS786C 10, and D022 already flags this [TBV]):\n  - a fifth SN6505B push-pull stage whose SECONDARY is referenced to DC_BUS_N,\n    primary from the control-side +5V/GND (load is only <=8.4 mA);\n  - transformer Wurth 750313734: 1:1.1, 340 uH, 5000 Vrms hipot, REINFORCED\n    800 Vrms per IEC62368-1, 9.2 mm creepage / 8.0 mm clearance per IEC61800-5-1.\n    A 2.5 kV-class part (e.g. 760390012) is only FUNCTIONAL insulation and must\n    not be used: this transformer physically bridges the SPEC 10 reinforced\n    barrier at 450 V working.\n  - Schottky full-wave rectifier -> ~5.5 V raw, then U702 (MCP1804T-3302I/OT,\n    already verified stocked) to 3V3_HV, referenced to DC_BUS_N throughout;\n  - delete the VGD_LS_P and VGD_LS_COM hierarchical labels from this sheet.\nNOT IMPLEMENTED: the Wurth 750313734 land pattern could not be verified against the\nmanufacturer drawing in this pass, and a guessed footprint for a reinforced-barrier\npart is not acceptable.  C702 pin 1 (MJ-16) has been wired to the LDO output, which\nis correct in either topology."
+		(exclude_from_sim no)
+		(at 130.81 74.93 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "e1797c8b-4e8f-41ff-9f6b-bc89a89eeb00")
 	)
 	(embedded_fonts no)
 )
