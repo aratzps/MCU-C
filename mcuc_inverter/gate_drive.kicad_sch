@@ -3067,7 +3067,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100p [TBV]"
+		(property "Value" "22p 50V C0G"
 			(at 107.95 72.898 0)
 			(effects
 				(font
@@ -5763,7 +5763,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100p [TBV]"
+		(property "Value" "22p 50V C0G"
 			(at 241.3 72.898 0)
 			(effects
 				(font
@@ -8459,7 +8459,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100p [TBV]"
+		(property "Value" "22p 50V C0G"
 			(at 374.65 72.898 0)
 			(effects
 				(font
@@ -11155,7 +11155,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100p [TBV]"
+		(property "Value" "22p 50V C0G"
 			(at 107.95 199.898 0)
 			(effects
 				(font
@@ -13851,7 +13851,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100p [TBV]"
+		(property "Value" "22p 50V C0G"
 			(at 241.3 199.898 0)
 			(effects
 				(font
@@ -16295,7 +16295,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100p [TBV]"
+		(property "Value" "22p 50V C0G"
 			(at 374.65 199.898 0)
 			(effects
 				(font
