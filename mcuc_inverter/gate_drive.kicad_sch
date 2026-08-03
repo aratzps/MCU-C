@@ -1457,7 +1457,7 @@
 		(uuid "879c010a-962e-491a-92f7-29c533929699")
 	)
 
-	(text "Six isolated SiC gate-drive channels - Infineon 1ED3491MC12M (D017) driving FS02MR12A8MA2B (D016). Datasheet refs = 1ED34x1Mc12M ds v1.20.\nSupplies: +18 V (VGD_*_P) / -5 V (VGD_*_N) per D017, VGD_*_COM = Kelvin-source reference (= KSRC_*). HS channels: individual isolated supplies.\n   LS channels share VGD_LS_* (Kelvin sources at common DC- potential; KSRC_LS_1/2/3 tie together on the shared COM by construction).\n   Rails come from aux_power (future work) - VGD_* sheet pins left unwired at root; one PWR_FLAG per rail net.\nTurn-on RC delay per input (D018 backstop): 1k + 330p, BAS316 bypasses the R on turn-OFF (delay acts on turn-ON only). [TBV] ~250 ns per D018;\n   note ds 4.3: VIH = 0.7 VCC1, so RC = 330 ns computes to ~400 ns to threshold - characterise and retune. Min IN pulse width 103 ns (ds 4.3.1).\nFLT_N: open-drain fault outputs wired-AND across all six -> DRV_FAULT_IN -> supervisor (4.7k pull-up here, in parallel with supervisor R909 10k -> ~3.2k effective; ds typ 2.2k).\nRDYC (ds 3.2, 4.3.2): combined ready output (OD, act-high) + fault-clear/fault-off input (act-low); ds buses all drivers on one wire.\n   RDYC_BUS: 4.7k pull-up, driven from supervisor DRV_RST_OUT via 1k series R (ALVC08 is push-pull; R limits contention while a not-ready\n   driver holds RDYC low; driven-low level 0.58 V < VIL 0.99 V). Fault clear = RDYC low > 1 us with IN low (ds 4.1).\nMiller clamp (ds 4.5.4.1 Fig. 19): CLAMPDRV -> external SOT-23 NMOS, drain = gate node, source = VEE2 (datasheet clamps to VEE2, not COM).\nDESAT (ds 4.4): 1k [TBV] + 2x US1M 1000 V (2 kV standoff for 1200 V node) -> DSENSE_* (module drain-sense); 100p [TBV] blanking cap to COM.\n   ADJB 1.33k -> t_leb 650 ns + t_filter 1575 ns (ds Table 4) [TBV]. ADJA 4.87k -> soft-off 349 mA, mid-range (ds Table 7) [TBV].\nGate resistors: R_on 12R / R_off 3R3 [TBV] - datasheet switching condition, SPEC 5 (module R_G,int 0.66R, Q_G 1.19 uC)."
+	(text "Six isolated SiC gate-drive channels - Infineon 1ED3491MC12M (D017) driving FS02MR12A8MA2B (D016). Datasheet refs = 1ED34x1Mc12M ds v1.20.\nGATE LEVELS +15 V / -5 V (was +18/-5). The module's short-circuit withstand is 1.2 us at -5/+18 V but 2 us at -5/+15 V; the DESAT chain below cannot clear inside\n   1.2 us at any setting of this driver, so the drive is derated to +15 V to buy the 2 us rating. Cost: R_DS,on 2.40 mR vs 1.90 mR = +26 % conduction loss.\nSupplies: VGD_*_P = COM+15 V, VGD_*_N = COM-5 V, VGD_*_COM = Kelvin-source reference (= KSRC_*). HS: individual isolated supplies; LS channels share VGD_LS_*.\n\nDESAT CHAIN (CR-2). ADJB tied to VCC1 = fastest setting: t_leb 400 ns typ / 444 ns max, t_filter 225 ns typ / 263 ns max (ds Table 4, Table 17). ADJA = 28.0k =>\n   I_CSOFF,15 = 699 mA typ / 559 mA min, the family maximum (ds Table 7 / Table 18). Blanking cap C3x7 IS NOT FITTED (DNP): the ds specifies every DESAT time at\n   C_DESAT = 2 pF and 22 pF would add 24 pF x 9.48 V / 470 uA = 484 ns of ramp for no benefit - the 400 ns internal LEB already blanks turn-on. Footprint kept so a\n   small cap can be fitted if dv/dt noise causes nuisance trips at bring-up.\n   Short circuit while already ON: ramp (5 pF stray x 9.48 V / 470 uA = 101 ns) + t_DESATOUTS (382 ns + t_filter 263 ns) = 746 ns to the start of gate-off.\n   Turn-on into a short adds the 444 ns LEB = 1.19 us. Gate discharge then runs at I_CSOFF: ~0.8 uC to clear the Miller plateau = 1.15 us at 699 mA, 1.43 us at 559 mA.\n   TOTAL 1.9 us typical, 2.6 us all-worst-case, against the module's 2 us withstand at +15 V.\n   *** THIS SITS AT THE LIMIT OF THE 2 us RATING AND EXCEEDS IT ON WORST-CASE SILICON. A SHORT-CIRCUIT (DOUBLE-PULSE) VALIDATION IS MANDATORY AT BRING-UP ***\n   before this board runs on a live bus. If it fails, the remaining levers are a lower R_G,off, a faster driver family, or module current derating - not a component value.\n\nTurn-on RC delay per input (D018 backstop): 1k + 330p, BAS316 bypasses the R on turn-OFF (delay acts on turn-ON only). TRUE VALUE = 397 ns, not the ~250 ns\n   quoted in D018 (MN-2): t = -RC ln(1-0.7) = 1k x 330p x 1.204. Kept at 397 ns deliberately - 1 % of the 40 us period at 25 kHz, and it buys more shoot-through\n   margin than 250 ns would; D018's figure is the one that was wrong. Min IN pulse width 103 ns (ds 4.3.1).\nFLT_N: open-drain fault outputs wired-AND across all six -> DRV_FAULT_IN -> supervisor (4.7k pull-up here, parallel with supervisor R909 10k = ~3.2k; ds typ 2.2k).\nRDYC (ds 3.2, 4.1, 4.3.2): ready output (OD, act-high) + fault-clear input. FLT_N clears ONLY on a RISING edge of RDYC held low longer than t_CLRMIN (1.2 us max)\n   with IN low. RDYC_BUS: 4.7k pull-up, driven from supervisor DRV_RST_OUT via 1k series R (driven-low 0.58 V < VIL 0.99 V). Also exported as DRV_READY (MN-18).\nMiller clamp (ds 4.5.4.1 Fig. 19): CLAMPDRV -> external SOT-23 NMOS, drain = gate node, source = VEE2. BSS138 was wrong (MJ-17): 3.5 R x 1.4 A of Miller current =\n   4.9 V at the gate, above the module V_GS(th) - parasitic turn-on. BSS316N: 0.16 R max => 0.22 V. V_GS(max) +-20 V is REQUIRED - CLAMPDRV can present VEE2 + 11.5 V\n   (ds Table 15), which rules out the 25 mR / +-12 V SOT-23 parts (DMN2075U, AO3400A). V_DS seen = 15 - (-5) = 20 V, hence a 30 V part.\nDESAT front end (ds 4.4): 1k [TBV] + 2x US1M 1000 V (2 kV standoff for the 1200 V node) -> DSENSE_* (module drain-sense pins).\nGate resistors: R_on 12R / R_off 3R3, now 0.75 W CRCW1206-HP (MJ-15). At +15/-5: Q_G x dV = 1.19 uC x 20 V = 23.8 uJ/cycle = 0.595 W/channel at 25 kHz;\n   R_on share 12/(12+0.66+0.4) = 92 % of 0.2975 W = 0.274 W; R_off share 3.3/(3.3+0.66+0.35) = 77 % = 0.231 W. Both exceed a 0.25 W 1206 (0.206 W derated at 85 C).\nRail decoupling (MJ-8): the ds requires a capacitor between VCC2 and VEE2 - that is the loop the gate pulse actually flows in, and it was missing on all six channels.\n   C3x8/C3x9 (1u + 100n, P to N) added; C3x3/C3x4 are P-COM and C3x5/C3x6 COM-N. Note 1u 50 V X7R at 20 V bias derates to ~0.5 uF effective.\nSplit-zener preload (MJ-9 / review #8): gate charge nets to zero at COM, so the COM-N zener had no guaranteed bias and sat in its knee - the off-rail was undefined.\n   R3x7 = 2.49k from P to COM forces 15 V / 2.49k = 6.0 mA (90 mW) through it, one per ISOLATED DOMAIN (R317/R327/R337 = HS1/2/3, R347 = the shared LS rail).\n   Do NOT duplicate this in aux_power. At 6 mA the BZX384-B4V7 sits 1 mA above I_Zt, so V_Z = 4.794 (max) + 1 mA x 80 R = 4.87 V < the module's -5 V static AMR.\nREQUIRED IN aux_power (not editable from this sheet): D607/D610/D613/D616 BZX384-C5V1 (5.1 V +-5 % = up to 5.36 V, over the AMR) -> BZX384-B4V7,115 (4.7 V +-2 %),\n   and the +15 V leg post-regulated: the 1:4.67 secondary gives ~22.9 V after rectification against the 20 V now wanted, so ~2.9 V must be removed or V_GS(on) runs high.\n"
 		(exclude_from_sim no)
 		(at 63.5 248 0)
 		(effects
@@ -2210,7 +2210,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.87k [TBV]"
+		(property "Value" "28.0k 1% (ADJA: soft-off 699mA)"
 			(at 50.292 57.404 0)
 			(effects
 				(font
@@ -2374,7 +2374,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.33k [TBV]"
+		(property "Value" "0R link (ADJB=VCC1)"
 			(at 42.672 70.104 0)
 			(effects
 				(font
@@ -2417,74 +2417,6 @@
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
 					(reference "R313")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 40.64 73.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(uuid "b8bbf5eb-c01a-4f2a-a9d9-98adf65e3769")
-		(property "Reference" "#PWR0306"
-			(at 43.18 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 43.18 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 40.64 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 40.64 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 40.64 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
-					(reference "#PWR0306")
 					(unit 1)
 				)
 			)
@@ -2717,7 +2649,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "12 [TBV]"
+		(property "Value" "12R 1% 0.75W CRCW1206-HP"
 			(at 106.68 44.958 0)
 			(effects
 				(font
@@ -2803,7 +2735,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "3.3 [TBV]"
+		(property "Value" "3R3 1% 0.75W CRCW1206-HP"
 			(at 106.68 47.498 0)
 			(effects
 				(font
@@ -2933,7 +2865,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BSS138 [TBV]"
+		(property "Value" "BSS316N"
 			(at 119.38 56.642 0)
 			(effects
 				(font
@@ -3056,7 +2988,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "b9672cd5-02f6-4fa1-9a51-8b7be870c922")
 		(property "Reference" "C317"
 			(at 102.87 72.898 0)
@@ -3067,7 +2999,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22p 50V C0G"
+		(property "Value" "22p 50V C0G - DNP"
 			(at 107.95 72.898 0)
 			(effects
 				(font
@@ -3836,16 +3768,6 @@
 			(type default)
 		)
 		(uuid "9869286e-c80a-41ea-9788-7e8053e676b7")
-	)
-	(wire
-		(pts
-			(xy 60.96 97.79) (xy 71.12 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0fafb1f6-6e12-46e6-bff8-ce89d9989fd4")
 	)
 	(junction
 		(at 53.34 97.79)
@@ -4906,7 +4828,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.87k [TBV]"
+		(property "Value" "28.0k 1% (ADJA: soft-off 699mA)"
 			(at 183.642 57.404 0)
 			(effects
 				(font
@@ -5070,7 +4992,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.33k [TBV]"
+		(property "Value" "0R link (ADJB=VCC1)"
 			(at 176.022 70.104 0)
 			(effects
 				(font
@@ -5113,74 +5035,6 @@
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
 					(reference "R323")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 173.99 73.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(uuid "091d274e-f647-4f9d-b2d6-753323c6111f")
-		(property "Reference" "#PWR0316"
-			(at 176.53 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 176.53 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 173.99 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 173.99 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 173.99 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
-					(reference "#PWR0316")
 					(unit 1)
 				)
 			)
@@ -5413,7 +5267,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "12 [TBV]"
+		(property "Value" "12R 1% 0.75W CRCW1206-HP"
 			(at 240.03 44.958 0)
 			(effects
 				(font
@@ -5499,7 +5353,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "3.3 [TBV]"
+		(property "Value" "3R3 1% 0.75W CRCW1206-HP"
 			(at 240.03 47.498 0)
 			(effects
 				(font
@@ -5629,7 +5483,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BSS138 [TBV]"
+		(property "Value" "BSS316N"
 			(at 252.73 56.642 0)
 			(effects
 				(font
@@ -5752,7 +5606,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "0e9a40bf-3be7-499d-a993-878139c6573a")
 		(property "Reference" "C327"
 			(at 236.22 72.898 0)
@@ -5763,7 +5617,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22p 50V C0G"
+		(property "Value" "22p 50V C0G - DNP"
 			(at 241.3 72.898 0)
 			(effects
 				(font
@@ -6532,16 +6386,6 @@
 			(type default)
 		)
 		(uuid "a8c345fe-4b4e-495f-a177-bb401155dc90")
-	)
-	(wire
-		(pts
-			(xy 194.31 97.79) (xy 204.47 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f3868ab2-891d-4504-a005-0205b22cb3fc")
 	)
 	(junction
 		(at 186.69 97.79)
@@ -7602,7 +7446,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.87k [TBV]"
+		(property "Value" "28.0k 1% (ADJA: soft-off 699mA)"
 			(at 316.992 57.404 0)
 			(effects
 				(font
@@ -7766,7 +7610,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.33k [TBV]"
+		(property "Value" "0R link (ADJB=VCC1)"
 			(at 309.372 70.104 0)
 			(effects
 				(font
@@ -7809,74 +7653,6 @@
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
 					(reference "R333")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 307.34 73.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(uuid "a16ee1e0-cd2e-4685-b746-2c2cc5545877")
-		(property "Reference" "#PWR0326"
-			(at 309.88 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 309.88 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 307.34 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 307.34 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 307.34 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
-					(reference "#PWR0326")
 					(unit 1)
 				)
 			)
@@ -8109,7 +7885,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "12 [TBV]"
+		(property "Value" "12R 1% 0.75W CRCW1206-HP"
 			(at 373.38 44.958 0)
 			(effects
 				(font
@@ -8195,7 +7971,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "3.3 [TBV]"
+		(property "Value" "3R3 1% 0.75W CRCW1206-HP"
 			(at 373.38 47.498 0)
 			(effects
 				(font
@@ -8325,7 +8101,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BSS138 [TBV]"
+		(property "Value" "BSS316N"
 			(at 386.08 56.642 0)
 			(effects
 				(font
@@ -8448,7 +8224,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "e0a99a37-6a6c-4266-a2f0-5946baec88a7")
 		(property "Reference" "C337"
 			(at 369.57 72.898 0)
@@ -8459,7 +8235,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22p 50V C0G"
+		(property "Value" "22p 50V C0G - DNP"
 			(at 374.65 72.898 0)
 			(effects
 				(font
@@ -9228,16 +9004,6 @@
 			(type default)
 		)
 		(uuid "0f95ffda-35ba-402b-b8ae-02351eac340a")
-	)
-	(wire
-		(pts
-			(xy 327.66 97.79) (xy 337.82 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c9d2f2ff-38b1-46f4-a124-478cdca3565e")
 	)
 	(junction
 		(at 320.04 97.79)
@@ -10298,7 +10064,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.87k [TBV]"
+		(property "Value" "28.0k 1% (ADJA: soft-off 699mA)"
 			(at 50.292 184.404 0)
 			(effects
 				(font
@@ -10462,7 +10228,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.33k [TBV]"
+		(property "Value" "0R link (ADJB=VCC1)"
 			(at 42.672 197.104 0)
 			(effects
 				(font
@@ -10505,74 +10271,6 @@
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
 					(reference "R343")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 40.64 200.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(uuid "0cd84b5a-19d7-4b13-a3a9-7444c8252414")
-		(property "Reference" "#PWR0336"
-			(at 43.18 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 43.18 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 40.64 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 40.64 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 40.64 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
-					(reference "#PWR0336")
 					(unit 1)
 				)
 			)
@@ -10805,7 +10503,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "12 [TBV]"
+		(property "Value" "12R 1% 0.75W CRCW1206-HP"
 			(at 106.68 171.958 0)
 			(effects
 				(font
@@ -10891,7 +10589,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "3.3 [TBV]"
+		(property "Value" "3R3 1% 0.75W CRCW1206-HP"
 			(at 106.68 174.498 0)
 			(effects
 				(font
@@ -11021,7 +10719,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BSS138 [TBV]"
+		(property "Value" "BSS316N"
 			(at 119.38 183.642 0)
 			(effects
 				(font
@@ -11144,7 +10842,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "98f3bfea-81c7-4f76-9c75-7da263c9d3ff")
 		(property "Reference" "C347"
 			(at 102.87 199.898 0)
@@ -11155,7 +10853,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22p 50V C0G"
+		(property "Value" "22p 50V C0G - DNP"
 			(at 107.95 199.898 0)
 			(effects
 				(font
@@ -11924,16 +11622,6 @@
 			(type default)
 		)
 		(uuid "5b10f79f-19aa-4701-8b93-55e3e9662b97")
-	)
-	(wire
-		(pts
-			(xy 60.96 224.79) (xy 71.12 224.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c928e750-3354-46bb-b526-221f74131556")
 	)
 	(junction
 		(at 53.34 224.79)
@@ -12994,7 +12682,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.87k [TBV]"
+		(property "Value" "28.0k 1% (ADJA: soft-off 699mA)"
 			(at 183.642 184.404 0)
 			(effects
 				(font
@@ -13158,7 +12846,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.33k [TBV]"
+		(property "Value" "0R link (ADJB=VCC1)"
 			(at 176.022 197.104 0)
 			(effects
 				(font
@@ -13201,74 +12889,6 @@
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
 					(reference "R353")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 173.99 200.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(uuid "4897ec76-69ee-4d57-bfbb-a7cf4a65c35a")
-		(property "Reference" "#PWR0346"
-			(at 176.53 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 176.53 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 173.99 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 173.99 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 173.99 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
-					(reference "#PWR0346")
 					(unit 1)
 				)
 			)
@@ -13501,7 +13121,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "12 [TBV]"
+		(property "Value" "12R 1% 0.75W CRCW1206-HP"
 			(at 240.03 171.958 0)
 			(effects
 				(font
@@ -13587,7 +13207,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "3.3 [TBV]"
+		(property "Value" "3R3 1% 0.75W CRCW1206-HP"
 			(at 240.03 174.498 0)
 			(effects
 				(font
@@ -13717,7 +13337,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BSS138 [TBV]"
+		(property "Value" "BSS316N"
 			(at 252.73 183.642 0)
 			(effects
 				(font
@@ -13840,7 +13460,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "e48ff73d-2b07-4010-9765-0dbc8441a475")
 		(property "Reference" "C357"
 			(at 236.22 199.898 0)
@@ -13851,7 +13471,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22p 50V C0G"
+		(property "Value" "22p 50V C0G - DNP"
 			(at 241.3 199.898 0)
 			(effects
 				(font
@@ -15438,7 +15058,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.87k [TBV]"
+		(property "Value" "28.0k 1% (ADJA: soft-off 699mA)"
 			(at 316.992 184.404 0)
 			(effects
 				(font
@@ -15602,7 +15222,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.33k [TBV]"
+		(property "Value" "0R link (ADJB=VCC1)"
 			(at 309.372 197.104 0)
 			(effects
 				(font
@@ -15645,74 +15265,6 @@
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
 					(reference "R363")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 307.34 200.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(uuid "265f6ebf-e4e5-4fbb-abb5-e2b32688bb62")
-		(property "Reference" "#PWR0353"
-			(at 309.88 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 309.88 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 307.34 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 307.34 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 307.34 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
-					(reference "#PWR0353")
 					(unit 1)
 				)
 			)
@@ -15945,7 +15497,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "12 [TBV]"
+		(property "Value" "12R 1% 0.75W CRCW1206-HP"
 			(at 373.38 171.958 0)
 			(effects
 				(font
@@ -16031,7 +15583,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "3.3 [TBV]"
+		(property "Value" "3R3 1% 0.75W CRCW1206-HP"
 			(at 373.38 174.498 0)
 			(effects
 				(font
@@ -16161,7 +15713,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BSS138 [TBV]"
+		(property "Value" "BSS316N"
 			(at 386.08 183.642 0)
 			(effects
 				(font
@@ -16284,7 +15836,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "a79cfe7c-8f63-4300-8605-abf05d77704e")
 		(property "Reference" "C367"
 			(at 369.57 199.898 0)
@@ -16295,7 +15847,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22p 50V C0G"
+		(property "Value" "22p 50V C0G - DNP"
 			(at 374.65 199.898 0)
 			(effects
 				(font
@@ -17568,4 +17120,2345 @@
 		(uuid "fb450ac3-2e98-46bc-afd1-990c07ef6a8c")
 	)
 	(embedded_fonts no)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 40.64 73.66 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "f0e2fc24-3e5a-4044-a683-2e14944aa781")
+		(property "Reference" "#PWR0306"
+			(at 43.18 71.11999999999999 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 40.64 77.216 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 40.64 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 40.64 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "#PWR0306")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 83.82 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bfc83d9f-4326-43e3-ab5b-9618540066ec")
+		(property "Reference" "C318"
+			(at 80.00999999999999 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u 50V X7R"
+			(at 87.63 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 83.82 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 83.82 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C318")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 87.63 102.87) (xy 95.25 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "adb99ac1-c8b6-48b5-9b52-ab5c9d7675ba")
+	)
+	(hierarchical_label "VGD_HS1_P"
+		(shape input)
+		(at 95.25 102.87 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "220fe857-44db-4d2d-b1dd-3c1f4855f6ad")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 72.39 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ef8079ec-41c2-4df2-b0ca-f6f7091f6a92")
+		(property "Reference" "C319"
+			(at 68.58 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n 50V X7R"
+			(at 76.2 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 72.39 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 72.39 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 72.39 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C319")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 76.2 102.87) (xy 80.01 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e50f94c5-341c-494e-9e89-15cb96c11130")
+	)
+	(wire
+		(pts
+			(xy 60.96 107.95) (xy 64.77 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f482b94-7b30-45cd-b7a8-3b7d31cef3bb")
+	)
+	(junction
+		(at 60.96 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a91993f7-1703-4f1b-b4b8-5a42078df9e2")
+	)
+	(wire
+		(pts
+			(xy 64.77 107.95) (xy 64.77 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a97657b0-daef-41cd-819f-fa4e06460046")
+	)
+	(junction
+		(at 64.77 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "64732594-9a2b-44ab-a442-a3506ac1028c")
+	)
+	(wire
+		(pts
+			(xy 64.77 102.87) (xy 68.58 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f5d51a14-7812-4870-be53-00303c6e15e9")
+	)
+	(junction
+		(at 64.77 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3c548f90-a9f1-4640-bfba-42caae59e50b")
+	)
+	(wire
+		(pts
+			(xy 68.58 85.09) (xy 68.58 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0712d2f2-f627-4dd2-a282-1b8707fcf323")
+	)
+	(hierarchical_label "VGD_HS1_P"
+		(shape input)
+		(at 68.58 85.09 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "cf3ea47e-3741-432a-8b1a-71eec207c1af")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 68.58 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "98c640ba-4eaa-4e5c-bda6-f00627a08cc1")
+		(property "Reference" "R317"
+			(at 71.12 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.49k 1% (zener preload 6.0mA)"
+			(at 71.12 93.97999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 68.58 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "R317")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 68.58 96.52) (xy 68.58 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31b6a5d6-af80-4a25-8cb9-cd21e386e724")
+	)
+	(wire
+		(pts
+			(xy 60.96 97.79) (xy 68.58 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34c84b56-a357-4c2d-95a9-86a81139113a")
+	)
+	(wire
+		(pts
+			(xy 68.58 97.79) (xy 71.12 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4db70b53-a0a9-4a91-85f2-cf5f7ef43380")
+	)
+	(junction
+		(at 68.58 97.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1ca8bdcc-f32b-4b9a-b3a9-8d7454f6dff3")
+	)
+	(text "VGD_HS1 split-zener preload: 15 V / 2.49k = 6.0 mA, 90 mW."
+		(exclude_from_sim no)
+		(at 64.77 114.3 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "ae3bab15-f4da-48d0-8c67-1286f41711fa")
+	)
+	(text "P-N decoupling (MJ-8) - the loop the gate pulse flows in."
+		(exclude_from_sim no)
+		(at 64.77 116.84 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "bde381c0-46b9-4e70-a926-0329df36422f")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 173.99 73.66 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "7294c80b-92b6-4b3f-9cd7-cfc1438fbbd4")
+		(property "Reference" "#PWR0316"
+			(at 176.53 71.11999999999999 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 173.99 77.216 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 173.99 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 173.99 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 173.99 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "#PWR0316")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 217.17 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1aeeb9ae-aed7-4c3b-877f-849b07045e52")
+		(property "Reference" "C328"
+			(at 213.35999999999999 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u 50V X7R"
+			(at 220.98 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 217.17 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 217.17 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 217.17 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C328")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 102.87) (xy 228.6 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63ab9ad3-fbd4-4eac-ac55-53d560c99ad3")
+	)
+	(hierarchical_label "VGD_HS2_P"
+		(shape input)
+		(at 228.6 102.87 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4e128749-73c3-4004-8cbf-e12b2e06171c")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 205.74 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bc351263-b172-460c-bea3-254901a9208a")
+		(property "Reference" "C329"
+			(at 201.93 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n 50V X7R"
+			(at 209.55 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 205.74 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 205.74 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C329")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 209.55 102.87) (xy 213.36 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "388f8299-440e-4fe4-b3a4-675db99dac39")
+	)
+	(wire
+		(pts
+			(xy 194.31 107.95) (xy 198.12 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "650eb8a1-bba1-446f-995e-048031062c80")
+	)
+	(junction
+		(at 194.31 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4f2e8b91-05be-4d9a-b600-856f14c3ff4c")
+	)
+	(wire
+		(pts
+			(xy 198.12 107.95) (xy 198.12 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd500491-3066-4e4f-9a81-e4b057e6be21")
+	)
+	(junction
+		(at 198.12 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "257b8b86-53d2-46d0-9893-e9990228ba17")
+	)
+	(wire
+		(pts
+			(xy 198.12 102.87) (xy 201.93 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d0381e9-3b1e-4265-a0aa-d0e4704b4a03")
+	)
+	(junction
+		(at 198.12 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "36da4612-7fdc-4a2d-a9e5-b5b7c67b6cee")
+	)
+	(wire
+		(pts
+			(xy 201.93 85.09) (xy 201.93 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0045344e-9085-4ad7-aed8-383636ef308f")
+	)
+	(hierarchical_label "VGD_HS2_P"
+		(shape input)
+		(at 201.93 85.09 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fda63897-e62a-4bf9-98af-55005ae79e0a")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 201.93 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f64798a9-5e7c-4cf3-9538-6eb7c60d7557")
+		(property "Reference" "R327"
+			(at 204.47 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.49k 1% (zener preload 6.0mA)"
+			(at 204.47 93.97999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 201.93 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 201.93 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "R327")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 201.93 96.52) (xy 201.93 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff2151a4-4581-4d3e-b9a2-0a482719056c")
+	)
+	(wire
+		(pts
+			(xy 194.31 97.79) (xy 201.93 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7150fd51-aa6c-425a-9451-59de49fe2934")
+	)
+	(wire
+		(pts
+			(xy 201.93 97.79) (xy 204.47 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01f1a647-e141-4bdb-8e88-65f97fdea1dd")
+	)
+	(junction
+		(at 201.93 97.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8fdb43c8-2095-44e8-9563-f865afed057f")
+	)
+	(text "VGD_HS2 split-zener preload: 15 V / 2.49k = 6.0 mA, 90 mW."
+		(exclude_from_sim no)
+		(at 198.12 114.3 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "52d6dfbc-ae0c-4160-b6a8-ebe397e952ef")
+	)
+	(text "P-N decoupling (MJ-8) - the loop the gate pulse flows in."
+		(exclude_from_sim no)
+		(at 198.12 116.84 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "7b35a449-c79a-4955-b6e7-8408f8de78cf")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 307.34 73.66 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "6b8ba63e-a293-4159-a6f2-7126c0e10041")
+		(property "Reference" "#PWR0326"
+			(at 309.88 71.11999999999999 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 307.34 77.216 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 307.34 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 307.34 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 307.34 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "#PWR0326")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 350.52 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "49719c74-5ccf-4e7b-8f1e-82a8850e32b4")
+		(property "Reference" "C338"
+			(at 346.71 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u 50V X7R"
+			(at 354.33 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 350.52 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 350.52 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 350.52 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C338")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 354.33 102.87) (xy 361.95 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f39f732-ad19-4dd3-ac5b-d14adc7505bd")
+	)
+	(hierarchical_label "VGD_HS3_P"
+		(shape input)
+		(at 361.95 102.87 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "58583b06-aee3-4cb8-b64c-e9199f7bd7d1")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 339.09 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "04ab6d6a-bf9f-4a52-bc85-a7e249d02b50")
+		(property "Reference" "C339"
+			(at 335.28 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n 50V X7R"
+			(at 342.9 99.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 339.09 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 339.09 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 339.09 102.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C339")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 342.9 102.87) (xy 346.71 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d83740d-f7c9-4f46-b467-684d780067d0")
+	)
+	(wire
+		(pts
+			(xy 327.65999999999997 107.95) (xy 331.46999999999997 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f98f8f77-4721-4c03-b2e4-1844a25ed37b")
+	)
+	(junction
+		(at 327.65999999999997 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "78506684-0154-4287-9fd9-a21341be4a9a")
+	)
+	(wire
+		(pts
+			(xy 331.46999999999997 107.95) (xy 331.46999999999997 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c0606f0-020b-4918-a0d7-33d27e15385b")
+	)
+	(junction
+		(at 331.46999999999997 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "05b22dd0-d885-48b3-bc63-5f8a719d08f5")
+	)
+	(wire
+		(pts
+			(xy 331.46999999999997 102.87) (xy 335.28 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d931e837-de08-43e0-909f-f778dec8812a")
+	)
+	(junction
+		(at 331.46999999999997 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3ef6651e-9ed3-4daa-816b-5015442981f0")
+	)
+	(wire
+		(pts
+			(xy 335.28 85.09) (xy 335.28 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e1a43dc-17c6-4696-90e0-74840a24f5e1")
+	)
+	(hierarchical_label "VGD_HS3_P"
+		(shape input)
+		(at 335.28 85.09 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3f36d3ad-1193-4a95-88c2-e4b104364678")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 335.28 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5c3ad37f-246b-4e8e-bbc1-bd5218395a3d")
+		(property "Reference" "R337"
+			(at 337.82 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.49k 1% (zener preload 6.0mA)"
+			(at 337.82 93.97999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 335.28 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 335.28 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 335.28 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "R337")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 335.28 96.52) (xy 335.28 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f862e9da-e9b3-4c66-9ba6-ac8d3357225b")
+	)
+	(wire
+		(pts
+			(xy 327.65999999999997 97.79) (xy 335.28 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e56b8bb-1ce7-4947-8d63-087dd5da64e0")
+	)
+	(wire
+		(pts
+			(xy 335.28 97.79) (xy 337.82 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "453fe604-b220-4191-9006-15ec9b8ea8fc")
+	)
+	(junction
+		(at 335.28 97.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eeb2eba6-d9eb-42d3-b64f-db105356e9ce")
+	)
+	(text "VGD_HS3 split-zener preload: 15 V / 2.49k = 6.0 mA, 90 mW."
+		(exclude_from_sim no)
+		(at 331.46999999999997 114.3 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "5e7667a7-5296-41f8-af40-06699cd10a6a")
+	)
+	(text "P-N decoupling (MJ-8) - the loop the gate pulse flows in."
+		(exclude_from_sim no)
+		(at 331.46999999999997 116.84 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "7e12c4f6-e089-43cb-8246-7fb047c2b0e6")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 40.64 200.66 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "66b61d49-e7db-4ea7-820f-ffe5870e0a5c")
+		(property "Reference" "#PWR0336"
+			(at 43.18 198.12 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 40.64 204.216 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 40.64 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 40.64 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "#PWR0336")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 83.82 229.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9bf61b5d-1d8e-40aa-bffb-66b44d489acd")
+		(property "Reference" "C348"
+			(at 80.00999999999999 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u 50V X7R"
+			(at 87.63 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 83.82 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 83.82 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C348")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 87.63 229.87) (xy 95.25 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea6d964f-fb67-4470-84c5-e551dea67540")
+	)
+	(hierarchical_label "VGD_LS_P"
+		(shape input)
+		(at 95.25 229.87 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9c8b50e2-864d-4bc4-85cf-e6b8d2eedbb6")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 72.39 229.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9eb69e67-80aa-4c1d-94bd-afb805c00e35")
+		(property "Reference" "C349"
+			(at 68.58 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n 50V X7R"
+			(at 76.2 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 72.39 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 72.39 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 72.39 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C349")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 76.2 229.87) (xy 80.01 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27ae1f08-6545-450c-9e47-6c5a7e9011b7")
+	)
+	(wire
+		(pts
+			(xy 60.96 234.95) (xy 64.77 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc3d7b43-d58f-47f9-b93d-5fd80b1aafda")
+	)
+	(junction
+		(at 60.96 234.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d9c9eda4-df78-4185-b020-a88bc4d36fba")
+	)
+	(wire
+		(pts
+			(xy 64.77 234.95) (xy 64.77 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f4ef13a-87bc-4517-8aa1-263df048f578")
+	)
+	(junction
+		(at 64.77 234.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b92946ea-3fa1-48c0-96a3-791c5fe1c229")
+	)
+	(wire
+		(pts
+			(xy 64.77 229.87) (xy 68.58 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b2d3c62-b284-4f4f-ad02-96298732acf9")
+	)
+	(junction
+		(at 64.77 229.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "732c5af9-869a-42b2-b7c8-c60906253b97")
+	)
+	(wire
+		(pts
+			(xy 68.58 212.09) (xy 68.58 215.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9120ef02-7abf-4de9-b8e3-7501eee2d3f2")
+	)
+	(hierarchical_label "VGD_LS_P"
+		(shape input)
+		(at 68.58 212.09 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8ce7a574-1291-4d4d-80e9-159fb4c4de20")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 68.58 219.70999999999998 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4e814ea6-b58c-47ae-b505-048d80bf4e52")
+		(property "Reference" "R347"
+			(at 71.12 218.43999999999997 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.49k 1% (zener preload 6.0mA)"
+			(at 71.12 220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 68.58 219.70999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 219.70999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 219.70999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "R347")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 68.58 223.51999999999998) (xy 68.58 224.79000000000002)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e60e548-85c8-4814-af57-6775b80d7151")
+	)
+	(wire
+		(pts
+			(xy 60.96 224.79000000000002) (xy 68.58 224.79000000000002)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d941ee9-6896-49fe-b5c5-d02b65f2f24e")
+	)
+	(wire
+		(pts
+			(xy 68.58 224.79000000000002) (xy 71.12 224.79000000000002)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "47d5fc19-c091-4fce-83a1-da15912261b3")
+	)
+	(junction
+		(at 68.58 224.79000000000002)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8e085778-3f22-4086-810f-853017d937bf")
+	)
+	(text "VGD_LS split-zener preload: 15 V / 2.49k = 6.0 mA, 90 mW."
+		(exclude_from_sim no)
+		(at 64.77 241.3 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "b540a397-6c57-4b69-aa08-2c4158c9d691")
+	)
+	(text "P-N decoupling (MJ-8) - the loop the gate pulse flows in."
+		(exclude_from_sim no)
+		(at 64.77 243.84 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "dcb828f8-f113-494c-be79-aeb80d7147cb")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 173.99 200.66 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "c95a032e-b37d-4a78-b017-9091ed7d6655")
+		(property "Reference" "#PWR0346"
+			(at 176.53 198.12 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 173.99 204.216 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 173.99 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 173.99 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 173.99 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "#PWR0346")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 217.17 229.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c8d0ba79-084f-4084-9429-1d9e4948a8e0")
+		(property "Reference" "C358"
+			(at 213.35999999999999 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u 50V X7R"
+			(at 220.98 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 217.17 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 217.17 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 217.17 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C358")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 229.87) (xy 228.6 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5bd517d-6cdf-4f82-b169-ed85b8b56144")
+	)
+	(hierarchical_label "VGD_LS_P"
+		(shape input)
+		(at 228.6 229.87 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "66b5c4fa-a458-4b37-bab5-d2fdae6b9cef")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 205.74 229.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c2032ce2-86ce-4137-b851-da66d65f5a83")
+		(property "Reference" "C359"
+			(at 201.93 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n 50V X7R"
+			(at 209.55 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 205.74 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 205.74 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C359")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 209.55 229.87) (xy 213.36 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9303d92-fbf4-4dd1-bed2-727a627c442a")
+	)
+	(wire
+		(pts
+			(xy 194.31 234.95) (xy 198.12 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d24db9b-ae58-4d62-a19a-172b82a4c785")
+	)
+	(junction
+		(at 194.31 234.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b788bb42-713e-4928-bb88-d0e53290f915")
+	)
+	(wire
+		(pts
+			(xy 198.12 234.95) (xy 198.12 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b64eb08f-9b3e-445a-8b2a-075586e92393")
+	)
+	(junction
+		(at 198.12 234.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3dc1df3b-a008-43cc-af4f-cc938e29f99a")
+	)
+	(wire
+		(pts
+			(xy 198.12 229.87) (xy 201.93 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7d608f9-2888-45ab-9903-cc459171d3c2")
+	)
+	(junction
+		(at 198.12 229.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "caf8f0ee-f5c5-4bc5-ac0e-b23031323011")
+	)
+	(text "LS domain preload is R347 (ch 4) - one per isolated rail."
+		(exclude_from_sim no)
+		(at 198.12 241.3 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "0c240104-d1f6-4a4b-88d5-6c34b610aaab")
+	)
+	(text "P-N decoupling (MJ-8) - the loop the gate pulse flows in."
+		(exclude_from_sim no)
+		(at 198.12 243.84 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "a676c484-b7a5-442a-a6a6-d5b1ffb450ec")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 307.34 200.66 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "ad35a71a-58f6-4482-ad4e-596dd15507fc")
+		(property "Reference" "#PWR0353"
+			(at 309.88 198.12 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 307.34 204.216 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 307.34 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 307.34 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 307.34 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "#PWR0353")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 350.52 229.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "db1bdec3-e4b1-4211-beee-928142301afb")
+		(property "Reference" "C368"
+			(at 346.71 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u 50V X7R"
+			(at 354.33 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 350.52 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 350.52 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 350.52 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C368")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 354.33 229.87) (xy 361.95 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b83a6ded-ac42-4b65-8dc5-3b5e75dd68c6")
+	)
+	(hierarchical_label "VGD_LS_P"
+		(shape input)
+		(at 361.95 229.87 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "98735acd-ceaa-4b5e-9b4f-d796d1905597")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 339.09 229.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "174947ec-4dcf-416a-8da2-4ac6d3dc1f7e")
+		(property "Reference" "C369"
+			(at 335.28 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n 50V X7R"
+			(at 342.9 226.568 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 339.09 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 339.09 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 339.09 229.87 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/495159f9-0c11-4ecc-8a9b-81041e02e275"
+					(reference "C369")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 342.9 229.87) (xy 346.71 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4dfd3b1-5d01-4b2a-a271-6920e388b073")
+	)
+	(wire
+		(pts
+			(xy 327.65999999999997 234.95) (xy 331.46999999999997 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de00a6bf-13ed-4e1d-b981-1b38a1735b9d")
+	)
+	(junction
+		(at 327.65999999999997 234.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "19cb110b-3065-4b7f-994f-8460bc7a5ddb")
+	)
+	(wire
+		(pts
+			(xy 331.46999999999997 234.95) (xy 331.46999999999997 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3def567-d017-4055-9377-aecfbbc0f474")
+	)
+	(junction
+		(at 331.46999999999997 234.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "be4da74a-05d2-4296-9365-897cbefb89fd")
+	)
+	(wire
+		(pts
+			(xy 331.46999999999997 229.87) (xy 335.28 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c10b442-d8dc-4f5e-902b-f8a07039c0b2")
+	)
+	(junction
+		(at 331.46999999999997 229.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4b50c453-5616-4605-9808-702eadc7ab45")
+	)
+	(text "LS domain preload is R347 (ch 4) - one per isolated rail."
+		(exclude_from_sim no)
+		(at 331.46999999999997 241.3 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "1eb0161e-9c3b-4317-8c70-85492540ddda")
+	)
+	(text "P-N decoupling (MJ-8) - the loop the gate pulse flows in."
+		(exclude_from_sim no)
+		(at 331.46999999999997 243.84 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "9ca1f8af-e8ee-4c35-b140-42935a5c8910")
+	)
+	(wire
+		(pts
+			(xy 48.26 264.16) (xy 60.96 264.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5351ed5-db32-4687-861a-b48b5b349c6b")
+	)
+	(hierarchical_label "DRV_READY"
+		(shape output)
+		(at 60.96 264.16 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "90404805-9fec-4357-aae2-9f95a6b7d113")
+	)
+	(text "DRV_READY = RDYC_BUS to a free MCU GPIO (MN-18): a gate-supply UVLO pulls RDYC low\nwithout ever asserting FLT_N, so it is otherwise invisible to firmware.\nROOT SHEET must add the matching sheet pin (PB10 / PB11 / PE1 are free)."
+		(exclude_from_sim no)
+		(at 25.4 275.59 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "8f75f230-ae72-4bd3-bf9d-41c3cbd37e27")
+	)
 )

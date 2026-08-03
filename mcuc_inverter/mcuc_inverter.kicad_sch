@@ -795,6 +795,16 @@
 				)
 			)
 		)
+		(pin "DRV_READY" output
+			(at 386.08 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "b7e1c4a2-9f3d-4e51-8a06-3c9d1f2e7b40")
+		)
 	)
 
 	(text "SPEC.md 5, 9.2"
