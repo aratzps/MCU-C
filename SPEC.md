@@ -459,22 +459,24 @@ A **12–24 V external auxiliary input [SEL]** is required in addition to the HV
 **Corrected against the module's own loss data (D025).** The earlier ~98 % / 700 W figures were a technology-class estimate; computing from the FS02MR12A8MA2B datasheet at 190 A rms, 25 kHz:
 
 ```
-Conduction:            3 × 190² × (3.70 mΩ @150 °C + 0.64 mΩ) =  470 W
+Conduction (+15 V):    3 × 190² × (4.67 mΩ @150 °C + 0.64 mΩ) =  575 W
 Switching @250 V:      3 × 25 kHz × 115.4 µJ/A × (250/750) × (2×270/π) =  496 W
 Dead-time body diode:  3 × 171.9 A × 4.04 V × 0.035          =   73 W
                                                               ─────────
-Total @250 V bus, 35 kW peak                                  ≈ 1039 W  (η = 97.1 %)
-Total @450 V bus (switching scales with V)                    ≈ 1436 W
-Continuous, 15 kW / 100 A rms                                 ≈  390 W  (η ≈ 97.4 %)
+Total @250 V bus, 35 kW peak                                  ≈ 1144 W  (η = 96.8 %)
+Total @450 V bus (switching scales with V)                    ≈ 1541 W
+Continuous, 15 kW / 100 A rms                                 ≈  420 W  (η ≈ 97.3 %)
 ```
+
+The conduction term uses **R_DS,on at V_GS = +15 V** (2.40 mΩ at 25 °C, scaled to 4.67 mΩ at 150 °C) following the D026 derate — +26 % over the +18 V figure, or **+105 W at the peak condition**. That is the price of reaching the module's 2 µs short-circuit withstand, and it is paid out of the junction margin below, which absorbs it comfortably (T_j ≈ 88 °C at 65 °C coolant, against a 150 °C limit).
 
 | Design point | Value |
 |---|---|
-| Continuous dissipation | **~390 W** |
-| Peak-condition dissipation, 120 s @ 250 V | **~1040 W** |
-| Peak-condition dissipation, 120 s @ 450 V | **~1440 W** |
+| Continuous dissipation | **~420 W** |
+| Peak-condition dissipation, 120 s @ 250 V | **~1145 W** |
+| Peak-condition dissipation, 120 s @ 450 V | **~1540 W** |
 
-**The module is not the constraint — the loop is.** The G2 is direct-cooled: R_th,j-f = 0.121 K/W max per switch at 10 dm³/min, 50/50 WEG, so at 173 W per switch the junction sits ≈ 86 °C with 65 °C coolant, against the 0.36–0.49 K/W that would be required to reach 150 °C — **3–4× margin**. What must be sized for ~1.05–1.45 kW is the **external heat exchanger, pump and coolant loop**, not the module interface. There is no separate cold plate to design: the requirement is a coolant jacket per AN-G2-ASSEMBLY at ≥10 dm³/min, ≤65 °C inlet, ≤2.5 bar.
+**The module is not the constraint — the loop is.** The G2 is direct-cooled: R_th,j-f = 0.121 K/W max per switch at 10 dm³/min, 50/50 WEG, so at 191 W per switch the junction sits ≈ 88 °C with 65 °C coolant, against the 0.36–0.49 K/W that would be required to reach 150 °C — **3–4× margin**. What must be sized for ~1.05–1.45 kW is the **external heat exchanger, pump and coolant loop**, not the module interface. There is no separate cold plate to design: the requirement is a coolant jacket per AN-G2-ASSEMBLY at ≥10 dm³/min, ≤65 °C inlet, ≤2.5 bar.
 
 ### 11.5 Internal ambient **[REQ]**
 
