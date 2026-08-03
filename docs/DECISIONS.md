@@ -169,6 +169,15 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Why no phase sensing:** stock VESC boards float at battery potential and divide the phase voltages directly. This board's control domain is isolated (§10); direct dividers are impossible, and isolated sensing costs 3× AMC1311 + per-phase HV supplies for a feature (phase filters / BEMF startup assist) that FOC with 3-phase current sensing + 4 position interfaces does not need. Documented firmware consequence, upgrade path reserved.
 - **Affects:** mcu.kicad_sch wiring, custom `hw_mcuc.h` (ADC vector mirrors hw_100_250 minus SENS), docs/PINOUT.md, VESC feature set (phase filters off).
 
+## D024: Two-board partition; off-board component conventions
+
+- **Decision:** The design produces **two PCBs** plus the busbar mechanical assembly:
+  1. **Control/driver board** (`mcuc_inverter` project) — everything except the DC-link caps: MCU, supervisor, gate drive, aux power, sensing front ends, precharge relay (its 0.36 A contact path is board-viable; contacts provide the required isolation), discharge FET. HV interfaces via screw/faston terminals: DC_INPUT_P, precharge-resistor loop out/in, DC_BUS_P/N low-current taps (divider, bleeder, flyback, discharge return).
+  2. **DC-link capacitor carrier** (`mcuc_dclink` project, heavy-copper 2-layer) — the 5× MKP1848C bank plus M6 terminations to the laminated busbar and module screw terminals. Carries the 114 A rms ripple; the control board never does.
+- **Off-board convention in the control-board project:** symbols whose bodies live off-board keep their nets but either carry `exclude_from_board` (C201–C205 → carrier; chassis resistors R401/R421–424; HOYS transducers → busbar-mounted, presenting as JST headers) or footprints that deliberately lack pads for off-board pins (the module's power terminals — its footprint is signal-PressFIT only). Schematic parity warnings from these are documented, not silenced, in the layout record.
+- **Why:** MKP1848C are PCB-pin parts, but hanging 114 A rms on control-board copper would be absurd; a dedicated heavy-copper carrier between busbar plates is the standard, manufacturable pattern and honors D021's "power never flows through the control PCB".
+- **Affects:** new `mcuc_dclink` project, precharge sheet terminals, footprint assignment pass, fabrication package (two gerber sets), BOM board column.
+
 ---
 
 ## Superseded
