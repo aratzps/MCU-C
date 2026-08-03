@@ -2,6 +2,19 @@
 
 Append-only, newest first.
 
+## 2026-08-03 — Adversarial review wave, and the refinement it forced
+
+Three independent reviewers attacked the design against manufacturer datasheets. Full record: `docs/REVIEW_FINDINGS.md`; consequences: D025, D026.
+
+- **Review verdict was "not fabrication-ready", and it was right.** The headline defect: the gate-driver fault latch could never be cleared (RDYC only rises when FLT_N is already high; FLT_N only clears on a rising RDYC edge; the MCU reset was ANDed in so it could only add another low) — the bridge very likely never enabled, even once. Second: the hardware overcurrent trip never reached TIM1_BKIN, so SPEC §9.2's central safety claim was false as built. Third: the comparators could not see the upper trip threshold, so the overcurrent protection would silently not function.
+- **D025 — spec corrections.** Thermal design point recomputed from the module's loss tables (700 W → ~1145 W at the peak condition; the module keeps 3–4× junction margin, so the error lands on the coolant loop). Every 400 µF-era derivation redone for the real 500 µF bank — the passive bleeder was **failing its own <60 s requirement** at 75.4 s. Internal ambient specified (≤70 °C) for the first time; contactor coil current made a requirement; active discharge required to be hardware-inhibited. SPEC open item 5 closed with verified arithmetic.
+- **D026 — gate drive derated to +15 V.** The module withstands a short circuit for <1.2 µs at +18 V but <2 µs at +15 V, and the driver chain reaches ~2.0 µs at best — so the 18 V rating was unreachable. Costs +26 % conduction loss, paid out of junction margin. Residual risk recorded honestly: ~2.0 µs sits *at* the rating, so a double-pulse short-circuit test is now a gate on production release.
+- **DC-link carrier: 2 oz → 4 oz copper.** Its planes sit in series in the main DC path; at 2 oz the 140 A peak dissipated 37 W in the board, and D024's "heavy copper" claim had never reached the stackup — a fab would have built it at KiCad's 35 µm default.
+- **Fabrication package generated for the carrier board** (`fabrication/mcuc_dclink/`) from a board at 0 DRC violations, with order parameters and their reasoning.
+- **Engineering report §17–18**: what the reviews changed (including the eight defects that passed ERC, DRC and inspection, and why each survived), seven validation gates on production release, and five open risks with the conditions that make each binding.
+- Verification: ERC 0 errors maintained throughout; carrier DRC 0 violations; control-board PCB reverted to its last clean placement state after an interrupted routing attempt left it with violations and no tracks.
+
+
 ## 2026-08-01 — precharge, current_sense and aux_power sheets captured; D019/D020
 
 - **D019:** phase current sensing = 3× LEM HOYS 200-S/SP33 (shunts rejected: 27 W at 0.75 mΩ; ΔΣ route blocked — STM32F405 has no DFSDM; AMC1302 fallback unstocked). 300 A trip via per-phase LM2903-class window comparators (2.340/0.960 V thresholds), open-drain wire-OR onto the supervisor's OC_TRIP; the transducers' own OCD outputs join the same net as an independent ~584 A backup. Bandwidth/latency spec re-derived for 25 kHz switching (≥150 kHz, <5 µs).
