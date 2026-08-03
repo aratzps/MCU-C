@@ -313,18 +313,20 @@ Bandwidth/latency re-derived for the actual 25 kHz switching (D016): 5× f_sw = 
 
 A single chip resistor must not span 450 V — typical 1206 parts are rated ~200 V working. A series string is required for voltage rating *and* for creepage across the part.
 
-The divider must map 500 V to most of the 0–3.3 V ADC range (i.e. ~150:1, giving 3.0 V at 450 V), not to a fraction of it. If a unity-gain buffer follows the divider, the divider ratio alone sets the scaling — there is no gain stage to recover range later.
+**Implementation (D022, parts verified 2026-08-02):** series string 4× 750 kΩ (124.5 V and 20.7 mW per part at 500 V — inside 1206 ratings) + 12.0 kΩ bottom → 1.992 V at 500 V into a **TI AMC1311BDWV** isolated amplifier (0–2 V input, reinforced, V_IOWM 2120 V DC, BW ≥220 kHz, $10.02 stocked in tubes; reel and AEC-Q variants exist). Total divider drain 83 mW. The AMC1311's differential output (±2 V about 1.44 V) needs one diff-to-single-ended op-amp stage to the 0–3.3 V ADC — the gain of that stage sets final scaling. HV-side 3.3 V supply: LDO from the VGD_LS rail referenced to the low-side Kelvin/DC_BUS_N region **[TBV — noise review]**; TI's alternative pattern is a dedicated SN6501-class isolated supply.
 
 ### 8.3 Temperature
 
 | Sensor | Location | Purpose |
 |---|---|---|
-| Module temp-sense diode ×3 (TS1–TS3) | Inside power module, one per phase | Junction proxy, fastest response. 2.624 V @ 0.2 mA / 25 °C, −ΔV with temperature; needs a current-source bias front end, **not** an NTC divider **[DER]** from module datasheet |
-| Heatsink/coldplate NTC | Thermal path | Cooling system health |
-| Board NTC | Near control electronics | Ambient/enclosure |
-| **Motor winding, KTY 81/210** | Inside motor stator (§2.2) | Motor thermal protection; input via motor connector |
+| Module TS diodes ×3 | Inside power module | **Provision only in rev A (D022).** The TS pins carry no isolation rating and the only Infineon-documented readout is the HV-side ADC of the (zero-stock) 1EDI3035AS driver — no control-GND-referenced readout is supportable. Pads routed to the HV zone, unpopulated |
+| **Coldplate NTC (module baseplate)** | Bolted at the module mounting | Primary module thermal protection: TDK B57861S0103F040 (10 k 1 %, B 3988 K, AEC-Q200, glass bead). Read as VESC "MOSFET temp" |
+| Board NTC | Near control electronics | Murata NCU18XH103F6SRB (successor — NCP18 is NFND) |
+| **Motor winding** | Inside motor stator (§2.2) | Motor thermal protection; input via motor connector |
 
-The EMRAX 188 ships with a KTY 81/210 silicon PTC in the stator. VESC supports motor temperature limiting; the board must provide the bias network and ADC input for it, and the front end should accommodate common alternatives (PT1000, NTC 10k) by resistor choice. **[SEL]**
+**Motor sensor reality check (D022):** the KTY 81/210 that EMRAX historically fitted is **obsolete** (NXP EOL 2020, residual stock only). VESC firmware supports NTC 10k, KTY83, KTY84-130, PT1000 and PTC 1k natively. The front end is therefore a resistor-selectable bias network covering PT1000 / KTY8x / NTC 10k, and the motor should be ordered with a **PT1000** option where available. **[SEL]**
+
+**Overtemperature protection consequence:** with TS diodes unread in rev A, the §9.1 overtemp function derives from the coldplate NTC with a conservative threshold plus the drivers' DESAT as the fast backstop; junction excursions during the 120 s peak must be covered by the thermal design margin (§11.4), verified at bring-up with a calibrated load step. **[DER]**
 
 ### 8.4 Rotor position
 

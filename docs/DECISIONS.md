@@ -154,6 +154,15 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Resolves:** SPEC §14 item 8.
 - **Affects:** PCB layout, fabrication package scope, connector count, enclosure.
 
+## D022: Sensing front-end decisions from verified constraints
+
+- **Module TS diodes: provision-only in rev A.** Verified: the FS02MR12A8MA2B gives the TS pins no isolation rating (the module's 4.2 kV "basic" figure is terminal-to-heatsink only), and the only documented readout anywhere in Infineon's material is the HV-side ΔΣ ADC inside the 1EDI3035AS driver (zero distribution stock), referenced to the switch source and sent across the driver's own barrier. A control-GND op-amp front end has no datasheet basis. Rev A routes TS pads in the HV zone, unpopulated; module thermal protection = coldplate NTC (TDK B57861S0103F040, AEC-Q200, stocked) at the baseplate with a conservative threshold + DESAT as fast backstop. Upgrade path: 1EDI3035AS drivers (when stocked) or per-phase isolated amps.
+- **Motor temperature: KTY 81/210 is obsolete** (NXP EOL 2020). Front end becomes resistor-selectable (PT1000 / KTY8x / NTC 10k — all VESC-supported); order the motor with PT1000 where offered.
+- **Bus sense: AMC1311BDWV** (reinforced, V_IOWM 2120 V DC, 0–2 V input, stocked) behind a 4× 750 kΩ + 12.0 kΩ string (1.992 V at 500 V, 83 mW, 124.5 V/part). Diff-to-SE op-amp stage to the ADC. HV-side 3.3 V from an LDO off the VGD_LS rail [TBV noise review].
+- **Resolver: AD2S1205 kept, order-early flag.** Zero DigiKey stock / 20-wk lead (TME residual stock exists). The PALTA circuit is proven and captured; AD2S1210ASTZ ($32, stocked) is the documented fallback but is a 48-LQFP redesign. Buy AD2S1205 at design commit alongside module/drivers/HOYS.
+- **Comms: ISO1042DWR** ($5.28, stocked, 5 kV) replaces the legacy ISO1050. Board NTC: NCU18XH103F6SRB (NCP18 is NFND).
+- **Affects:** SPEC §8.2/§8.3, temp_sense & bus_sense & comms sheets, §9.1 overtemp derivation, BOM, motor purchase order.
+
 ---
 
 ## Superseded
