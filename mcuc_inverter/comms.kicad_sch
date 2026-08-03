@@ -8641,26 +8641,6 @@
 	)
 	(wire
 		(pts
-			(xy 330.2 132.08) (xy 327.66 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ed5f00d3-6b48-4975-8184-e2b4ff37ae3d")
-	)
-	(wire
-		(pts
-			(xy 327.66 132.08) (xy 327.66 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fb722da8-308f-418c-8cda-c8791c254c72")
-	)
-	(wire
-		(pts
 			(xy 330.2 134.62) (xy 327.66 134.62)
 		)
 		(stroke
@@ -8946,6 +8926,39 @@
 			(justify left bottom)
 		)
 		(uuid "765078af-34c9-49f3-82bf-a1d7fc764e5c")
+	)
+	(wire
+		(pts
+			(xy 322.58 132.08) (xy 330.2 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "059139ff-9e6b-45ff-b606-807a71615336")
+	)
+	(hierarchical_label "PPM"
+		(shape output)
+		(at 322.58 132.08 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "054be234-7094-42da-af7d-1177cd9f5541")
+	)
+	(text "J1206 pin 7: PPM (servo) input to MCU PB6/TIM4_CH1 -\nwas the spare position (previously tied to GND)."
+		(exclude_from_sim no)
+		(at 322.58 143.0 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "45c08dbf-db3a-4f11-8952-098ab1cde384")
 	)
 	(embedded_fonts no)
 )

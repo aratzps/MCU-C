@@ -15214,5 +15214,16 @@
 		)
 		(uuid "94fe04c5-f7a5-429c-aac7-7d937faf115c")
 	)
+	(text "AD2S1205 digital inputs: VIH min = 2.0 V at VDD = 5 V\n(datasheet Electrical Characteristics) - 3.3 V MCU drive\non RES_SPI_SCK/NCS/NSAMPLE/NRDVEL verified."
+		(exclude_from_sim no)
+		(at 20 132.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4d4c87e8-493a-4ea4-b7d3-a649e3654879")
+	)
 	(embedded_fonts no)
 )
