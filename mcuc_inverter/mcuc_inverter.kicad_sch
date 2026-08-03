@@ -1274,8 +1274,8 @@
 	)
 
 	(sheet
-		(at 20.0 110.0)
-		(size 55.88 20.32)
+		(at 104.14 190.5)
+		(size 55.88 71.12)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -1286,7 +1286,7 @@
 		)
 		(uuid "653a6882-bc9f-4401-9b94-701a8a46ab64")
 		(property "Sheetname" "Position feedback"
-			(at 20.0 109.2884 0)
+			(at 104.14 189.7884 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1295,13 +1295,313 @@
 			)
 		)
 		(property "Sheetfile" "position.kicad_sch"
-			(at 20.0 130.9046 0)
+			(at 104.14 262.2046 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left top)
 			)
+		)
+		(pin "RES_EXC_P" output
+			(at 104.14 195.58 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "17374ecc-ddf7-41a6-b7ca-a69cb4b14717")
+		)
+		(pin "RES_EXC_N" output
+			(at 104.14 198.12 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e0f9e983-1f83-4958-82f7-297e20b9c97e")
+		)
+		(pin "RES_SIN_P" input
+			(at 104.14 200.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "37bfeece-66ca-4250-ba0d-ede865a4eee2")
+		)
+		(pin "RES_SIN_N" input
+			(at 104.14 203.2 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "80e35171-a545-4aed-b799-ed5b070f4556")
+		)
+		(pin "RES_COS_P" input
+			(at 104.14 205.74 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "0e725686-22ae-43d1-83af-2e95744fbf82")
+		)
+		(pin "RES_COS_N" input
+			(at 104.14 208.28 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "ea820b6c-ac0f-4298-8612-77643c3107ad")
+		)
+		(pin "HALL_1_IN" input
+			(at 104.14 210.82 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "8f04b3ab-1bcd-4707-8d7c-01e62ed5a551")
+		)
+		(pin "HALL_2_IN" input
+			(at 104.14 213.36 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "870008c1-b613-4b45-a149-a23f2a418e24")
+		)
+		(pin "HALL_3_IN" input
+			(at 104.14 215.9 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "a8f72896-dad9-41d3-829f-e9053b2eaa06")
+		)
+		(pin "ENC_A_IN" input
+			(at 104.14 218.44 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "646f7907-1820-4207-b2c6-e320de9dc874")
+		)
+		(pin "ENC_B_IN" input
+			(at 104.14 220.98 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "811f88cc-5373-4417-bb19-e64f36846b74")
+		)
+		(pin "ENC_I_IN" input
+			(at 104.14 223.52 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "b8e0426f-21f4-4545-9fc6-2cf96df7c3af")
+		)
+		(pin "SINCOS_SIN_IN" input
+			(at 104.14 226.06 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "c3b4c0b3-fc89-42c7-a1e2-f7b96f5d06e8")
+		)
+		(pin "SINCOS_COS_IN" input
+			(at 104.14 228.6 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "c7f7bd0b-8f8c-41cb-bf85-4b219f7e8e6f")
+		)
+		(pin "MOTOR_TEMP_IN" passive
+			(at 104.14 231.14 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9bae2e2d-eabd-4894-a490-46edc62cf53b")
+		)
+		(pin "RES_SPI_MISO" output
+			(at 160.02 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "496a4315-8910-408e-a8f6-a60df2019bc2")
+		)
+		(pin "RES_SPI_SCK" input
+			(at 160.02 198.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "29c8d74c-ea58-4538-a843-7ad7c7ae61ef")
+		)
+		(pin "RES_SPI_NCS" input
+			(at 160.02 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "84cc8b6c-0323-43bb-98f6-e55635516948")
+		)
+		(pin "RES_SPI_NSAMPLE" input
+			(at 160.02 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "6de67faf-6880-49ed-aefd-c0324371aae9")
+		)
+		(pin "RES_SPI_NRDVEL" input
+			(at 160.02 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "8c94d952-8e7e-4708-903b-a339698b5e3e")
+		)
+		(pin "RES_NFAULT" output
+			(at 160.02 208.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "91009d58-7d2b-40fe-b202-41340361edde")
+		)
+		(pin "ENC_A" output
+			(at 160.02 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "a02051c2-14f6-4e62-a406-7863e1e7af3b")
+		)
+		(pin "ENC_B" output
+			(at 160.02 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "16c1b3a1-85ed-45dd-9098-8bc10121a9d2")
+		)
+		(pin "ENC_I" output
+			(at 160.02 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "88dd29f0-5967-44fc-84fb-3c35ae1a107f")
+		)
+		(pin "HALL_1" output
+			(at 160.02 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "f8c55b50-d00f-4f22-bdbd-20c399a213ef")
+		)
+		(pin "HALL_2" output
+			(at 160.02 220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "d7a5966b-9597-4b80-940f-47e5d8259fdf")
+		)
+		(pin "HALL_3" output
+			(at 160.02 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "03269e71-0713-4f46-95e3-3f07fef23ff0")
+		)
+		(pin "SINCOS_SIN" output
+			(at 160.02 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "30014645-d4e4-4dbc-89ec-e535971427b5")
+		)
+		(pin "SINCOS_COS" output
+			(at 160.02 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "4a442f2b-8b3d-4a35-862b-bb23d2e08a18")
+		)
+		(pin "MOTOR_TEMP" output
+			(at 160.02 231.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "e362b4dd-9919-4b46-bd9f-982b3d347594")
 		)
 		(instances
 			(project "mcuc_inverter"
@@ -1314,7 +1614,7 @@
 
 	(text "SPEC.md 8.4"
 		(exclude_from_sim no)
-		(at 20.0 134.0 0)
+		(at 104.14 264.5 0)
 		(effects
 			(font
 				(size 1.0 1.0)
