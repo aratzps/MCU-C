@@ -4992,7 +4992,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k [TBV]"
+		(property "Value" "10M"
 			(at 165.1 92.71 0)
 			(effects
 				(font
