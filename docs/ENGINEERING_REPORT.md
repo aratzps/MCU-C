@@ -1,7 +1,7 @@
 # MCU-C Integrated SiC Inverter — Engineering Report
 
-**Status: DRAFT — sections marked ⏳ await completion of BOM/PCB/review phases.**
-Companion documents: `SPEC.md` (requirements), `docs/DECISIONS.md` (D001–D021), `docs/SI_VS_SIC.md` (technology trade), `docs/CHANGELOG.md`.
+**Status: post-review revision.** Sections 1–16 describe the design; **§17 records what three adversarial reviews changed** and §18 the validation gates. Where an earlier figure was corrected by review, this document carries the corrected one and §17 shows the original alongside it.
+Companion documents: `SPEC.md` (requirements), `docs/DECISIONS.md` (D001–D026), `docs/REVIEW_FINDINGS.md` (review record), `docs/SI_VS_SIC.md` (technology trade), `docs/BOM.md` (sourcing), `docs/PINOUT.md`, `docs/CHANGELOG.md`.
 
 Every number in this report is either derived here or verified against a manufacturer datasheet / live distributor listing on the date noted in the corresponding decision record. No part entered the design unverified.
 
@@ -47,12 +47,15 @@ Si vs SiC was decided on measured market data, not folklore (full analysis `SI_V
 
 t_peak was matched to the motor's S2 2 min rating by owner directive. Because module baseplate, cold plate and coolant loop have thermal time constants of tens of seconds, **a 120 s peak is thermally steady-state for the cooling system**. Loss estimates:
 
-| Point | SiC (~98 %) | Si reference (~96.5 %) |
-|---|---|---|
-| 15 kW continuous | ~300 W | ~525 W |
-| 35 kW, 120 s | **~700 W** | ~1225 W |
+**These figures were corrected by review — see §17.2 for the derivation.** Computed from the module's own loss tables at V_GS = +15 V (D026), not from a technology-class efficiency estimate:
 
-The cold plate is therefore sized for **700 W** with ≥25 °C junction margin at ≤65 °C coolant — not for the continuous 300 W. This doubled cooling requirement was priced into the Si/SiC decision.
+| Point | Dissipation | Note |
+|---|---|---|
+| 15 kW continuous | **~420 W** | η ≈ 97.3 % |
+| 35 kW, 120 s @ 250 V | **~1144 W** | η = 96.8 % |
+| 35 kW, 120 s @ 450 V | **~1541 W** | switching scales with bus voltage |
+
+**The module is not the constraint — the loop is.** The G2 is direct-cooled at R_th,j-f = 0.121 K/W max per switch, so at 191 W per switch the junction sits ≈ 88 °C with 65 °C coolant against a 150 °C limit: a 3–4× margin. What must be sized for ~1.15–1.55 kW is the external heat exchanger, pump and coolant loop. There is no separate cold plate to design — the requirement is a coolant jacket per AN-G2-ASSEMBLY at ≥10 dm³/min, ≤65 °C.
 
 ## 5. DC link (D013)
 
@@ -80,13 +83,15 @@ Ported from PALTA and netlist-verified (D018), with one honesty correction: the 
 
 1ED3491MC12M ×6: reinforced per IEC 60747-17 (VIORM 1767 V pk), CMTI 200 V/ns against the module's ~14 V/ns, ±9–11 A vs the ~2 A the datasheet-condition R_G (12 Ω/3.3 Ω) actually draws, Miller-clamp pre-driver → BSS138-class FET returned to VEE2 (datasheet §4.5.4.1 — the gate rests at −5 V), DESAT via 1 kΩ + 2×US1M (2 kV standoff) into the module's drain-sense pins. RDYC is a dual-function bused ready/fault-clear line — coupled to the supervisor's push-pull reset through 1 kΩ (contention ≤3.3 mA, low-pulse 0.58 V < V_IL 0.99 V).
 
-Isolated supplies (D020): four SN6505B push-pull stages **from the 5 V rail** (the part is 2.25–5.5 V only — verified, a 15 V feed would have been a silent design error) through Würth 750316856 (1:4.67 → 23 V) with a 5.1 V zener split → +17.9/−5.1 V. The reinforced barrier lives in the driver ICs; the transformers are functional isolation (their 2.5 kV AC is a test rating, not a reinforced working-voltage cert) — acceptable pending the compliance target, flagged in D017.
+**Gate levels are +15 V / −5 V (D026), not the +18 V originally selected** — the derate is what makes the module's 2 µs short-circuit withstand reachable; see §17.3.
+
+Isolated supplies (D020): four SN6505B push-pull stages **from the 5 V rail** (the part is 2.25–5.5 V only — verified, a 15 V feed would have been a silent design error) through Würth 750316856 (1:4.67) with a zener split. The reinforced barrier lives in the driver ICs; these transformers carry only supplementary/functional insulation at 600 V rms working (their 2.5 kV AC is a hipot test rating, not a reinforced working-voltage certification) — an open risk against SPEC §10 pending the compliance target, carried in §18.
 
 ## 8. Precharge / discharge (§7, captured)
 
-Precharge energy is independent of resistance: E = ½CV² = ½ × 400 µF × 450² = **40.5 J**. R = 1.25 kΩ → τ = 0.5 s, ~2.5 s to >99 %, 0.36 A peak — relay closes into a dead bus and opens at near-zero current. Sequencing rule (on-sheet, verbatim): precharge → verify V_bus ≥ 95 % via bus sense → main contactor → open precharge; neither contactor closes without a valid bus reading.
+Precharge energy is independent of resistance: E = ½CV² = ½ × **500 µF** × 450² = **50.6 J** (62.5 J from a 500 V rail; the 400 µF-based 40.5 J in the original draft was a stale derivation — §17.2). R = 1.25 kΩ → τ = 0.625 s, **~3.13 s** to >99 % (firmware timeout ≥3.2 s), 0.36 A peak — relay closes into a dead bus and opens at near-zero current. Sequencing rule (on-sheet, verbatim): precharge → verify V_bus ≥ 95 % via bus sense → main contactor → open precharge; neither contactor closes without a valid bus reading.
 
-Passive bleeder: 75 kΩ as a **4-resistor series string** (no single part spans 450 V): τ = 30 s → <60 V in 60 s at 2.7 W continuous. Active discharge: 880 Ω (4× 220 Ω series) + C3M0350120J, opto-driven: ~0.51 A initial, <5 s to 60 V, ~230 W single-shot pulse — chassis-mounted resistors (D021).
+Passive bleeder: **56 kΩ** as a 4-resistor series string of 14 kΩ (no single part spans 450 V): τ = 28 s → **56.4 s** to 60 V, 3.6 W continuous. *The original 75 kΩ failed the <60 s requirement at 75.4 s against the real 500 µF bank — §17.2.* Active discharge: 880 Ω (4× 220 Ω series) + C3M0350120J, opto-driven: ~0.51 A initial, <5 s to 60 V, ~230 W single-shot pulse — chassis-mounted resistors (D021).
 
 ## 9. Sensing
 
@@ -134,11 +139,85 @@ Known geometry exceptions, recorded rather than hidden: the VOM1271's SOP-4 pack
 
 The sourcing sweeps caught several parts that would have failed at purchase or fabrication: a fictitious "REDCUBE THR M6" terminal (M6 exists only in the press-fit family), a Würth inductor P/N that returns 404, an obsolete AO3400 (the A suffix is the live part), the EOL'd KTY 81/210, an NFND board NTC, unstocked Nexperia small-signal parts, an SS310 package mismatch, and a Vishay capacitor P/N whose "C61010" code decodes to 10 µF rather than the intended 100 µF. **Order-early list** (long leads behind current stock): the module (39 wk), AD2S1205 (20 wk), HOYS transducers (5 pcs at check), the STM32 (dry at DigiKey/Mouser; Newark holds it), and the Hongfa relay (non-DigiKey channel).
 
-## 16. ⏳ Pending sections
+---
 
-- Routing completion and final DRC record (task #4, Phase B in progress)
-- Fabrication package contents and PCBWay ordering parameters (task #5)
-- Adversarial review findings and dispositions (task #7, in progress)
-- Bring-up plan and open risks
+## 17. What the adversarial review changed
 
-*Draft maintained under version control; see git history for provenance of every change.*
+Three independent reviewers attacked the design with instructions to verify every claim against manufacturer datasheets rather than trust this repository, and to report nothing they could not defend with arithmetic. Full findings and dispositions: `docs/REVIEW_FINDINGS.md`. The verdict of the third review was **"not fabrication-ready"**, and it was right. This section records what that cost and what it bought, because a design report that shows only the final state hides the most useful information in the project.
+
+### 17.1 Defects that ERC, DRC and inspection could never have caught
+
+Every one of these passed electrical-rules checking, passed design-rules checking, and looks correct on the page:
+
+| Defect | Why it survived every automated check |
+|---|---|
+| **The gate-driver fault latch could never be cleared.** RDYC only rises when FLT_N is already high; FLT_N only clears on a rising RDYC edge; the MCU reset was ANDed in so it could only add another *low* | A closed logical loop across two ICs, legal at every net. Consequence: the bridge very likely never enables, even once |
+| **The hardware overcurrent trip never reached TIM1_BKIN** — it terminated at a supervisor gate and a status GPIO | Every net was connected and driven. SPEC §9.2's central safety claim was simply false as built |
+| **The comparators could not see the upper trip threshold.** LM2903's input common-mode range on 3.3 V ends at 1.8 V; the threshold is 2.34 V | A part-parameter fact, invisible to connectivity checking. The overcurrent protection would silently not function |
+| **DESAT took ~5.8 µs against a 1.2 µs short-circuit withstand** | Timing emerges from four datasheet parameters across two devices; no tool sums them |
+| **HV-rated capacitors on 0603 footprints, two of them in series across the 450 V link** | Footprint assignment is not rule-checked against part ratings. A stock 0603 fitted at build fails short, the second sees 500 V, and the result is a dead short across a 500 µF bank |
+| **The flyback transformer saturated at the controller's current limit** (B_pk 425 mT typ against 3C96's 440 mT) — because it was copied from a reference design using a *lower*-current-limit controller | Requires cross-reading two datasheets and a reference-design report |
+| **The 5 V converter could not dissipate its own loss** (1.33 W in a 107.8 °C/W SOT-23-6 → ΔT_J ≈ 143 K) | Thermal capability appears nowhere in the netlist |
+| **Three motor phase outputs were dangling** — no terminal existed anywhere in either project | Reported only as benign "dangling label" warnings among 200 others |
+
+The through-line: **automated checks verify that a design is internally consistent, not that it works.** Every defect above lived in the gap between "the netlist is correct" and "the physics is correct."
+
+### 17.2 Arithmetic that was simply wrong
+
+**Stale derivations.** The DC-link bank was selected as 5 × 100 µF = 500 µF, but the specification still carried numbers derived from an earlier 400 µF assumption, and nothing recomputed them:
+
+```
+Precharge energy    ½ × 400 µF × 450² = 40.5 J  →  ½ × 500 µF × 450² = 50.6 J  (62.5 J from a 500 V rail)
+Precharge duration  5τ = 2.5 s                   →  5τ = 3.13 s
+Bleeder             74.8 kΩ × 400 µF → 60.3 s    →  74.8 kΩ × 500 µF → 75.4 s
+```
+
+That last line is the important one: **the passive bleeder failed its own <60 s safety requirement by 26 %**, and had been marginal (60.3 s) even against the assumption it was designed to. Fixed at 4 × 14 kΩ = 56 kΩ → 56.4 s.
+
+**An efficiency estimate used as a design input.** The thermal design point came from a technology-class figure (~98 % for SiC) rather than the module's own loss data. Computed properly at 190 A rms, 25 kHz:
+
+```
+Conduction (+15 V):    3 × 190² × (4.67 mΩ @150 °C + 0.64 mΩ)          =  575 W
+Switching @250 V:      3 × 25 kHz × 115.4 µJ/A × (250/750) × (2×270/π)  =  496 W
+Dead-time body diode:  3 × 171.9 A × 4.04 V × 0.035                     =   73 W
+                                                                          ────────
+                                                                          1144 W    (η = 96.8 %)
+```
+
+against a documented 700 W — **63 % low**. The module absorbs it (junction ≈ 88 °C at 65 °C coolant against a 150 °C limit, a 3–4× margin), so the error lands entirely on the **coolant loop and heat exchanger**, which must reject ~1.15 kW at 250 V and ~1.55 kW at 450 V. A cooling system built to the original figure would have been roughly half the size required.
+
+### 17.3 The trade that had to be made
+
+The DESAT finding forced a genuine engineering decision rather than a value change (D026). The module's short-circuit withstand is **t_SC < 1.2 µs at V_GS = +18 V but < 2 µs at +15 V**, and the driver chain, optimally configured, reaches ~2.0 µs:
+
+- At +18 V the requirement was **unreachable** — the die fails roughly five times over before the gate moves.
+- At +15 V it becomes **attainable**, at the cost of R_DS,on rising 1.90 → 2.40 mΩ (+26 % conduction loss, +105 W at peak) — paid out of junction margin, not out of the cooling budget's critical path.
+- Reopening the driver selection (D017) was considered and rejected: the dominant delays are the *configurable* blanking filter (1575 ns) and soft-off current, not the 9.18 V threshold, so a six-channel respin buys little.
+
+**The residual risk is stated rather than buried: ~2.0 µs sits at the 2 µs rating with no margin.** A double-pulse short-circuit validation is therefore a gate on production release, and if it fails the fallback is a driver change, not a value tweak.
+
+### 17.4 What the reviews confirmed
+
+Coverage matters as much as findings, so reviewers were required to list what they checked and found correct. Among it: end-to-end PWM polarity from TIM1 through the interlock and RC network to the module gate; the overlap eliminator genuinely forcing both outputs low; dead-time diode orientation on all six channels; TIM1_BKIN polarity matching the STM32 reset default; every one of the 100 MCU pins against ST's tables (one reviewer found *the review brief's own* assumed pin list wrong while the schematic was right); every ADC channel assignment; the Miller-clamp return to VEE2 being correct where returning it to GND2 would have caused shoot-through; the DC-link bank's 114 A / 120 s ripple duty — which **closed SPEC open item 5** with 14.7 K of rise per capacitor against a ~43 min thermal time constant, so the 120 s pulse adds ~0.7 K; the precharge sequence being fully permitted by the hardware; and both coil drivers being boot-safe.
+
+## 18. Validation plan and open risks
+
+**Gates on production release** — each must pass before the design is considered qualified:
+
+| # | Validation | Why |
+|---|---|---|
+| 1 | **Double-pulse short-circuit test** at +15 V gate | D026's residual risk — the DESAT chain sits at the 2 µs limit with no margin |
+| 2 | **Transformer leakage-inductance measurement** on the first wound T601 sample | The RCD clamp assumes ~1.9 µH; at 4 µH the primary switch drain reaches 946 V, past its absolute maximum |
+| 3 | **Internal enclosure ambient measurement** | §11.5 sets ≤70 °C by requirement, not by measurement; regulator junction temperatures, resistor derating and cap-bank margin all depend on it |
+| 4 | **Gate-rail worst-case verification** on hardware | The rails are open-loop and the module's V_GS absolute maxima are +19 V / −5 V static |
+| 5 | **48 V full-load flyback test** | The InnoSwitch reference warns regulation can fail below 80 V at high load; §11.1 requires 48 V |
+| 6 | **Overcurrent trip end-to-end** — inject a fault, confirm PWM tri-states in silicon with the MCU held in reset | Verifies the trip-to-BKIN fix at the level the specification claims |
+| 7 | **Precharge/discharge sequence** including the new hardware interlock | Confirms discharge cannot be commanded into a live bus |
+
+**Open risks carried into rev A**, documented rather than silently accepted:
+
+- **Compliance target undefined** (§14 item 4). The gate-drive supply transformers carry only supplementary/functional insulation at 600 V rms working, so the reinforced barrier rests entirely on the driver ICs. Defensible under a functional-safety argument, not under a strict reinforced-insulation requirement.
+- **Aux input has no load-dump protection.** The fitted TVS handles fast transients but not an ISO 7637-2 5a/5b load dump (tens of joules against ~1 J of capability). Only binding if an automotive target is adopted.
+- **Module TS diodes unread** (D022) — thermal protection derives from a coldplate NTC with DESAT as the fast backstop; junction excursions during the 120 s peak rely on the margin computed in §4.
+- **Bus-voltage accuracy** is limited by the 3.3 V reference, not the divider — ±1 % needs a REF3033 or per-board firmware calibration.
+- **AD2S1205 is a 20-week lead part** with zero distributor stock at last check; the stocked AD2S1210 alternative is a package and interface redesign.
