@@ -146,6 +146,14 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Consequences:** the 5 V rail carries the ~8 W gate-supply load (within LMR51430's 3 A); gate-supply transformer isolation is functional-grade, reinforced barrier stays in the driver ICs (§5, D017 caveat); 12 V rail buck is the one unverified block [TBV].
 - **Affects:** SPEC.md §11.2b/§11.3, aux_power sheet, precharge sheet (+12 V rail), BOM.
 
+## D021: Mechanical concept — one PCB on the module; power via laminated busbar
+
+- **Decision:** A single 1.6 mm PCB (the control/driver/aux board) mounts directly onto the FS02MR12A8MA2B via its PressFIT signal pins and the AN-G2-ASSEMBLY screw/heat-stake pattern — the HybridPACK reference architecture. **Power current never flows through the PCB**: the module's screw terminals (P1–P3/N1–N3, U/V/W) connect to a laminated DC busbar carrying the film-cap bank and battery input, and to phase busbars that pass through the HOYS transducer apertures to M6 output studs. Chassis-mounted parts, connectorised to the PCB: precharge relay, precharge resistor (50 W), discharge resistor bank (4× 25 W), coolant-loop NTC. On-PCB HV: the bus-sense divider string, the bleeder string (0.68 W/part), the aux flyback primary side — all inside a dedicated HV zone with §10 creepage.
+- **Why:** The module's power terminals are screw-type busbar lugs — Infineon's own architecture separates power (busbar) from signal (PressFIT PCB). Putting 140 A DC / 190 A phase currents on PCB copper would require absurd copper weights; the 114 A rms cap-bank ripple demands the low-ESL laminated busbar that §6 already required.
+- **Consequences:** One PCB to lay out (4-layer, 1.6 ±0.16 mm per PressFIT spec, 2 oz outer); the busbar is a documented mechanical part (drawing note, not gerbers); PCB outline and mounting are dictated by the module's Fig. 2–4 pattern; HOYS sensors connect by 5-pin JST PA harnesses.
+- **Resolves:** SPEC §14 item 8.
+- **Affects:** PCB layout, fabrication package scope, connector count, enclosure.
+
 ---
 
 ## Superseded
