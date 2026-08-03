@@ -163,6 +163,12 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Comms: ISO1042DWR** ($5.28, stocked, 5 kV) replaces the legacy ISO1050. Board NTC: NCU18XH103F6SRB (NCP18 is NFND).
 - **Affects:** SPEC §8.2/§8.3, temp_sense & bus_sense & comms sheets, §9.1 overtemp derivation, BOM, motor purchase order.
 
+## D023: No phase-voltage sensing in rev A; MCU pin map fixed
+
+- **Decision:** VESC's SENS1/2/3 phase-voltage inputs are not fitted. PA0/PA1/PA2 (ADC123_IN0/1/2 — the exact VESC channels) stay reserved; the custom hw header disables phase-filter/BEMF features that need them. The full pin map (docs/PINOUT.md) is fixed per the verified assignment: I_PH on PC0/1/2 = VESC CURR1/2/3 rank-1 triple-simultaneous channels, V_BUS PC3, temps PA3/PB0/PC4, SinCos PA5/PA6, encoder PC6/7/8 (TIM3), halls PD12/13/14, resolver SPI3 PC10/PC11 + PA15 CS (reset pull-up holds CS high through boot; SWD-only constraint, already true), control GPIOs on PD/PE with boot-safe pulldowns verified per driver, servo/PPM PB6 (TIM4_CH1, VESC convention).
+- **Why no phase sensing:** stock VESC boards float at battery potential and divide the phase voltages directly. This board's control domain is isolated (§10); direct dividers are impossible, and isolated sensing costs 3× AMC1311 + per-phase HV supplies for a feature (phase filters / BEMF startup assist) that FOC with 3-phase current sensing + 4 position interfaces does not need. Documented firmware consequence, upgrade path reserved.
+- **Affects:** mcu.kicad_sch wiring, custom `hw_mcuc.h` (ADC vector mirrors hw_100_250 minus SENS), docs/PINOUT.md, VESC feature set (phase filters off).
+
 ---
 
 ## Superseded
