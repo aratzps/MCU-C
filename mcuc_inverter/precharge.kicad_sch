@@ -1206,449 +1206,262 @@
 		)
 		(embedded_fonts no)
 	)
-		(symbol "Isolator:TLP2310"
-		(pin_names
-			(offset 1.016)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "U"
-			(at -7.112 8.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
+		(symbol "mcuc:VOM1271T"
+			(pin_names
+				(offset 1.016)
 			)
-		)
-		(property "Value" "TLP2310"
-			(at 1.016 9.144 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_SO:SO-5-6_4.55x3.7mm_P1.27mm"
-			(at 0 -12.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TLP2310_datasheet_en_20220913.pdf?did=29657&prodName=TLP2310"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "5-Mbps low-power non inverting photocouple, 3.75 kVrms, 2.7 - 5.5 Vdd, push-pull output"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "Optocoupler high-speed Toshiba"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "SO*4.55x3.7mm*P1.27mm*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "TLP2310_0_1"
-			(rectangle
-				(start -7.62 7.62)
-				(end 7.62 -7.62)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type background)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -5.08 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
 				)
 			)
-			(polyline
-				(pts
-					(xy -7.62 -5.08) (xy -5.08 -5.08) (xy -5.08 -1.27)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
+			(property "Value" "VOM1271T"
+				(at -5.08 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
 				)
 			)
-			(polyline
-				(pts
-					(xy -6.096 0.889) (xy -4.064 0.889) (xy -5.08 -0.762) (xy -6.096 0.889)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
+			(property "Footprint" "Package_SO:SOP-4_3.8x4.1mm_P2.54mm"
+				(at 0 -11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
 				)
 			)
-			(polyline
-				(pts
-					(xy -6.096 -0.889) (xy -4.064 -0.889)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
+			(property "Datasheet" "https://www.vishay.com/docs/83469/vom1271.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
 				)
 			)
-			(polyline
-				(pts
-					(xy -5.08 1.27) (xy -5.08 5.08) (xy -7.62 5.08)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
+			(property "Description" "Photovoltaic MOSFET driver with integrated fast turn-off, Voc 8.4 V typ @ IF = 10 mA, Isc 15 uA typ, 3750 Vrms, SOP-4"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
 				)
 			)
-			(polyline
-				(pts
-					(xy -5.08 1.016) (xy -5.08 -0.762)
+			(symbol "VOM1271T_0_1"
+				(rectangle
+					(start -5.08 7.62)
+					(end 5.08 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
 				)
-				(stroke
-					(width 0.254)
-					(type default)
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy -2.54 5.08) (xy -2.54 0.889)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
 				)
-				(fill
-					(type none)
+				(polyline
+					(pts
+						(xy -3.556 0.889) (xy -1.524 0.889) (xy -2.54 -0.762) (xy -3.556 0.889)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
 				)
-			)
-			(polyline
-				(pts
-					(xy -5.08 -1.27) (xy -5.08 -0.9144)
+				(polyline
+					(pts
+						(xy -3.556 -0.889) (xy -1.524 -0.889)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
 				)
-				(stroke
-					(width 0.254)
-					(type default)
+				(polyline
+					(pts
+						(xy -2.54 -0.889) (xy -2.54 -5.08) (xy -5.08 -5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
 				)
-				(fill
-					(type none)
+				(polyline
+					(pts
+						(xy -1.016 0.508) (xy 0.508 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
 				)
-			)
-			(polyline
-				(pts
-					(xy -3.556 0.508) (xy -2.032 1.27)
+				(polyline
+					(pts
+						(xy -1.016 -0.762) (xy 0.508 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
 				)
-				(stroke
-					(width 0.254)
-					(type default)
+				(rectangle
+					(start 1.27 2.54)
+					(end 4.318 -2.54)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
 				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -3.556 -0.762) (xy -2.032 0)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -2.032 1.27) (xy -2.3368 1.3208)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -2.032 1.27) (xy -2.1844 0.9652)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -2.032 0) (xy -2.3368 0.0508)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -2.032 0) (xy -2.1844 -0.3048)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 7.5946) (xy 0 1.7018)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 -7.62) (xy 0 -1.651)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0.1524 -0.889) (xy -0.1016 -0.635) (xy 0.4064 -0.635)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0.9144 0.889) (xy 0.9144 -1.143) (xy -0.8636 -1.143)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0.9144 0.889) (xy 0.6604 0.635) (xy 1.1684 0.635) (xy 0.9144 0.889)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(arc
-				(start 1.4224 1.651)
-				(mid 2.5738 1.1514)
-				(end 3.0734 0)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 1.4224 1.651) (xy -1.6256 1.651) (xy -1.6256 -1.651) (xy 1.4224 -1.651)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(arc
-				(start 3.0734 0)
-				(mid 2.6076 -1.1853)
-				(end 1.4224 -1.651)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 1.6764 1.143) (xy 0.1524 1.143) (xy 0.1524 -0.889) (xy 0.4064 -0.635)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 7.5946 0) (xy 3.0734 0)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(symbol "TLP2310_1_1"
-			(pin passive line
-				(at -10.16 5.08 0)
-				(length 2.54)
-				(name "A"
+				(text "Turn\nOff"
+					(at 2.794 0 0)
 					(effects
 						(font
-							(size 1.27 1.27)
+							(size 0.889 0.889)
 						)
 					)
 				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
+				(polyline
+					(pts
+						(xy 5.08 5.08) (xy 2.794 5.08) (xy 2.794 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -5.08) (xy 2.794 -5.08) (xy 2.794 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "VOM1271T_1_1"
+				(pin passive line
+					(at -7.62 5.08 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 -5.08 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -5.08 180)
+					(length 2.54)
+					(name "VO-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 5.08 180)
+					(length 2.54)
+					(name "VO+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
 						)
 					)
 				)
 			)
-			(pin passive line
-				(at -10.16 -5.08 0)
-				(length 2.54)
-				(name "K"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 10.16 270)
-				(length 2.54)
-				(name "VDD"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 -10.16 90)
-				(length 2.54)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin output line
-				(at 10.16 0 180)
-				(length 2.54)
-				(name "VO"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
+			(embedded_fonts no)
 		)
-		(embedded_fonts no)
-	)
 		(symbol "Transistor_FET:AO3400A"
 				(pin_names
 					(offset 0)
@@ -2326,7 +2139,7 @@
 		)
 		(uuid "47145e53-b3ae-4032-ad4e-b9eeef7c8dba")
 	)
-	(text "U401 output stage needs a local floating 12-15 V supply VDISCH_P/VDISCH_N, source TBD in aux_power\n(alternative: photovoltaic gate driver, VOM1271 stack [TBV]). VDISCH_N ties to Q403 source (DC bus negative)."
+	(text "VOM1271 photovoltaic drive — no supply needed; ~10 s-class turn-on at µA charge currents is acceptable for discharge duty;\nRds elevated at ~8 V VGS (not spec'd below 11 V) — verified acceptable for current-limited single-shot duty (D022 research)."
 		(exclude_from_sim no)
 		(at 195.58 83.82 0)
 		(effects
@@ -4831,7 +4644,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Isolator:TLP2310")
+		(lib_id "mcuc:VOM1271T")
 		(at 152.4 86.36 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4848,7 +4661,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TLP2312-class opto-driver [TBV]"
+		(property "Value" "VOM1271T"
 			(at 144.78 74.295 0)
 			(effects
 				(font
@@ -4857,7 +4670,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:SOP-4_3.8x4.1mm_P2.54mm"
 			(at 152.4 86.36 0)
 			(effects
 				(font
@@ -4867,7 +4680,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.vishay.com/docs/83469/vom1271.pdf"
 			(at 152.4 86.36 0)
 			(effects
 				(font
@@ -4936,7 +4749,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "330R [TBV]"
+		(property "Value" "100R"
 			(at 139.7 77.978 270)
 			(effects
 				(font
@@ -4986,7 +4799,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 81.28) (xy 142.24 81.28)
+			(xy 139.7 81.28) (xy 144.78 81.28)
 		)
 		(stroke
 			(width 0)
@@ -4996,7 +4809,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 91.44) (xy 142.24 95.25)
+			(xy 144.78 91.44) (xy 144.78 95.25)
 		)
 		(stroke
 			(width 0)
@@ -5006,7 +4819,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 142.24 95.25 0)
+		(at 144.78 95.25 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -5014,7 +4827,7 @@
 		(dnp no)
 		(uuid "aca04e51-ded0-44c2-b508-a46f848509f9")
 		(property "Reference" "#PWR0410"
-			(at 144.78 92.71 0)
+			(at 147.32 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5023,7 +4836,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 142.24 99.06 0)
+			(at 144.78 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5031,7 +4844,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 142.24 95.25 0)
+			(at 144.78 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5041,7 +4854,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 142.24 95.25 0)
+			(at 144.78 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5051,7 +4864,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 142.24 95.25 0)
+			(at 144.78 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5068,120 +4881,6 @@
 				)
 			)
 		)
-	)
-	(wire
-		(pts
-			(xy 152.4 76.2) (xy 152.4 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5bc5c657-6786-494a-85c6-4008c5ec5b9d")
-	)
-	(wire
-		(pts
-			(xy 147.32 71.12) (xy 152.4 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "065adf5d-b819-41ed-8db7-c615f27c80fb")
-	)
-	(wire
-		(pts
-			(xy 144.78 71.12) (xy 147.32 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ff4c84f1-79b6-4868-8470-38b16511fe97")
-	)
-	(hierarchical_label "VDISCH_P"
-		(shape passive)
-		(at 144.78 71.12 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "1c7df1eb-a769-44e1-bcf5-2c22b4f74e5c")
-	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 147.32 71.12 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(uuid "15ac2db6-1d2f-4b4e-97e3-33d043777658")
-		(property "Reference" "#FLG0402"
-			(at 149.85999999999999 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 147.32 67.56400000000001 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 147.32 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 147.32 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 147.32 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
-					(reference "#FLG0402")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(junction
-		(at 147.32 71.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8e9c0bc8-ae83-45d8-8568-82802c20693d")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -5375,7 +5074,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BZX384-C18 [TBV]"
+		(property "Value" "MM3Z18VT1G"
 			(at 181.61 102.87 90)
 			(effects
 				(font
@@ -5535,133 +5234,43 @@
 	)
 	(wire
 		(pts
-			(xy 152.4 96.52) (xy 152.4 104.14)
+			(xy 160.02 81.28) (xy 162.56 81.28)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7a5a2235-f076-42f8-93c2-d5b552883736")
+		(uuid "b7d79ae4-5fbf-486a-8fc4-5b294abbf244")
 	)
 	(wire
 		(pts
-			(xy 144.78 104.14) (xy 152.4 104.14)
+			(xy 162.56 81.28) (xy 162.56 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "fecef99e-8773-417c-8fd7-bd2535845963")
-	)
-	(hierarchical_label "VDISCH_N"
-		(shape passive)
-		(at 144.78 104.14 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "1b1ed891-8a8f-48d5-a043-b61f296a2ae5")
+		(uuid "081b724a-3f43-464e-9639-f17849a8cc44")
 	)
 	(wire
 		(pts
-			(xy 152.4 104.14) (xy 162.56 104.14)
+			(xy 160.02 91.44) (xy 160.02 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ca9527f9-7537-4ffe-b19e-f76206ad0f97")
-	)
-	(junction
-		(at 152.4 104.14)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2588a492-7439-490c-9fb0-bded34a13c27")
-	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 162.56 104.14 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(uuid "f73a9ae6-8bda-4b13-83b5-86c53b1beec5")
-		(property "Reference" "#FLG0403"
-			(at 165.1 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 162.56 100.584 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 162.56 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 162.56 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 162.56 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mcuc_inverter"
-				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
-					(reference "#FLG0403")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(junction
-		(at 162.56 104.14)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "18bf558b-861b-4749-bd4f-cf4cd100ceec")
+		(uuid "1f2365c1-6bb1-4dd2-acc3-2a560fa4e48a")
 	)
 	(wire
 		(pts
-			(xy 162.56 104.14) (xy 180.34 104.14)
+			(xy 160.02 104.14) (xy 180.34 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f382c428-83c7-4527-8c55-5ed65380cf05")
+		(uuid "4cbac956-c704-4549-9962-b8d49ba0148c")
 	)
 	(embedded_fonts no)
 )

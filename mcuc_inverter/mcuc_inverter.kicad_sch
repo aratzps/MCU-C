@@ -949,26 +949,6 @@
 			)
 			(uuid "e18bcd84-fd1c-473c-8dc4-d74d2a2220d1")
 		)
-		(pin "VDISCH_P" passive
-			(at 75.88 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "fde0f7be-d77a-41bc-97d3-4e1f9d9ab195")
-		)
-		(pin "VDISCH_N" passive
-			(at 75.88 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "740cd3d7-3457-451f-8850-762b45dc7a4b")
-		)
 		(instances
 			(project "mcuc_inverter"
 				(path "/689a95c8-82a6-4e82-9207-262af70daca3"
