@@ -6,13 +6,1008 @@
 	(paper "A3")
 	(title_block
 		(title "MCU-C Integrated Inverter")
-		(date "2026-07-30")
+		(date "2026-08-02")
 		(rev "0.1")
 		(company "MCU-C")
 		(comment 1 "Temperature sensing")
 	)
 
-	(lib_symbols)
+	(lib_symbols
+		(symbol "power:+3.3V"
+							(power)
+							(pin_numbers
+								(hide yes)
+							)
+							(pin_names
+								(offset 0)
+								(hide yes)
+							)
+							(exclude_from_sim no)
+							(in_bom yes)
+							(on_board yes)
+							(property "Reference" "#PWR"
+								(at 0 -3.81 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(property "Value" "+3.3V"
+								(at 0 3.556 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+							(property "Footprint" ""
+								(at 0 0 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(property "Datasheet" ""
+								(at 0 0 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+								(at 0 0 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(property "ki_keywords" "global power"
+								(at 0 0 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(symbol "+3.3V_0_1"
+								(polyline
+									(pts
+										(xy -0.762 1.27) (xy 0 2.54)
+									)
+									(stroke
+										(width 0)
+										(type default)
+									)
+									(fill
+										(type none)
+									)
+								)
+								(polyline
+									(pts
+										(xy 0 2.54) (xy 0.762 1.27)
+									)
+									(stroke
+										(width 0)
+										(type default)
+									)
+									(fill
+										(type none)
+									)
+								)
+								(polyline
+									(pts
+										(xy 0 0) (xy 0 2.54)
+									)
+									(stroke
+										(width 0)
+										(type default)
+									)
+									(fill
+										(type none)
+									)
+								)
+							)
+							(symbol "+3.3V_1_1"
+								(pin power_in line
+									(at 0 0 90)
+									(length 0)
+									(name "~"
+										(effects
+											(font
+												(size 1.27 1.27)
+											)
+										)
+									)
+									(number "1"
+										(effects
+											(font
+												(size 1.27 1.27)
+											)
+										)
+									)
+								)
+							)
+						)
+		(symbol "power:GND"
+							(power)
+							(pin_numbers
+								(hide yes)
+							)
+							(pin_names
+								(offset 0)
+								(hide yes)
+							)
+							(exclude_from_sim no)
+							(in_bom yes)
+							(on_board yes)
+							(property "Reference" "#PWR"
+								(at 0 -6.35 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(property "Value" "GND"
+								(at 0 -3.81 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+							(property "Footprint" ""
+								(at 0 0 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(property "Datasheet" ""
+								(at 0 0 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+								(at 0 0 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(property "ki_keywords" "global power"
+								(at 0 0 0)
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+									(hide yes)
+								)
+							)
+							(symbol "GND_0_1"
+								(polyline
+									(pts
+										(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+									)
+									(stroke
+										(width 0)
+										(type default)
+									)
+									(fill
+										(type none)
+									)
+								)
+							)
+							(symbol "GND_1_1"
+								(pin power_in line
+									(at 0 0 270)
+									(length 0)
+									(name "~"
+										(effects
+											(font
+												(size 1.27 1.27)
+											)
+										)
+									)
+									(number "1"
+										(effects
+											(font
+												(size 1.27 1.27)
+											)
+										)
+									)
+								)
+							)
+						)
+		(symbol "Device:R"
+						(pin_numbers
+							(hide yes)
+						)
+						(pin_names
+							(offset 0)
+						)
+						(exclude_from_sim no)
+						(in_bom yes)
+						(on_board yes)
+						(property "Reference" "R"
+							(at 2.032 0 90)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(property "Value" "R"
+							(at 0 0 90)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(property "Footprint" ""
+							(at -1.778 0 90)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "Datasheet" "~"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "Description" "Resistor"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "ki_keywords" "R res resistor"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "ki_fp_filters" "R_*"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(symbol "R_0_1"
+							(rectangle
+								(start -1.016 -2.54)
+								(end 1.016 2.54)
+								(stroke
+									(width 0.254)
+									(type default)
+								)
+								(fill
+									(type none)
+								)
+							)
+						)
+						(symbol "R_1_1"
+							(pin passive line
+								(at 0 3.81 270)
+								(length 1.27)
+								(name "~"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+								(number "1"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+							)
+							(pin passive line
+								(at 0 -3.81 90)
+								(length 1.27)
+								(name "~"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+								(number "2"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+							)
+						)
+						(embedded_fonts no)
+					)
+		(symbol "Device:C"
+						(pin_numbers
+							(hide yes)
+						)
+						(pin_names
+							(offset 0.254)
+						)
+						(exclude_from_sim no)
+						(in_bom yes)
+						(on_board yes)
+						(property "Reference" "C"
+							(at 0.635 2.54 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(justify left)
+							)
+						)
+						(property "Value" "C"
+							(at 0.635 -2.54 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(justify left)
+							)
+						)
+						(property "Footprint" ""
+							(at 0.9652 -3.81 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "Datasheet" "~"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "Description" "Unpolarized capacitor"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "ki_keywords" "cap capacitor"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "ki_fp_filters" "C_*"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(symbol "C_0_1"
+							(polyline
+								(pts
+									(xy -2.032 0.762) (xy 2.032 0.762)
+								)
+								(stroke
+									(width 0.508)
+									(type default)
+								)
+								(fill
+									(type none)
+								)
+							)
+							(polyline
+								(pts
+									(xy -2.032 -0.762) (xy 2.032 -0.762)
+								)
+								(stroke
+									(width 0.508)
+									(type default)
+								)
+								(fill
+									(type none)
+								)
+							)
+						)
+						(symbol "C_1_1"
+							(pin passive line
+								(at 0 3.81 270)
+								(length 2.794)
+								(name "~"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+								(number "1"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+							)
+							(pin passive line
+								(at 0 -3.81 90)
+								(length 2.794)
+								(name "~"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+								(number "2"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+							)
+						)
+						(embedded_fonts no)
+					)
+		(symbol "Device:Thermistor_NTC"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "TH"
+			(at -4.445 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor_NTC"
+			(at 3.175 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor, negative temperature coefficient"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "thermistor NTC resistor sensor RTD"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "*NTC* *Thermistor* PIN?ARRAY* bornier* *Terminal?Block* R_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Thermistor_NTC_0_1"
+			(arc
+				(start -3.175 2.413)
+				(mid -3.0506 2.3165)
+				(end -3.048 2.159)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start -3.048 2.794)
+				(mid -2.9736 2.9736)
+				(end -2.794 3.048)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start -2.794 3.048)
+				(mid -2.6144 2.9736)
+				(end -2.54 2.794)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start -2.794 2.54)
+				(mid -2.9736 2.6144)
+				(end -3.048 2.794)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start -2.794 1.905)
+				(mid -2.9736 1.9794)
+				(end -3.048 2.159)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start -2.54 2.159)
+				(mid -2.6144 1.9794)
+				(end -2.794 1.905)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start -2.159 2.794)
+				(mid -2.434 2.5608)
+				(end -2.794 2.54)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.54 2.159) (xy -2.54 2.794)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.54 -3.683) (xy -2.54 -1.397) (xy -2.794 -2.159) (xy -2.286 -2.159) (xy -2.54 -1.397) (xy -2.54 -1.651)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.778 2.54) (xy -1.778 1.524) (xy 1.778 -1.524) (xy 1.778 -2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.778 -1.397) (xy -1.778 -3.683) (xy -2.032 -2.921) (xy -1.524 -2.921) (xy -1.778 -3.683)
+					(xy -1.778 -3.429)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(rectangle
+				(start -1.016 2.54)
+				(end 1.016 -2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "Thermistor_NTC_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "Connector:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 5.08 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "Connector_Generic:Conn_01x02"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x02"
+			(at 0 -5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Conn_01x02_1_1"
+			(rectangle
+				(start -1.27 1.27)
+				(end 1.27 -3.81)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	)
+
 	(text "Temperature sensing"
 		(exclude_from_sim no)
 		(at 20 20 0)
@@ -22,20 +1017,1759 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b81b8b69-cec3-487b-a027-cbf64298f23b")
+		(uuid "1b4fd0c2-3e60-4bf9-aa06-11a735fb145b")
 	)
-
-	(text "Placeholder. Requirements: SPEC.md 8.3"
+	(text "SPEC.md 8.3, DECISIONS.md D022. Two NTC channels (coldplate + board) and provision-only pads for the module TS diodes. Motor-winding temperature front end is on the Position feedback sheet."
 		(exclude_from_sim no)
-		(at 20 27 0)
+		(at 20 25.4 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "7135a342-d6e6-4923-894e-d3c2030e1a25")
+		(uuid "db82ea24-40fd-4b9f-8212-ffd956c5dfeb")
 	)
-
+	(text "Coldplate NTC - primary module thermal protection (D022): TDK B57861S0103F040 (10k 1%, B25/100 = 3988 K, glass bead, AEC-Q200)\nbolted at the module baseplate, chassis harness to J1101 (D021). 10k 0.1% bias from +3.3 V: 1.65 V at 25 C, ~0.53 V at 80 C. Read as VESC 'MOSFET temp';\nconservative trip threshold + DESAT backstop cover the unread TS diodes (SPEC 9.1 overtemp)."
+		(exclude_from_sim no)
+		(at 20 40.64 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "f57f208d-9761-446e-9c32-88cdc973f2be")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 40.64 76.2 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f6a7b1de-18b4-4f8f-aa6f-ebcf8421494f")
+		(property "Reference" "J1101"
+			(at 35.56 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Coldplate NTC"
+			(at 30.48 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+			(at 40.64 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 40.64 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 40.64 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "J1101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 45.72 76.2) (xy 53.34 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f03a92e4-f14a-4488-95d6-73b17eb153de")
+	)
+	(label "NTC_CP_A"
+		(at 53.34 76.2 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f56b76a3-3f1e-4c91-890f-0032efab9342")
+	)
+	(wire
+		(pts
+			(xy 45.72 73.66) (xy 50.8 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08085221-86a9-4457-8d03-7cbd43118e2d")
+	)
+	(wire
+		(pts
+			(xy 50.8 73.66) (xy 50.8 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5dd3c9d6-295a-4123-aadc-7f0a75590ca1")
+	)
+	(wire
+		(pts
+			(xy 50.8 68.58) (xy 53.34 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e72447e6-3c51-4b52-8c28-5339663be51c")
+	)
+	(label "NTC_CP_B"
+		(at 53.34 68.58 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "73e5c348-252a-408c-bc3e-13c5df1d47ad")
+	)
+	(label "NTC_CP_B"
+		(at 78.74 68.58 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "98bff647-0da1-40da-bc63-4e6a27f01cad")
+	)
+	(wire
+		(pts
+			(xy 78.74 68.58) (xy 83.82 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2594be5c-b9f6-4d15-a401-c4835b6ae1d3")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 83.82 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "efa8e10c-c4f3-4f16-aea6-a85d8171485c")
+		(property "Reference" "#PWR1101"
+			(at 86.36 66.03999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 83.82 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 83.82 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 83.82 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "#PWR1101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "NTC_CP_A"
+		(at 78.74 76.2 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "03754efb-21c7-4b59-87bb-029bac7c62de")
+	)
+	(wire
+		(pts
+			(xy 78.74 76.2) (xy 88.9 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "38e3df22-a933-46c3-ade1-9462eb55cffb")
+	)
+	(junction
+		(at 88.9 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0fec3728-2798-4cee-86a6-f92dee8fbc4d")
+	)
+	(wire
+		(pts
+			(xy 88.9 74.93) (xy 88.9 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e47e4186-667d-4565-8999-6a54735d6c64")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 88.9 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "684c3f17-2053-40a6-881c-68e701f3e401")
+		(property "Reference" "R1101"
+			(at 91.44000000000001 69.85000000000001 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10.0k 0.1%"
+			(at 91.44000000000001 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 88.9 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 88.9 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "R1101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 88.9 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "ea1d5a8f-fbd0-4a84-b32e-f16c087bc411")
+		(property "Reference" "#PWR1102"
+			(at 91.44000000000001 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 88.9 63.754000000000005 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 88.9 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "#PWR1102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 88.9 76.2) (xy 93.98 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c394739-3ee3-42db-a9db-fe58fdb53a95")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 97.79 76.2 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3deedb97-bfb0-4084-a1e7-d9c0d5cd0184")
+		(property "Reference" "R1102"
+			(at 93.98 79.50200000000001 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 101.60000000000001 79.50200000000001 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 97.79 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 97.79 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 97.79 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "R1102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 101.6 76.2) (xy 106.68 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6b6319e-7371-4b54-ae08-a98c8409c1d4")
+	)
+	(wire
+		(pts
+			(xy 106.68 76.2) (xy 114.3 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e7f986c1-2b6d-401a-8d59-d7fd4623c829")
+	)
+	(junction
+		(at 106.68 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "47504abf-9c98-4c45-82d2-34d354806be0")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 106.68 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "36db5fa0-151e-4242-96b7-a928bb410c6d")
+		(property "Reference" "C1101"
+			(at 109.22000000000001 78.74000000000001 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 109.22000000000001 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 106.68 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 106.68 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "C1101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 106.68 83.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "b02a405f-8e2a-4136-8b74-e65be8322eff")
+		(property "Reference" "#PWR1103"
+			(at 109.22000000000001 81.27999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 106.68 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 106.68 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 106.68 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "#PWR1103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(hierarchical_label "TEMP_COLDPLATE"
+		(shape output)
+		(at 114.3 76.2 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3dbb3fbe-c1d4-4898-adf6-cee553eb285c")
+	)
+	(text "Board NTC - control-electronics ambient: Murata NCU18XH103F6SRB (0603, 10k 1%, B25/85 = 3380 K; successor part, NCP18 is NFND - D022)."
+		(exclude_from_sim no)
+		(at 20 99.06 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "c8dd8e80-e8b5-4ca8-99a9-aab4e59b29e9")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 88.9 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a49ee8ab-27b1-4850-a072-6132722a4dcb")
+		(property "Reference" "R1103"
+			(at 91.44000000000001 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10.0k 0.1%"
+			(at 91.44000000000001 102.86999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 88.9 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 88.9 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "R1103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 88.9 97.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "80840956-9bcd-4081-8a75-10ea7fc00bcb")
+		(property "Reference" "#PWR1104"
+			(at 91.44000000000001 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 88.9 94.23400000000001 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 88.9 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "#PWR1104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 88.9 105.41) (xy 88.9 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d0efdad-322f-4361-b88a-792000c74e9b")
+	)
+	(junction
+		(at 88.9 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5595c4c6-9b98-4e30-82ff-a9b8ec077895")
+	)
+	(wire
+		(pts
+			(xy 88.9 106.68) (xy 88.9 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "924b5755-6f7c-4cf6-ba15-6935842c358f")
+	)
+	(symbol
+		(lib_id "Device:Thermistor_NTC")
+		(at 88.9 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1ec49d0d-2d02-486e-8297-cc6897db099a")
+		(property "Reference" "RT1101"
+			(at 85.09 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "NCU18XH103F6SRB"
+			(at 85.09 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 88.9 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 88.9 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "RT1101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 88.9 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "04916489-9649-48f4-838e-1058b410a2fe")
+		(property "Reference" "#PWR1105"
+			(at 91.44000000000001 113.02999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 88.9 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 88.9 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "#PWR1105")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 88.9 106.68) (xy 93.98 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cdc88a05-bffd-4c72-9215-37ef6fd718e0")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 97.79 106.68 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0dbd864a-ed06-4e75-9084-24f79a256bc7")
+		(property "Reference" "R1104"
+			(at 93.98 109.98200000000001 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 101.60000000000001 109.98200000000001 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 97.79 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 97.79 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 97.79 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "R1104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 101.6 106.68) (xy 106.68 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49f47fdb-ff1f-4b22-ae90-f02c19c3d44c")
+	)
+	(wire
+		(pts
+			(xy 106.68 106.68) (xy 114.3 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "957a1a6e-2705-4121-96e1-08edd958503e")
+	)
+	(junction
+		(at 106.68 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "430959ef-6f50-42c4-81fb-90fd78be4f9e")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 106.68 110.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "225b8f8c-1b64-4235-87c2-724879c055a2")
+		(property "Reference" "C1102"
+			(at 109.22000000000001 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 109.22000000000001 111.75999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 106.68 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 106.68 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "C1102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 106.68 114.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "bbc9652a-4c39-4e80-85f8-ccd1e9028162")
+		(property "Reference" "#PWR1106"
+			(at 109.22000000000001 111.75999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 106.68 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 106.68 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 106.68 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "#PWR1106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(hierarchical_label "TEMP_BOARD"
+		(shape output)
+		(at 114.3 106.68 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0cbc91df-7a68-486f-bf73-383657ee835f")
+	)
+	(text "MODULE TS DIODES - PROVISION ONLY IN REV A (DECISIONS.md D022):\n\"Verified: the FS02MR12A8MA2B gives the TS pins no isolation rating (the module's 4.2 kV 'basic' figure is terminal-to-heatsink only), and the only\ndocumented readout anywhere in Infineon's material is the HV-side delta-sigma ADC inside the 1EDI3035AS driver (zero distribution stock),\nreferenced to the switch source and sent across the driver's own barrier. A control-GND op-amp front end has no datasheet basis.\"\nRev A: TS pads routed inside the HV zone, UNPOPULATED - no readout circuitry on this board. Module thermal protection = coldplate NTC\n(conservative threshold) + DESAT fast backstop. Upgrade path: 1EDI3035AS drivers (when stocked) or per-phase isolated amplifiers."
+		(exclude_from_sim no)
+		(at 167.64 48.26 0)
+		(effects
+			(font
+				(size 1.2 1.2)
+			)
+			(justify left bottom)
+		)
+		(uuid "2b465d57-43c7-424b-aa74-628ae3a1c07e")
+	)
+	(hierarchical_label "TS_1_P"
+		(shape passive)
+		(at 175.26 60.96 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "080f750a-3c80-498e-93f6-5b082e82154d")
+	)
+	(wire
+		(pts
+			(xy 175.26 60.96) (xy 187.96 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a57cde25-60e9-47a0-9d69-25ef1bf94a9d")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 187.96 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "7fd4cab2-a8e1-4c2b-832d-11dfceb0a40b")
+		(property "Reference" "TP1101"
+			(at 190.5 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "PROVISION - HV domain, do not populate; see D022"
+			(at 190.5 60.706 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 187.96 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "TP1101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(hierarchical_label "TS_1_N"
+		(shape passive)
+		(at 175.26 68.58 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "87c987ee-29a0-4002-8acf-ef202a7cdfe4")
+	)
+	(wire
+		(pts
+			(xy 175.26 68.58) (xy 187.96 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5be2e50a-0dae-4e23-92f5-6d626465b5d5")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 187.96 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "2229a193-3fae-4e55-b4e0-df00d3901f49")
+		(property "Reference" "TP1102"
+			(at 190.5 66.03999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "PROVISION - HV domain, do not populate; see D022"
+			(at 190.5 68.326 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 187.96 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "TP1102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(hierarchical_label "TS_2_P"
+		(shape passive)
+		(at 175.26 76.2 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bb158d9b-e129-4b20-9a4c-cd233b38354b")
+	)
+	(wire
+		(pts
+			(xy 175.26 76.2) (xy 187.96 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "207a8c1f-a650-4422-a2b0-7285e930f6d3")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 187.96 76.2 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "337917a7-1817-4aef-810e-4429d1ebacf9")
+		(property "Reference" "TP1103"
+			(at 190.5 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "PROVISION - HV domain, do not populate; see D022"
+			(at 190.5 75.946 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 187.96 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "TP1103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(hierarchical_label "TS_2_N"
+		(shape passive)
+		(at 175.26 83.82 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bd3eb10c-d328-480c-9322-f9b7defe3974")
+	)
+	(wire
+		(pts
+			(xy 175.26 83.82) (xy 187.96 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad0ac6d1-4e19-4fda-a569-0d5935279931")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 187.96 83.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "3466f5b1-5358-4c6a-9cd7-059523bdcc51")
+		(property "Reference" "TP1104"
+			(at 190.5 81.27999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "PROVISION - HV domain, do not populate; see D022"
+			(at 190.5 83.56599999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 187.96 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "TP1104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(hierarchical_label "TS_3_P"
+		(shape passive)
+		(at 175.26 91.44 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "60259c9e-5d6c-4fb8-a30e-2919f794a0bd")
+	)
+	(wire
+		(pts
+			(xy 175.26 91.44) (xy 187.96 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4271e44f-f583-4ecf-ab91-74c99e0f11a4")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 187.96 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "c9d07437-e3b2-4245-bd29-ee7d922e7a9d")
+		(property "Reference" "TP1105"
+			(at 190.5 88.89999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "PROVISION - HV domain, do not populate; see D022"
+			(at 190.5 91.18599999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 187.96 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "TP1105")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(hierarchical_label "TS_3_N"
+		(shape passive)
+		(at 175.26 99.06 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cfda1f66-5276-4b5e-9a7b-0fe8b6b55316")
+	)
+	(wire
+		(pts
+			(xy 175.26 99.06) (xy 187.96 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08c38193-26ad-4f77-93fb-1d7c80014082")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 187.96 99.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "a2c2d32b-86e5-4cb9-b49d-15eb948b4b31")
+		(property "Reference" "TP1106"
+			(at 190.5 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "PROVISION - HV domain, do not populate; see D022"
+			(at 190.5 98.806 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 187.96 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/464d1c72-a8a9-4cbc-83cd-c5c7732e71a7"
+					(reference "TP1106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(text "TP1101-TP1106: bare pads in the HV zone (DNP). TS pins route from the power stage sheet; keep the pad group inside the D021 HV\nzone with SPEC 10 creepage to the control zone. No connection to any control-side net."
+		(exclude_from_sim no)
+		(at 167.64 108.585 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "d774de1d-437d-4a9d-8033-6e50c334193f")
+	)
+	(text "MOTOR TEMPERATURE: front end (resistor-selectable PT1000 / KTY8x / NTC 10k, D022 - order motor with PT1000) lives on the POSITION FEEDBACK sheet\nwith the motor-connector inputs (MOTOR_TEMP_IN -> MOTOR_TEMP). Deliberately not duplicated here."
+		(exclude_from_sim no)
+		(at 20 130.81 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "172e892c-3792-49e9-81a6-b6fac260bbdc")
+	)
 	(embedded_fonts no)
 )

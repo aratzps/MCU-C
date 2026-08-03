@@ -1507,7 +1507,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm"
+		(property "Footprint" "mcuc:PG-DSO-16-28"
 			(at 78.74 58.42 0)
 			(effects
 				(font
@@ -4203,7 +4203,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm"
+		(property "Footprint" "mcuc:PG-DSO-16-28"
 			(at 212.09 58.42 0)
 			(effects
 				(font
@@ -6899,7 +6899,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm"
+		(property "Footprint" "mcuc:PG-DSO-16-28"
 			(at 345.44 58.42 0)
 			(effects
 				(font
@@ -9595,7 +9595,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm"
+		(property "Footprint" "mcuc:PG-DSO-16-28"
 			(at 78.74 185.42 0)
 			(effects
 				(font
@@ -12291,7 +12291,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm"
+		(property "Footprint" "mcuc:PG-DSO-16-28"
 			(at 212.09 185.42 0)
 			(effects
 				(font
@@ -14735,7 +14735,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm"
+		(property "Footprint" "mcuc:PG-DSO-16-28"
 			(at 345.44 185.42 0)
 			(effects
 				(font
