@@ -1010,36 +1010,6 @@
 				(justify left top)
 			)
 		)
-		(pin "PHASE_U_OUT" passive
-			(at 160.0 58.42 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b101")
-		)
-		(pin "PHASE_V_OUT" passive
-			(at 160.0 60.96 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b102")
-		)
-		(pin "PHASE_W_OUT" passive
-			(at 160.0 63.5 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "e1a4708e-14a4-45a2-9c60-1e56bb42b103")
-		)
 		(pin "I_PH_1" output
 			(at 160.0 66.04 180)
 			(effects

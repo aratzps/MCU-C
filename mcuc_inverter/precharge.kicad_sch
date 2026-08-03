@@ -13,7 +13,1235 @@
 	)
 
 	(lib_symbols
-		(symbol "power:+3.3V"
+		(symbol "mcuc:NVR5198NL"
+				(pin_names
+					(offset 0)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(property "Reference" "Q"
+					(at 5.08 1.905 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+					)
+				)
+				(property "Value" "NVR5198NLT1G"
+					(at 5.08 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+					)
+				)
+				(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+					(at 5.08 -1.905 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+							(italic yes)
+						)
+						(justify left)
+						(hide yes)
+					)
+				)
+				(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/nvr5198nl-d.pdf"
+					(at 5.08 -3.81 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+						(hide yes)
+					)
+				)
+				(property "Description" "onsemi NVR5198NL N-channel logic-level MOSFET, 60 V, VGS(th) 1.5-2.5 V, RDS(on) 205 mR max at VGS 4.5 V / 1 A, ID 1.7 A cont at 25 C, PD 0.9 W, RthJA 139 C/W, AEC-Q101, SOT-23. Replaces AO3400A (30 V) for the diode+TVS coil clamp."
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_keywords" "N-Channel MOSFET"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_fp_filters" "SOT?23*"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(symbol "NVR5198NL_0_1"
+					(polyline
+						(pts
+							(xy 0.254 1.905) (xy 0.254 -1.905)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.254 0) (xy -2.54 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 2.286) (xy 0.762 1.27)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 0.508) (xy 0.762 -0.508)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 -1.27) (xy 0.762 -2.286)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(circle
+						(center 1.651 0)
+						(radius 2.794)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.54 2.54) (xy 2.54 1.778)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(circle
+						(center 2.54 1.778)
+						(radius 0.254)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(circle
+						(center 2.54 -1.778)
+						(radius 0.254)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.921 0.381) (xy 3.683 0.381)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(symbol "NVR5198NL_1_1"
+					(pin input line
+						(at -5.08 0 0)
+						(length 2.54)
+						(name "G"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 5.08 270)
+						(length 2.54)
+						(name "D"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "mcuc:DMN6068LK3"
+				(pin_names
+					(offset 0)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(property "Reference" "Q"
+					(at 5.08 1.905 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+					)
+				)
+				(property "Value" "DMN6068LK3-13"
+					(at 5.08 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+					)
+				)
+				(property "Footprint" "Package_TO_SOT_SMD:TO-252-3_TabPin2"
+					(at 5.08 -1.905 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+							(italic yes)
+						)
+						(justify left)
+						(hide yes)
+					)
+				)
+				(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMN6068LK3.pdf"
+					(at 5.08 -3.81 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+						(hide yes)
+					)
+				)
+				(property "Description" "Diodes DMN6068LK3 N-channel logic-level MOSFET, 60 V, VGS(th) 1.0-3.0 V, RDS(on) 100 mR max at VGS 4.5 V / 6 A, ID 6.0 A steady state, PD 4.12 W, RthJA 30.3 C/W on 50x50 mm 2 oz, EAS 37.5 mJ, AEC-Q101, TO-252 (DPAK). Replaces AO3400A (30 V) for the 1.7-2.5 A contactor coil with the diode+TVS clamp."
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_keywords" "N-Channel MOSFET"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_fp_filters" "SOT?23*"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(symbol "DMN6068LK3_0_1"
+					(polyline
+						(pts
+							(xy 0.254 1.905) (xy 0.254 -1.905)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.254 0) (xy -2.54 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 2.286) (xy 0.762 1.27)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 0.508) (xy 0.762 -0.508)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 -1.27) (xy 0.762 -2.286)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(circle
+						(center 1.651 0)
+						(radius 2.794)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.54 2.54) (xy 2.54 1.778)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(circle
+						(center 2.54 1.778)
+						(radius 0.254)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(circle
+						(center 2.54 -1.778)
+						(radius 0.254)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.921 0.381) (xy 3.683 0.381)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(symbol "DMN6068LK3_1_1"
+					(pin input line
+						(at -5.08 0 0)
+						(length 2.54)
+						(name "G"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 5.08 270)
+						(length 2.54)
+						(name "D"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "Device:C"
+				(pin_numbers
+					(hide yes)
+				)
+				(pin_names
+					(offset 0.254)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(property "Reference" "C"
+					(at 0.635 2.54 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+					)
+				)
+				(property "Value" "C"
+					(at 0.635 -2.54 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+					)
+				)
+				(property "Footprint" ""
+					(at 0.9652 -3.81 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "Datasheet" "~"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "Description" "Unpolarized capacitor"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_keywords" "cap capacitor"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_fp_filters" "C_*"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(symbol "C_0_1"
+					(polyline
+						(pts
+							(xy -2.032 0.762) (xy 2.032 0.762)
+						)
+						(stroke
+							(width 0.508)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -2.032 -0.762) (xy 2.032 -0.762)
+						)
+						(stroke
+							(width 0.508)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(symbol "C_1_1"
+					(pin passive line
+						(at 0 3.81 270)
+						(length 2.794)
+						(name "~"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 0 -3.81 90)
+						(length 2.794)
+						(name "~"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "mcuc:SN74LVC1G97DBVR"
+			(pin_names
+				(offset 0.508)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -2.54 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SN74LVC1G97DBVR"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc1g97.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "TI SN74LVC1G97 configurable multiple-function gate, SOT-23-6 (DBV). Y = IN2bar*IN1 + IN2*IN0 (2:1 mux). With IN0 tied to GND: Y = IN1 AND NOT(IN2) - SCES416N Figure 6. VCC 1.65-5.5 V, tpd 6.3 ns max at 3.3 V, +/-24 mA at 3.0 V, Schmitt inputs, 5.5 V tolerant, Ioff. Pins: 1 IN1, 2 GND, 3 IN0, 4 Y, 5 VCC, 6 IN2."
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "configurable gate AND inverted input single gate logic"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*6* SC?70*6*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SN74LVC1G97DBVR_0_1"
+				(rectangle
+					(start -7.62 7.62)
+					(end 7.62 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "SN74LVC1G97DBVR_1_1"
+				(pin input line
+					(at -12.7 5.08 0)
+					(length 5.08)
+					(name "IN0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name "IN1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -5.08 0)
+					(length 5.08)
+					(name "IN2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 12.7 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -12.7 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 12.7 0 180)
+					(length 5.08)
+					(name "Y"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "mcuc:BSS138"
+				(pin_names
+					(offset 0)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(property "Reference" "Q"
+					(at 5.08 1.905 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+					)
+				)
+				(property "Value" "BSS138"
+					(at 5.08 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+					)
+				)
+				(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+					(at 5.08 -1.905 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+							(italic yes)
+						)
+						(justify left)
+						(hide yes)
+					)
+				)
+				(property "Datasheet" "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF"
+					(at 5.08 -3.81 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left)
+						(hide yes)
+					)
+				)
+				(property "Description" "N-channel logic-level MOSFET, 50 V, 220 mA, VGS(th) 0.8-1.5 V, RDS(on) 3.5 R max at 10 V / 6.0 R max at 4.5 V, Ciss 27 pF, td(on) 2.5 ns + tr 9 ns typ, SOT-23"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_keywords" "N-Channel MOSFET"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_fp_filters" "SOT?23*"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(symbol "BSS138_0_1"
+					(polyline
+						(pts
+							(xy 0.254 1.905) (xy 0.254 -1.905)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.254 0) (xy -2.54 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 2.286) (xy 0.762 1.27)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 0.508) (xy 0.762 -0.508)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 -1.27) (xy 0.762 -2.286)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(circle
+						(center 1.651 0)
+						(radius 2.794)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.54 2.54) (xy 2.54 1.778)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(circle
+						(center 2.54 1.778)
+						(radius 0.254)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(circle
+						(center 2.54 -1.778)
+						(radius 0.254)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.921 0.381) (xy 3.683 0.381)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(symbol "BSS138_1_1"
+					(pin input line
+						(at -5.08 0 0)
+						(length 2.54)
+						(name "G"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 5.08 270)
+						(length 2.54)
+						(name "D"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)		(symbol "power:+3.3V"
 							(power)
 							(pin_numbers
 								(hide yes)
@@ -2312,9 +3540,9 @@
 		)
 		(uuid "33b52022-08fe-45e6-8329-608492dbfbce")
 	)
-	(text "K401: coil is in the LV 12 V domain, contacts switch the HV DC bus - the relay itself is the isolation barrier and must be rated\nfor it: HV DC precharge relay, >=450 V DC contact rating [TBV] (e.g. TE KILOVAC or Panasonic AEV class)."
+	(text "K401 = Hongfa HFE80V-20C/450-12-HTPAJ (orderable ordering code; the Value field previously held a description).\nCoil is in the LV 12 V domain, contacts switch the HV DC bus - the relay itself is the isolation barrier and must\nbe rated for it: HV DC precharge relay, >= 450 V DC contact rating, 20 A. K401 never breaks load (verified\nreview 2). Coil suppression: D401 + D404, see the coil-suppression note."
 		(exclude_from_sim no)
-		(at 20 32.5 0)
+		(at 20 33 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2323,9 +3551,9 @@
 		)
 		(uuid "8d3ccc0d-5701-4009-8507-1a2c89c12fce")
 	)
-	(text "R401: E = 0.5*C*V^2 = 40.5 J (400 uF, 450 V) -> >=41 J, >=50 W pulse [TBV].\n(D013: 750 uF Si path -> 76 J; SiC chosen (D016), 400 uF stands.)"
+	(text "R401 precharge resistor - CORRECTED (D025 / SPEC 7.1). This note previously assumed a 400 uF bank; it is 500 uF.\nE = 0.5 x C x V^2 = 0.5 x 500u x 450^2 = 50.6 J (53.2 J at C +5 %), and 62.5 J when precharging from a 500 V rail\n-> requirement is >= 65 J single-shot, NOT the >= 41 J previously printed here.\nPart: Ohmite/ARCOL HS50 1K2 J - 1.2k +/-5 % wirewound, aluminium housed, chassis mount, 1250 V limiting element\nvoltage (2.8x over 450 V), 3500 Vpk / 2500 Vrms insulation, 200 C max hot spot.\nRATING CAVEAT: 50 W applies ONLY bolted to ~535 cm2 x 3.0 mm Al with thermal compound; in free air it is 14 W.\nSingle-shot: the published overload envelope (5 x P for 5 s = 1250 J, 10 x P for 1 s = 500 J) covers 65 J with\n>= 7.7x margin. Ohmite publishes no explicit joule rating for HS10-HS300 [TBV if >= 65 J becomes a qualification\nrequirement rather than design margin - get it in writing].\n1.25k -> 1.2k (nearest stocked): tau = 1.2k x 500u = 0.60 s, 5 tau = 3.0 s (firmware timeout >= 3.2 s still valid),\npeak inrush 450/1200 = 0.375 A, peak dissipation 169 W = 3.4 x rated - inside the 5x-for-5 s envelope."
 		(exclude_from_sim no)
-		(at 20 85.09 0)
+		(at 86 172 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2345,9 +3573,9 @@
 		)
 		(uuid "b8da5d00-642a-42d9-893d-3d4b2efffff6")
 	)
-	(text "Passive bleeder: series string, >=4 resistors per SPEC 8.2 - no single part may span 450 V.\n4x 18.7k = 74.8k -> tau = 30 s (SPEC 7.2); 2.7 W total at 450 V, ~0.68 W per part -> 3 W parts [TBV]."
+	(text "Passive bleeder: series string, >= 4 resistors per SPEC 8.2 - no single part may span 450 V.\nCORRECTED (D025 / review 3 MJ-11): 4 x 18.7k = 74.8k gave tau = 37.4 s and 75.4 s from 450 V to 60 V - it FAILED\nSPEC 7.2's own < 60 s requirement by 26 %. Now 4 x 14k = 56k: tau = 56k x 500 uF = 28.0 s,\nt(450 -> 60 V) = 28.0 x ln(450/60) = 56.4 s. 3.6 W total at 450 V; 0.90 W and 112.5 V per part.\nPart: Stackpole RMCP2512FT14K0 - 2512 thick film, 2 W, 250 V max element voltage / 500 V overload, +/-1 %.\nWorking-voltage check: sqrt(P x R) = sqrt(2 x 14000) = 167 V > 112.5 V, and 112.5 V < the 250 V element limit;\npower loading 0.90 / 2 = 45 %.\nDEVIATION FROM D025, deliberate: D025 wrote '3 W 2512'. No 14k 3 W 2512 is stocked anywhere (Stackpole\nRMCP2512-UP and Bourns CHP2512 are both 22-23 week / MOQ 3000-4000 factory orders, and the -UP 3 W figure is\nonly in DigiKey parametrics, not in the datasheet). 3 W is not needed: the binding constraint is\nsqrt(P x R) >= 112.5 V, which the stocked 2 W part clears by 1.49x."
 		(exclude_from_sim no)
-		(at 106.68 37.5 0)
+		(at 160 41 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2356,7 +3584,7 @@
 		)
 		(uuid "dccbd164-ac97-4f73-a756-6be3ed6d361e")
 	)
-	(text "Active discharge (SPEC 7.2): R421-R424, 4x 220R = 880R, in series with Q403 (C3M0350120J, 1200 V SiC).\n~0.51 A initial at 450 V, ~230 W initial pulse for <5 s - single-shot thermal rating [TBV], not continuous.\nSeries string per SPEC 8.2 - no single resistor spans 450 V."
+	(text "Active discharge (SPEC 7.2): R421-R424, 4 x 220R = 880R, in series with Q403 (C3M0350120J, 1200 V SiC).\n~0.51 A initial at 450 V, ~230 W initial pulse for < 5 s - single-shot thermal rating [TBV], not continuous.\nSeries string per SPEC 8.2 - no single resistor spans 450 V.\nHARDWARE-INHIBITED (SPEC 7.2 / D025 / review 3 MJ-12): see the DISCHARGE_DRV interlock below. Asserting\nDISCHARGE_EN while CONTACTOR_EN is asserted would otherwise put 230 W into a 100 W bank indefinitely across a\nlive 450 V bus, with nothing but firmware between the two GPIOs."
 		(exclude_from_sim no)
 		(at 210.82 55.88 0)
 		(effects
@@ -2367,9 +3595,9 @@
 		)
 		(uuid "47145e53-b3ae-4032-ad4e-b9eeef7c8dba")
 	)
-	(text "VOM1271 photovoltaic drive — no supply needed; ~10 s-class turn-on at µA charge currents is acceptable for discharge duty;\nRds elevated at ~8 V VGS (not spec'd below 11 V) — verified acceptable for current-limited single-shot duty (D022 research)."
+	(text "Q403 gate drive - VOM1271 photovoltaic driver, no supply needed. Rds elevated at ~8 V VGS (not spec'd below\n11 V) - acceptable for current-limited single-shot duty (D022 research).\nR427 100R -> 220R (review 2 MJ-5 / MN-4): at 100R the LED drew I_F = 17-21 mA from an STM32F405 pin whose\ncharacterisation point is 8 mA and whose absolute maximum is 25 mA, leaving V_OC / I_SC indeterminate. The LED is\nnow driven by U402 (see interlock), V_OH ~ 3.15 V at 8 mA: I_F = (3.15 - 1.25)/220 = 8.6 mA (7.3-9.8 mA over\nV_F 1.1-1.4 V and V_OH 3.0-3.25 V) - on the datasheet's characterised operating point.\nD403 MM3Z18VT1G -> 15 V (review 2 MJ-3): the 18 V part is 17.1-18.9 V at I_ZT, so it clamps ABOVE the FET's\n+19 V transient V_GS maximum and never inside the +15 V operating maximum. A 15 V part (14.3-15.8 V at I_ZT)\nclamps inside the operating maximum and stays above the ~8-11 V normal photovoltaic drive so it steals nothing\nfrom the uA-class source.\nMILLER CLAMP Q404/C421/R428 (review 2 MJ-1): C_rss/C_iss = 3.4/345 pF means a 450 V drain step injects\n450 x C_rss,eff/(C_rss,eff + C_iss) on the gate - 4.4 V at the datasheet 3.4 pF and worse once C_rss rises at low\nV_DS - against V_GS(th) min 1.8 V. The only pull-downs were R426 10M (tau 3.45 ms) and the VOM1271's uA-class\ninternal turn-off (~112 us equivalent): both are 4-5 orders of magnitude too slow.\nC421 1 nF couples the gate step onto Q404's gate (1 nF against Ciss 27 pF -> the clamp gate sees 97 % of it) and\nR428 10k holds Q404 off statically (tau 10 us hold-time after an event; the legitimate VOM1271 turn-on ramp is\nms-class, so it cannot trigger the clamp). Q404 = BSS138, V_GS(th) 0.8/1.3/1.5 V, so the clamp fires while Q403's\ngate is still at ~1.34 V typ / 1.54 V worst case - below V_GS(th) min 1.8 V.\nRESPONSE TIME: BSS138 t_d(on) 2.5 ns + t_r 9 ns = 11.5 ns typ; the gate then discharges through R_DS(on)\n(1.0 R typ / 6.0 R max at 4.5 V) into C_iss 345 pF, tau = 0.35-2.1 ns. Total < 15 ns from threshold crossing,\nagainst a dv/dt event measured in tens of ns. The VOM1271 drive path (R425 47R) is untouched."
 		(exclude_from_sim no)
-		(at 195.58 83.82 0)
+		(at 86 250 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2389,7 +3617,7 @@
 		)
 		(uuid "105a055d-df99-497e-8c10-131259973424")
 	)
-	(text "SPEC 7.2 discharge requirements:\n  Passive bleeder:   < 60 V within 60 s            | 75k across bus -> tau = 30 s; 2.7 W at 450 V\n  Active discharge:  < 60 V within 5 s, commanded  | switched resistor, thermally rated for single-shot"
+	(text "SPEC 7.2 discharge requirements:\n  Passive bleeder:   < 60 V within 60 s            | 56k (4 x 14k) across the bus -> tau = 28.0 s, 56.4 s to 60 V;\n                                                     3.6 W at 450 V (was 74.8k -> 75.4 s, FAILED - D025)\n  Active discharge:  < 60 V within 5 s, commanded  | 880R + SiC FET -> tau 0.44 s, 0.89 s to 60 V; 230 W single-shot\n                                                     HARDWARE-INHIBITED while CONTACTOR_EN is asserted (U402)"
 		(exclude_from_sim no)
 		(at 203.2 119.38 0)
 		(effects
@@ -2450,7 +3678,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "HV DC precharge relay, >=450 V DC contacts [TBV]"
+		(property "Value" "HFE80V-20C/450-12-HTPAJ"
 			(at 57.15 53.34 0)
 			(effects
 				(font
@@ -2575,7 +3803,7 @@
 	)
 	(symbol
 		(lib_id "Device:D")
-		(at 33.02 53.34 270)
+		(at 33.02 57.15 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2591,7 +3819,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BAS316 [TBV]"
+		(property "Value" "ES1G"
 			(at 17.78 53.34 90)
 			(effects
 				(font
@@ -2600,7 +3828,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 33.02 53.34 0)
 			(effects
 				(font
@@ -2641,16 +3869,6 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 45.72) (xy 33.02 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2effa67e-829a-4843-96bc-dd7029c0aa3b")
-	)
-	(wire
-		(pts
 			(xy 33.02 45.72) (xy 43.18 45.72)
 		)
 		(stroke
@@ -2664,16 +3882,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c358ff00-5b2d-455d-8ca6-6fbc227e595a")
-	)
-	(wire
-		(pts
-			(xy 33.02 57.15) (xy 33.02 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c8b722d5-077f-4a0c-b244-fe04b0c9265c")
 	)
 	(wire
 		(pts
@@ -2702,7 +3910,7 @@
 		(uuid "11cc0022-fcee-45e1-9f5e-fc4670c38c20")
 	)
 	(symbol
-		(lib_id "Transistor_FET:AO3400A")
+		(lib_id "mcuc:NVR5198NL")
 		(at 43.18 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2719,7 +3927,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "AO3400-class [TBV]"
+		(property "Value" "NVR5198NLT1G"
 			(at 48.26 66.04 0)
 			(effects
 				(font
@@ -3135,7 +4343,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.25k 50W >=41J pulse [TBV]"
+		(property "Value" "1.2k 50W chassis, >=65J single-shot"
 			(at 55.88 72.898 270)
 			(effects
 				(font
@@ -3298,7 +4506,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BAS316 [TBV]"
+		(property "Value" "ES2G"
 			(at 33.02 107.95 90)
 			(effects
 				(font
@@ -3307,7 +4515,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 48.26 105.41 0)
 			(effects
 				(font
@@ -3346,16 +4554,6 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 48.26 101.6) (xy 55.88 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "723154a4-8be0-4c37-9c5c-fc759568d6fe")
-	)
 	(junction
 		(at 55.88 101.6)
 		(diameter 0)
@@ -3385,7 +4583,7 @@
 		(uuid "d31c73f3-1193-4ae9-b21f-fd2514edfcaa")
 	)
 	(symbol
-		(lib_id "Transistor_FET:AO3400A")
+		(lib_id "mcuc:DMN6068LK3")
 		(at 53.34 116.84 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3402,7 +4600,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "AO3400-class [TBV]"
+		(property "Value" "DMN6068LK3-13"
 			(at 58.42 116.84 0)
 			(effects
 				(font
@@ -3411,7 +4609,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+		(property "Footprint" "Package_TO_SOT_SMD:TO-252-3_TabPin2"
 			(at 53.34 116.84 0)
 			(effects
 				(font
@@ -4221,7 +5419,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "18.7k 3W [TBV]"
+		(property "Value" "14k 2W"
 			(at 115.57 50.800000000000004 0)
 			(effects
 				(font
@@ -4287,7 +5485,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "18.7k 3W [TBV]"
+		(property "Value" "14k 2W"
 			(at 115.57 58.42 0)
 			(effects
 				(font
@@ -4353,7 +5551,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "18.7k 3W [TBV]"
+		(property "Value" "14k 2W"
 			(at 115.57 66.03999999999999 0)
 			(effects
 				(font
@@ -4419,7 +5617,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "18.7k 3W [TBV]"
+		(property "Value" "14k 2W"
 			(at 115.57 73.66 0)
 			(effects
 				(font
@@ -4949,16 +6147,6 @@
 		)
 		(uuid "99fe686d-3755-4ba7-a765-fadab9cacbf5")
 	)
-	(wire
-		(pts
-			(xy 124.46 81.28) (xy 132.08 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cf9aee36-1f62-466f-b66d-9c3178068002")
-	)
 	(symbol
 		(lib_id "Device:R")
 		(at 135.89 81.28 90)
@@ -4977,7 +6165,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "220R"
 			(at 139.7 77.978 270)
 			(effects
 				(font
@@ -5302,7 +6490,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MM3Z18VT1G"
+		(property "Value" "MMSZ5245BT1G"
 			(at 181.61 102.87 90)
 			(effects
 				(font
@@ -5311,7 +6499,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 175.26 91.44 0)
 			(effects
 				(font
@@ -5955,6 +7143,1203 @@
 			(justify left bottom)
 		)
 		(uuid "b2cfde91-2138-49ad-b6e2-55f8f70f47cd")
+	)
+
+	(symbol
+		(lib_id "Device:D_Zener")
+		(at 33.02 49.53 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d943c57e-4bac-4ac3-9757-66493edf5aed")
+		(property "Reference" "D404"
+			(at 24.13 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SMBJ24A"
+			(at 24.13 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMB"
+			(at 33.02 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 33.02 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unidirectional TVS in series with D401 - coil suppression per Hongfa"
+			(at 33.02 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "D404")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Zener")
+		(at 52.07 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6e3ee6e9-8774-4cdc-b62d-902a815c3c3e")
+		(property "Reference" "D405"
+			(at 50.8 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SMBJ24A"
+			(at 50.8 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMB"
+			(at 52.07 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unidirectional TVS in series with D402 - coil suppression per Hongfa"
+			(at 52.07 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "D405")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 124.46 81.28) (xy 127 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d98c1ff5-30e6-4a69-b5d4-2c25b2d83338")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 127 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "665471c0-68cb-4bd4-a1c2-10e2771762a2")
+		(property "Reference" "R429"
+			(at 125.73 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 125.73 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 127 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 127 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 127 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "R429")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 127 88.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "f44a1914-9b2e-4e32-91ea-032007c62697")
+		(property "Reference" "#PWR0411"
+			(at 129.54 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 127 92.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 127 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "#PWR0411")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 132.08 76.2) (xy 132.08 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c3d21ce-eaeb-4c72-9e7e-69881decfbbe")
+	)
+	(label "DISCHARGE_DRV"
+		(at 132.08 76.2 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "94c5f882-dcc1-473a-8787-d9d0bf32b317")
+	)
+	(symbol
+		(lib_id "mcuc:SN74LVC1G97DBVR")
+		(at 250.19 156.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "447bee8b-8bd9-4868-9256-c2869a040695")
+		(property "Reference" "U402"
+			(at 246.38 142.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SN74LVC1G97DBVR"
+			(at 246.38 172.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+			(at 250.19 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 250.19 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 250.19 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "U402")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 237.49 151.13) (xy 224.79 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5135066c-afbc-4231-93fa-eff1e11d797f")
+	)
+	(wire
+		(pts
+			(xy 224.79 151.13) (xy 224.79 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "947fa40b-7acc-4215-9fb9-9ecf0ebc2e4d")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 224.79 171.45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "bef36995-4b40-4d62-adbb-209c8b6e1bee")
+		(property "Reference" "#PWR0412"
+			(at 227.33 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 224.79 175.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 224.79 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 224.79 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 224.79 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "#PWR0412")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 227.33 156.21) (xy 237.49 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34a549c3-0ac2-4fa4-aaac-47902e250b57")
+	)
+	(label "DISCHARGE_EN"
+		(at 227.33 156.21 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7aae323a-bd66-488a-af9c-4de39fcdbcdb")
+	)
+	(wire
+		(pts
+			(xy 227.33 161.29) (xy 237.49 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d77c91fc-9ee9-45ff-bf9c-dfbcabc80bb2")
+	)
+	(label "CONTACTOR_EN"
+		(at 227.33 161.29 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "42b0a73b-ee29-40f0-ba2e-f81e01b6922f")
+	)
+	(wire
+		(pts
+			(xy 250.19 143.51) (xy 250.19 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3e9cfa8-3a37-496b-929f-3b80d812989f")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 250.19 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "f552aa7b-0a58-44e6-8749-43075094e34d")
+		(property "Reference" "#PWR0413"
+			(at 252.73 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 250.19 137.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 250.19 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 250.19 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 250.19 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "#PWR0413")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 250.19 168.91) (xy 250.19 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2344f29b-da92-427a-90c2-9b04dd00d2c6")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 250.19 171.45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "b4820a0e-72d6-4fe5-b74d-66c312d72696")
+		(property "Reference" "#PWR0414"
+			(at 252.73 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 250.19 175.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 250.19 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 250.19 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 250.19 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "#PWR0414")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 262.89 156.21) (xy 270.51 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "94fc46a9-3cbc-4c9d-a83f-91399c343ce4")
+	)
+	(label "DISCHARGE_DRV"
+		(at 270.51 156.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8a4a5bcf-faff-4106-9e94-11db41535c3b")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 289.56 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "261dee7e-c529-4968-a2a2-e681716da3f4")
+		(property "Reference" "#PWR0415"
+			(at 292.1 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 289.56 137.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 289.56 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 289.56 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 289.56 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "#PWR0415")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 289.56 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "63e52734-06d5-4da7-a015-c22bcace5254")
+		(property "Reference" "C420"
+			(at 292.1 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 292.1 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 289.56 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 289.56 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 289.56 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "C420")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 289.56 148.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "9540e3d3-4874-4d44-bf83-8d12e0b421eb")
+		(property "Reference" "#PWR0416"
+			(at 292.1 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 289.56 152.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 289.56 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 289.56 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 289.56 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "#PWR0416")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "Q403_G"
+		(at 172.72 87.63 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "04f7dd8b-f344-4879-b5c4-f5ab2ad63f1a")
+	)
+	(symbol
+		(lib_id "mcuc:BSS138")
+		(at 156.21 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bf60112f-489f-413f-a4b1-7ac193d12ca7")
+		(property "Reference" "Q404"
+			(at 158.75 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BSS138"
+			(at 158.75 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 156.21 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 156.21 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 156.21 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "Q404")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 158.75 111.76) (xy 158.75 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a1a0502-99ce-4e6c-9807-a82408b4f463")
+	)
+	(wire
+		(pts
+			(xy 146.05 109.22) (xy 158.75 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6d5f0f4-8161-4036-b707-96e70b3e1450")
+	)
+	(label "Q403_G"
+		(at 158.75 109.22 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d1c50bb0-a957-4f0e-aa58-481fbb9c5d8b")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 146.05 113.03 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2706f849-131a-4fd8-9b0b-2ad7cd86de51")
+		(property "Reference" "C421"
+			(at 144.78 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1nF"
+			(at 144.78 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 146.05 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 146.05 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "C421")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(junction
+		(at 146.05 116.84)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "97958959-efc1-4513-b41c-d6ad389ceae1")
+	)
+	(wire
+		(pts
+			(xy 146.05 116.84) (xy 151.13 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29e101f5-c328-4a96-824c-bfa2d348d897")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 146.05 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8d4aa206-858d-498f-9b9f-c0dd2898dde4")
+		(property "Reference" "R428"
+			(at 144.78 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 144.78 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 146.05 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 146.05 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "R428")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 146.05 124.46) (xy 146.05 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08c8945f-c7d0-4c58-adf7-c03d8d752ae2")
+	)
+	(label "DC_BUS_N"
+		(at 146.05 127 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d2905a79-aec1-4428-ab34-f57a772cf785")
+	)
+	(wire
+		(pts
+			(xy 158.75 121.92) (xy 158.75 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd06ef87-77b9-466e-bcd2-057743d239cd")
+	)
+	(label "DC_BUS_N"
+		(at 158.75 127 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2b29f525-adf8-49a9-b646-e0341944c433")
+	)
+
+	(text "DISCHARGE INTERLOCK - SPEC 7.2 / D025 / review 3 MJ-12 (was CRITICAL C2).
+DISCHARGE_EN (PE4) and CONTACTOR_EN (PE3) were independent GPIOs with nothing between them.
+U402 = TI SN74LVC1G97DBVR configurable gate, SOT-23-6, 1.65-5.5 V, tpd 6.3 ns max at 3.3 V, +/-24 mA,
+Schmitt inputs, Ioff. Its function is Y = /IN2 . IN1 + IN2 . IN0 (a 2:1 mux, IN2 = select).
+TYING IN0 (pin 3) TO GND gives Y = IN1 . NOT(IN2) - SCES416N Table 2 / Figure 6.
+  IN1 = DISCHARGE_EN (pin 1), IN2 = CONTACTOR_EN (pin 6), Y = DISCHARGE_DRV (pin 4) -> R427 -> U401 LED.
+
+  DISCHARGE_EN  CONTACTOR_EN  DISCHARGE_DRV   result
+       0             0             0          idle
+       0             1             0          contactor closed, discharge not commanded
+       1             0             1          DISCHARGE PERMITTED (contactor commanded open)
+       1             1             0          INHIBITED IN HARDWARE - the 230 W / 100 W case
+
+R429 10k pull-down on DISCHARGE_EN (was missing): holds the request de-asserted through reset and boot, before
+the MCU GPIO is initialised. CONTACTOR_EN already had R405 10k. At power-up +3.3 V rises with both inputs low,
+so Y is low and the VOM1271 LED is dark - fail-safe.
+SELF-CONTAINED: this does NOT depend on the spare U903 gate on the supervisor sheet.
+C420 100 nF local decoupling at U402 pin 5."
+		(exclude_from_sim no)
+		(at 196 95 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cb701cf3-cede-4c69-bdbe-c329dc42e613")
+	)
+	(text "COIL SUPPRESSION - review 3 C4/MN-5 and D025 (contactor coil is 1.7-2.5 A, SPEC 11.2, a requirement not an
+assumption).
+D401/D402 were BAS316: 250 mA I_F(AV), 500 mA I_FRM. D402 saw the full 1.7-2.5 A coil current on the first
+contactor drop-out - it fails, and takes Q402 with it. D401 sat at exactly its 250 mA rating.
+  D401 -> ES1G   (SMA / DO-214AC, 400 V, 1.0 A I_F(AV), 30 A I_FSM 8.3 ms, t_rr 35 ns) - K401 coil
+  D402 -> ES2G   (Taiwan Semiconductor, SMB / DO-214AA, 400 V, 2.0 A, 50 A I_FSM, t_rr 35 ns) - external
+                 contactor coil. Specify the MANUFACTURER: several vendors ship 'ES2G' in SMA, not SMB.
+DIODE + SERIES TVS, not a plain diode (Hongfa application note): a plain freewheel diode clamps the coil at
+~0.9 V, which stretches release time and reduces contact life. D404/D405 = SMBJ24A unidirectional TVS in
+anti-series with the rectifier - the pair blocks DC (rectifier reverse-biased) and clamps the flyback at
+V_BR + V_F. SMBJ24A: V_RWM 24 V (clear of a +10 % 12 V rail), V_BR 26.7-29.5 V at 1 mA, V_C 38.9 V at 15.5 A;
+interpolating R_d = 0.607 R gives ~29-31 V at the 2.5 A coil current, so the switch node reaches
+12 + 31 + 1.3 = ~44 V. Release time improves ~30x (t ~ L.I/V: 125 ms at 1 V -> 4.2 ms at 30 V).
+Energy at L = 50 mH, 2.5 A: E = 0.156 J, t = 2.9 ms, peak 109 W = 18 % of the SMBJ 600 W rating; SMB single-pulse
+capability ~0.60 J -> 26 % utilisation. ACTION: measure the real coil inductance at bring-up - at L = 200 mH,
+E = 0.625 J would exceed SMB and force an SMC part.
+CONSEQUENCE, deliberate: the ~44 V clamp is above AO3400A's 30 V V_DS, so Q401/Q402 are re-rated (see values).
+A zener cannot be used in place of the TVS: 1SMA5936B / 1SMB5931B publish no I_ZSM and no peak-power-vs-pulse
+curve, and 2.5 A is 50x their DC I_ZM - their clamp voltage at coil current is unbounded by the datasheet."
+		(exclude_from_sim no)
+		(at 196 220 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "56d3718b-0c97-468f-9a07-3a9ef996ec53")
+	)
+
+	(text "COIL DRIVER RE-RATING - consequence of the diode+TVS clamp above, NOT an independent change.
+Q401/Q402 were AO3400A, V_DS 30 V. With a SMBJ24A clamping at V_BR 26.7-29.5 V (and up to ~32 V at 2.5 A)
+plus the series rectifier V_F, the drain of each low-side switch now rests at rail + ~30-32 V during coil
+release: ~44 V at a nominal 12 V rail, ~48-50 V worst case on a 16 V rail. The 30 V parts would avalanche
+on every drop-out.
+  Q401 -> onsemi NVR5198NLT1G, SOT-23, 60 V, V_GS(th) 1.5-2.5 V, R_DS(on) 205 mR max at V_GS 4.5 V,
+       I_D 1.7 A cont. K401 coil is 3 W / 250 mA at 12 V (48 R, no economiser; ~440 mA worst case at a
+       16 V rail and -40 C coil): P = 0.0128 W nominal / ~0.05 W worst case, dT_j = +1.8 / +7 C on
+       R_thJA 139 C/W. ~4x current and ~70x power margin.
+  Q402 -> Diodes DMN6068LK3-13, TO-252 (DPAK), 60 V, R_DS(on) 100 mR max at V_GS 4.5 V / 6 A,
+       I_D 6.0 A steady state, E_AS 37.5 mJ. At the 2.5 A contactor coil P = 0.70 W and dT_j = +21 C on a
+       50x50 mm 2 oz drain pour (R_thJA 30.3 C/W). LAYOUT REQUIREMENT: on a 25x25 mm 1 oz pour R_thJA is
+       59 C/W -> +49 C, and at 85 C ambient T_j ~ 145 C. Give the tab a >= 50x50 mm-equivalent 2 oz pour or
+       stitched inner-layer copper. SOT-23 is not an option here: the best 60 V SOT-23 (NVR5198NL, 205 mR)
+       would dissipate ~1.3 W against a 0.9 W package.
+RESIDUAL RISK, recorded: worst case ~48-50 V on a 60 V part is only ~17 % margin. Measure the actual clamp
+voltage at 0.25 A and 2.5 A at bring-up; if the rail can excurse above 16 V, move to 100 V parts."
+		(exclude_from_sim no)
+		(at 196 258 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "caae593e-88ec-471c-8c28-7e0ca728bc8c")
 	)
 
 	(embedded_fonts no)
