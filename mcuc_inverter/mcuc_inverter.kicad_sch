@@ -1211,26 +1211,6 @@
 			)
 			(uuid "e96e4fcb-ad5d-4188-b2c9-323691eee324")
 		)
-		(pin "VGD_LS_P" passive
-			(at 75.88 96.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "e5919b29-835a-490c-a658-7e163fdb0222")
-		)
-		(pin "VGD_LS_COM" passive
-			(at 75.88 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "b55df71e-9313-4900-83eb-b78dac815aab")
-		)
 		(pin "V_BUS" output
 			(at 20.0 88.9 180)
 			(effects

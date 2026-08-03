@@ -956,6 +956,869 @@
 		)
 		(embedded_fonts no)
 	)
+		(symbol "power:+5V"
+		(power)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 0 3.556 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "+5V_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "+5V_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "Device:D_Schottky"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "D"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D_Schottky"
+			(at 0 -2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Schottky diode"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "diode Schottky"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "D_Schottky_0_1"
+			(polyline
+				(pts
+					(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 0) (xy -1.27 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "D_Schottky_1_1"
+			(pin passive line
+				(at -3.81 0 0)
+				(length 2.54)
+				(name "K"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 3.81 0 180)
+				(length 2.54)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "Power_Management:SN6505BDBV"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -5.08 6.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SN6505BDBV"
+			(at 7.62 6.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+			(at 0 -10.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/sn6505b.pdf"
+			(at -7.62 6.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Low Noise, 1A, Transformer Drivers for Isolated Power Supplies, 420 kHz, SOT-23-6"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "Transformer Drivers"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "SOT?23*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "SN6505BDBV_0_1"
+			(rectangle
+				(start -5.08 5.08)
+				(end 5.08 -5.08)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "SN6505BDBV_1_1"
+			(pin input line
+				(at -7.62 2.54 0)
+				(length 2.54)
+				(name "CLK"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -7.62 -2.54 0)
+				(length 2.54)
+				(name "EN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 7.62 270)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -7.62 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 7.62 2.54 180)
+				(length 2.54)
+				(name "D1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 7.62 -2.54 180)
+				(length 2.54)
+				(name "D2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "mcuc:WE_750313734"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "T"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "750313734"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "mcuc:WE_750313734"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.we-online.com/components/products/datasheet/750313734.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Wurth 750313734 WE-PPTI push-pull transformer 1:1.1 CT:CT, 340 uH, centre-tapped both windings. REINFORCED insulation 800 Vrms/1400 Vpk per IEC62368-1, 5000 Vrms hipot, 9.2 mm creepage / 8.0 mm clearance PRI-SEC per IEC61800-5-1, AEC-Q200 Grade 1. Pri 1-2-3 (1=start, 2=CT, 3=end), sec 6-5-4 (6=start, 5=CT, 4=end)."
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "WE_750313734_0_1"
+				(arc
+					(start -5.08 10.16)
+					(mid -6.35 8.89)
+					(end -5.08 7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -5.08 7.62)
+					(mid -6.35 6.35)
+					(end -5.08 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -5.08 5.08)
+					(mid -6.35 3.81)
+					(end -5.08 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -5.08 2.54)
+					(mid -6.35 1.27)
+					(end -5.08 0.0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -5.08 0.0)
+					(mid -6.35 -1.27)
+					(end -5.08 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -5.08 -2.539999999999999)
+					(mid -6.35 -3.809999999999999)
+					(end -5.08 -5.079999999999999)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -5.08 -5.08)
+					(mid -6.35 -6.35)
+					(end -5.08 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -5.08 -7.620000000000001)
+					(mid -6.35 -8.89)
+					(end -5.08 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 5.08 10.16)
+					(mid 6.35 8.89)
+					(end 5.08 7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 5.08 7.62)
+					(mid 6.35 6.35)
+					(end 5.08 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 5.08 5.08)
+					(mid 6.35 3.81)
+					(end 5.08 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 5.08 2.54)
+					(mid 6.35 1.27)
+					(end 5.08 0.0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 5.08 0.0)
+					(mid 6.35 -1.27)
+					(end 5.08 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 5.08 -2.539999999999999)
+					(mid 6.35 -3.809999999999999)
+					(end 5.08 -5.079999999999999)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 5.08 -5.08)
+					(mid 6.35 -6.35)
+					(end 5.08 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 5.08 -7.620000000000001)
+					(mid 6.35 -8.89)
+					(end 5.08 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 10.795) (xy -0.635 -10.795)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 10.795) (xy 0.635 -10.795)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -6.35 10.795)
+					(radius 0.381)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 6.35 10.795)
+					(radius 0.381)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "WE_750313734_1_1"
+				(pin passive line
+					(at -7.62 10.16 0)
+					(length 2.54)
+					(name "PRI.S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 12.7 270)
+					(length 2.54)
+					(name "CT_PRI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 -10.16 0)
+					(length 2.54)
+					(name "PRI.E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -10.16 180)
+					(length 2.54)
+					(name "SEC.E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "CT_SEC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 10.16 180)
+					(length 2.54)
+					(name "SEC.S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "mcuc:AMC1311BDWV"
 		(pin_names
 			(offset 1.016)
@@ -2348,17 +3211,16 @@
 			)
 		)
 	)
-	(hierarchical_label "VGD_LS_P"
-		(shape passive)
+	(label "5V5_HV_RAW"
 		(at 73.66 58.42 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
-		(uuid "8377d698-9f82-4812-9561-76e8ced08efc")
+		(uuid "eaf16a0f-d030-5950-b120-6bb86f955ce5")
 	)
 	(wire
 		(pts
@@ -2625,7 +3487,7 @@
 		)
 		(uuid "2e52cee9-0a9b-453a-b303-f8ad669a567d")
 	)
-	(hierarchical_label "VGD_LS_COM"
+	(hierarchical_label "DC_BUS_N"
 		(shape passive)
 		(at 73.66 72.39 180)
 		(fields_autoplaced yes)
@@ -2635,7 +3497,7 @@
 			)
 			(justify right)
 		)
-		(uuid "f3cf0a62-ae50-4e9a-8394-b78aac5d5c1b")
+		(uuid "4dee2b74-79ed-5e67-9478-5ca1aaa16f4b")
 	)
 	(wire
 		(pts
@@ -4238,7 +5100,7 @@
 		)
 		(uuid "5709d3a3-17a6-458a-a86c-03c803ac6b94")
 	)
-	(text "*** CR-3 OPEN - HV-SIDE 3.3 V SUPPLY IS STILL WRONG AS DRAWN ***\nU702 takes VIN from VGD_LS_P and GND from VGD_LS_COM (the module low-side Kelvin\nsource pins) while C701/C702, the AMC1311 GND1 and the divider bottom R705 all sit\non DC_BUS_N.  Those nets join only through the module internals, so tens of volts\nappear across that loop on every switching edge, and a Kelvin sense node is being\nused as a power node.  Moving only U702 GND to DC_BUS_N does not fix it - the same\ntransient then appears across VIN-GND.\nREQUIRED (TI SBAS786C 10, and D022 already flags this [TBV]):\n  - a fifth SN6505B push-pull stage whose SECONDARY is referenced to DC_BUS_N,\n    primary from the control-side +5V/GND (load is only <=8.4 mA);\n  - transformer Wurth 750313734: 1:1.1, 340 uH, 5000 Vrms hipot, REINFORCED\n    800 Vrms per IEC62368-1, 9.2 mm creepage / 8.0 mm clearance per IEC61800-5-1.\n    A 2.5 kV-class part (e.g. 760390012) is only FUNCTIONAL insulation and must\n    not be used: this transformer physically bridges the SPEC 10 reinforced\n    barrier at 450 V working.\n  - Schottky full-wave rectifier -> ~5.5 V raw, then U702 (MCP1804T-3302I/OT,\n    already verified stocked) to 3V3_HV, referenced to DC_BUS_N throughout;\n  - delete the VGD_LS_P and VGD_LS_COM hierarchical labels from this sheet.\nNOT IMPLEMENTED: the Wurth 750313734 land pattern could not be verified against the\nmanufacturer drawing in this pass, and a guessed footprint for a reinforced-barrier\npart is not acceptable.  C702 pin 1 (MJ-16) has been wired to the LDO output, which\nis correct in either topology."
+	(text "CR-3 FIXED - ISOLATED HIGH-SIDE 3.3 V SUPPLY (see stage at bottom of sheet).\nU702 was previously fed VIN from VGD_LS_P and GND from VGD_LS_COM, the power\nmodule low-side KELVIN SOURCE pins, while C701/C702, U701 GND1 and the divider\nbottom R705 sat on DC_BUS_N.  Those are different nets, joined only through the\nmodule internal copper: at 4 kA/us across ~8 nH of module source inductance,\ntens of volts appear inside that supply loop on every switching edge, and a\nKelvin sense node was being asked to carry supply current.  Re-referencing U702\nalone does not fix it - the transient simply moves across VIN-GND.\nA KELVIN SENSE NODE MUST NEVER CARRY SUPPLY CURRENT.\nU702 now takes 5V5_HV_RAW from its own isolated SN6505B push-pull stage (U704 /\nT701 / D701 / D702 / C713) and is referenced to DC_BUS_N throughout, per TI\nSBAS786C section 10.  The VGD_LS_P and VGD_LS_COM sheet pins are no longer used\nhere and must be deleted from the bus_sense sheet symbol on the root sheet."
 		(exclude_from_sim no)
 		(at 130.81 74.93 0)
 		(effects
@@ -4247,7 +5109,1308 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "e1797c8b-4e8f-41ff-9f6b-bc89a89eeb00")
+		(uuid "cb44221a-66b9-57b8-93db-c655a4e0ecd2")
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 53.34 175.26 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cf90d791-5728-58f6-862a-7307e439021f")
+		(property "Reference" "#PWR0712"
+			(at 53.34 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 55.88 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 53.34 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 53.34 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 53.34 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "#PWR0712")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 53.34 175.26) (xy 53.34 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0b86595-833b-53e3-8df6-b8540c032916")
+	)
+	(wire
+		(pts
+			(xy 53.34 180.34) (xy 60.96 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "491a23e9-94d9-5c65-a956-96842cccf199")
+	)
+	(wire
+		(pts
+			(xy 60.96 180.34) (xy 66.04 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c286407-e732-55f9-bb74-e85054016eaa")
+	)
+	(wire
+		(pts
+			(xy 66.04 180.34) (xy 76.2 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "061c6a3c-56bc-5e6b-9d84-554b171bce69")
+	)
+	(wire
+		(pts
+			(xy 76.2 180.34) (xy 105.41 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24bb5340-569f-5a7c-b3e3-22cdea3926bf")
+	)
+	(junction
+		(at 53.34 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "67678569-64be-5c6f-aeea-5f7ec3c2ec9a")
+	)
+	(junction
+		(at 60.96 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3f5fe66f-4f41-529f-9629-4cb6d5353bef")
+	)
+	(junction
+		(at 66.04 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0cc98e68-1508-5cf1-a8ff-8100ad8877cf")
+	)
+	(junction
+		(at 76.2 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "278446aa-d20b-5635-b53d-2aa7a2877314")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 60.96 184.15 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "98bdffcd-d3e5-5e36-86ac-069b0ce0ef41")
+		(property "Reference" "C711"
+			(at 58.42 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uF"
+			(at 58.42 185.42000000000002 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 60.96 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 60.96 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 60.96 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "C711")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 60.96 187.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ef0c4c8d-8b13-58de-bae7-4d09c77b935e")
+		(property "Reference" "#PWR0713"
+			(at 60.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 63.5 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 60.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 60.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "#PWR0713")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 66.04 184.15 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3215b3f1-a9a1-5d83-8388-120387382beb")
+		(property "Reference" "C712"
+			(at 68.58000000000001 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 68.58000000000001 185.42000000000002 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 66.04 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 66.04 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 66.04 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "C712")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 66.04 187.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5b96d4b8-ffb9-5a49-bed9-b49a107ddf82")
+		(property "Reference" "#PWR0714"
+			(at 66.04 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58000000000001 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 66.04 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 66.04 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 66.04 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "#PWR0714")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Power_Management:SN6505BDBV")
+		(at 76.2 203.2 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "faea60ab-7311-528b-9d10-435f28ae9f96")
+		(property "Reference" "U704"
+			(at 68.58 192.92999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SN6505BDBVR"
+			(at 68.58 195.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+			(at 76.2 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 76.2 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 76.2 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "U704")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 76.2 180.34) (xy 76.2 195.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f6429b2-5190-5293-8835-7a42ff5d0d79")
+	)
+	(wire
+		(pts
+			(xy 68.58 205.74) (xy 53.34 205.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2abed57e-e01c-5862-9962-6a436de0c3b0")
+	)
+	(wire
+		(pts
+			(xy 53.34 205.74) (xy 53.34 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a7177ac-b5b8-56d4-a549-9a9452505820")
+	)
+	(wire
+		(pts
+			(xy 68.58 200.66) (xy 58.42 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4829291f-e9e7-55c8-9e26-f58e954b50f4")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 58.42 200.66 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "536b4dde-efd1-596a-8d01-16d25f748948")
+		(property "Reference" "#PWR0715"
+			(at 58.42 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 60.96 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 58.42 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 58.42 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 58.42 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "#PWR0715")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 76.2 210.82) (xy 76.2 213.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10d3e633-7bb1-55cc-b68d-db04566a6893")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 76.2 213.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "03d34fc4-17f1-5977-9f38-b878a5b9c529")
+		(property "Reference" "#PWR0716"
+			(at 76.2 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 78.74000000000001 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 76.2 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.2 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 76.2 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "#PWR0716")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 83.82 200.66) (xy 96.52 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8830c3a-41bf-5204-95d3-e5d1d85010db")
+	)
+	(wire
+		(pts
+			(xy 96.52 200.66) (xy 96.52 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03e9235c-31b9-59d9-b112-af3709a347ff")
+	)
+	(wire
+		(pts
+			(xy 96.52 190.5) (xy 102.87 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ffdf87ca-91fc-58b9-959a-89aabd187325")
+	)
+	(wire
+		(pts
+			(xy 83.82 205.74) (xy 99.06 205.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31733253-551e-5476-abb3-361643d04da4")
+	)
+	(wire
+		(pts
+			(xy 99.06 205.74) (xy 99.06 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d14667d-6b21-587d-8f8c-363e2833503a")
+	)
+	(wire
+		(pts
+			(xy 99.06 210.82) (xy 102.87 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e87a6cd1-73e3-5f07-a9f5-f3eb9f8934af")
+	)
+	(wire
+		(pts
+			(xy 105.41 180.34) (xy 105.41 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11b3a16a-03c4-5fc6-a6b6-e89c72bf1fcd")
+	)
+	(symbol
+		(lib_id "mcuc:WE_750313734")
+		(at 110.49 200.66 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a13f870d-24be-5fab-9d7b-a69a0a49eafb")
+		(property "Reference" "T701"
+			(at 110.49 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "750313734"
+			(at 110.49 185.42000000000002 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc:WE_750313734"
+			(at 110.49 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 110.49 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 110.49 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MPN" "750313734"
+			(at 110.49 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Wurth Elektronik"
+			(at 110.49 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Isolation" "Reinforced 800 Vrms / 1400 Vpk IEC62368-1, 5000 Vrms hipot, 9.2 mm creepage"
+			(at 110.49 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "T701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 118.11 190.5) (xy 124.46 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dfc8b10b-9e7e-505c-b2d9-f85453f7db7a")
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 128.27 190.5 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ffd3da8f-210b-5159-9724-7ed5a4863e2a")
+		(property "Reference" "D701"
+			(at 128.27 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SS310 [TBV]"
+			(at 128.27 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMC"
+			(at 128.27 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "D701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 132.08 190.5) (xy 139.7 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de8587b4-e9be-54d3-86a4-6079a120aa85")
+	)
+	(label "5V5_HV_RAW"
+		(at 139.7 190.5 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fc131222-b6ae-508f-9cf7-014d8ed7a39d")
+	)
+	(wire
+		(pts
+			(xy 118.11 200.66) (xy 124.46 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ccba8fc-1b5b-5526-b3d0-be0e5399d5de")
+	)
+	(hierarchical_label "DC_BUS_N"
+		(shape passive)
+		(at 124.46 200.66 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ed6a47c4-3a43-5602-b245-0d75e8cf7108")
+	)
+	(wire
+		(pts
+			(xy 118.11 210.82) (xy 124.46 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f504946-23c3-55d1-9053-58af444101a3")
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 128.27 210.82 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "04068e17-ce6c-51e1-aa62-fb6600a8d547")
+		(property "Reference" "D702"
+			(at 128.27 213.35999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SS310 [TBV]"
+			(at 128.27 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMC"
+			(at 128.27 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "D702")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 132.08 210.82) (xy 139.7 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3be9e1de-342e-5ea9-8ad7-121aaed8dd77")
+	)
+	(label "5V5_HV_RAW"
+		(at 139.7 210.82 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "70488f17-f445-5a1e-8e1f-f9bf6716d286")
+	)
+	(wire
+		(pts
+			(xy 152.4 193.04) (xy 152.4 195.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1234fea1-9890-5cf7-88cf-996e1e81586e")
+	)
+	(label "5V5_HV_RAW"
+		(at 152.4 193.04 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "56ccbb85-b320-5cb1-9391-28c3b837f9b8")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 152.4 199.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b83115ff-9df3-52ec-8529-a3daa237e6aa")
+		(property "Reference" "C713"
+			(at 154.94 198.11999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uF"
+			(at 154.94 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 152.4 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 152.4 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "C713")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 152.4 203.2) (xy 152.4 205.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1bd899c7-020c-5f7d-ade2-38aff5b855a2")
+	)
+	(hierarchical_label "DC_BUS_N"
+		(shape passive)
+		(at 152.4 205.74 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "43cc2e0b-07da-5090-9512-6556281dd469")
+	)
+	(text "CR-3 - ISOLATED HIGH-SIDE SUPPLY FOR THE AMC1311 (TI SBAS786C section 10).\nWHY THIS STAGE EXISTS: U702 previously drew VIN/GND from VGD_LS_P / VGD_LS_COM,\nwhich are the power module LOW-SIDE KELVIN SOURCE pins.  A Kelvin sense node\nmust never carry supply current: at 4 kA/us through ~8 nH of module source\ninductance the Kelvin pair and DC_BUS_N differ by tens of volts on every edge,\nand that transient appeared directly inside the AMC1311 supply loop.\nU704 (SN6505B, free-running: EN tied to VCC, CLK to GND) drives T701 from the\ncontrol-side +5 V.  D701/D702 form a centre-tapped full-wave rectifier whose\nreturn is DC_BUS_N; C713 is the reservoir; U702 then post-regulates to 3V3_HV.\nEVERYTHING on the secondary side references DC_BUS_N - C713, U702 GND, C701,\nC702, C706, C707, U701 GND1 and the divider bottom R705 are one single node.\nLoad is only the AMC1311 IDD1 <= 8.4 mA, so 1:1.1 x 5 V - 2 diode-drop margin\nleaves ~5.1 V raw, comfortably above the MCP1804 3.3 V dropout.\nT701 IS THE REINFORCED BARRIER ELEMENT of this stage: Wurth 750313734,\nreinforced 800 Vrms / 1400 Vpk per IEC62368-1, 5000 Vrms hipot, 9.2 mm creepage\nand 8.0 mm clearance PRI-SEC per IEC61800-5-1.  Keep the board cut-out / keepout\nunder T701 aligned with the SPEC 10 barrier - no copper, no silk, no plane\ncrossing between the primary (1,2,3) and secondary (6,5,4) rows.\nA 2.5 kV-class functional-isolation part (e.g. 760390012) must NOT be substituted."
+		(exclude_from_sim no)
+		(at 185.42 231.14 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "898ddedf-dbf1-5618-9247-86f3c92e4b72")
+	)
+	(label "5V5_HV_RAW"
+		(at 165.1 190.5 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "501e6307-dac9-5981-b60e-5f53e3c762b3")
+	)
+	(wire
+		(pts
+			(xy 165.1 190.5) (xy 171.45 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b2726c8-2ac5-5e99-a05c-f6802f6fe550")
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 171.45 190.5 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fba28acb-6f85-5ef7-85ee-d22746f719a7")
+		(property "Reference" "#FLG0701"
+			(at 171.45 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 171.45 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 171.45 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 171.45 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 171.45 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "#FLG0701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(hierarchical_label "DC_BUS_N"
+		(shape passive)
+		(at 165.1 200.66 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c400ebfa-c54f-5e61-920f-f0e4f19a1d77")
+	)
+	(wire
+		(pts
+			(xy 165.1 200.66) (xy 171.45 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad37edc8-088f-5f76-82ff-9a3ca6051acc")
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 171.45 200.66 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e28b36d0-9ca3-5286-925e-4df19dccce80")
+		(property "Reference" "#FLG0702"
+			(at 171.45 198.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 171.45 195.57999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 171.45 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 171.45 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 171.45 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e707f78c-23ce-46a2-9dd7-3627af3c12c5"
+					(reference "#FLG0702")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(embedded_fonts no)
 )
