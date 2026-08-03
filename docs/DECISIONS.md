@@ -178,6 +178,16 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **Why:** MKP1848C are PCB-pin parts, but hanging 114 A rms on control-board copper would be absurd; a dedicated heavy-copper carrier between busbar plates is the standard, manufacturable pattern and honors D021's "power never flows through the control PCB".
 - **Affects:** new `mcuc_dclink` project, precharge sheet terminals, footprint assignment pass, fabrication package (two gerber sets), BOM board column.
 
+## D025: Corrections from adversarial review 1
+
+- **Thermal design point corrected.** Module losses computed from the FS02MR12A8MA2B loss tables rather than a technology-class efficiency estimate: **~390 W continuous, ~1040 W at the 250 V peak condition, ~1440 W at 450 V** (η 97.1 % at peak, not 98 %). The module keeps 3–4× junction margin (R_th,j-f 0.121 K/W vs 0.36–0.49 required), so the correction lands entirely on the **coolant loop and heat exchanger**, which must reject ~1.05–1.45 kW. There is no separate cold plate to design — the G2 is direct-cooled and needs a jacket per AN-G2-ASSEMBLY at ≥10 dm³/min, ≤65 °C.
+- **500 µF re-derivations.** SPEC had carried 400 µF-based numbers after the bank was selected as 5 × 100 µF. Precharge energy 40.5 J → **50.6 J** (65 J spec including the 500 V case), precharge 2.5 s → **3.13 s** (firmware timeout ≥3.2 s), and the passive bleeder **failed its own <60 s requirement** at 75.4 s → changed to 56 kΩ (4 × 14 kΩ), 56.4 s.
+- **Internal ambient specified at ≤70 °C** (§11.5). Its absence made several margins uncheckable; this is now a requirement to verify at bring-up.
+- **Contactor coil current is a requirement, not an assumption** — 1.7–2.5 A for a 35 kW-class contactor, which sizes the 12 V rail and mandates a ≥1 A freewheel diode.
+- **Active discharge must be hardware-inhibited while the bus is live** — otherwise a commanded discharge dissipates 230 W in a 100 W bank.
+- **SPEC open item 5 closed**: the 114 A / 120 s ripple duty is verified against Vishay's thermal model with margin (14.7 K per cap; the block's ~43 min time constant means the 120 s pulse adds ~0.7 K).
+- **Affects:** SPEC §7.1, §7.2, §11.2, §11.4, §11.5, §14; cooling system sizing; firmware precharge timeout; schematic fixes tracked in `docs/REVIEW_FINDINGS.md`.
+
 ---
 
 ## Superseded
