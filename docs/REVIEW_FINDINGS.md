@@ -49,3 +49,37 @@ Status key: **FIX** = being corrected · **SPEC** = documentation/requirement co
 ## Verified correct (reviewer's explicit coverage)
 
 DC-link bank against 114 A rms for 120 s (14.7 K rise per cap; the block's own thermal time constant is ~43 min, so the steady-state calculation is already the conservative bound — **the SPEC §14 open item on ripple duty is resolved**); module junction margin (3–4×); gate-supply power chain (0.68 W/channel, transformer at 60 % of its application point, volt-second margin 2×); DESAT blocking diodes (500 V worst case against 1000 V, unshared); bus divider stress (124.5 V, 20.7 mW per part); bleeder part stress; discharge chain energy and FET dissipation; precharge relay duty (4 orders of magnitude inside its switching capability); series X2 input capacitors needing no balancing network; all three inductors' saturation margins; every connector's current rating; **the Miller-clamp return to VEE2 being correct** (returning it to GND2 would have caused shoot-through); and the overcurrent window scaling arithmetic (the thresholds are right — only the comparator part was wrong).
+
+---
+
+# Review 2 — precharge / MCU / connectors / dangling sweep (2026-08-03)
+
+Independently verified all 100 MCU pins against ST DocID022152 Table 7 (and found the *review brief's own* assumed pin list wrong while the schematic was right — VDD/VSS/VSSA correct as drawn).
+
+**New criticals:** the **+12 V rail cannot supply a contactor coil** (same SOT-23-6 thermal impossibility as the 5 V rail but at 1.7× the load); the **three motor phase outputs are dangling** — `PHASE_U/V/W_OUT` are single-node nets and no phase terminal exists anywhere in either project, despite D021 describing M6 output studs.
+
+**New majors:** the discharge FET's gate has **no low-impedance off-state clamp** (a 450 V dv/dt step capacitively injects ~4.4 V, above V_GS(th) min 1.8 V, against a 10 MΩ pull-down and a µA-class photovoltaic turn-off); D403's 18 V zener **clamps above the FET's V_GS maximum** and never inside its operating maximum; R427 = 100 Ω **overdrives the STM32 pin** (17–21 mA vs an 8 mA characterisation point) leaving turn-on time indeterminate; and C702's pin 1 is **unconnected** — the LDO output capacitor whose wire was never drawn.
+
+**Verified correct:** the §7.1 precharge sequence is fully permitted by the hardware; both coil drivers are boot-safe (1 kΩ series + 10 kΩ pull-down); both freewheel diodes correctly oriented; the relay's symbol-to-footprint pad mapping is consistent and its contact polarity correct; K401 never breaks load; Q403's TO-263-7 pinout matches the netlist exactly; every MCU power pin present and correct; every peripheral pin checked against the AF table with no function assigned to a pin that lacks it; USB-C, SWD and ISO1042 wiring all correct pin-for-pin.
+
+---
+
+# Review 3 — circuit correctness (2026-08-03)
+
+**Verdict: not fabrication-ready.** Seven critical findings, each anchored to a netlist fact plus a datasheet quote.
+
+| # | Finding | Consequence |
+|---|---|---|
+| **CR-1** | **The gate-driver fault latch can never be cleared.** RDYC only rises when FLT_N is already high; FLT_N only clears on a rising RDYC edge. The MCU's reset is ANDed in, so it can only add another *low* — closed loop, no override | After any DESAT event, driver over-temperature, or the staggered power-up of six drivers, the bridge is dead with no recovery path. **The board very likely never enables the bridge, even once** |
+| **CR-2** | **DESAT chain is ~5.8 µs** (1.84 µs blanking ramp + 1.58 µs filter + 0.33 µs offset + 2.05 µs soft-off) against the module's **t_SC < 1.2 µs** | The die fails ~5× over before the gate moves |
+| **CR-3** | The AMC1311's high-side LDO returns to **VGD_LS_COM** (the module's Kelvin-source pins) while its own output caps and the AMC1311's GND1 sit on **DC_BUS_N** — joined only inside the module | Tens of volts across the LDO every switching edge; a Kelvin node used as a power node |
+| **CR-4** | RCD clamp on 0603 parts: 3.6× power, 7.5× voltage, and **876 V on a 900 V device** at the 500 V rail | PI's own reference runs at 72 % of BV_DSS; this is 97 % |
+| **CR-5** | **Flyback transformer saturates at the controller's current limit** — B_pk 425 mT typ / 476 mT worst case against 3C96's 440 mT at 100 °C (the transformer was copied from a DER using a lower-current-limit part) | Uncontrolled di/dt through the primary switch on every overload or hard start |
+| **CR-6** | HV-rated aux capacitors on 0603 footprints, two of them **in series across the 450 V link** | A stock 0603 fitted at build fails short → the second sees 500 V → **dead short across a 500 µF bank** |
+| **CR-7** | 5 V converter dissipates 1.33 W in a 107.8 °C/W SOT-23-6 → ΔT_J ≈ 143 K | Thermal shutdown; the real ceiling is ~0.45 A against a 1.64 A load |
+
+**The most consequential major: MJ-1 — the hardware overcurrent trip never reaches TIM1_BKIN.** `OC_LATCH_N` goes only to a supervisor gate and an LED; `OC_LATCHED` goes to a plain GPIO. FAULT_BKIN carries *driver* faults only. **SPEC §9.2's central claim — "Fault → PWM disable: drives TIM1_BKIN" — is false as built for the overcurrent path**, and the trip's only effect hangs on a single resistor.
+
+Other majors: comparators are the wrong part twice over (TLV7032 is push-pull, not open-drain; LM2903 cannot see the upper threshold) and both are ~3 µs parts against a "<1 µs" spec claim; the 300 A trip is really ±245–356 A because the thresholds ride on a ±4 % rail while the transducer is not ratiometric; the bus-sense filter has a 123 Hz pole so the 490 V OVP arrives ~363 V late; ±1 % bus accuracy is unachievable against a ±4 % reference; a current-sense harness disconnect is **not fail-safe** (silently disables one phase's protection); no VCC2↔VEE2 decoupling on any gate-supply domain; the gate-rail zeners have no guaranteed bias current; the LM5175 current limit trips at 17 A against a 7.6 A inductor; and the SinCos front end adds ~48° of electrical lag at speed.
+
+**Verified correct** (extensive): end-to-end PWM polarity through gating, RC and driver to the module gate; overlap elimination genuinely forces both outputs low; the dead-time diode orientation on all six channels; channel-to-switch mapping; the OC latch is genuinely edge-triggered and latching; TIM1_BKIN polarity matches the STM32 reset default; boot-safe pull-downs on all six PWM lines; gate resistors match the module datasheet test condition exactly; CMTI margin 200 V/ns vs 14.6 kV/µs; comparator polarity correct in all six positions; the divider arithmetic exact; every LM5175 configuration pin; the SN6505B pinout; the flyback FB divider and bias winding; every MCU power pin and ADC channel; AD2S1205 interface-mode strapping; USB-C, SWD, CAN and NTC front ends; and whole-design sweeps finding no output contention, no driverless inputs, and no unconnected power pins.
