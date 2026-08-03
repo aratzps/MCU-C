@@ -188,6 +188,17 @@ Newest last. Each entry records what was decided, why, and what it constrains.
 - **SPEC open item 5 closed**: the 114 A / 120 s ripple duty is verified against Vishay's thermal model with margin (14.7 K per cap; the block's ~43 min time constant means the 120 s pulse adds ~0.7 K).
 - **Affects:** SPEC §7.1, §7.2, §11.2, §11.4, §11.5, §14; cooling system sizing; firmware precharge timeout; schematic fixes tracked in `docs/REVIEW_FINDINGS.md`.
 
+## D026: Gate drive derated to +15 V; fault-clear and trip paths rebuilt
+
+Consequences of adversarial review 3 (`docs/REVIEW_FINDINGS.md`). These are safety-path changes, so the reasoning is recorded in full.
+
+- **V_GS(on) derated +18 V → +15 V.** The module's short-circuit withstand is **t_SC < 1.2 µs at −5/+18 V but < 2 µs at −5/+15 V**. The as-drawn DESAT chain took ~5.8 µs; even optimally configured the 1ED3491 reaches ~2.0 µs, so the 18 V rating was unreachable and the 15 V rating is merely *attainable*. Cost: R_DS,on rises 1.90 → 2.40 mΩ (+26 % conduction loss, ≈ +122 W at the peak condition, absorbed by the module's 3–4× junction margin). Benefit beyond DESAT: it simultaneously removes the +19 V absolute-maximum overstress that review 1 found on the open-loop gate rail.
+- **D017 deliberately NOT reopened.** Switching to a SiC-threshold driver (UCC21755-Q1 at 5.0 V, STGAP3SXS at 6.0 V — both qualified in SPEC §5) was considered and rejected: the dominant delays are the *configurable* blanking filter (1575 ns) and soft-off current, not the 9.18 V threshold, so a six-channel driver respin buys little. Instead ADJB is tied to VCC1 (400 ns LEB + 225 ns filter) and ADJA raised to 28.0 kΩ (699 mA soft-off).
+- **Residual risk, accepted and recorded:** ~2.0 µs sits *at* the 2 µs rating with no margin. **A short-circuit (double-pulse) validation is mandatory at bring-up**, and is a gate on releasing the design to production. If it fails, the fallback is a driver change (reopening D017) — not a value tweak.
+- **CR-1 — the fault-clear loop is broken by design and must be rebuilt.** `DRV_RST_OUT = DRV_RST_IN AND FAULT_BKIN AND OC_LATCH_N` could never produce the rising RDYC edge the driver needs, because RDYC could only rise once FLT_N was already high. FAULT_BKIN is removed from that chain, and a power-on-reset network guarantees one clear pulse without firmware. Nothing is lost: the FLT_N wire-OR already provides hardware fault-off to all six drivers.
+- **MJ-1 — the overcurrent trip now actually reaches TIM1_BKIN.** It previously terminated at a supervisor gate and a status GPIO, so SPEC §9.2's central claim was false as built and the trip's only effect hung on a single resistor. `OC_LATCH_N` is wire-OR'd into `FAULT_BKIN` so an overcurrent latch tri-states the PWM in silicon, as the specification always claimed.
+- **Affects:** SPEC §5, §9.1, §9.2, §11.4 (loss figures rise again with the +15 V derate); gate_drive and supervisor sheets; gate-supply rail design; bring-up plan.
+
 ---
 
 ## Superseded

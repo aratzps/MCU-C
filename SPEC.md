@@ -186,7 +186,8 @@ Every part number must be verified against a live datasheet and stocked distribu
 |---|---|---|
 | Topology | Isolated, per switch position | **[SEL]** |
 | Isolation | ≥ 3 kV rms, reinforced | **[DER]** from §10 |
-| Drive voltage | **+18 V on / −5 V off** — the module datasheet's switching condition. (+15 V on is permitted but costs +26 % conduction loss: R_DS,on 2.40 mΩ vs 1.90 mΩ) | **[DER]** — FS02MR12A8MA2B datasheet |
+| Drive voltage | **+15 V on / −5 V off (D026)** — derated from +18 V to obtain the module's **t_SC < 2 µs** short-circuit withstand (it is < 1.2 µs at +18 V, which the driver chain cannot meet). Costs +26 % conduction loss: R_DS,on 2.40 mΩ vs 1.90 mΩ | **[DER]** — FS02MR12A8MA2B datasheet |
+| Short-circuit protection | DESAT chain configured for minimum response (ADJB→VCC1, ADJA 28.0 kΩ): ~2.0 µs detect-to-gate-off, **at the limit of the 2 µs rating**. Short-circuit validation is **mandatory at bring-up** | **[REQ]** — D026 |
 | CMTI | ≥ 100 V/ns (module's actual dv/dt ≈ 14 V/ns — margin is comfortable) | **[SEL]** |
 | Peak gate current | ≥ 8 A available | **[SEL]** — Q_G = 1.19 µC; datasheet-matched switching (R_G,on 12 Ω, R_G,int 0.66 Ω) draws only ~2 A peak, so 8 A is margin for faster external R_G, not a hard need |
 | Desaturation detection | Required, per switch | **[SEL]** |
