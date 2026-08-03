@@ -3027,7 +3027,7 @@
 								)
 							)
 						)
-						(number "1"
+						(number "4"
 							(effects
 								(font
 									(size 1.27 1.27)
@@ -3045,7 +3045,25 @@
 								)
 							)
 						)
-						(number "3"
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
 							(effects
 								(font
 									(size 1.27 1.27)
@@ -3064,6 +3082,24 @@
 							)
 						)
 						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
 							(effects
 								(font
 									(size 1.27 1.27)
@@ -5329,7 +5365,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 66.04 69.85 0)
 			(effects
 				(font
@@ -5406,7 +5442,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "custom flyback, Lp<500uH, VOR raised for 15 V out [TBV], reinforced >=4kV per SPEC 10"
+		(property "Value" "custom flyback, Lp<500uH, VOR raised for 15 V out [TBV], reinforced >=4kV per SPEC 10 [FOOTPRINT TBD]"
 			(at 60.96 33.02 0)
 			(effects
 				(font
@@ -5527,7 +5563,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:InSOP-24D"
 			(at 99.06 82.55 0)
 			(effects
 				(font
@@ -6241,7 +6277,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 114.3 40.64 0)
 			(effects
 				(font
@@ -7326,7 +7362,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10.5"
 			(at 142.24 46.99 0)
 			(effects
 				(font
@@ -7392,7 +7428,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10.5"
 			(at 147.32 46.99 0)
 			(effects
 				(font
@@ -7813,7 +7849,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 173.99 40.64 0)
 			(effects
 				(font
@@ -8507,7 +8543,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_DFN_QFN:VQFN-28-1EP_4x5mm_P0.5mm_EP2.55x3.55mm"
 			(at 66.04 187.96 0)
 			(effects
 				(font
@@ -9359,7 +9395,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
 			(at 109.22 154.94 0)
 			(effects
 				(font
@@ -9425,7 +9461,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
 			(at 109.22 180.34 0)
 			(effects
 				(font
@@ -9491,7 +9527,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
 			(at 121.92 180.34 0)
 			(effects
 				(font
@@ -9557,7 +9593,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
 			(at 121.92 165.1 0)
 			(effects
 				(font
@@ -9687,7 +9723,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uH [TBV]"
+		(property "Value" "10uH [TBV] [FOOTPRINT TBD]"
 			(at 120.142 173.99 270)
 			(effects
 				(font
@@ -11853,7 +11889,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
 			(at 152.4 160.02 0)
 			(effects
 				(font
@@ -11919,7 +11955,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:VSSOP-8_3x3mm_P0.65mm"
 			(at 160.02 180.34 0)
 			(effects
 				(font
@@ -12407,7 +12443,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
 			(at 167.64 220.98 0)
 			(effects
 				(font
@@ -12606,7 +12642,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uH [TBV]"
+		(property "Value" "4.7uH [TBV] [FOOTPRINT TBD]"
 			(at 193.80200000000002 222.25 270)
 			(effects
 				(font
@@ -13565,7 +13601,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
 			(at 167.64 264.16 0)
 			(effects
 				(font
@@ -13764,7 +13800,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "12uH [TBV]"
+		(property "Value" "12uH [TBV] [FOOTPRINT TBD]"
 			(at 193.80200000000002 265.43 270)
 			(effects
 				(font
@@ -15226,7 +15262,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Converter_DCDC:Converter_DCDC_Murata_NXExSxxxxMC_SMD"
 			(at 241.3 254.0 0)
 			(effects
 				(font
@@ -15836,7 +15872,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
 			(at 294.64 58.42 0)
 			(effects
 				(font
@@ -16124,7 +16160,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:WE_PPTI_750316856"
 			(at 317.5 55.88 0)
 			(effects
 				(font
@@ -16280,7 +16316,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 334.01 45.72 0)
 			(effects
 				(font
@@ -16356,7 +16392,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 334.01 66.04 0)
 			(effects
 				(font
@@ -17381,7 +17417,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
 			(at 294.64 116.84 0)
 			(effects
 				(font
@@ -17669,7 +17705,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:WE_PPTI_750316856"
 			(at 317.5 114.3 0)
 			(effects
 				(font
@@ -17825,7 +17861,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 334.01 104.14 0)
 			(effects
 				(font
@@ -17901,7 +17937,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 334.01 124.46 0)
 			(effects
 				(font
@@ -18926,7 +18962,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
 			(at 294.64 175.26 0)
 			(effects
 				(font
@@ -19214,7 +19250,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:WE_PPTI_750316856"
 			(at 317.5 172.72 0)
 			(effects
 				(font
@@ -19370,7 +19406,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 334.01 162.56 0)
 			(effects
 				(font
@@ -19446,7 +19482,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 334.01 182.88 0)
 			(effects
 				(font
@@ -20471,7 +20507,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
 			(at 294.64 233.68 0)
 			(effects
 				(font
@@ -20759,7 +20795,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:WE_PPTI_750316856"
 			(at 317.5 231.14000000000001 0)
 			(effects
 				(font
@@ -20915,7 +20951,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 334.01 220.98000000000002 0)
 			(effects
 				(font
@@ -20991,7 +21027,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMC"
 			(at 334.01 241.3 0)
 			(effects
 				(font

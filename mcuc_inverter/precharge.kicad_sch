@@ -1808,7 +1808,7 @@
 						(hide yes)
 					)
 				)
-				(property "Description" "1200 V SiC N-channel MOSFET, Wolfspeed C3M [TBV]"
+				(property "Description" "1200 V SiC N-channel MOSFET, Wolfspeed C3M, TO-263-7: G=1, KS=2, S=3-7, D=tab(8) per datasheet"
 					(at 0 0 0)
 					(effects
 						(font
@@ -2031,7 +2031,7 @@
 								)
 							)
 						)
-						(number "3"
+						(number "8"
 							(effects
 								(font
 									(size 1.27 1.27)
@@ -2057,9 +2057,237 @@
 							)
 						)
 					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 -5.08 90)
+						(length 2.54)
+						(name "S"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "7"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
 				)
 				(embedded_fonts no)
 			)
+	
+(symbol "Connector:Screw_Terminal_01x01"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Screw_Terminal_01x01"
+			(at 0 -2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "screw terminal"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "TerminalBlock*:*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Screw_Terminal_01x01_1_1"
+			(rectangle
+				(start -1.27 1.27)
+				(end 1.27 -1.27)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.5334 0.3302) (xy 0.3302 -0.508)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.3556 0.508) (xy 0.508 -0.3302)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 0.635)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	)
 
 	(text "Precharge and contactor"
@@ -2231,7 +2459,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:HFE80V_HTPAJ"
 			(at 48.26 53.34 0)
 			(effects
 				(font
@@ -2895,7 +3123,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "c64f642b-8c0c-43b6-83fc-2d98fb9f5ea8")
 		(property "Reference" "R401"
@@ -4002,7 +4230,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 114.3 49.53 0)
 			(effects
 				(font
@@ -4068,7 +4296,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 114.3 57.15 0)
 			(effects
 				(font
@@ -4134,7 +4362,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 114.3 64.77 0)
 			(effects
 				(font
@@ -4200,7 +4428,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 114.3 72.39 0)
 			(effects
 				(font
@@ -4309,7 +4537,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "d9a6fe91-2021-4d2a-85e0-081d65284aa1")
 		(property "Reference" "R421"
@@ -4375,7 +4603,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "e17a9767-a0ae-4fcf-90d3-299945375d79")
 		(property "Reference" "R422"
@@ -4441,7 +4669,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "27d8ba8b-fdac-4bd1-9953-0e1c4329305e")
 		(property "Reference" "R423"
@@ -4507,7 +4735,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "253d85c6-6302-4f50-a12d-6a7a03216a06")
 		(property "Reference" "R424"
@@ -4604,7 +4832,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:TO-263-7_TabPin8"
 			(at 177.8 86.36 0)
 			(effects
 				(font
@@ -5272,5 +5500,462 @@
 		)
 		(uuid "4cbac956-c704-4549-9962-b8d49ba0148c")
 	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 55.88 149.86 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "89caa7db-5f1d-42e9-a6fe-bd373dbe870e")
+		(property "Reference" "J401"
+			(at 58.42 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DC_INPUT_P tap - 6.3mm FASTON / M4 ring lug [TBV]"
+			(at 58.42 151.13000000000002 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via"
+			(at 55.88 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 55.88 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Off-board HV terminal (D024): battery DC input tap feeding K401 precharge contact"
+			(at 55.88 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "J401")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 50.8 149.86) (xy 43.18 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3056ddc8-1b17-4013-b43e-7460a1997527")
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 55.88 157.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f2b07858-0883-48a6-9add-4bba45e0154e")
+		(property "Reference" "J402"
+			(at 58.42 156.20999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "to R401 chassis - 6.3mm FASTON / M4 ring lug [TBV]"
+			(at 58.42 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via"
+			(at 55.88 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 55.88 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Off-board HV terminal (D024): precharge relay output to chassis-mounted R401"
+			(at 55.88 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "J402")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 50.8 157.48) (xy 43.18 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19618175-2b68-4850-8a78-718b6f9d8a3e")
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 55.88 165.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7e547103-9258-47d7-b9d1-6b2671782f0c")
+		(property "Reference" "J403"
+			(at 58.42 163.82999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R401 return to DC_BUS_P tap - 6.3mm FASTON / M4 ring lug [TBV]"
+			(at 58.42 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via"
+			(at 55.88 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 55.88 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Off-board HV terminal (D024): chassis R401 return; board-side DC_BUS_P low-current tap"
+			(at 55.88 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "J403")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 50.8 165.1) (xy 43.18 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7d72b25-dd77-4dd7-be7d-534105c4ba83")
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 55.88 172.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9119556c-bf18-4b1f-838a-341b30bbe2b0")
+		(property "Reference" "J404"
+			(at 58.42 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "from R424 chassis - 6.3mm FASTON / M4 ring lug [TBV]"
+			(at 58.42 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via"
+			(at 55.88 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 55.88 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Off-board HV terminal (D024): chassis discharge bank R421-R424 return to Q403 drain"
+			(at 55.88 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "J404")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 50.8 172.72) (xy 43.18 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1dd98b36-0598-4753-8d3f-86f0444199b2")
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 55.88 180.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "83e33d35-96ea-4b85-88d5-6f32f8ba08ec")
+		(property "Reference" "J405"
+			(at 58.42 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DC_BUS_N tap - 6.3mm FASTON / M4 ring lug [TBV]"
+			(at 58.42 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via"
+			(at 55.88 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 55.88 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Off-board HV terminal (D024): DC_BUS_N low-current tap"
+			(at 55.88 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/16f3a11d-dd8b-406a-835e-16a4f162b732"
+					(reference "J405")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 50.8 180.34) (xy 43.18 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a43f9530-1f35-489a-ae16-e867977d2005")
+	)
+	(hierarchical_label "DC_INPUT_P"
+		(shape passive)
+		(at 43.18 149.86 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9af0c6ca-cb1c-4f17-ba1c-1abd1a782829")
+	)
+	(label "PRECHG_R_CHASSIS"
+		(at 43.18 157.48 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0e4a3a46-deb6-415f-9c32-d3ab9f026915")
+	)
+	(hierarchical_label "DC_BUS_P"
+		(shape passive)
+		(at 43.18 165.1 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d8f03533-8109-4e08-879f-b56b5b39e0ac")
+	)
+	(label "DISCHG_R_RET"
+		(at 43.18 172.72 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9593e251-d6a7-4c57-ba0d-0f9e01495223")
+	)
+	(hierarchical_label "DC_BUS_N"
+		(shape passive)
+		(at 43.18 180.34 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0b9922f9-983e-423d-97d2-a556d14031e2")
+	)
+	(label "PRECHG_R_CHASSIS"
+		(at 53.34 64.77 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "85057adf-1f5a-4dff-8af8-e682de395b64")
+	)
+	(label "DISCHG_R_RET"
+		(at 180.34 78.74 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "09ab790b-1648-4138-9526-21930b44eaaf")
+	)
+	(text "Off-board HV interfaces (D021/D024). J401 DC input tap; J402/J403 chassis precharge resistor loop (R401 excluded from board);\nJ404 return of chassis discharge bank R421-R424 (excluded from board) into Q403 drain; J405 DC_BUS_N tap.\nBleeder R411-R414, divider and flyback taps stay on-board on the DC_BUS_P / DC_BUS_N nets behind J403/J405.\nTerminal footprint: M4 ring-lug pad (Pad_Via); final 6.3 mm FASTON / lug P/N at BOM [TBV]."
+		(exclude_from_sim no)
+		(at 33.02 190.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b2cfde91-2138-49ad-b6e2-55f8f70f47cd")
+	)
+
 	(embedded_fonts no)
 )

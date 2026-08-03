@@ -1013,7 +1013,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:FS02MR12A8MA2B_PressFIT"
 			(at 139.7 109.22 0)
 			(effects
 				(font
@@ -1055,7 +1055,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "9a740e56-554e-4844-9262-7e9912999a9e")
 		(property "Reference" "C201"
@@ -1074,7 +1074,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
 			(at 195.58 110.49 0)
 			(effects
 				(font
@@ -1116,7 +1116,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "41e38487-ca2d-4d97-b971-ca25317c708b")
 		(property "Reference" "C202"
@@ -1135,7 +1135,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
 			(at 208.28 110.49 0)
 			(effects
 				(font
@@ -1177,7 +1177,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "40d13c87-1cce-4086-acb2-bb423a89b652")
 		(property "Reference" "C203"
@@ -1196,7 +1196,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
 			(at 220.98 110.49 0)
 			(effects
 				(font
@@ -1238,7 +1238,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "123f9d34-d7ea-4de2-a96f-b3624a0f4b4c")
 		(property "Reference" "C204"
@@ -1257,7 +1257,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
 			(at 233.68 110.49 0)
 			(effects
 				(font
@@ -1299,7 +1299,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "47e970fb-8506-4680-9872-48ce445b36ab")
 		(property "Reference" "C205"
@@ -1318,7 +1318,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
 			(at 246.38 110.49 0)
 			(effects
 				(font

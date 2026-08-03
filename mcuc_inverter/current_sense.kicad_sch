@@ -1015,6 +1015,236 @@
 						)
 					)
 				)
+	
+(symbol "Connector_Generic:Conn_01x05"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 7.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x05"
+			(at 0 -7.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Conn_01x05_1_1"
+			(rectangle
+				(start -1.27 6.35)
+				(end 1.27 -6.35)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 5.207)
+				(end 0 4.953)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 2.667)
+				(end 0 2.413)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -4.953)
+				(end 0 -5.207)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 5.08 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 2.54 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -5.08 0)
+				(length 3.81)
+				(name "Pin_5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	)
 
 	(symbol
@@ -1023,7 +1253,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "40449eba-0458-4e8a-af58-49a59bf335d6")
 		(property "Reference" "U501"
@@ -2784,7 +3014,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "5b91c632-a9d6-4cf0-879e-e5ca183dbf19")
 		(property "Reference" "U502"
@@ -4545,7 +4775,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "10fdac40-c56a-4af2-b928-9ea96611d8ee")
 		(property "Reference" "U503"
@@ -6427,5 +6657,926 @@
 		)
 		(uuid "ca4a4e6d-fd1c-4f57-86e1-1d7bb223b03c")
 	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x05")
+		(at 193.04 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "94a727b5-cb17-4f0e-8ec5-1a9f8ae838dd")
+		(property "Reference" "J501"
+			(at 195.57999999999998 44.449999999999996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "HOYS U harness - JST PA B05B-PASK-1 [TBV]"
+			(at 195.57999999999998 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B5B-PH-K_1x05_P2.00mm_Vertical"
+			(at 193.04 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 193.04 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "HOYS 200-S/SP33 phase-U harness header, pin-for-pin with U50x signal pins (Vcc/GND/Vout/Vref/OCD); transducer busbar-mounted off-board (D021/D024)"
+			(at 193.04 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/438b764a-db3e-4d65-baa7-b283e17510d2"
+					(reference "J501")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 187.96 40.64) (xy 185.42 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "47941c87-816d-497d-9b50-bfcdc1ec0eb5")
+	)
+	(wire
+		(pts
+			(xy 185.42 40.64) (xy 185.42 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "811caf72-8da6-42dc-a801-eac245575fe7")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 185.42 36.83 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "fe0f0829-4af6-45da-9d21-992c0e0c7cd0")
+		(property "Reference" "#PWR0534"
+			(at 187.95999999999998 35.559999999999995 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 187.95999999999998 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 185.42 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 185.42 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/438b764a-db3e-4d65-baa7-b283e17510d2"
+					(reference "#PWR0534")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 187.96 43.18) (xy 182.88 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22616057-064e-4e44-9d39-7348191fcd66")
+	)
+	(wire
+		(pts
+			(xy 182.88 43.18) (xy 182.88 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3893115-b297-48ab-bead-14ddb409e327")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 182.88 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "2b337811-b8e7-4a30-a098-0c9d88eb2bde")
+		(property "Reference" "#PWR0535"
+			(at 185.42 53.339999999999996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 185.42 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 182.88 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 182.88 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/438b764a-db3e-4d65-baa7-b283e17510d2"
+					(reference "#PWR0535")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 187.96 45.72) (xy 185.42 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20fd94d2-673b-496c-bdc8-514aff7d361a")
+	)
+	(label "HOYS_U_OUT"
+		(at 185.42 45.72 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "639de6bf-cb50-4b85-8fd8-ed08ca4c1fc5")
+	)
+	(wire
+		(pts
+			(xy 187.96 48.26) (xy 185.42 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8b47b9c-7412-4c2e-85b7-ca7c93f12d58")
+	)
+	(label "I_REF_1"
+		(at 185.42 48.26 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "25ae72f8-90bf-44ae-a820-6ad6847363ff")
+	)
+	(wire
+		(pts
+			(xy 187.96 50.8) (xy 185.42 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "38157927-f8cc-4245-bc1d-b7c481f5ee84")
+	)
+	(label "OC_TRIP"
+		(at 185.42 50.8 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e77ec9b2-a12e-48f1-be8e-74361c3a6722")
+	)
+	(label "HOYS_U_OUT"
+		(at 76.2 45.72 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7a9aae8f-8e3d-4a97-a045-ec1d1037cce7")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x05")
+		(at 193.04 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f5b7e523-bc07-49ea-8962-610669bdfa57")
+		(property "Reference" "J502"
+			(at 195.57999999999998 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "HOYS V harness - JST PA B05B-PASK-1 [TBV]"
+			(at 195.57999999999998 116.83999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B5B-PH-K_1x05_P2.00mm_Vertical"
+			(at 193.04 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 193.04 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "HOYS 200-S/SP33 phase-V harness header, pin-for-pin with U50x signal pins (Vcc/GND/Vout/Vref/OCD); transducer busbar-mounted off-board (D021/D024)"
+			(at 193.04 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/438b764a-db3e-4d65-baa7-b283e17510d2"
+					(reference "J502")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 187.96 110.49) (xy 185.42 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e38acf7-359d-4fd1-b72e-afe0b5ce2af9")
+	)
+	(wire
+		(pts
+			(xy 185.42 110.49) (xy 185.42 106.67999999999999)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88e447f9-990a-4557-9cbe-07ea0af56f31")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 185.42 106.67999999999999 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "a79aef59-cb58-40cf-b540-b3ebb2e7ffcd")
+		(property "Reference" "#PWR0536"
+			(at 187.95999999999998 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 187.95999999999998 107.94999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 185.42 106.67999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 106.67999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 185.42 106.67999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/438b764a-db3e-4d65-baa7-b283e17510d2"
+					(reference "#PWR0536")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 187.96 113.02999999999999) (xy 182.88 113.02999999999999)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f50474b4-b62d-46d3-89f3-36a2b9572047")
+	)
+	(wire
+		(pts
+			(xy 182.88 113.02999999999999) (xy 182.88 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c76c22c-2ccb-472a-b3d0-2a4d013f0a12")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 182.88 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "4a257696-376b-4344-b943-227281562189")
+		(property "Reference" "#PWR0537"
+			(at 185.42 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 185.42 125.72999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 182.88 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 182.88 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/438b764a-db3e-4d65-baa7-b283e17510d2"
+					(reference "#PWR0537")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 187.96 115.57) (xy 185.42 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7fca28d-dd86-4a5e-8adb-b7fdc86a8fd3")
+	)
+	(label "HOYS_V_OUT"
+		(at 185.42 115.57 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4a89458a-a62b-4b91-9395-ea5ac64515fd")
+	)
+	(wire
+		(pts
+			(xy 187.96 118.11) (xy 185.42 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d49969d-af90-4865-8644-a01396839d6c")
+	)
+	(label "I_REF_2"
+		(at 185.42 118.11 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "29c46ffc-6bb5-440d-af07-002398f3c50f")
+	)
+	(wire
+		(pts
+			(xy 187.96 120.64999999999999) (xy 185.42 120.64999999999999)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e41734b-ee0f-4474-b207-d8c9af06cc57")
+	)
+	(label "OC_TRIP"
+		(at 185.42 120.64999999999999 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "92048ef6-3e36-4afa-b32c-d8f4ffe1c5c1")
+	)
+	(label "HOYS_V_OUT"
+		(at 76.2 115.57 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "89a9f070-980d-4578-a585-5b45390a4c8b")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x05")
+		(at 193.04 185.42 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a22e3eea-4e66-4819-8de8-7d88b1591314")
+		(property "Reference" "J503"
+			(at 195.57999999999998 184.14999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "HOYS W harness - JST PA B05B-PASK-1 [TBV]"
+			(at 195.57999999999998 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B5B-PH-K_1x05_P2.00mm_Vertical"
+			(at 193.04 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 193.04 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "HOYS 200-S/SP33 phase-W harness header, pin-for-pin with U50x signal pins (Vcc/GND/Vout/Vref/OCD); transducer busbar-mounted off-board (D021/D024)"
+			(at 193.04 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/438b764a-db3e-4d65-baa7-b283e17510d2"
+					(reference "J503")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 187.96 180.33999999999997) (xy 185.42 180.33999999999997)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "543a8b74-5980-406b-bad3-ff1e16f633d2")
+	)
+	(wire
+		(pts
+			(xy 185.42 180.33999999999997) (xy 185.42 176.52999999999997)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0eae766e-a257-47f0-abfe-96a2ac5e511a")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 185.42 176.52999999999997 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "78eb8e04-9f51-462f-b529-b26bf92cdb9e")
+		(property "Reference" "#PWR0538"
+			(at 187.95999999999998 175.25999999999996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 187.95999999999998 177.79999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 185.42 176.52999999999997 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 176.52999999999997 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 185.42 176.52999999999997 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/438b764a-db3e-4d65-baa7-b283e17510d2"
+					(reference "#PWR0538")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 187.96 182.88) (xy 182.88 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "faf4ba97-cbd0-4b9a-9073-6b20b629d2cf")
+	)
+	(wire
+		(pts
+			(xy 182.88 182.88) (xy 182.88 194.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6db39a18-9cc7-466c-a2a2-4cb7eeb7f212")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 182.88 194.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "ad5afd16-3ad4-4ef8-a711-23339b4f89d6")
+		(property "Reference" "#PWR0539"
+			(at 185.42 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 185.42 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 182.88 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 182.88 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/438b764a-db3e-4d65-baa7-b283e17510d2"
+					(reference "#PWR0539")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 187.96 185.42) (xy 185.42 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a213f937-53cc-42c2-b82b-339835654a5b")
+	)
+	(label "HOYS_W_OUT"
+		(at 185.42 185.42 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1eb7ba07-c1b6-40a9-a1bc-d2934cf1466f")
+	)
+	(wire
+		(pts
+			(xy 187.96 187.95999999999998) (xy 185.42 187.95999999999998)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dfd41f1d-8ea9-498b-9914-1b22a149f507")
+	)
+	(label "I_REF_3"
+		(at 185.42 187.95999999999998 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9269f5ef-3748-478d-95e3-26e824a1ddcd")
+	)
+	(wire
+		(pts
+			(xy 187.96 190.5) (xy 185.42 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e6a01b0-bf70-4c3c-912e-e71d67f00e5c")
+	)
+	(label "OC_TRIP"
+		(at 185.42 190.5 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8852824e-7e72-4d35-b759-b55cc4c605d7")
+	)
+	(label "HOYS_W_OUT"
+		(at 76.2 185.42 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b68e5be5-e3d9-4052-84bd-6eb20775f3c6")
+	)
+	(text "J501-J503: HOYS harness headers (D021/D024) - Vcc / GND / Vout / Vref / OCD, pin-for-pin with the transducer signal pins.\nU501-U503 are busbar-mounted off-board (exclude_from_board); the headers carry their nets on the PCB.\nIntended part: JST PA B05B-PASK-1. No JST PA footprint in the official libs - JST PH B5B (same 2.00 mm pitch) used as placeholder [TBV].\nHeader pin order vs LEM HOYS harness pinout to be verified against the HOYS datasheet at BOM time [TBV]."
+		(exclude_from_sim no)
+		(at 165.1 240.03 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fe0fd843-a891-4ed8-a9ea-17f8acb865c4")
+	)
+
 	(embedded_fonts no)
 )
