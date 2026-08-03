@@ -3440,7 +3440,7 @@
 				)
 			)
 		)
-		(property "Value" "custom flyback, Lp<500uH, VOR raised for 15 V out [TBV], reinforced >=4kV per SPEC 10"
+		(property "Value" "custom flyback per DER-948Q T1: Lp 422.6uH, 25T:2T:2T, 15 V sec, reinforced >=4kV per SPEC 10, core EQ30+PLT30/20/3 3C96, bobbin MCT-EIQ3001 V4+6P"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3448,16 +3448,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
+		(property "Footprint" "mcuc:T_FLYBACK_EQ30"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3466,7 +3457,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Custom flyback transformer: primary / bias / 15 V secondary; dots: 1, 4, 6"
+		(property "Datasheet" "https://www.power.com/sites/default/files/documents/der-948q_35w_15v_30-1000vdc_automotive_power_supply_using_innoswitch3-aq.pdf"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Custom flyback transformer on MyCoilTech MCT-EIQ3001 V4+6P bobbin (EQ30+PLT30/20/3, 3C96): pri 1-3 (dot 3), bias 5-6 (dot 5), sec 8-9 (dot 9) per DER-948Q; bobbin pins 2,4 removed, 7,10 unused"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3737,7 +3737,7 @@
 						)
 					)
 				)
-				(number "1"
+				(number "3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3755,7 +3755,7 @@
 						)
 					)
 				)
-				(number "2"
+				(number "1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3773,7 +3773,7 @@
 						)
 					)
 				)
-				(number "3"
+				(number "6"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3791,7 +3791,7 @@
 						)
 					)
 				)
-				(number "4"
+				(number "5"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3809,7 +3809,7 @@
 						)
 					)
 				)
-				(number "5"
+				(number "8"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3827,7 +3827,7 @@
 						)
 					)
 				)
-				(number "6"
+				(number "9"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -5442,7 +5442,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "custom flyback, Lp<500uH, VOR raised for 15 V out [TBV], reinforced >=4kV per SPEC 10 [FOOTPRINT TBD]"
+		(property "Value" "custom flyback per DER-948Q T1: Lp 422.6uH, 25T:2T:2T, 15 V sec, reinforced >=4kV per SPEC 10, core EQ30+PLT30/20/3 3C96, bobbin MCT-EIQ3001 V4+6P"
 			(at 60.96 33.02 0)
 			(effects
 				(font
@@ -5451,7 +5451,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mcuc:T_FLYBACK_EQ30"
 			(at 99.06 53.34 0)
 			(effects
 				(font
@@ -9723,7 +9723,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uH [TBV] [FOOTPRINT TBD]"
+		(property "Value" "SRP6060FA-100M 10uH 7.6A"
 			(at 120.142 173.99 270)
 			(effects
 				(font
@@ -9732,7 +9732,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_Bourns_SRP6060FA"
 			(at 118.11 172.72 0)
 			(effects
 				(font
@@ -12642,7 +12642,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uH [TBV] [FOOTPRINT TBD]"
+		(property "Value" "SRP5030TA-4R7M 4.7uH 6A"
 			(at 193.80200000000002 222.25 270)
 			(effects
 				(font
@@ -12651,7 +12651,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_Bourns_SRP5030T"
 			(at 191.77 220.98 0)
 			(effects
 				(font
@@ -13800,7 +13800,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "12uH [TBV] [FOOTPRINT TBD]"
+		(property "Value" "SRR1260-120M 12uH 5A"
 			(at 193.80200000000002 265.43 270)
 			(effects
 				(font
@@ -13809,7 +13809,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_Bourns_SRR1260"
 			(at 191.77 264.16 0)
 			(effects
 				(font
