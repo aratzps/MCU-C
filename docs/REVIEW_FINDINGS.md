@@ -83,3 +83,28 @@ Independently verified all 100 MCU pins against ST DocID022152 Table 7 (and foun
 Other majors: comparators are the wrong part twice over (TLV7032 is push-pull, not open-drain; LM2903 cannot see the upper threshold) and both are ~3 µs parts against a "<1 µs" spec claim; the 300 A trip is really ±245–356 A because the thresholds ride on a ±4 % rail while the transducer is not ratiometric; the bus-sense filter has a 123 Hz pole so the 490 V OVP arrives ~363 V late; ±1 % bus accuracy is unachievable against a ±4 % reference; a current-sense harness disconnect is **not fail-safe** (silently disables one phase's protection); no VCC2↔VEE2 decoupling on any gate-supply domain; the gate-rail zeners have no guaranteed bias current; the LM5175 current limit trips at 17 A against a 7.6 A inductor; and the SinCos front end adds ~48° of electrical lag at speed.
 
 **Verified correct** (extensive): end-to-end PWM polarity through gating, RC and driver to the module gate; overlap elimination genuinely forces both outputs low; the dead-time diode orientation on all six channels; channel-to-switch mapping; the OC latch is genuinely edge-triggered and latching; TIM1_BKIN polarity matches the STM32 reset default; boot-safe pull-downs on all six PWM lines; gate resistors match the module datasheet test condition exactly; CMTI margin 200 V/ns vs 14.6 kV/µs; comparator polarity correct in all six positions; the divider arithmetic exact; every LM5175 configuration pin; the SN6505B pinout; the flyback FB divider and bias winding; every MCU power pin and ADC channel; AD2S1205 interface-mode strapping; USB-C, SWD, CAN and NTC front ends; and whole-design sweeps finding no output contention, no driverless inputs, and no unconnected power pins.
+
+
+---
+
+# Fix pass — dispositions as implemented (2026-08-03)
+
+Three fix agents worked with strict file ownership. Where an agent's verification contradicted the instruction it was given, the agent's finding won — twice, and both are recorded here because they are the most useful entries in this document.
+
+## Instructions that were wrong, and were corrected by the implementer
+
+| Item | What I directed | What was actually true | Outcome |
+|---|---|---|---|
+| **CR-5** (flyback core saturation) | Substitute INN3999CQ for its lower current limit, or rewind the transformer | The InnoSwitch3-AQ family has **no reduced current-limit setting** — the BPP capacitor selects between standard (0.47 µF) and increased (4.7 µF). The premise for a part swap was wrong | Capacitor changed 4.7 → **0.47 µF**: B_pk 360 mT typ / 403 mT worst, below the reference design's own 376 mT point, **and it keeps more power headroom (2.30 A vs 2.13 A) than the part swap would have.** Controller retained |
+| **MJ-22** (diff-amp gain) | Set R709 = R710 = 16.2 kΩ for ~3.23 V at 500 V | At that gain the 490 V OVP threshold lands at **3.162 V against a TLV1117 rail that is 3.168 V at −4 %** — an RRIO output cannot reach it, so the overvoltage protection would have been **unreachable by construction** | Gain **1.50**: 500 V → 2.988 V, clip 3.000 V, 90.5 % of range, 168 mV headroom, 0.135 V of bus per LSB |
+
+## Fixes implemented
+
+**aux_power / bus_sense** — CR-4 (RCD clamp rebuilt as 6 × 39 kΩ 1206 in 3s2p; worst case 0.35 W and 117 V per part), CR-5 (above), CR-6 (every impossible footprint replaced, including the 0.68 µF X2 boxes onto a real 22.5 mm radial pattern), CR-7 (both bucks → LMR33630ADDAR in HSOIC-8 PowerPAD, 42.9 vs 107.8 °C/W, thermal pad wired as AGND), MJ-5 (bus filter 100 nF → 100 pF: OVP response 1.3 ms → 13 µs), MJ-6 (tolerance fields added), MJ-10 (LM5175 sense 10 → 30 mΩ — it was tripping at 17 A against a 7.6 A inductor saturation), MJ-14 (flyback line UV/OV enabled; brown-in 32.5–44.2 V), MJ-16 (C702's unconnected pin — the LDO output capacitor whose net was never drawn), MJ-18 (input capacitance to datasheet requirement), MJ-19 + MN-7 (aux priority made real: 0.62 V worst-case margin), MJ-22 (above), MN-13, MN-24.
+
+**Carried into the T601 purchase specification:** the clamp analysis shows the primary switch drain reaches 731 V / 761 V / 806 V at leakage inductances of 1 / 2 / 4 µH, against a 725 V continuous limit — so **L_k ≤ 2 µH becomes a purchase requirement**, where the reference design tolerated 6.5 µH. Also flagged: D601 (US1M) sits at 80 % of its 1000 V rating where the reference design uses two in series.
+
+## Deliberately not implemented, and why
+
+- **CR-3** was left open by the first implementer rather than guessed at: it required a footprint for the transformer that **bridges the reinforced isolation barrier**, and inventing that geometry is precisely the failure class this review exists to prevent. Implemented separately once verified land-pattern data (rendered from the manufacturer drawing) was available.
+- **MN-14** (aux input TVS and reverse-polarity element) deferred rather than fitted with unverified parameters.
