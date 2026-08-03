@@ -47,7 +47,7 @@
 			)
 			(layer "F.Cu"
 				(type "copper")
-				(thickness 0.07)
+				(thickness 0.14)
 			)
 			(layer "dielectric 1"
 				(type "core")
@@ -58,7 +58,7 @@
 			)
 			(layer "B.Cu"
 				(type "copper")
-				(thickness 0.07)
+				(thickness 0.14)
 			)
 			(layer "B.Mask"
 				(type "Bottom Solder Mask")
@@ -2639,7 +2639,7 @@
 			(justify left top)
 		)
 	)
-	(gr_text "MCU-C DC-LINK CARRIER rev 0.1\nCarrier for 5x MKP1848C 100uF/1000V; 114 A rms bank duty;\nsolid zone connections, no thermal reliefs;\nfinal M6 positions per busbar drawing [TBV];\nimmersion tin not required here (no press-fit).\n2-layer 1.6 mm FR-4, 2 oz (70 um) Cu both sides."
+	(gr_text "MCU-C DC-LINK CARRIER rev 0.1\nCarrier for 5x MKP1848C 100uF/1000V; 114 A rms bank duty;\nsolid zone connections, no thermal reliefs;\nfinal M6 positions per busbar drawing [TBV];\nimmersion tin not required here (no press-fit).\n2-layer 1.6 mm FR-4, 4 oz (140 um) Cu BOTH SIDES - REQUIRED: planes carry the main DC path (140 A peak); 2 oz would be ~1.9 mOhm = 37 W."
 		(at 192 2 0)
 		(layer "F.SilkS")
 		(uuid "d10c449c-5bcd-4720-91db-fcc000ddf6eb")
