@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "mcuc")(type "KiCad")(uri "${KIPRJMOD}/../mcuc_inverter/mcuc_inverter.pretty")(options "")(descr "Shared MCU-C footprint library (control-board project) - MKP1848C etc."))
+  (lib (name "mcuc_dclink")(type "KiCad")(uri "${KIPRJMOD}/mcuc_dclink.pretty")(options "")(descr "DC-link carrier local footprints (M6 lug, sense tap)"))
+)
