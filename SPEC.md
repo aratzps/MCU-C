@@ -119,7 +119,7 @@ The earlier 1.5× guess (75/175 A rms) is superseded. With the target motor know
 | Peak phase current (120 s) | 190 A rms | Motor peak current, S2 2 min; board peak duration matched to the motor (§2) |
 | Instantaneous phase peak | 270 A | 190 × √2, rounded |
 | Current sense full scale | ±325 A | Instantaneous peak + 20 % headroom |
-| Hardware overcurrent trip | 300 A, adjustable | Above legitimate 270 A peak, below sense saturation |
+| Hardware overcurrent trip | **300 A ±8 A** | Above legitimate 270 A peak, below sense saturation. Thresholds are servo'd off each transducer's own reference rather than the 3.3 V rail, so the trip tracks the sensor; without that servo the real spread was 245–356 A |
 
 Full 100 Nm peak torque needs 100 / 0.54 = 185 A rms — inside the 190 A peak limit. Full continuous torque (56 Nm, combined-cooled motor) needs 104 A rms; at the 100 A board limit, continuous torque is 54 Nm — accepted, the difference is within the motor's cooling-configuration spread.
 
@@ -353,7 +353,7 @@ All four interfaces are required.
 
 | Function | Threshold | Response |
 |---|---|---|
-| Overcurrent (hardware) | 300 A instantaneous | Latched shutdown, < 1 µs |
+| Overcurrent (hardware) | 300 A ±8 A instantaneous | Latched shutdown. Comparator path ~0.65 µs; the transducer's own 3 µs response dominates end-to-end |
 | Desaturation | Per gate driver | Soft turn-off + latch |
 | Bus overvoltage | 490 V | Latched shutdown |
 | Bus undervoltage | 45 V | Inhibit switching |
