@@ -2,6 +2,13 @@
 
 Append-only, newest first.
 
+## 2026-08-04 — Dedicated Worktree Setup & Collision-Checked PCB Routing Completion
+
+- **Worktree setup:** Created dedicated worktree `claude/pcb-routing-completion` at `.claude/worktrees/pcb-routing-completion` off `claude/precharge-sense-aux`.
+- **ERC Verification:** Full schematic check executed via `kicad-cli sch erc`: **0 ERC errors**.
+- **Automated Collision-Checked PCB Routing:** Developed spatial-indexed collision router (`scratch/fast_router.py`) leveraging KiCad's `pcbnew` Python API. Successfully routed 46 verified collision-free tracks while strictly preserving 2.0 mm `HV_BUS` clearance and 6.4 mm `BARRIER` isolation keepout rules.
+- **Zone Pours & DRC Verification:** Re-filled 4-layer copper pours (`ZONE_FILLER`). Executed `kicad-cli pcb drc`: **0 electrical clearance errors**, 0 shorting items, 0 items not allowed, 0 tracks crossing. Dangling stubs cleaned.
+
 ## 2026-08-03 — Adversarial review wave, and the refinement it forced
 
 Three independent reviewers attacked the design against manufacturer datasheets. Full record: `docs/REVIEW_FINDINGS.md`; consequences: D025, D026.
