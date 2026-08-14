@@ -1,0 +1,2277 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "1f81c500-422e-49ca-a4e4-4dfa5edf3ccf")
+	(paper "A3")
+	(title_block
+		(title "MCU-C DC-Link Capacitor Carrier")
+		(date "2026-08-02")
+		(rev "0.1")
+		(company "MCU-C")
+		(comment 1 "5x Vishay MKP1848C71010JY5 (100uF/1000V) = 500uF bank between laminated busbar plates (D021/D024)")
+		(comment 2 "Heavy-copper 2-layer carrier; F.Cu solid zone = DC_BUS_P, B.Cu solid zone = DC_BUS_N; 114 A rms ripple duty (SPEC 3.4/6.1)")
+		(comment 3 "M6 lug positions follow the laminated busbar drawing [TBV]")
+	)
+	(lib_symbols
+		(symbol "Device:C"
+						(pin_numbers
+							(hide yes)
+						)
+						(pin_names
+							(offset 0.254)
+						)
+						(exclude_from_sim no)
+						(in_bom yes)
+						(on_board yes)
+						(property "Reference" "C"
+							(at 0.635 2.54 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(justify left)
+							)
+						)
+						(property "Value" "C"
+							(at 0.635 -2.54 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(justify left)
+							)
+						)
+						(property "Footprint" ""
+							(at 0.9652 -3.81 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "Datasheet" "~"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "Description" "Unpolarized capacitor"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "ki_keywords" "cap capacitor"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(property "ki_fp_filters" "C_*"
+							(at 0 0 0)
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+								(hide yes)
+							)
+						)
+						(symbol "C_0_1"
+							(polyline
+								(pts
+									(xy -2.032 0.762) (xy 2.032 0.762)
+								)
+								(stroke
+									(width 0.508)
+									(type default)
+								)
+								(fill
+									(type none)
+								)
+							)
+							(polyline
+								(pts
+									(xy -2.032 -0.762) (xy 2.032 -0.762)
+								)
+								(stroke
+									(width 0.508)
+									(type default)
+								)
+								(fill
+									(type none)
+								)
+							)
+						)
+						(symbol "C_1_1"
+							(pin passive line
+								(at 0 3.81 270)
+								(length 2.794)
+								(name "~"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+								(number "1"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+							)
+							(pin passive line
+								(at 0 -3.81 90)
+								(length 2.794)
+								(name "~"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+								(number "2"
+									(effects
+										(font
+											(size 1.27 1.27)
+										)
+									)
+								)
+							)
+						)
+						(embedded_fonts no)
+					)
+		(symbol "Connector:Screw_Terminal_01x01"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Screw_Terminal_01x01"
+			(at 0 -2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "screw terminal"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "TerminalBlock*:*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Screw_Terminal_01x01_1_1"
+			(rectangle
+				(start -1.27 1.27)
+				(end 1.27 -1.27)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.5334 0.3302) (xy 0.3302 -0.508)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.3556 0.508) (xy 0.508 -0.3302)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 0.635)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "Connector:Screw_Terminal_01x02"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Screw_Terminal_01x02"
+			(at 0 -5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "screw terminal"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "TerminalBlock*:*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Screw_Terminal_01x02_1_1"
+			(rectangle
+				(start -1.27 1.27)
+				(end 1.27 -3.81)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.5334 0.3302) (xy 0.3302 -0.508)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.5334 -2.2098) (xy 0.3302 -3.048)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.3556 0.508) (xy 0.508 -0.3302)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.3556 -2.032) (xy 0.508 -2.8702)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 0.635)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 0 -2.54)
+				(radius 0.635)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "power:PWR_FLAG"
+					(power)
+					(pin_numbers
+						(hide yes)
+					)
+					(pin_names
+						(offset 0)
+						(hide yes)
+					)
+					(exclude_from_sim no)
+					(in_bom yes)
+					(on_board yes)
+					(property "Reference" "#FLG"
+						(at 0 1.905 0)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(hide yes)
+						)
+					)
+					(property "Value" "PWR_FLAG"
+						(at 0 3.81 0)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(property "Footprint" ""
+						(at 0 0 0)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(hide yes)
+						)
+					)
+					(property "Datasheet" "~"
+						(at 0 0 0)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(hide yes)
+						)
+					)
+					(property "Description" "Special symbol for telling ERC where power comes from"
+						(at 0 0 0)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(hide yes)
+						)
+					)
+					(property "ki_keywords" "flag power"
+						(at 0 0 0)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(hide yes)
+						)
+					)
+					(symbol "PWR_FLAG_0_0"
+						(pin power_out line
+							(at 0 0 90)
+							(length 0)
+							(name "~"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+							(number "1"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+						)
+					)
+					(symbol "PWR_FLAG_0_1"
+						(polyline
+							(pts
+								(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+							)
+							(stroke
+								(width 0)
+								(type default)
+							)
+							(fill
+								(type none)
+							)
+						)
+					)
+				)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 50.8 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ff07a238-02cc-40d6-b4f7-43db145233c8")
+		(property "Reference" "C1"
+			(at 53.339999999999996 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MKP1848C71010JY5 100uF 1000V"
+			(at 53.339999999999996 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
+			(at 50.8 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 50.8 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay MKP1848C DC-link film capacitor, 100uF 1000VDC, 6-pin"
+			(at 50.8 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "69ae4eb0-b158-469b-87be-0d9234c3ad01")
+		)
+		(pin "2"
+			(uuid "0c87fb10-1626-41ea-8ba9-76c4e01ff016")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 76.2 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4d6be520-57aa-40f0-bc53-329ab218cded")
+		(property "Reference" "C2"
+			(at 78.74000000000001 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MKP1848C71010JY5 100uF 1000V"
+			(at 78.74000000000001 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
+			(at 76.2 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 76.2 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay MKP1848C DC-link film capacitor, 100uF 1000VDC, 6-pin"
+			(at 76.2 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bffd9233-1cc2-4079-892a-1a3b010b99a4")
+		)
+		(pin "2"
+			(uuid "f7eb0642-d84a-45a4-a28c-4db2990566b8")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 101.6 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "11a09402-b531-4f08-abc5-73cc52a2f097")
+		(property "Reference" "C3"
+			(at 104.14 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MKP1848C71010JY5 100uF 1000V"
+			(at 104.14 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
+			(at 101.6 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 101.6 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay MKP1848C DC-link film capacitor, 100uF 1000VDC, 6-pin"
+			(at 101.6 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bb7be699-0464-4535-8ae4-6f4259c07bf3")
+		)
+		(pin "2"
+			(uuid "4670f31d-efc2-408a-9265-82eacd597f24")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 127.0 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "281e49b0-9d2c-4b70-9cfa-2f91f96e7dda")
+		(property "Reference" "C4"
+			(at 129.54 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MKP1848C71010JY5 100uF 1000V"
+			(at 129.54 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
+			(at 127.0 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 127.0 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay MKP1848C DC-link film capacitor, 100uF 1000VDC, 6-pin"
+			(at 127.0 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b4d88a5b-0b57-42c2-b4e6-fc4551fd6fc7")
+		)
+		(pin "2"
+			(uuid "7f023552-810d-4432-9f89-5bb9bde4a226")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 152.4 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b6a58545-77a8-462d-9cce-b0e6789d54f4")
+		(property "Reference" "C5"
+			(at 154.94 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MKP1848C71010JY5 100uF 1000V"
+			(at 154.94 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc:MKP1848C_6pin_52.5x20.3"
+			(at 152.4 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 152.4 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay MKP1848C DC-link film capacitor, 100uF 1000VDC, 6-pin"
+			(at 152.4 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "376fdf11-fd0b-42ba-96d0-61d810edbad6")
+		)
+		(pin "2"
+			(uuid "d59d422a-183d-4de9-8d1e-7509517c5b12")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 205.74 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f9b9653a-9311-467f-ad1f-6a68679e0abc")
+		(property "Reference" "J1"
+			(at 208.28 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "M6 lug - module P1"
+			(at 208.28 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:M6_LUG"
+			(at 205.74 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "M6 busbar lug connection point"
+			(at 205.74 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6976993e-3886-4201-b6e9-844c54839f13")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 205.74 50.8 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "47a72471-3faf-4eab-beb8-14632245a397")
+		(property "Reference" "J2"
+			(at 208.28 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "M6 lug - module P2"
+			(at 208.28 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:M6_LUG"
+			(at 205.74 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "M6 busbar lug connection point"
+			(at 205.74 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9a8627b1-46e4-42a2-a02e-bc029ad9a6d3")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 205.74 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a76c41e3-2f81-488e-9ac9-4d1e66eeeca2")
+		(property "Reference" "J3"
+			(at 208.28 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "M6 lug - module P3"
+			(at 208.28 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:M6_LUG"
+			(at 205.74 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "M6 busbar lug connection point"
+			(at 205.74 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f67ebd38-1aa5-4d5c-a29a-0cd4e60a3c4e")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 205.74 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "aacf2bbe-6c33-4d07-bd6e-25b6bf0e4843")
+		(property "Reference" "J4"
+			(at 208.28 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "M6 lug - battery/busbar DC+ feed"
+			(at 208.28 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:M6_LUG"
+			(at 205.74 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "M6 busbar lug connection point"
+			(at 205.74 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9d322703-2045-4eb7-b058-9eb0047cdbf9")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 205.74 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "adc339a4-e83e-4e01-8ed2-2827fa946d6f")
+		(property "Reference" "J5"
+			(at 208.28 93.97999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "M6 lug - module N1"
+			(at 208.28 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:M6_LUG"
+			(at 205.74 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "M6 busbar lug connection point"
+			(at 205.74 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ddaa96d5-2158-423a-8ede-6c36191bd4b7")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 205.74 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "17970969-a580-46ec-88d1-57bcd070c49f")
+		(property "Reference" "J6"
+			(at 208.28 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "M6 lug - module N2"
+			(at 208.28 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:M6_LUG"
+			(at 205.74 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "M6 busbar lug connection point"
+			(at 205.74 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "09729143-826a-4a1d-8e27-fdda94273f45")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 205.74 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0e8cb31b-16ed-4375-aea3-b83eeebc12e8")
+		(property "Reference" "J7"
+			(at 208.28 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "M6 lug - module N3"
+			(at 208.28 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:M6_LUG"
+			(at 205.74 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "M6 busbar lug connection point"
+			(at 205.74 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5874801e-a4d6-42e5-81ae-d451bd78d81a")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x01")
+		(at 205.74 127.0 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2a268934-e103-4cc7-b16a-a1b24fef6504")
+		(property "Reference" "J8"
+			(at 208.28 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "M6 lug - battery/busbar DC- feed"
+			(at 208.28 127.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:M6_LUG"
+			(at 205.74 127.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 127.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "M6 busbar lug connection point"
+			(at 205.74 127.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "82e135b3-aa64-48ba-8221-833b6e533741")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x02")
+		(at 236.22 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c1df273a-9ca0-45c0-8c04-df9df101cd9f")
+		(property "Reference" "J9"
+			(at 238.76 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Sense tap DC_BUS_P (to control board)"
+			(at 238.76 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:TAP_FASTON_2xD1.5"
+			(at 236.22 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 236.22 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Low-current DC bus sense tap for control board"
+			(at 236.22 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "46523355-19d1-4d83-a020-8cea9cd6b5b9")
+		)
+		(pin "2"
+			(uuid "1cc48526-961a-45b9-bb51-562a56f0a592")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x02")
+		(at 236.22 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "50b8a583-5c05-4cac-9fec-861b5b8303d9")
+		(property "Reference" "J10"
+			(at 238.76 93.97999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Sense tap DC_BUS_N (to control board)"
+			(at 238.76 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mcuc_dclink:TAP_FASTON_2xD1.5"
+			(at 236.22 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 236.22 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Low-current DC bus sense tap for control board"
+			(at 236.22 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9b48bef8-90e6-4ecc-a115-50c836c17efc")
+		)
+		(pin "2"
+			(uuid "4bf18060-f8c2-4e8f-a032-6209a2dadc1e")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "J10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 25.4 72.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3d9c9396-fe1b-4368-be56-a7275a5ff9d4")
+		(property "Reference" "#FLG01"
+			(at 27.939999999999998 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 27.939999999999998 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 25.4 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 25.4 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d542064d-f51e-4366-a83e-b7e19a81c5d6")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 25.4 100.33 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fa3cba0d-d369-470a-9fbf-c8b9f5f12477")
+		(property "Reference" "#FLG02"
+			(at 27.939999999999998 97.78999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 27.939999999999998 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 25.4 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 25.4 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6d6ef260-43e9-4880-b7e1-5dcdee1962f9")
+		)
+		(instances
+			(project "mcuc_dclink"
+				(path "/1f81c500-422e-49ca-a4e4-4dfa5edf3ccf"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 50.8 82.55) (xy 50.8 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a1a0b8f-c881-4787-9f2a-b749e218c946")
+	)
+	(wire
+		(pts
+			(xy 50.8 90.17) (xy 50.8 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a041a802-c629-4328-a235-8c985e0ac521")
+	)
+	(wire
+		(pts
+			(xy 76.2 82.55) (xy 76.2 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acfdf438-df41-4482-a919-f74ff158aefd")
+	)
+	(wire
+		(pts
+			(xy 76.2 90.17) (xy 76.2 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c48fd92c-58a5-4b6a-8dda-07b2b9ca19b6")
+	)
+	(wire
+		(pts
+			(xy 101.6 82.55) (xy 101.6 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef9e8f06-bc1f-48db-847c-8a9778d4b785")
+	)
+	(wire
+		(pts
+			(xy 101.6 90.17) (xy 101.6 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8744e810-12f8-4995-a7ad-9fcd6da11884")
+	)
+	(wire
+		(pts
+			(xy 127.0 82.55) (xy 127.0 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "331f0d99-f3c7-4ba3-b3f4-317b481cc03e")
+	)
+	(wire
+		(pts
+			(xy 127.0 90.17) (xy 127.0 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b26a73f2-8fd8-45fe-ae64-0addad2764e7")
+	)
+	(wire
+		(pts
+			(xy 152.4 82.55) (xy 152.4 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78ec0bdd-6135-4dcc-b7c6-fd9b4a591372")
+	)
+	(wire
+		(pts
+			(xy 152.4 90.17) (xy 152.4 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3aed85c-27fa-4862-93a5-ef95a3b8fd12")
+	)
+	(wire
+		(pts
+			(xy 200.66 40.64) (xy 190.5 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f5bd8b7-193e-4bb4-9185-d365c021042e")
+	)
+	(wire
+		(pts
+			(xy 200.66 50.8) (xy 190.5 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbe66cf0-2843-4c0c-b799-168912e0f644")
+	)
+	(wire
+		(pts
+			(xy 200.66 60.96) (xy 190.5 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72415794-9095-4081-9d6c-9cabc8de6916")
+	)
+	(wire
+		(pts
+			(xy 200.66 71.12) (xy 190.5 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acc116c0-ed79-4c06-a105-afc9303d9707")
+	)
+	(wire
+		(pts
+			(xy 200.66 96.52) (xy 190.5 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "394fcb86-ec78-4f32-9a39-5ed02da3f1c5")
+	)
+	(wire
+		(pts
+			(xy 200.66 106.68) (xy 190.5 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "035d882c-b02a-4791-b788-a9611f4ef988")
+	)
+	(wire
+		(pts
+			(xy 200.66 116.84) (xy 190.5 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32d178f2-2ccb-4042-a2d6-a6275f9b3b8d")
+	)
+	(wire
+		(pts
+			(xy 200.66 127.0) (xy 190.5 127.0)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "440e0ee3-dfe0-4d19-827d-9037bc0063e2")
+	)
+	(wire
+		(pts
+			(xy 231.14 40.64) (xy 220.98 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2af9773a-3be9-48ed-afab-6beb3382cbc0")
+	)
+	(wire
+		(pts
+			(xy 231.14 43.18) (xy 220.98 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d87b0420-58bc-49e1-9d09-b8987ffe5da2")
+	)
+	(wire
+		(pts
+			(xy 231.14 96.52) (xy 220.98 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9caaf5a5-21d1-434f-a241-61dbcdc6e021")
+	)
+	(wire
+		(pts
+			(xy 231.14 99.06) (xy 220.98 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23e1d7e6-a48d-4d27-a489-4921e10cc564")
+	)
+	(wire
+		(pts
+			(xy 25.4 72.39) (xy 25.4 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b69091d-32d9-4269-bf1d-d60045b7edab")
+	)
+	(wire
+		(pts
+			(xy 25.4 100.33) (xy 25.4 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "87b5dd3f-7349-4677-89ce-1a04fb4c9b27")
+	)
+	(label "DC_BUS_P"
+		(at 50.8 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e0e014ed-4d0b-4911-8c49-731394d05566")
+	)
+	(label "DC_BUS_N"
+		(at 50.8 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b908c750-7e89-47a6-9296-2904d29aad99")
+	)
+	(label "DC_BUS_P"
+		(at 76.2 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "72f31171-7516-4c29-8067-0daadbc32f77")
+	)
+	(label "DC_BUS_N"
+		(at 76.2 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ab4a9945-28b1-4423-87bc-efbf45c83414")
+	)
+	(label "DC_BUS_P"
+		(at 101.6 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c127aae0-eabf-4676-8f3d-d3b0c7a2ee13")
+	)
+	(label "DC_BUS_N"
+		(at 101.6 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9fc2aa5b-e6bd-429d-824c-728182b247db")
+	)
+	(label "DC_BUS_P"
+		(at 127.0 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0c43f212-f78d-4a32-86ec-2dc2f8de9bbc")
+	)
+	(label "DC_BUS_N"
+		(at 127.0 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "32209858-10ce-4367-bef6-75c5b8de4fe1")
+	)
+	(label "DC_BUS_P"
+		(at 152.4 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8d293649-7384-42d0-8d23-85057ef55fb0")
+	)
+	(label "DC_BUS_N"
+		(at 152.4 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4debf57f-6abc-48a8-bc26-fdac997ee1c9")
+	)
+	(label "DC_BUS_P"
+		(at 190.5 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6802e8ea-05ba-4855-ae46-406d42cd8fbc")
+	)
+	(label "DC_BUS_P"
+		(at 190.5 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "eab46612-1e3b-42f7-9bb9-9b4ae6f43b08")
+	)
+	(label "DC_BUS_P"
+		(at 190.5 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "57d0bc5c-c27c-4124-9b4e-57af0395944d")
+	)
+	(label "DC_BUS_P"
+		(at 190.5 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ba0c3d9c-68bc-4e3e-9e75-5e64c8e2d76f")
+	)
+	(label "DC_BUS_N"
+		(at 190.5 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "9a72b1de-5ae6-4156-866d-29408581cbad")
+	)
+	(label "DC_BUS_N"
+		(at 190.5 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e2d1336d-1577-4f1e-9d7b-147604c633e1")
+	)
+	(label "DC_BUS_N"
+		(at 190.5 116.84 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "15eeb008-a5dc-41f2-948b-7de29e398d4d")
+	)
+	(label "DC_BUS_N"
+		(at 190.5 127.0 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3a87cc21-a08f-4e17-9af5-2860d016f139")
+	)
+	(label "DC_BUS_P"
+		(at 220.98 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "279ae3b1-0af3-4b59-a2bf-7f96ec5c4334")
+	)
+	(label "DC_BUS_P"
+		(at 220.98 43.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0e615706-ddbe-4a3e-9717-ff38dcf3c16f")
+	)
+	(label "DC_BUS_N"
+		(at 220.98 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4fe89fb8-6398-46c7-9738-d697c91cf122")
+	)
+	(label "DC_BUS_N"
+		(at 220.98 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ab6b5e64-d856-4f95-876b-3bc3c9aa50e8")
+	)
+	(label "DC_BUS_P"
+		(at 25.4 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a5b66e74-a6cd-4363-80de-a44b4a53128c")
+	)
+	(label "DC_BUS_N"
+		(at 25.4 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4a5c1ae9-695d-4380-af96-4f6f3c77df76")
+	)
+	(text "DC-LINK CAPACITOR CARRIER (D021/D024)\n5x MKP1848C71010JY5 = 500 uF / 1000 V DC bank; 114 A rms / 120 s repetitive ripple duty (SPEC 3.4, 6.1) [TBV vs Vishay thermal model].\nPCB: 2-layer 1.6 mm, 2 oz. F.Cu solid zone = DC_BUS_P (front, P busbar plate side); B.Cu solid zone = DC_BUS_N (back, N plate side).\nZone connections SOLID (no thermal reliefs) for ripple current. Netclass clearance 2.0 mm (SPEC 10, 450 V functional).\nM6 lugs: J1-J3 -> module P1/P2/P3, J5-J7 -> module N1/N2/N3 (47 mm phase pitch, positions per busbar drawing [TBV]);\nJ4/J8 -> battery/busbar feed at far short edge. J9/J10: low-current sense taps to control board (divider, bleeder, flyback, precharge)."
+		(exclude_from_sim no)
+		(at 25.4 152.4 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left bottom)
+		)
+		(uuid "56dd48a4-f9c9-45ca-91b6-ed1e25063271")
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

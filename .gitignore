@@ -8,3 +8,7 @@
 .copperhead/runs/
 
 .history/
+
+# KiCad local state (per-machine view settings) and autosave backups
+*.kicad_prl
+*-backups/

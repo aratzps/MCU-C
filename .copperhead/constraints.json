@@ -1,33 +1,36 @@
 {
   "power.bus_voltage_min": {
-    "min": 220,
-    "max": 220,
+    "min": 48,
+    "max": 48,
     "unit": "V DC",
-    "source": "SPEC.md \u00a72 rev 2026-07-30 (LFP SKU empty; 176 V abs)",
+    "source": "SPEC.md §2",
     "affects": [
       "undervoltage lockout",
-      "aux supply input range"
+      "auxiliary supply input range",
+      "gate drive supply regulation"
     ]
   },
   "power.bus_voltage_nominal": {
-    "min": 281.6,
-    "max": 325.6,
+    "min": 250,
+    "max": 250,
     "unit": "V DC",
-    "source": "SPEC.md \u00a72 rev 2026-07-30 (LFP / NMC SKU)",
+    "source": "SPEC.md §2",
     "affects": [
       "power rating basis",
       "thermal design point",
-      "motor winding class"
+      "DC link sizing"
     ]
   },
   "power.bus_voltage_max": {
-    "min": 370,
-    "max": 370,
+    "min": 450,
+    "max": 450,
     "unit": "V DC",
-    "source": "SPEC.md \u00a72 rev 2026-07-30 (NMC full charge 369.6 V)",
+    "source": "SPEC.md §2",
     "affects": [
-      "OVP threshold",
-      "DC link rating",
+      "switch voltage class",
+      "isolation rating",
+      "creepage and clearance",
+      "DC link voltage rating",
       "bus sense divider"
     ]
   },
@@ -35,7 +38,7 @@
     "min": 15000,
     "max": 15000,
     "unit": "W",
-    "source": "SPEC.md \u00a72",
+    "source": "SPEC.md §2",
     "affects": [
       "thermal design",
       "continuous current rating",
@@ -46,7 +49,7 @@
     "min": 35000,
     "max": 35000,
     "unit": "W",
-    "source": "SPEC.md \u00a72",
+    "source": "SPEC.md §2",
     "affects": [
       "peak current rating",
       "module selection",
@@ -54,20 +57,22 @@
     ]
   },
   "power.peak_duration": {
-    "min": 10,
-    "max": 10,
+    "min": 120,
+    "max": 120,
     "unit": "s",
-    "source": "SPEC.md \u00a72",
+    "source": "SPEC.md §2 (matched to motor S2 2 min rating)",
     "affects": [
-      "thermal transient design",
-      "module transient rating"
+      "thermal design point",
+      "module rating",
+      "DC link ripple duty",
+      "cold plate sizing"
     ]
   },
   "current.dc_continuous": {
     "min": 0,
     "max": 60,
     "unit": "A",
-    "source": "SPEC.md \u00a73.1 (derived: 15000 / 250)",
+    "source": "SPEC.md §3.1 (derived: 15000 / 250)",
     "affects": [
       "DC busbar sizing",
       "input fusing",
@@ -78,7 +83,7 @@
     "min": 0,
     "max": 140,
     "unit": "A",
-    "source": "SPEC.md \u00a73.1 (derived: 35000 / 250)",
+    "source": "SPEC.md §3.1 (derived: 35000 / 250)",
     "affects": [
       "DC busbar sizing",
       "input fusing",
@@ -87,47 +92,47 @@
   },
   "current.phase_continuous_rms": {
     "min": 0,
-    "max": 75,
+    "max": 100,
     "unit": "A rms",
-    "source": "SPEC.md \u00a73.3",
+    "source": "SPEC.md §3.3 (EMRAX 188 HV continuous motor current)",
     "affects": [
       "module continuous rating",
       "thermal design",
       "phase busbar sizing"
     ],
     "deferred": [
-      "target motor and duty cycle not yet known; 1.5x factor to be revisited"
+      "winding variant to be confirmed at motor order time"
     ]
   },
   "current.phase_peak_rms": {
     "min": 0,
-    "max": 175,
+    "max": 190,
     "unit": "A rms",
-    "source": "SPEC.md \u00a73.3",
+    "source": "SPEC.md §3.3 (EMRAX 188 HV peak motor current, sustained 120 s per §2)",
     "affects": [
       "module peak rating",
       "gate drive",
       "current sense range"
     ],
     "deferred": [
-      "target motor and duty cycle not yet known; 1.5x factor to be revisited"
+      "winding variant to be confirmed at motor order time"
     ]
   },
   "current.phase_instantaneous_peak": {
     "min": 0,
-    "max": 250,
+    "max": 270,
     "unit": "A",
-    "source": "SPEC.md \u00a73.3 (derived: 175 * sqrt(2))",
+    "source": "SPEC.md §3.3 (derived: 190 * sqrt(2), rounded)",
     "affects": [
       "current sense full scale",
       "overcurrent trip threshold"
     ]
   },
   "current.sense_full_scale": {
-    "min": 300,
-    "max": 300,
+    "min": 325,
+    "max": 325,
     "unit": "A",
-    "source": "SPEC.md \u00a73.3",
+    "source": "SPEC.md §3.3",
     "affects": [
       "shunt value",
       "isolated amplifier selection",
@@ -135,10 +140,10 @@
     ]
   },
   "current.overcurrent_trip": {
-    "min": 280,
-    "max": 280,
+    "min": 300,
+    "max": 300,
     "unit": "A",
-    "source": "SPEC.md \u00a79.1",
+    "source": "SPEC.md §9.1",
     "affects": [
       "comparator reference",
       "supervisor logic",
@@ -146,10 +151,10 @@
     ]
   },
   "current.dc_link_ripple_rms": {
-    "min": 50,
-    "max": 105,
+    "min": 65,
+    "max": 114,
     "unit": "A rms",
-    "source": "SPEC.md \u00a73.4 (derived: 0.6 * phase rms)",
+    "source": "SPEC.md §3.4 (derived: 0.6 * phase rms; cap rating >= 65 A rms @ 70 C)",
     "affects": [
       "DC link capacitor technology",
       "capacitor ripple rating",
@@ -160,7 +165,7 @@
     "min": 1200,
     "max": 1200,
     "unit": "V",
-    "source": "SPEC.md \u00a74.1",
+    "source": "SPEC.md §4.1",
     "affects": [
       "module selection",
       "gate drive isolation",
@@ -168,36 +173,33 @@
     ]
   },
   "switch.topology": {
-    "value": "three-phase two-level bridge, single six-pack module",
-    "source": "SPEC.md \u00a74.2",
+    "value": "three-phase two-level bridge, single 1200 V SiC module",
+    "source": "SPEC.md §4.2",
     "affects": [
       "thermal interface",
       "gate drive channel count",
       "mechanical layout"
-    ],
-    "deferred": [
-      "Si IGBT vs SiC not yet decided"
     ]
   },
   "dclink.capacitance_min": {
     "min": 400,
     "max": null,
     "unit": "uF",
-    "source": "SPEC.md \u00a76",
+    "source": "SPEC.md §6.1 (derived: C >= I_ph_pk/(8*f_sw*dV); 400 uF valid for f_sw >= ~23 kHz; >= 750 uF if Si at 12 kHz)",
     "affects": [
       "bus voltage ripple",
       "precharge energy",
       "mechanical volume"
     ],
     "deferred": [
-      "to be confirmed against switching frequency and permitted bus ripple"
+      "confirmed at f_sw 25 kHz (SiC); 114 A / 120 s ripple duty still to verify against capacitor thermal model"
     ]
   },
   "dclink.voltage_rating_min": {
     "min": 800,
     "max": null,
     "unit": "V DC",
-    "source": "SPEC.md \u00a76",
+    "source": "SPEC.md §6",
     "affects": [
       "capacitor selection",
       "mechanical volume"
@@ -207,7 +209,7 @@
     "min": 40.5,
     "max": null,
     "unit": "J",
-    "source": "SPEC.md \u00a77.1 (derived: 0.5 * 400uF * 450^2)",
+    "source": "SPEC.md §7.1 (derived: 0.5 * 400uF * 450^2)",
     "affects": [
       "precharge resistor selection",
       "precharge timing"
@@ -217,7 +219,7 @@
     "min": 0,
     "max": 60,
     "unit": "s",
-    "source": "SPEC.md \u00a77.2",
+    "source": "SPEC.md §7.2",
     "affects": [
       "bleeder resistor value",
       "continuous bleeder dissipation"
@@ -227,26 +229,26 @@
     "min": 0,
     "max": 5,
     "unit": "s",
-    "source": "SPEC.md \u00a77.2",
+    "source": "SPEC.md §7.2",
     "affects": [
       "active discharge switch and resistor rating"
     ]
   },
   "safety.bus_ovp_threshold": {
-    "min": 400,
-    "max": 400,
+    "min": 490,
+    "max": 490,
     "unit": "V",
-    "source": "SPEC.md \u00a79.1 rev 2026-07-30",
+    "source": "SPEC.md §9.1",
     "affects": [
       "OVP comparator reference",
       "supervisor logic"
     ]
   },
   "safety.bus_uvp_threshold": {
-    "min": 200,
-    "max": 200,
+    "min": 45,
+    "max": 45,
     "unit": "V",
-    "source": "SPEC.md \u00a79.1 rev 2026-07-30",
+    "source": "SPEC.md §9.1",
     "affects": [
       "UVLO comparator reference",
       "gate drive inhibit"
@@ -254,7 +256,7 @@
   },
   "safety.hardware_interlocks": {
     "value": "overcurrent latch and shoot-through elimination must be firmware-independent, routed to TIM1_BKIN",
-    "source": "SPEC.md \u00a79.2",
+    "source": "SPEC.md §9.2",
     "affects": [
       "supervisor logic",
       "PB12 pin assignment",
@@ -265,7 +267,7 @@
     "min": 3000,
     "max": null,
     "unit": "V rms",
-    "source": "SPEC.md \u00a710",
+    "source": "SPEC.md §10",
     "affects": [
       "gate driver selection",
       "current sense selection",
@@ -277,7 +279,7 @@
     "min": 8.0,
     "max": null,
     "unit": "mm",
-    "source": "SPEC.md \u00a710",
+    "source": "SPEC.md §10",
     "affects": [
       "PCB layout",
       "connector selection",
@@ -291,7 +293,7 @@
     "min": 6.4,
     "max": null,
     "unit": "mm",
-    "source": "SPEC.md \u00a710",
+    "source": "SPEC.md §10",
     "affects": [
       "PCB layout",
       "power stage to control separation"
@@ -301,19 +303,23 @@
     ]
   },
   "aux.input_range": {
-    "min": 220,
-    "max": 370,
+    "min": 48,
+    "max": 450,
     "unit": "V DC",
-    "source": "SPEC.md \u00a711.1 rev 2026-07-30",
+    "source": "SPEC.md §11.1",
     "affects": [
-      "flyback controller selection (1.7:1 \u2014 standard parts suffice)"
+      "flyback controller selection",
+      "primary switch voltage rating"
+    ],
+    "deferred": [
+      "controller supporting 9.4:1 range to be identified"
     ]
   },
   "aux.primary_switch_rating_min": {
     "min": 900,
     "max": null,
     "unit": "V",
-    "source": "SPEC.md \u00a711.1",
+    "source": "SPEC.md §11.1",
     "affects": [
       "auxiliary supply topology",
       "controller selection"
@@ -321,7 +327,7 @@
   },
   "aux.external_input_required": {
     "value": "12-24 V external auxiliary input required, independent of HV bus",
-    "source": "SPEC.md \u00a711.3",
+    "source": "SPEC.md §11.3",
     "affects": [
       "precharge sequencing",
       "bench bring-up",
@@ -330,9 +336,9 @@
   },
   "thermal.continuous_dissipation": {
     "min": 300,
-    "max": 525,
+    "max": 300,
     "unit": "W",
-    "source": "SPEC.md \u00a711.4",
+    "source": "SPEC.md §11.4 (SiC selected, ~98% at 15 kW)",
     "affects": [
       "cooling method",
       "cold plate design",
@@ -341,17 +347,17 @@
   },
   "thermal.cooling_method": {
     "value": "liquid cold plate baseline; forced air only at reduced characterised rating",
-    "source": "SPEC.md \u00a711.4",
+    "source": "SPEC.md §11.4",
     "affects": [
       "mechanical concept",
       "continuous power rating"
     ]
   },
   "thermal.junction_temp_max": {
-    "min": 125,
+    "min": 150,
     "max": 150,
     "unit": "degC",
-    "source": "SPEC.md \u00a711.4",
+    "source": "SPEC.md §11.4 (SiC)",
     "affects": [
       "module selection",
       "cold plate sizing",
@@ -360,7 +366,7 @@
   },
   "mcu.part": {
     "value": "STM32F405VGT6, LQFP100",
-    "source": "SPEC.md \u00a712.1",
+    "source": "SPEC.md §12.1",
     "affects": [
       "pin assignment",
       "firmware target",
@@ -369,7 +375,7 @@
   },
   "mcu.can_fd": {
     "value": "NOT AVAILABLE - STM32F405 has classic bxCAN 2.0B only. Do not specify CAN FD anywhere.",
-    "source": "SPEC.md \u00a712.1",
+    "source": "SPEC.md §12.1",
     "affects": [
       "CAN transceiver selection",
       "VESC protocol implementation"
@@ -379,7 +385,7 @@
     "min": 20,
     "max": 100,
     "unit": "kHz",
-    "source": "SPEC.md \u00a72",
+    "source": "SPEC.md §2",
     "affects": [
       "TIM1 configuration",
       "dead time",
@@ -390,7 +396,7 @@
   "sensing.phase_current_channels": {
     "min": 3,
     "max": 3,
-    "source": "SPEC.md \u00a78.1",
+    "source": "SPEC.md §8.1",
     "affects": [
       "ADC allocation",
       "isolated amplifier count",
@@ -401,7 +407,7 @@
     "min": 500,
     "max": null,
     "unit": "kHz",
-    "source": "SPEC.md \u00a78.1",
+    "source": "SPEC.md §8.1",
     "affects": [
       "isolated amplifier selection",
       "FOC loop performance"
@@ -409,7 +415,7 @@
   },
   "sensing.bus_divider_construction": {
     "value": "series string of at least 4 resistors; no single chip resistor may span 450 V",
-    "source": "SPEC.md \u00a78.2",
+    "source": "SPEC.md §8.2",
     "affects": [
       "divider layout",
       "resistor voltage rating",
@@ -418,7 +424,7 @@
   },
   "sensing.position_interfaces": {
     "value": "hall, ABI encoder, resolver via AD2S1205, SinCos/SSI - all four required",
-    "source": "SPEC.md \u00a78.4",
+    "source": "SPEC.md §8.4",
     "affects": [
       "pin budget",
       "MCU package choice",
@@ -427,19 +433,120 @@
   },
   "process.no_unverified_parts": {
     "value": "No part number enters the BOM without datasheet verification against a stocked distributor part.",
-    "source": "SPEC.md \u00a74.2",
+    "source": "SPEC.md §4.2",
     "affects": [
       "BOM generation",
       "component selection"
     ]
   },
-  "pack.architecture": {
-    "value": "88S1P dual-chemistry: Desten 10135170 LFP 22Ah 'Life' / NMC 32Ah 'Range', one fixture, both 6C-charge rated; rapid charge window 15-45 C (pre-heating required)",
-    "source": "D011, 2026-07-30",
+  "motor.target": {
+    "value": "EMRAX 188, High Voltage winding (or similar). Peak 190 A rms / 100 Nm S2 2 min; continuous 100 A rms; Kt 0.54 Nm/Arms; Kv 13.61 rpm/V nominal load; 10 pole pairs; 8000 rpm; KTY 81/210 stator sensor. Datasheet v1.6 verified 2026-07-31.",
+    "source": "SPEC.md §2.2",
     "affects": [
-      "BMS taps (88)",
-      "charge-port sizing (132 A LFP / 192 A NMC)",
-      "pack thermal design"
+      "current ratings",
+      "module selection",
+      "motor temperature input",
+      "position feedback"
+    ],
+    "deferred": [
+      "winding variant and cooling configuration to be confirmed at motor order"
+    ]
+  },
+  "sensing.motor_temperature": {
+    "value": "KTY 81/210 input required (EMRAX standard); front end should accommodate PT1000 / NTC 10k by resistor choice",
+    "source": "SPEC.md §8.3",
+    "affects": [
+      "motor connector",
+      "ADC allocation",
+      "VESC motor temp limiting"
+    ]
+  },
+  "thermal.peak_dissipation_120s": {
+    "min": 700,
+    "max": 700,
+    "unit": "W",
+    "source": "SPEC.md §11.4 (SiC at 35 kW, 120 s quasi-steady-state; sizes the cold plate)",
+    "affects": [
+      "cold plate sizing",
+      "pump and loop capacity"
+    ]
+  },
+  "dclink.ripple_current_rating_min": {
+    "min": 80,
+    "max": null,
+    "unit": "A rms @ 70 C (bank)",
+    "source": "SPEC.md §6.1 (60 A cont + 114 A for 120 s repetitive)",
+    "affects": [
+      "capacitor bank size",
+      "film capacitor selection"
+    ],
+    "deferred": [
+      "114 A / 120 s duty to be verified against manufacturer thermal model"
+    ]
+  },
+  "switch.technology": {
+    "value": "SiC MOSFET (D016). Baseline module: Infineon FS02MR12A8MA2B, HybridPACK Drive G2, 1.9 mOhm, 390 A class. Buy prototypes at design commit (39-wk lead behind current stock).",
+    "source": "SPEC.md §4.2, docs/DECISIONS.md D016",
+    "affects": [
+      "gate drive levels and CMTI",
+      "switching frequency",
+      "cold plate concept",
+      "overtemp threshold"
+    ]
+  },
+  "power.switching_frequency_baseline": {
+    "min": 25,
+    "max": 25,
+    "unit": "kHz",
+    "source": "SPEC.md §6.1 (D016 SiC; inaudible, DC-link 400 uF valid)",
+    "affects": [
+      "DC link capacitance",
+      "dead time",
+      "current sense bandwidth",
+      "TIM1 configuration"
+    ]
+  },
+  "gate_drive.cmti_min": {
+    "min": 100,
+    "max": null,
+    "unit": "V/ns",
+    "source": "SPEC.md §5 (SiC dv/dt)",
+    "affects": [
+      "gate driver selection"
+    ]
+  },
+  "gate_drive.levels": {
+    "value": "+18 V on / -5 V off (FS02MR12A8MA2B datasheet switching condition; +15 V on permitted but +26% conduction loss)",
+    "source": "SPEC.md §5, docs/DECISIONS.md D017",
+    "affects": [
+      "isolated gate supplies",
+      "driver selection",
+      "UVLO thresholds"
+    ]
+  },
+  "gate_drive.driver_candidate": {
+    "value": "Infineon 1ED3491MC12M primary (reinforced IEC 60747-17, 200 V/ns, adj. DESAT, Miller clamp, soft-off, stocked); alternates TI UCC21755-Q1 / UCC21750; 1EDI3035AS = Infineon's own pairing but 0 stock (reference design)",
+    "source": "docs/DECISIONS.md D017",
+    "affects": [
+      "gate_drive sheet",
+      "fault aggregation to supervisor"
+    ]
+  },
+  "module.temp_sense": {
+    "value": "Per-phase sense DIODE (TS1-TS3 pin pairs), 2.624 V @ 0.2 mA / 25 C, negative tempco. NOT an NTC - needs current-source bias front end.",
+    "source": "SPEC.md §8.3 (FS02MR12A8MA2B datasheet)",
+    "affects": [
+      "temp_sense sheet",
+      "ADC scaling",
+      "overtemp protection"
+    ]
+  },
+  "module.pcb_interface": {
+    "value": "PressFIT signal pins (gate, dual Kelvin source, drain-sense per switch); PCB drill/heat-stake pattern per Infineon AN-G2-ASSEMBLY; 1.6 mm PCB",
+    "source": "SPEC.md §5 (FS02MR12A8MA2B datasheet)",
+    "affects": [
+      "power PCB layout",
+      "mechanical concept"
     ]
   }
 }

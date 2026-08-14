@@ -1,0 +1,148 @@
+(footprint "HFE80V_HTPAJ"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Hongfa HFE80V-20C 800 V DC ceramic-sealed relay, HTPAJ (PCB pin) version. Load blades 2.5x0.8 mm on 12.7 mm pitch, 6.7 mm from body top edge: slot 3.1x1.4 mm, pad 4.5x2.8 mm. Coil pins 2.1x0.5 mm on 17 mm pitch, 19.75 mm below load row: slot 2.7x1.1 mm, pad 3.9x2.1 mm. Body 29.2x30 mm (origin = body center), height 30.1 mm. Pad numbers match the schematic K401 Relay:SANYOU_SRD_Form_A symbol: contacts = pads 3 and 1 (symbol pins 3/1), coil = pads 2 and 5 (symbol pins 2/5). Mapping: relay terminal 1(+) -> pad 3 (net DC_INPUT_P, supply side; load side is polarized, + marked on silk), relay terminal 2(-) -> pad 1 (precharge resistor side), coil terminal 5 -> pad 2, coil terminal 6 -> pad 5 (coil is non-polarized per datasheet). Hongfa datasheet HFE80V-20C, HTPAJ outline p.133.")
+	(tags "Hongfa HFE80V HV DC relay precharge")
+	(property "Reference" "REF**"
+		(at 0 -16.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "fe7b9cf0-410b-42a6-80f5-6f30cc565a8e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "HFE80V_HTPAJ"
+		(at 0 16.7 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "10160cc3-c327-4881-a19b-0ecbabe922ca")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a4805aba-9c0d-4a80-bb1c-948aa37b80b5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Hongfa HFE80V-20C 800 V DC ceramic-sealed relay, HTPAJ (PCB pin) version. Load blades 2.5x0.8 mm on 12.7 mm pitch, 6.7 mm from body top edge: slot 3.1x1.4 mm, pad 4.5x2.8 mm. Coil pins 2.1x0.5 mm on 17 mm pitch, 19.75 mm below load row: slot 2.7x1.1 mm, pad 3.9x2.1 mm. Body 29.2x30 mm (origin = body center), height 30.1 mm. Pad numbers match the schematic K401 Relay:SANYOU_SRD_Form_A symbol: contacts = pads 3 and 1 (symbol pins 3/1), coil = pads 2 and 5 (symbol pins 2/5). Mapping: relay terminal 1(+) -> pad 3 (net DC_INPUT_P, supply side; load side is polarized, + marked on silk), relay terminal 2(-) -> pad 1 (precharge resistor side), coil terminal 5 -> pad 2, coil terminal 6 -> pad 5 (coil is non-polarized per datasheet). Hongfa datasheet HFE80V-20C, HTPAJ outline p.133."
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0d018a68-6f8d-4206-85cb-1d231a77ea05")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(pad "3" thru_hole oval
+		(at -6.35 -8.3)
+		(size 4.5 2.8)
+		(drill oval 3.1 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "fa69da23-0c41-4f01-ba1a-b82bbd4d1896")
+	)
+	(pad "1" thru_hole oval
+		(at 6.35 -8.3)
+		(size 4.5 2.8)
+		(drill oval 3.1 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1d4a4142-3bce-444d-a156-8a61c8268ab1")
+	)
+	(pad "2" thru_hole oval
+		(at -8.5 11.45)
+		(size 3.9 2.1)
+		(drill oval 2.7 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "08f0d7b5-df11-491d-ad24-92fed78d9281")
+	)
+	(pad "5" thru_hole oval
+		(at 8.5 11.45)
+		(size 3.9 2.1)
+		(drill oval 2.7 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "931adfe3-6cf2-43fb-acc4-ac49eee3c710")
+	)
+	(fp_rect
+		(start -14.6 -15)
+		(end 14.6 15)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "f7183bc2-2319-4fd7-897c-cd7995eb129e")
+	)
+	(fp_rect
+		(start -14.71 -15.11)
+		(end 14.71 15.11)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "65dd7fb6-df0d-43df-883c-bc8396730a3d")
+	)
+	(fp_rect
+		(start -14.85 -15.25)
+		(end 14.85 15.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "acd81231-e5c4-4b2a-9a02-45cf849fa250")
+	)
+	(fp_text user "+"
+		(at -6.35 -12.2 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "8380bb51-d321-47a0-9304-b5a52b64376c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_circle
+		(center -6.35 -11.5)
+		(end -6.05 -11.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "b0245bc9-dc6c-431f-b5fd-f33a75d1e5ac")
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,17 @@
+(version 1)
+
+(rule HV_to_LV
+  (constraint clearance (min 6.4mm))
+  (condition "A.NetClass == 'HV_BUS' && B.NetClass != 'HV_BUS' && !B.insideArea('HV_DOMAIN')"))
+
+(rule HV_relax_strings
+  (constraint clearance (min 0.6mm))
+  (condition "(A.NetClass == 'HV_BUS' || B.NetClass == 'HV_BUS') && A.insideArea('HV_RELAX') && B.insideArea('HV_RELAX')"))
+
+(rule HV_relax_pins
+  (constraint clearance (min 0.25mm))
+  (condition "(A.NetClass == 'HV_BUS' || B.NetClass == 'HV_BUS') && A.insideArea('HV_RELAX_PIN') && B.insideArea('HV_RELAX_PIN')"))
+
+(rule fine_pitch_intra_package
+  (constraint clearance (min 0.1mm))
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && ((A.memberOfFootprint('J1202') && B.memberOfFootprint('J1202')) || (A.memberOfFootprint('U1') && B.memberOfFootprint('U1')) || (A.memberOfFootprint('U801') && B.memberOfFootprint('U801')) || (A.memberOfFootprint('U604') && B.memberOfFootprint('U604')) || (A.memberOfFootprint('Q601') && B.memberOfFootprint('Q601')) || (A.memberOfFootprint('Q602') && B.memberOfFootprint('Q602')) || (A.memberOfFootprint('Q603') && B.memberOfFootprint('Q603')) || (A.memberOfFootprint('Q604') && B.memberOfFootprint('Q604')) || (A.memberOfFootprint('Q605') && B.memberOfFootprint('Q605')) || (A.memberOfFootprint('U603') && B.memberOfFootprint('U603')) || (A.memberOfFootprint('U605') && B.memberOfFootprint('U605')) || (A.memberOfFootprint('U606') && B.memberOfFootprint('U606')) || (A.memberOfFootprint('U609') && B.memberOfFootprint('U609')) || (A.memberOfFootprint('U610') && B.memberOfFootprint('U610')) || (A.memberOfFootprint('U611') && B.memberOfFootprint('U611')) || (A.memberOfFootprint('U612') && B.memberOfFootprint('U612')) || (A.memberOfFootprint('U1202') && B.memberOfFootprint('U1202')) || (A.memberOfFootprint('U804') && B.memberOfFootprint('U804')) || (A.memberOfFootprint('U904') && B.memberOfFootprint('U904')) || (A.memberOfFootprint('U702') && B.memberOfFootprint('U702')) || (A.memberOfFootprint('U703') && B.memberOfFootprint('U703')) || (A.memberOfFootprint('U504') && B.memberOfFootprint('U504')) || (A.memberOfFootprint('U505') && B.memberOfFootprint('U505')) || (A.memberOfFootprint('U506') && B.memberOfFootprint('U506')) || (A.memberOfFootprint('U802') && B.memberOfFootprint('U802')))"))
