@@ -1,9 +1,9 @@
 {
   "power.bus_voltage_min": {
-    "min": 48,
-    "max": 48,
+    "min": 220,
+    "max": 220,
     "unit": "V DC",
-    "source": "SPEC.md §2",
+    "source": "SPEC.md §2 (D027: LFP SKU empty; 176 V absolute at 2.0 V/cell)",
     "affects": [
       "undervoltage lockout",
       "auxiliary supply input range",
@@ -11,25 +11,24 @@
     ]
   },
   "power.bus_voltage_nominal": {
-    "min": 250,
-    "max": 250,
+    "min": 281.6,
+    "max": 325.6,
     "unit": "V DC",
-    "source": "SPEC.md §2",
+    "source": "SPEC.md §2 (D027: LFP / NMC SKU)",
     "affects": [
       "power rating basis",
       "thermal design point",
-      "DC link sizing"
+      "DC link sizing",
+      "motor winding class"
     ]
   },
   "power.bus_voltage_max": {
-    "min": 450,
-    "max": 450,
+    "min": 370,
+    "max": 370,
     "unit": "V DC",
-    "source": "SPEC.md §2",
+    "source": "SPEC.md §2 (D027: NMC SKU full charge 369.6 V)",
     "affects": [
-      "switch voltage class",
-      "isolation rating",
-      "creepage and clearance",
+      "OVP threshold",
       "DC link voltage rating",
       "bus sense divider"
     ]
@@ -235,22 +234,22 @@
     ]
   },
   "safety.bus_ovp_threshold": {
-    "min": 490,
-    "max": 490,
+    "min": 400,
+    "max": 400,
     "unit": "V",
-    "source": "SPEC.md §9.1",
+    "source": "SPEC.md §9.1 (D027; was 490 V)",
     "affects": [
-      "OVP comparator reference",
+      "firmware OVP threshold",
       "supervisor logic"
     ]
   },
   "safety.bus_uvp_threshold": {
-    "min": 45,
-    "max": 45,
+    "min": 200,
+    "max": 200,
     "unit": "V",
-    "source": "SPEC.md §9.1",
+    "source": "SPEC.md §9.1 (D027; was 45 V)",
     "affects": [
-      "UVLO comparator reference",
+      "firmware UVLO threshold",
       "gate drive inhibit"
     ]
   },
@@ -547,6 +546,32 @@
     "affects": [
       "power PCB layout",
       "mechanical concept"
+    ]
+  },
+  "power.bus_voltage_envelope": {
+    "min": 48,
+    "max": 450,
+    "unit": "V DC",
+    "source": "SPEC.md §2 (D027 retains the original envelope as hardware capability)",
+    "affects": [
+      "switch voltage class",
+      "isolation rating",
+      "creepage and clearance",
+      "auxiliary supply input range",
+      "bus sense divider construction"
+    ]
+  },
+  "pack.architecture": {
+    "value": "88S1P dual-chemistry, Desten 10135170 pouch: LFP 22 Ah 'Life' (281.6 V nom, 6.2 kWh) and NMC 32 Ah 'Range' (325.6 V nom, 10.4 kWh), one fixture, both 6C-charge rated; rapid-charge window 15-45 C, so pack pre-heating is a launch requirement",
+    "source": "docs/DECISIONS.md D027",
+    "affects": [
+      "bus voltage window",
+      "OVP and UVLO thresholds",
+      "charge port",
+      "motor winding class"
+    ],
+    "deferred": [
+      "evidence lives in the OrekaVault, not this repository"
     ]
   }
 }

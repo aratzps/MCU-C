@@ -2,6 +2,30 @@
 
 Append-only, newest first.
 
+## 2026-08-14 — Pack architecture: 88S1P dual-chemistry, operating window 220–370 V (D027)
+
+Proposed 2026-07-30 as D011 and never merged; the branch sat unpushed while SPEC moved on. Re-applied
+onto today's text and renumbered, because D011 has since been taken by the target motor.
+
+- **SPEC §2** now carries the operating window — LFP "Life" 281.6 V nominal (220–321 V, 6.2 kWh) and
+  NMC "Range" 325.6 V nominal (264–370 V, 10.4 kWh), Desten 10135170 pouches — with the 48–450 V
+  envelope retained explicitly as hardware capability rather than deleted.
+- **§9.1:** bus OVP 490 → 400 V, UVLO 45 → 200 V. Both are firmware thresholds: §8.2's bus sense is an
+  analog path into the ADC with no OVP/UVLO comparator on the board, and its 0–500 V range spans both
+  new values as built. **No schematic part changes.**
+- **What the delay changed:** the original entry claimed the narrower range "dissolves the §14 hard
+  flyback problem". D014 had already solved it — the INN3990CQ covers 220–370 V with margin — so §11.1
+  now records the window as margin and states that the 9.4:1 capability is kept deliberately. The
+  original also deferred §3's currents "until the motor winding is fixed"; D011/D012 fixed it, and §3
+  is derived from motor ratings rather than bus voltage, so nothing there moves.
+- **Checked, not assumed:** the EMRAX 188 HV winding reaches ≈ 3830 rpm at the LFP nominal and ≈ 4430
+  rpm at the NMC nominal against 3400 rpm at the 250 V rated point, so the window improves the speed
+  envelope; §2.2's winding choice stands.
+- Constraints updated: operating window, OVP/UVLO, and a new `power.bus_voltage_envelope` recording the
+  retained capability so nothing designed against 48–450 V loses its justification.
+- The pack evidence lives in the OrekaVault, not this repository. D027 says so.
+- Verification: document-level. No schematic edits, so ERC is untouched.
+
 ## 2026-08-14 — Branch reconciled with master; routing claim corrected; ERC regression fixed
 
 This branch had never been pushed. Reconciled it against `master` and re-measured the board

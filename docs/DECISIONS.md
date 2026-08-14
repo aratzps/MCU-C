@@ -201,6 +201,15 @@ Consequences of adversarial review 3 (`docs/REVIEW_FINDINGS.md`). These are safe
 - **MJ-1 — the overcurrent trip now actually reaches TIM1_BKIN.** It previously terminated at a supervisor gate and a status GPIO, so SPEC §9.2's central claim was false as built and the trip's only effect hung on a single resistor. `OC_LATCH_N` is wire-OR'd into `FAULT_BKIN` so an overcurrent latch tri-states the PWM in silicon, as the specification always claimed.
 - **Affects:** SPEC §5, §9.1, §9.2, §11.4 (loss figures rise again with the +15 V derate); gate_drive and supervisor sheets; gate-supply rail design; bring-up plan.
 
+## D027: 88S1P dual-chemistry pack; operating window 220–370 V
+
+- **Decision:** The pack is 88S1P Desten 10135170 pouch in two chemistry SKUs sharing one fixture: LFP 22 Ah "Life" (281.6 V nominal, 220–321 V, 6.2 kWh) and NMC 32 Ah "Range" (325.6 V nominal, 264–370 V, 10.4 kWh), both 6C-charge rated per datasheet. Bus OVP moves 490 → 400 V and UVLO 45 → 200 V. The 48–450 V envelope is retained as hardware capability.
+- **Why:** DCFC compatibility decided the bus class — CCS floors at 150/200 V, every production DCFC motorcycle sits at ≥ 300 V, and a sub-window pack simply cannot charge. 88S clears both defects of 80S (peak C-rate stays inside the cell's 132 A rating; 220 V empty clears the legacy 200 V floor) and saves ~137 mm of stack against 100S.
+- **What it costs to adopt, as of 2026-08-14:** nothing in hardware. §8.2's bus sense is analog-only into the ADC, so OVP/UVLO are firmware thresholds and its 0–500 V range already spans both new ones. The D014 aux supply (INN3990CQ) covers 220–370 V with margin; the D016 module, the DC-link bank and every creepage rule were sized against the retained 450 V envelope and are unaffected. §3's currents come from the motor (D011/D012), not the bus, so they do not move. The EMRAX 188 HV winding reaches ≈ 3830 rpm at the LFP nominal and ≈ 4430 rpm at the NMC nominal, both above the 3400 rpm of the 250 V rated point.
+- **Caveats:** LFP SKU peak ≈ 33–34 kW through the shared winding (−4 %), tapering below ~20 % SoC; the 15–45 °C rapid-charge window makes pack pre-heating a launch requirement; the LFP datasheet's 160 Wh/kg headline is unreconciled — use 142.
+- **Evidence:** OrekaVault `01-knowledge/engineering/ARCHITECTURE-2026-07-30-dual-sku.md` and the bus-voltage A/B study. **Not verified in this repository** — this record carries the decision, not its derivation.
+- **Affects:** SPEC §2, §2.1, §2.2, §9.1, §11.1; firmware OVP/UVLO thresholds; a charge-port section still to be written (§13). Optional, not required: rescaling the §8.2 divider from 0–500 V to 0–400 V to buy ADC resolution.
+
 ---
 
 ## Superseded

@@ -34,13 +34,21 @@ This is deliberately different from the existing `pcb_design/` board in this rep
 
 ## 2. Top-level ratings
 
+> **Pack architecture: 88S1P dual-chemistry (D027).** Two SKUs share one fixture and one inverter —
+> LFP 22 Ah "Life" (281.6 V nominal, 220–321 V, 6.2 kWh) and NMC 32 Ah "Range" (325.6 V nominal,
+> 264–370 V, 10.4 kWh), both Desten 10135170 pouches, both 6C-charge rated. The operating window is
+> therefore **220–370 V**. The original 48–450 V envelope is retained below as *hardware capability*:
+> every part selected against it (D014 aux supply, D016 1200 V module, §8.2 divider, HV creepage)
+> keeps its margin unchanged, so this decision re-selects nothing.
+
 | Parameter | Symbol | Value | Unit | Tag |
 |---|---|---|---|---|
-| Minimum bus voltage | V_min | 48 | V DC | **[REQ]** |
-| Nominal bus voltage | V_nom | 250 | V DC | **[REQ]** |
-| Maximum bus voltage | V_max | 450 | V DC | **[REQ]** |
-| Continuous power @ V_nom | P_cont | 15 | kW | **[REQ]** |
-| Peak power @ V_nom | P_peak | 35 | kW | **[REQ]** |
+| Minimum bus voltage (operating) | V_min | 220 — LFP SKU empty; 176 absolute at 2.0 V/cell | V DC | **[REQ]** D027 |
+| Nominal bus voltage | V_nom | 281.6 (LFP SKU) / 325.6 (NMC SKU) | V DC | **[REQ]** D027 |
+| Maximum bus voltage (operating) | V_max | 370 — NMC SKU full charge, 369.6 | V DC | **[REQ]** D027 |
+| Hardware-capable envelope | — | 48–450 | V DC | **[SEL]** retained as design margin |
+| Continuous power @ 250 V rated point | P_cont | 15 | kW | **[REQ]** |
+| Peak power @ 250 V rated point | P_peak | 35 | kW | **[REQ]** |
 | Peak duration | t_peak | 120 | s | **[REQ]** — matched to the motor's S2 2 min peak rating (§2.2) |
 
 **Thermal consequence of the 120 s peak:** the power module baseplate, cold plate and coolant loop have thermal time constants of tens of seconds, so a 120 s peak is **quasi-steady-state** for them. The cooling system must be sized for peak-condition losses (§11.4), not continuous-rated losses. Only the silicon junction itself (τ ~ ms–s) sees the peak as a transient.
@@ -56,6 +64,8 @@ The power figures are defined **at 250 V nominal only**. The board enforces *cur
 | 450 V | 27 kW | 49 kW | Current-limited; **thermally constrained, see §11** |
 
 At 450 V the current limits alone would permit 49 kW peak. The board is **not** rated to deliver this — switching losses scale with bus voltage, and the thermal design in §11 is sized for the 250 V rated point. Operation above 250 V must be derated. Quantifying that derating requires the loss model in §11.4 and is an open item.
+
+**Where the D027 operating window sits:** both SKU nominals, 281.6 V and 325.6 V, fall between the 250 V rated point and 450 V, so the rows above bracket them. Deliverable power at those nominals is correspondingly above the 15/35 kW rated figures at the same current limits — and correspondingly subject to the derating this section leaves open. The rated point stays at 250 V because §3's currents, not the bus voltage, are what the board enforces.
 
 ### 2.2 Target motor **[REQ]**
 
@@ -80,6 +90,8 @@ At 450 V the current limits alone would permit 49 kW peak. The board is **not** 
 | Max test voltage | 833 V | All variants |
 
 **Why the HV winding [SEL]:** at 250 V nominal bus the HV winding reaches ≈ 3400 rpm under load (13.61 × 250), and 100 Nm at 3400 rpm ≈ 35.6 kW — the motor's envelope at our bus lands almost exactly on the 35 kW peak rating point of §2. At 450 V it reaches ≈ 6100 rpm. The MV winding would need 310 A rms peak and the LV variants 390–900 A rms — all far beyond a sensible power stage for this power level. The full 60 kW / 6500 rpm motor capability requires 660 V and is not reachable on this 450 V bus; this is accepted.
+
+**Against the D027 pack (checked 2026-08-14):** the HV winding still fits. At the LFP SKU's 281.6 V it reaches ≈ 3830 rpm under load (13.61 × 281.6) and at the NMC SKU's 325.6 V ≈ 4430 rpm — both above the 3400 rpm the 250 V rated point gives, so the operating window strictly improves the speed envelope. §3's currents are derived from the motor's own ratings (D011/D012), not from bus voltage, so nothing in §3 moves. What binds first at those nominals is the board's current limit and the §11 thermal derating, not the winding.
 
 **Winding variant must be confirmed at motor order time.** If a different variant or motor is chosen, §3.3 must be re-derived.
 
@@ -355,13 +367,15 @@ All four interfaces are required.
 |---|---|---|
 | Overcurrent (hardware) | 300 A ±8 A instantaneous | Latched shutdown. Comparator path ~0.65 µs; the transducer's own 3 µs response dominates end-to-end |
 | Desaturation | Per gate driver | Soft turn-off + latch |
-| Bus overvoltage | 490 V | Latched shutdown |
-| Bus undervoltage | 45 V | Inhibit switching |
+| Bus overvoltage | 400 V (D027; was 490 V for the 48–450 V envelope) | Latched shutdown |
+| Bus undervoltage | 200 V (D027; was 45 V) | Inhibit switching |
 | Overtemperature | Module 150 °C (SiC, D016) | Derate, then shutdown |
 | Gate supply UVLO | Per driver | Inhibit |
 | Watchdog timeout | — | Latched shutdown |
 
-Bus OVP is set at **490 V**, above V_max = 450 V and well below the 1200 V device rating — not at an arbitrary higher number. The margin exists to catch regenerative overvoltage before the devices see it.
+Bus OVP is set at **400 V** (D027): above the NMC SKU's 369.6 V full-charge voltage with regen margin, below the retained 450 V envelope, and far below the 1200 V device rating. One threshold covers both SKUs. The margin exists to catch regenerative overvoltage before the devices see it. UVLO at **200 V** sits below the LFP SKU's 220 V empty point.
+
+**Both thresholds are evaluated in firmware**, not by a comparator: §8.2's bus sense is an analog measurement path (divider → AMC1311B → ADC) with no on-board OVP/UVLO comparator, so D027 changes numbers in firmware and in this document, and no schematic part. The 0–500 V sense range covers both thresholds as built; rescaling the divider to 0–400 V would buy resolution and is optional, not required.
 
 ### 9.2 Hardware interlocks — carry over from PALTA
 
@@ -409,8 +423,11 @@ The previous draft had no viable path from a 48–450 V bus to control power. Th
 | Parameter | Value |
 |---|---|
 | Input range | 48–450 V DC (9.4:1), tolerant to 500 V |
+| Input range actually seen (D027) | 220–370 V DC (1.7:1) |
 | Topology | Isolated flyback **[SEL]** |
 | Primary switch rating | ≥ 900 V **[DER]** |
+
+**D027 does not reopen this section.** The 9.4:1 requirement above is what forced the D014 selection, and the INN3990CQ that won it covers 220–370 V with a great deal of room to spare. The narrower operating window is recorded as margin, not as a licence to re-select a 1.7:1 part: the 48–450 V capability is retained deliberately (§2), and the aux supply is the one block where losing it would be felt first — on a bench supply, on a partially charged pack, or on any future pack decision.
 
 ### 11.2 Outputs
 
