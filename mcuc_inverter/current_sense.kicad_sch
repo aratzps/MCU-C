@@ -3193,8 +3193,7 @@
 		(uuid "96fb96a9-4b51-47f7-b2f8-40c4607cdba9")
 	)
 
-	(hierarchical_label "PHASE_U_OUT"
-		(shape passive)
+	(label "PHASE_U_OUT"
 		(at 22.86 55.88 180)
 		(fields_autoplaced yes)
 		(effects
@@ -4871,8 +4870,7 @@
 		(uuid "aea12713-419a-4142-90f9-f16a6fd94b97")
 	)
 
-	(hierarchical_label "PHASE_V_OUT"
-		(shape passive)
+	(label "PHASE_V_OUT"
 		(at 22.86 125.73 180)
 		(fields_autoplaced yes)
 		(effects
@@ -6549,8 +6547,7 @@
 		(uuid "15d64048-da8b-4afe-ab90-ed7bc697f314")
 	)
 
-	(hierarchical_label "PHASE_W_OUT"
-		(shape passive)
+	(label "PHASE_W_OUT"
 		(at 22.86 195.58 180)
 		(fields_autoplaced yes)
 		(effects
@@ -11223,8 +11220,9 @@ Convention follows J401-J405 (D024): a Screw_Terminal_01x01 symbol carrying a ri
 footprint, here MountingHole:MountingHole_6.4mm_M6_Pad_Via. Marked exclude_from_board (on_board no)
 because the studs are on the busbar assembly, not on the control PCB - power current never flows
 through this board (D021). They exist so netlist, BOM and ERC all see a terminated phase output.
-ROOT SHEET: the PHASE_U/V/W_OUT hierarchical labels still drive root sheet pins that go nowhere.
-Delete those three root sheet pins (the net is now fully local to this sheet) - see the report."
+ROOT SHEET: done - the three PHASE_U/V/W_OUT root sheet pins were deleted, and the matching
+hierarchical labels on this sheet became local labels. The net is now fully local to this sheet:
+HOYS primary IP- to the J406-J408 stud, named by label."
 		(exclude_from_sim no)
 		(at 215.9 58 0)
 		(effects

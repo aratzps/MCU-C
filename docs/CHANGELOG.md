@@ -2,6 +2,38 @@
 
 Append-only, newest first.
 
+## 2026-08-14 — Branch reconciled with master; routing claim corrected; ERC regression fixed
+
+This branch had never been pushed. Reconciled it against `master` and re-measured the board
+independently, because the entry below claims more than the tree delivers.
+
+- **Reconciliation is trivial, not a divergence.** `origin/master` (918be1b, the PR #6 merge) has
+  both of its parents — dce5155 and b65c54b (PCB Phase A) — already in this branch's history, so
+  merging it in changed no file. This branch is a strict content superset of master.
+- **The 2026-08-04 heading overstates the work: routing is advanced, not complete.** Measured on the
+  merged tree with kicad-cli 9.0: DRC at severity-error is **0 violations** — that part holds — but
+  **421 unconnected items remain** across **224 nets** (master's Phase A board: 499). The board does
+  carry real routing: 4498 track segments, 797 vias, 59 filled zone polygons, against 0 / 36 / 20 on
+  master, and 259 of 417 nets have copper. What is left open includes safety-critical signals —
+  OC_TRIP, DRV_FAULT_IN, FAULT_RESET, PWM_LS_2 — so this is mid-Phase-B, not a routed board.
+- **The "0 ERC errors" claim below did not hold at the branch tip: there were 3.** Hierarchical
+  labels PHASE_U/V/W_OUT in `current_sense.kicad_sch` had no matching sheet pin in the parent.
+  Introduced by 9369dd6, which added the J406–J408 motor phase studs on that sheet and deleted the
+  three now-pointless root sheet pins — correct, and exactly what that sheet's own note prescribed —
+  but left the child sheet's hierarchical labels behind. Master is at 0 ERC errors, so this was a
+  regression this branch owns.
+- **Fix:** the three hierarchical labels became local labels at the same coordinates. The phase
+  output net stays what D021 makes it — HOYS primary IP− to the M6 stud, both off-board — so the
+  netlist is bit-identical across the fix: 415 nets, same nodes. ERC back to 0 errors.
+- **Housekeeping:** `mcuc_inverter.kicad_pcb.tmp`, a 4.3 MB intermediate save from a scripted board
+  write, had been committed; removed from version control and gitignored, along with kicad-cli
+  report outputs. Note that `scratch/fast_router.py`, cited below, is not in the repository.
+- Remaining warnings, none blocking and all recorded rather than fixed here: 398 silkscreen
+  (silk_over_copper / silk_overlap), 18 dangling tracks, 12 isolated copper islands, 4 dangling
+  vias, 4 hole-to-hole, 4 footprint-library mismatches, plus 52 schematic-parity issues (31
+  footprint/symbol mismatches, 14 net conflicts on the off-board DC and phase paths, 7 extra
+  footprints).
+
 ## 2026-08-04 — Dedicated Worktree Setup & Collision-Checked PCB Routing Completion
 
 - **Worktree setup:** Created dedicated worktree `claude/pcb-routing-completion` at `.claude/worktrees/pcb-routing-completion` off `claude/precharge-sense-aux`.

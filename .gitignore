@@ -16,3 +16,11 @@ fp-info-cache
 _tmp_verify.*
 *.kicad_pcb.kicad_pro
 *.kicad_pcb.bak
+
+# scripted board saves write here before renaming onto the real board
+*.kicad_pcb.tmp
+
+# kicad-cli check output, regenerated on demand
+drc_report*.json
+*-drc.rpt
+*-erc.rpt
