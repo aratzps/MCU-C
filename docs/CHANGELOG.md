@@ -2,6 +2,43 @@
 
 Append-only, newest first.
 
+## 2026-08-14 — Phase B routing continued: 421 → 203 unconnected; router tooling committed
+
+Scripted completion-routing session on the control board, continuing from the PR #7 merge
+(421 unconnected items, 0 error-severity DRC violations). All numbers below measured with
+kicad-cli 9.0.6, zones refilled before every check.
+
+- **Result: 203 unconnected items remain, 0 error-severity violations throughout.**
+  218 open connections closed (~52 %). The board now carries 6 052 track segments and
+  1 188 vias (vs 4 498 / 797 at the merge).
+- **Method:** a collision-checked completion router (`tools/pcb_router/`) driven to
+  convergence by an iterating refill→DRC→route loop. Exact `SHAPE::Collide` tests for
+  every candidate against netclass clearances, the HV_to_LV 6.4 mm rule with HV_DOMAIN /
+  HV_RELAX(_PIN) semantics, BARRIER_* keepouts — including the footprint-embedded keepout
+  in U608 that `board.Zones()` does not report — board-edge and hole-to-hole limits.
+  Stages: zone-tap vias, L/Z paths from pad-exit stubs, one-via plans, multi-start grid
+  A* (F/B, escalating to In2.Cu and 45 mm search margins), then rip-up-and-reroute with
+  same-pass victim repair. HV nets fall back 3.0 → 0.6 mm (vias 0.8/0.4) inside relax
+  areas, matching the existing sense-string routing.
+- **Why it stops at 203:** the residue is fine-pitch blocks (U901/U902 PWM gating) and
+  HV-relax pockets where every legal lane's usable band is narrower than any grid pitch —
+  a segment fits only on the exact centerline. That class of routing needs push-and-shove
+  (KiCad interactive router or FreeRouting); re-running this tooling reproducibly
+  plateaus at the same count. The tooling is committed regardless — the 2026-08-04
+  session's router never entered version control, and this entry corrects that practice.
+- **Incident, recorded honestly:** a recurring native crash (0xC0000005) in KiCad's
+  Python bindings struck mid-save and truncated the board file to 0 bytes; the driver
+  then reused stale DRC reports, masking it. Recovered by `git checkout` and a full
+  re-route (the redo confirmed the plateau independently: both convergence runs stopped
+  within one item of each other). All saves are now atomic (temp + rename + size check),
+  checkpointed every 25 edges, with a rolling backup the driver auto-restores.
+- **Cleanup:** 25 same-net vias stacked hole-on-hole by earlier tap passes were removed;
+  `holes_co_located` warnings went 85 → 0 and `hole_to_hole` 4 → 0. Remaining warnings:
+  398 silkscreen (pre-existing), 14 isolated copper, 12 dangling tracks (was 18),
+  8 dangling vias, 4 footprint-library mismatches.
+- **No fabrication package for the control board** — gerbers are generated only when
+  routing completes (`fabrication/mcuc_inverter/ORDER_SPEC.md` states the policy).
+
 ## 2026-08-14 — Pack architecture: 88S1P dual-chemistry, operating window 220–370 V (D027)
 
 Proposed 2026-07-30 as D011 and never merged; the branch sat unpushed while SPEC moved on. Re-applied
