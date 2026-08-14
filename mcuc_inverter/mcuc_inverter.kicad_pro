@@ -262,6 +262,42 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "GATE",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2147483647,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 2.0,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "HV_BUS",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2147483647,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 3.0,
+        "via_diameter": 1.2,
+        "via_drill": 0.6,
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -273,10 +309,6 @@
       {
         "netclass": "HV_BUS",
         "pattern": "/Auxiliary power/DC_BUS_P"
-      },
-      {
-        "netclass": "HV_BUS",
-        "pattern": "/Auxiliary power/DC_BUS_N"
       },
       {
         "netclass": "HV_BUS",
@@ -324,10 +356,6 @@
       },
       {
         "netclass": "HV_BUS",
-        "pattern": "Net-(C603-Pad2)"
-      },
-      {
-        "netclass": "HV_BUS",
         "pattern": "Net-(D601-A)"
       },
       {
@@ -357,6 +385,62 @@
       {
         "netclass": "GATE",
         "pattern": "/VGD_LS_COM"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R603-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R612-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R616-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R617-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(R618-Pad2)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "Net-(D620-K)"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*CLAMP_NODE"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*V_SENSE"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*Q403_G"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*DC_BUS_N"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*DC_BUS_P"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*DC_INPUT_P"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*PRECHG_R_CHASSIS"
+      },
+      {
+        "netclass": "HV_BUS",
+        "pattern": "*DISCHG_R_RET"
       }
     ]
   },

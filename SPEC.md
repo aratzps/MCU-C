@@ -131,7 +131,7 @@ The earlier 1.5× guess (75/175 A rms) is superseded. With the target motor know
 | Peak phase current (120 s) | 190 A rms | Motor peak current, S2 2 min; board peak duration matched to the motor (§2) |
 | Instantaneous phase peak | 270 A | 190 × √2, rounded |
 | Current sense full scale | ±325 A | Instantaneous peak + 20 % headroom |
-| Hardware overcurrent trip | 300 A, adjustable | Above legitimate 270 A peak, below sense saturation |
+| Hardware overcurrent trip | **300 A ±8 A** | Above legitimate 270 A peak, below sense saturation. Thresholds are servo'd off each transducer's own reference rather than the 3.3 V rail, so the trip tracks the sensor; without that servo the real spread was 245–356 A |
 
 Full 100 Nm peak torque needs 100 / 0.54 = 185 A rms — inside the 190 A peak limit. Full continuous torque (56 Nm, combined-cooled motor) needs 104 A rms; at the 100 A board limit, continuous torque is 54 Nm — accepted, the difference is within the motor's cooling-configuration spread.
 
@@ -198,7 +198,8 @@ Every part number must be verified against a live datasheet and stocked distribu
 |---|---|---|
 | Topology | Isolated, per switch position | **[SEL]** |
 | Isolation | ≥ 3 kV rms, reinforced | **[DER]** from §10 |
-| Drive voltage | **+18 V on / −5 V off** — the module datasheet's switching condition. (+15 V on is permitted but costs +26 % conduction loss: R_DS,on 2.40 mΩ vs 1.90 mΩ) | **[DER]** — FS02MR12A8MA2B datasheet |
+| Drive voltage | **+15 V on / −5 V off (D026)** — derated from +18 V to obtain the module's **t_SC < 2 µs** short-circuit withstand (it is < 1.2 µs at +18 V, which the driver chain cannot meet). Costs +26 % conduction loss: R_DS,on 2.40 mΩ vs 1.90 mΩ | **[DER]** — FS02MR12A8MA2B datasheet |
+| Short-circuit protection | DESAT chain configured for minimum response (ADJB→VCC1, ADJA 28.0 kΩ, external blanking cap DNP): **1.9 µs typical / 2.6 µs worst-case silicon** against the module's 2 µs withstand at +15 V. Typical parts pass; worst-case parts do not. Mitigating factor: t_SC is specified at 750 V and this bus is ≤450 V, so the true withstand here is longer — **unquantified**. Double-pulse short-circuit validation is a **gate on production release** | **[REQ]** — D026 |
 | CMTI | ≥ 100 V/ns (module's actual dv/dt ≈ 14 V/ns — margin is comfortable) | **[SEL]** |
 | Peak gate current | ≥ 8 A available | **[SEL]** — Q_G = 1.19 µC; datasheet-matched switching (R_G,on 12 Ω, R_G,int 0.66 Ω) draws only ~2 A peak, so 8 A is margin for faster external R_G, not a hard need |
 | Desaturation detection | Required, per switch | **[SEL]** |
@@ -268,18 +269,19 @@ Mandatory at 450 V. Omitting this destroys contactors and capacitors on first co
 
 Energy dissipated in the precharge resistor is independent of its value:
 
-```
-E = ½ C V²  =  0.5 × 400e-6 × 450²  =  40.5 J
-```
+**Re-derived for the selected 500 µF bank (D025 — the earlier figures assumed 400 µF):**
 
-(If the Si path is taken and capacitance rises to 750 µF per §6.1, this becomes 76 J and the resistor pulse rating below scales with it. **[TBV]**)
+```
+E = ½ C V²  =  0.5 × 500e-6 × 450²  =  50.6 J     (53.2 J at C +5 %)
+             =  0.5 × 500e-6 × 500²  =  62.5 J     (precharging from the transient rail)
+```
 
 | Parameter | Value | Derivation |
 |---|---|---|
-| Precharge resistor | 1.25 kΩ | τ = RC = 0.5 s |
+| Precharge resistor | 1.25 kΩ | τ = RC = **0.625 s** |
 | Peak inrush | 0.36 A | 450 V / 1250 Ω |
-| Precharge duration | ~2.5 s | 5τ, to >99 % of bus |
-| Resistor pulse energy | ≥ 40.5 J | Above; use ≥ 50 W wirewound or pulse-rated |
+| Precharge duration | **~3.13 s** | 5τ, to >99 % of bus — **firmware timeout ≥ 3.2 s** |
+| Resistor pulse energy | **≥ 65 J** single-shot | Covers the 500 V case with margin; ≥ 50 W wirewound |
 
 Sequence: precharge relay closes → bus monitored via §8.2 → main contactor commanded closed only when V_bus ≥ 95 % of supply → precharge relay opens. **The MCU commands both; neither may close without a valid bus voltage reading.**
 
@@ -287,10 +289,12 @@ Sequence: precharge relay closes → bus monitored via §8.2 → main contactor 
 
 | Mechanism | Requirement | Implementation |
 |---|---|---|
-| Passive bleeder | < 60 V within 60 s | 75 kΩ across bus → τ = 30 s; 2.7 W at 450 V |
-| Active discharge | < 60 V within 5 s, commanded | Switched resistor, thermally rated for single-shot |
+| Passive bleeder | < 60 V within 60 s | **56 kΩ** (4 × 14 kΩ series) → τ = 28 s; t(450→60 V) = 56.4 s ✓; 3.6 W at 450 V, 0.90 W and 112.5 V per part |
+| Active discharge | < 60 V within 5 s, commanded | 880 Ω + SiC FET → τ = 0.44 s, **0.89 s** to 60 V; 230 W single-shot |
 
-Passive bleeding alone at 5 s would dissipate >30 W continuously — unacceptable. Hence the split.
+**Corrected (D025):** the previous 75 kΩ against the real 500 µF bank gave τ = 37.4 s and **75.4 s** to 60 V — it failed its own requirement by 26 %. (Even against the old 400 µF assumption it was already marginal at 60.4 s.)
+
+Passive bleeding alone at 5 s would dissipate >30 W continuously — unacceptable. Hence the split. **The active discharge must be hardware-inhibited while the bus is live and the main contactor closed**, otherwise a commanded discharge puts 230 W into a 100 W resistor bank indefinitely.
 
 ---
 
@@ -361,7 +365,7 @@ All four interfaces are required.
 
 | Function | Threshold | Response |
 |---|---|---|
-| Overcurrent (hardware) | 300 A instantaneous | Latched shutdown, < 1 µs |
+| Overcurrent (hardware) | 300 A ±8 A instantaneous | Latched shutdown. Comparator path ~0.65 µs; the transducer's own 3 µs response dominates end-to-end |
 | Desaturation | Per gate driver | Soft turn-off + latch |
 | Bus overvoltage | 400 V (D027; was 490 V for the 48–450 V envelope) | Latched shutdown |
 | Bus undervoltage | 200 V (D027; was 45 V) | Inhibit switching |
@@ -433,7 +437,7 @@ The previous draft had no viable path from a 48–450 V bus to control power. Th
 | Gate drive, low side | +18 / −5 V (see §5) | Common (shared source) | 3 channels |
 | Control logic | +5 V, +3.3 V | Secondary | MCU, sensing |
 | Isolated CAN | +5 V | Independent | Transceiver |
-| Contactor / fan | +12 V | Secondary | External loads |
+| Contactor / fan | +12 V | Secondary | External loads — **coil current must be budgeted: a 35 kW-class EV contactor draws 1.7–2.5 A at 12 V** (economised coils less). This sets the 12 V buck rating and the freewheel diode (≥1 A class, not a small-signal part) **[REQ at contactor selection]** |
 
 **Candidates — verified against datasheets and DigiKey stock, 2026-07-31:**
 
@@ -469,12 +473,31 @@ A **12–24 V external auxiliary input [SEL]** is required in addition to the HV
 
 ### 11.4 Thermal
 
-| Case | Efficiency | Loss @ 15 kW cont | Loss @ 35 kW, 120 s peak |
-|---|---|---|---|
-| Si IGBT (not selected, reference) | ~96.5 % | ~525 W | ~1225 W |
-| **SiC MOSFET (selected, D016)** | ~98 % | **~300 W** | **~700 W** |
+**Corrected against the module's own loss data (D025).** The earlier ~98 % / 700 W figures were a technology-class estimate; computing from the FS02MR12A8MA2B datasheet at 190 A rms, 25 kHz:
 
-**Design point (SiC): 300 W continuous, 700 W for 120 s** — and per §2 the 120 s figure sizes the cold plate.
+```
+Conduction (+15 V):    3 × 190² × (4.67 mΩ @150 °C + 0.64 mΩ) =  575 W
+Switching @250 V:      3 × 25 kHz × 115.4 µJ/A × (250/750) × (2×270/π) =  496 W
+Dead-time body diode:  3 × 171.9 A × 4.04 V × 0.035          =   73 W
+                                                              ─────────
+Total @250 V bus, 35 kW peak                                  ≈ 1144 W  (η = 96.8 %)
+Total @450 V bus (switching scales with V)                    ≈ 1541 W
+Continuous, 15 kW / 100 A rms                                 ≈  420 W  (η ≈ 97.3 %)
+```
+
+The conduction term uses **R_DS,on at V_GS = +15 V** (2.40 mΩ at 25 °C, scaled to 4.67 mΩ at 150 °C) following the D026 derate — +26 % over the +18 V figure, or **+105 W at the peak condition**. That is the price of reaching the module's 2 µs short-circuit withstand, and it is paid out of the junction margin below, which absorbs it comfortably (T_j ≈ 88 °C at 65 °C coolant, against a 150 °C limit).
+
+| Design point | Value |
+|---|---|
+| Continuous dissipation | **~420 W** |
+| Peak-condition dissipation, 120 s @ 250 V | **~1145 W** |
+| Peak-condition dissipation, 120 s @ 450 V | **~1540 W** |
+
+**The module is not the constraint — the loop is.** The G2 is direct-cooled: R_th,j-f = 0.121 K/W max per switch at 10 dm³/min, 50/50 WEG, so at 191 W per switch the junction sits ≈ 88 °C with 65 °C coolant, against the 0.36–0.49 K/W that would be required to reach 150 °C — **3–4× margin**. What must be sized for ~1.05–1.45 kW is the **external heat exchanger, pump and coolant loop**, not the module interface. There is no separate cold plate to design: the requirement is a coolant jacket per AN-G2-ASSEMBLY at ≥10 dm³/min, ≤65 °C inlet, ≤2.5 bar.
+
+### 11.5 Internal ambient **[REQ]**
+
+**Enclosure internal ambient: ≤ 70 °C design maximum**, components rated to 85 °C minimum. Previously unstated — its absence made several component margins uncheckable (regulator junction temperatures, resistor derating, capacitor ripple derating all resolve differently at 55 °C than at 85 °C). Bring-up must measure it; if the real figure exceeds 70 °C, the 5 V/3.3 V regulators and the DC-link bank margins require re-verification.
 
 **The 120 s peak (§2) is quasi-steady-state for the cooling system**, so the cold plate, pump and coolant loop must be sized to hold junction temperature at the *peak-condition* losses — 700 W (SiC) to 1225 W (Si) — with the junction-temperature margin below, not merely at the continuous figures. This roughly doubles the cooling requirement relative to a short-transient peak and is a significant cost/mass factor in the Si vs SiC comparison (§14 item 2).
 
@@ -553,7 +576,7 @@ Ordered by how much they would change the design.
 | 2 | ~~Si vs SiC~~ **Resolved: SiC (D016).** Remaining: final module part commitment (FS02MR12A8MA2B baseline) and gate driver selection | Gate drive, cold plate concept |
 | 3 | Derating curve for 250–450 V operation | Safe operating area at high bus |
 | 4 | Compliance target (industrial / automotive / none) | §10 creepage, certification |
-| 5 | ~~DC-link capacitance vs f_sw~~ **Resolved conditionally (§6.1):** 400 µF @ ≥ 25 kHz (SiC) or ≥ 750 µF @ 12 kHz (Si). Remaining: 114 A / 120 s ripple duty vs manufacturer thermal model | Capacitor part selection |
+| 5 | ~~DC-link capacitance and ripple duty~~ **RESOLVED.** 500 µF bank selected; the 114 A / 120 s duty verified against Vishay's thermal model (ΔT = P/G, G = 152 mW/°C): 14.7 K rise per capacitor, and the block's own thermal time constant is ~43 min so the 120 s pulse adds ~0.7 K — the steady-state case bounds it. Valid for cap ambient ≤ 80 °C (see §11.5) | — |
 | 6 | Cooling: cold plate design and coolant availability | §11.4 |
 | 7 | ~~Aux supply controller~~ **Resolved at candidate level (§11.2):** InnoSwitch3-AQ INN3990CQ, verified 30 V start and stock. Remaining: transformer design and 48 V full-load confirmation | §11.1 |
 | 8 | Whether the DC-link and power module are on this PCB or a busbar sub-assembly | Whole mechanical concept |

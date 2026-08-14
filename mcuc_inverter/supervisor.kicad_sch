@@ -500,6 +500,174 @@
 				)
 				(embedded_fonts no)
 			)
+		(symbol "Device:D"
+				(pin_numbers
+					(hide yes)
+				)
+				(pin_names
+					(offset 1.016)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(property "Reference" "D"
+					(at 0 2.54 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "D"
+					(at 0 -2.54 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "Datasheet" "~"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "Description" "Diode"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "Sim.Device" "D"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "Sim.Pins" "1=K 2=A"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_keywords" "diode"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(hide yes)
+					)
+				)
+				(symbol "D_0_1"
+					(polyline
+						(pts
+							(xy -1.27 1.27) (xy -1.27 -1.27)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 1.27 0) (xy -1.27 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(symbol "D_1_1"
+					(pin passive line
+						(at -3.81 0 0)
+						(length 2.54)
+						(name "K"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 3.81 0 180)
+						(length 2.54)
+						(name "A"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
 		(symbol "Device:LED"
 				(pin_numbers
 					(hide yes)
@@ -3314,12 +3482,6 @@
 		(uuid "93d98d13-3baa-43e4-98fa-4fb438780c0c")
 	)
 	(junction
-		(at 210.82 71.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "998518c2-18fe-4f80-94f6-0b69aa501c2a")
-	)
-	(junction
 		(at 172.72 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4085,16 +4247,6 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 53.34) (xy 167.64 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "413b3b7b-7658-4a63-ae41-28b140c2d225")
-	)
-	(wire
-		(pts
 			(xy 167.64 53.34) (xy 160.02 53.34)
 		)
 		(stroke
@@ -4265,16 +4417,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 86.36) (xy 172.72 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bcecd9f2-5845-436e-b78f-bfff37709e6e")
-	)
-	(wire
-		(pts
 			(xy 172.72 86.36) (xy 195.58 86.36)
 		)
 		(stroke
@@ -4282,36 +4424,6 @@
 			(type default)
 		)
 		(uuid "ee9edb18-df34-45a7-81f7-bdce39730218")
-	)
-	(wire
-		(pts
-			(xy 190.5 91.44) (xy 195.58 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "342b4766-0256-439d-a0f6-3e662f51a5d0")
-	)
-	(wire
-		(pts
-			(xy 210.82 88.9) (xy 215.9 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "36a45fbb-5334-4922-861b-52a9928afa87")
-	)
-	(wire
-		(pts
-			(xy 215.9 88.9) (xy 215.9 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "879eaa84-800d-4cfc-b26b-f2a06d846c16")
 	)
 	(wire
 		(pts
@@ -4466,7 +4578,7 @@
 		)
 		(uuid "91c7c3aa-5734-479f-ad75-ee0831294a66")
 	)
-	(text "Ported from PALTA pcb_design/supervisor.sch (Monitor logic, rev 0.2) - SPEC.md 9.2 / DECISIONS.md D008\nLogic (all 3.3 V):\n  GATED_HS = HS AND NAND(HS,LS);  GATED_LS = LS AND NAND(HS,LS)  ->  both low if HS,LS overlap\n  OC latch: 74AUP1G74, D=1, CLK = NOT(OC_TRIP) (NAND U1D, spare input tied high via R8)\n  Q latches on OC edge -> OC_LATCHED (MCU status);  /Q low -> OCP LED + reset chain;  cleared only by FAULT_RESET (act. low)\n  DRV_RST_OUT = DRV_RST_IN AND FAULT_BKIN AND /Q   (all active low: any fault/reset request resets gate drivers)\n  FAULT_BKIN = wired driver-fault line (act. low, 10k pull-up), RC 22R/220pF + BAT54S clamp -> MCU TIM1_BKIN (PB12)\n\nLabel mapping vs original:\n  PWM_UT/VT/WT -> PWM_HS_1/2/3        PWM_UB/VB/WB -> PWM_LS_1/2/3\n  PWM_GUT..GWB -> PWM_HS/LS_x_GATED   ~OC_Fault_U/V/W (wired-OR) -> OC_TRIP (single 300 A comparator, SPEC 3.3)\n  OC_Fault -> OC_LATCHED    CLR_OC_Fault -> FAULT_RESET    ~FAULT_IN -> DRV_FAULT_IN    ~FAULT -> FAULT_BKIN\n  ~DRIVER_RST_IN -> DRV_RST_IN    ~DRIVER_RST_OUT -> DRV_RST_OUT\n\nDeviations (documented, see report):\n  - Single OC_TRIP input replaces 3 wired-OR per-phase comparators (300 A trip lives with current sensing).\n  - AND gates: original BOM fitted SN74ACT08 at +5 V; here SN74ALVC08 at 3.3 V (all-3.3 V design).\n  - FAULT LED/resistor order swapped (R high-side) - electrically identical.\n  - No hardware dead-time insertion here: original only eliminates overlap (SPEC 9.2 row 2 remains with gate drivers).\n  - R913/R914 4.7k pull-ups added on FAULT_RESET / DRV_RST_IN (not in original): keeps latch-clear and driver-reset\n    inactive (high) while the MCU pins are Hi-Z during boot - same rationale as the original PWM pulldowns."
+	(text "Ported from PALTA pcb_design/supervisor.sch (Monitor logic, rev 0.2) - SPEC.md 9.2 / DECISIONS.md D008\nLogic (all 3.3 V):\n  GATED_HS = HS AND NAND(HS,LS);  GATED_LS = LS AND NAND(HS,LS)  ->  both low if HS,LS overlap\n  OC latch: 74AUP1G74, D=1, CLK = NOT(OC_TRIP) (NAND U1D, spare input tied high via R8)\n  Q latches on OC edge -> OC_LATCHED (MCU status);  /Q low -> OCP LED + reset chain + FAULT_BKIN;  cleared only by FAULT_RESET (act. low)\n  DRV_RST_OUT = DRV_RST_IN AND OC_LATCH_N            <-- CORRECTED, see CR-1 below\n  FAULT_BKIN = driver-fault line (act. low, 10k pull-up) OR'd with the OC latch through D904; RC 22R/220pF + BAT54S clamp -> MCU TIM1_BKIN (PB12)\n\nCR-1 (CRITICAL, fixed here). As ported, DRV_RST_OUT = DRV_RST_IN AND FAULT_BKIN AND OC_LATCH_N, and DRV_RST_OUT drives RDYC_BUS. The 1ED3491 clears FLT_N only on a\n  RISING edge of RDYC (ds 4.1 / 4.3.2.2), but RDYC could only rise once FLT_N was already high - a closed loop. After ANY DESAT event, driver over-temperature or\n  staggered power-up the gate drivers would have been latched off permanently, with no firmware or hardware path back. FAULT_BKIN has been removed from the AND chain\n  (U903 gate 3 is now spare) so a fault no longer holds its own reset low.\n  A power-on reset was added so the rising edge is guaranteed without firmware: C907 220 nF against R914 4.7k = tau 1.03 ms; DRV_RST_IN crosses the ALVC08 VIH (2.0 V)\n  at 1.03 ms x ln(3.3/1.3) = 0.96 ms, comfortably past the drivers' ~200 us t_START and the 1.0-1.2 us t_CLRMIN. MCU-driven reset pulses are slewed to ~90 us, still\n  far longer than t_CLRMIN.\nMN-1: C906 100 nF on FAULT_RESET against R913 4.7k = 470 us holds the OC latch CLEARED through power-up (its Q was previously indeterminate and could hold RDYC low,\n  making the board look dead). 470 us < 960 us, so the latch is released before the driver reset is - the ordering is deliberate.\nMJ-1: OC_LATCH_N now reaches TIM1_BKIN through D904 (BAT54WS). Before this the 300 A hardware trip only reached the driver-reset chain, so SPEC 9.2's central claim -\n  that overcurrent tri-states the PWM in silicon - was false as built. Polarity stays active-low and the diode blocks back-feed from a driver-only fault.\nMJ-13: R911/R912 were 100R, drawing ~11 mA per LED. With the fault LED on FAULT_BKIN that current back-fed through R910 (22R) into DRV_FAULT_IN; the FLT_N pins are\n  specified at 300 mV / 5 mA, so the wire-OR sat near 0.94 V against a 0.99 V logic threshold - the fault was barely readable. Now 2.2k (~0.6 mA per LED) and the\n  driver-fault LED sits on DRV_FAULT_IN ahead of R910, so FAULT_BKIN carries no LED current at all and follows the wire-OR to ~0.1 V.\n\nLabel mapping vs original:\n  PWM_UT/VT/WT -> PWM_HS_1/2/3        PWM_UB/VB/WB -> PWM_LS_1/2/3\n  PWM_GUT..GWB -> PWM_HS/LS_x_GATED   ~OC_Fault_U/V/W (wired-OR) -> OC_TRIP (single 300 A comparator, SPEC 3.3)\n  OC_Fault -> OC_LATCHED    CLR_OC_Fault -> FAULT_RESET    ~FAULT_IN -> DRV_FAULT_IN    ~FAULT -> FAULT_BKIN\n  ~DRIVER_RST_IN -> DRV_RST_IN    ~DRIVER_RST_OUT -> DRV_RST_OUT\n\nDeviations (documented, see report):\n  - Single OC_TRIP input replaces 3 wired-OR per-phase comparators (300 A trip lives with current sensing).\n  - AND gates: original BOM fitted SN74ACT08 at +5 V; here SN74ALVC08 at 3.3 V (all-3.3 V design).\n  - No hardware dead-time insertion here: original only eliminates overlap (SPEC 9.2 row 2 remains with gate drivers).\n  - R913/R914 4.7k pull-ups on FAULT_RESET / DRV_RST_IN (not in original): keeps latch-clear and driver-reset inactive (high) while the MCU pins are Hi-Z during boot.\n"
 		(exclude_from_sim no)
 		(at 137.16 160.02 0)
 		(effects
@@ -4498,17 +4610,6 @@
 			(justify left bottom)
 		)
 		(uuid "07a3918a-bd0c-4e83-b8e7-52060c23eb84")
-	)
-	(label "FAULT_BKIN"
-		(at 190.5 91.44 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "020bb398-d8ef-44d3-8a1c-ce911b3d389a")
 	)
 	(label "OC_LATCH_N"
 		(at 215.9 96.52 180)
@@ -7037,7 +7138,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "2.2k"
 			(at 236.728 28.448 0)
 			(effects
 				(font
@@ -7103,7 +7204,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "OCP"
+		(property "Value" "APT2012SURCK red (OCP)"
 			(at 236.728 36.068 0)
 			(effects
 				(font
@@ -7689,7 +7790,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 210.82 55.88 0)
+		(at 243.84 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -7697,7 +7798,7 @@
 		(dnp no)
 		(uuid "3084e64a-b75f-4aa0-8a2e-30db252df190")
 		(property "Reference" "#PWR0918"
-			(at 213.868 52.578 0)
+			(at 246.888 52.578 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7707,7 +7808,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 213.868 55.118 0)
+			(at 246.888 55.118 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7717,7 +7818,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 210.82 55.88 0)
+			(at 243.84 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7727,7 +7828,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 210.82 55.88 0)
+			(at 243.84 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7737,7 +7838,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 210.82 55.88 0)
+			(at 243.84 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7757,7 +7858,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 210.82 59.69 0)
+		(at 243.84 59.69 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7765,7 +7866,7 @@
 		(dnp no)
 		(uuid "8c75249e-46e1-4395-95c0-af2fcfd11770")
 		(property "Reference" "R912"
-			(at 213.868 56.388 0)
+			(at 246.888 56.388 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7773,8 +7874,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100R"
-			(at 213.868 58.928 0)
+		(property "Value" "2.2k"
+			(at 246.888 58.928 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7783,7 +7884,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 210.82 59.69 0)
+			(at 243.84 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7793,7 +7894,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 210.82 59.69 0)
+			(at 243.84 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7803,7 +7904,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 210.82 59.69 0)
+			(at 243.84 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7823,7 +7924,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 210.82 67.31 90)
+		(at 243.84 67.31 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7831,7 +7932,7 @@
 		(dnp no)
 		(uuid "eb77df5d-5ebf-4bfe-83d5-dde98f339d98")
 		(property "Reference" "D903"
-			(at 213.868 64.008 0)
+			(at 246.888 64.008 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7839,8 +7940,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "FAULT"
-			(at 213.868 66.548 0)
+		(property "Value" "APT2012SYCK amber (DRV FLT)"
+			(at 246.888 66.548 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7849,7 +7950,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
-			(at 210.82 67.31 0)
+			(at 243.84 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7859,7 +7960,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 210.82 67.31 0)
+			(at 243.84 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7869,7 +7970,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 210.82 67.31 0)
+			(at 243.84 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8023,7 +8124,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74LS08")
-		(at 203.2 88.9 0)
+		(at 250.19 114.3 0)
 		(unit 3)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8031,7 +8132,7 @@
 		(dnp no)
 		(uuid "435218b8-37c1-4ac3-8473-0ee5423e6ec4")
 		(property "Reference" "U903"
-			(at 195.58 80.264 0)
+			(at 242.57 105.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8040,7 +8141,7 @@
 			)
 		)
 		(property "Value" "SN74ALVC08PWR"
-			(at 195.58 82.804 0)
+			(at 242.57 108.204 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8049,7 +8150,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
-			(at 203.2 88.9 0)
+			(at 250.19 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8059,7 +8160,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 203.2 88.9 0)
+			(at 250.19 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8069,7 +8170,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 203.2 88.9 0)
+			(at 250.19 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9162,4 +9263,625 @@
 		)
 	)
 	(embedded_fonts no)
+	(wire
+		(pts
+			(xy 195.58 86.36) (xy 215.9 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "85c99797-1a69-41a8-a221-18ea95768998")
+	)
+	(wire
+		(pts
+			(xy 215.9 86.36) (xy 215.9 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0a4880b-a413-42a5-859b-8b52794f505a")
+	)
+	(junction
+		(at 215.9 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "89159c44-6b97-487f-96ac-6060e3ad04c2")
+	)
+	(wire
+		(pts
+			(xy 238.76 111.76) (xy 242.57 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "889511fa-22e3-4741-947e-6fd9783df6a6")
+	)
+	(wire
+		(pts
+			(xy 238.76 116.84) (xy 242.57 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "96c6a5c9-addb-4a74-8a32-2ee0af7cc8e4")
+	)
+	(wire
+		(pts
+			(xy 238.76 111.76) (xy 238.76 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "582cd6fc-69e6-4454-9cb7-003a7f37f690")
+	)
+	(junction
+		(at 238.76 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c3269932-72ca-46d7-b01a-f55d6238212d")
+	)
+	(junction
+		(at 238.76 116.84)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "18a7d51c-b61d-4bc5-8f93-c510cbff3666")
+	)
+	(wire
+		(pts
+			(xy 238.76 116.84) (xy 238.76 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd4b661b-03da-4390-91e4-e70728907e16")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 238.76 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "6f5e2f0e-7f4e-4006-98e6-e8d942d8990f")
+		(property "Reference" "#PWR0929"
+			(at 241.29999999999998 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 238.76 124.46000000000001 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 238.76 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 238.76 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e9e7075d-ad1b-4ac6-b65f-2d1e17ea8b0f"
+					(reference "#PWR0929")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(no_connect
+		(at 257.81 114.3)
+		(uuid "d5365157-dee9-4a02-ac00-e5933421c7b1")
+	)
+	(text "U903 gate 3 is now SPARE (CR-1). Inputs tied low, output open.\nAvailable if a discharge / bus-live interlock needs a gate."
+		(exclude_from_sim no)
+		(at 231.14 128.27 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "5ec2ec9d-d3b1-4b6f-820c-907d064774d2")
+	)
+	(wire
+		(pts
+			(xy 144.78 86.36) (xy 162.56 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ff3c917-6423-41e8-84e9-881c888f5a31")
+	)
+	(wire
+		(pts
+			(xy 162.56 86.36) (xy 172.72 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8de292f6-68e4-4ccb-b749-2d715678dd60")
+	)
+	(junction
+		(at 162.56 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "23fbb2b6-c5f0-4e6e-a4fb-2e98eda60627")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 162.56 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "425c405a-f959-44f8-8fba-fb40155bf810")
+		(property "Reference" "C907"
+			(at 165.1 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220n"
+			(at 165.1 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 162.56 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 162.56 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e9e7075d-ad1b-4ac6-b65f-2d1e17ea8b0f"
+					(reference "C907")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 162.56 93.98 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "012f099a-65f1-4b05-a4e3-29fcdb21c59c")
+		(property "Reference" "#PWR0930"
+			(at 165.1 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 162.56 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 162.56 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 162.56 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e9e7075d-ad1b-4ac6-b65f-2d1e17ea8b0f"
+					(reference "#PWR0930")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 195.58 53.34) (xy 180.34 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a0daf65-caba-41b7-ba1d-9cc5bf06e628")
+	)
+	(wire
+		(pts
+			(xy 180.34 53.34) (xy 167.64 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44ae04f4-1580-4ffa-89f5-c296d99c71c5")
+	)
+	(junction
+		(at 180.34 53.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "06cfa63f-4798-4285-8fe9-b96902610f4a")
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 180.34 57.15 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b8e3b3f4-9155-4102-8f32-3e52687c5f99")
+		(property "Reference" "C906"
+			(at 182.88 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 182.88 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 180.34 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 180.34 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 180.34 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e9e7075d-ad1b-4ac6-b65f-2d1e17ea8b0f"
+					(reference "C906")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 180.34 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "e8a677c8-315f-4bba-b59a-61e29786b727")
+		(property "Reference" "#PWR0931"
+			(at 182.88 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 180.34 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 180.34 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 180.34 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 180.34 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e9e7075d-ad1b-4ac6-b65f-2d1e17ea8b0f"
+					(reference "#PWR0931")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D")
+		(at 262.89 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5806f9b5-cdc0-457d-b8de-d145f1a1a24d")
+		(property "Reference" "D904"
+			(at 262.89 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BAT54WS"
+			(at 262.89 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-323"
+			(at 262.89 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 262.89 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 262.89 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/e9e7075d-ad1b-4ac6-b65f-2d1e17ea8b0f"
+					(reference "D904")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 251.46 71.12) (xy 259.08 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c36f4f19-7e7a-46ac-9549-a1d50c7605de")
+	)
+	(label "OC_LATCH_N"
+		(at 251.46 71.12 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "05bd882b-deb4-4868-8edf-08cfb62a9859")
+	)
+	(wire
+		(pts
+			(xy 266.7 71.12) (xy 274.32 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ab9a860-86da-4dc7-a51d-68b761810ed7")
+	)
+	(label "FAULT_BKIN"
+		(at 274.32 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a7c26510-4434-4083-9415-52733ee199e6")
+	)
+	(text "MJ-1: the 300 A overcurrent latch had NO path to TIM1_BKIN - it\nonly reached the reset chain, so SPEC 9.2 was false as built.\nD904 pulls FAULT_BKIN low when OC_LATCH_N trips: 0.33 mA through\nR909 gives Vf ~0.28 V, so BKIN sits at ~0.31 V vs VIL 0.99 V.\nReverse-biased when only a driver fault is present, so the latch\nis never back-fed."
+		(exclude_from_sim no)
+		(at 246.38 55.88 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left bottom)
+		)
+		(uuid "9f4f0b54-76e4-43b0-a0ed-7e2f23ea785e")
+	)
+	(wire
+		(pts
+			(xy 243.84 71.12) (xy 243.84 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aeed29f1-bd78-4994-a03c-cc67b5e6a033")
+	)
+	(label "DRV_FAULT_IN"
+		(at 243.84 76.2 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5bf3e15b-505b-4ec7-9ceb-3ae429344f58")
+	)
 )

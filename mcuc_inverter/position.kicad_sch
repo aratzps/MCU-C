@@ -4142,7 +4142,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0R"
+		(property "Value" "1k"
 			(at 68.58 145.288 270)
 			(effects
 				(font
@@ -4240,7 +4240,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0R"
+		(property "Value" "1k"
 			(at 57.150000000000006 154.432 270)
 			(effects
 				(font
@@ -4338,7 +4338,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0R"
+		(property "Value" "1k"
 			(at 45.72 156.97199999999998 270)
 			(effects
 				(font
@@ -4398,7 +4398,7 @@
 		)
 		(uuid "67331867-dd6a-4e46-8132-4fa55cfd891a")
 	)
-	(text "R816-R818: fit for resolver encoder emulation, remove when an external\nABI encoder drives ENC_A/B/I (see note at encoder block). PALTA left\nA/B/NM unconnected (SPI-only); D003 requires the emulation path for VESC."
+	(text "R816-R818 = 1k (was 0R - review 3 MN-3). The AD2S1205 A/B/NM outputs are 5 V CMOS\n(V_OH min 4.0 V at VDD 5 V) and ENC_A/B/I are clamped to +3.3 V by D804-D806 (BAT54S).\nAt 0R the clamp current was bounded only by the driver's own output impedance; 1k limits it to\n(5.0 - 3.6)/1k = 1.4 mA, inside BAT54S I_F(AV) 200 mA, and still drives the ~10 pF MCU pin\nwith a 10 ns time constant. Fit for resolver encoder emulation, remove when an external\nABI encoder drives ENC_A/B/I (see note at encoder block). PALTA left\nA/B/NM unconnected (SPI-only); D003 requires the emulation path for VESC."
 		(exclude_from_sim no)
 		(at 20 241.3 0)
 		(effects
@@ -12894,7 +12894,7 @@
 		)
 		(uuid "3719f1e9-d8c2-452e-81d8-0ff9d0fcac8d")
 	)
-	(text "SinCos analog inputs x2 - ported from PALTA '5v to 3.sch'\n(accel/regen front end): 1k + 100 nF, then 100k into\n270k || 1 nF divider + BAT54S clamp. 5.0 V full scale ->\n3.64 V at ADC (clamped); values [TBV] for 0.5-4.5 V\nSinCos encoders."
+	(text "SinCos analog inputs x2 - PALTA '5v to 3.sch' topology, RESCALED for rotor-position bandwidth (review 3 MJ-15).\nThe legacy accel/regen values (1k + 100 nF, 100k / 270k || 1 nF) gave a 1.59 kHz first pole and a 73.0 kOhm ADC\nsource impedance: ~71 deg of electrical lag at 8000 rpm on a 10-pole-pair motor (f_e = 1333 Hz) - unusable for FOC.\nNow: R833/R836 1k + C816/C818 1 nF -> pole 159 kHz (0.48 deg); R834/R837 10k into R835/R838 27k || C817/C819 1 nF\n-> pole 21.8 kHz (3.50 deg). Total lag at 1333 Hz = 4.0 deg. Divider ratio unchanged (27/37 = 0.7297):\n5.0 V full scale -> 3.65 V at the ADC (BAT54S-clamped). ADC source impedance 10k || 27k = 7.30 kOhm."
 		(exclude_from_sim no)
 		(at 325.12 175.26 0)
 		(effects
@@ -13037,7 +13037,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1nF"
 			(at 279.40000000000003 172.72 0)
 			(effects
 				(font
@@ -13178,7 +13178,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "10k"
 			(at 287.02 161.798 270)
 			(effects
 				(font
@@ -13270,7 +13270,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "270k"
+		(property "Value" "27k"
 			(at 292.1 172.72 0)
 			(effects
 				(font
@@ -13906,7 +13906,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1nF"
 			(at 279.40000000000003 198.12 0)
 			(effects
 				(font
@@ -14047,7 +14047,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "10k"
 			(at 287.02 187.198 270)
 			(effects
 				(font
@@ -14139,7 +14139,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "270k"
+		(property "Value" "27k"
 			(at 292.1 198.12 0)
 			(effects
 				(font
@@ -14643,7 +14643,7 @@
 		)
 		(uuid "d3c40c06-1fcf-464f-8fc9-d48e9027e0b5")
 	)
-	(text "Motor temperature (SPEC.md 8.3): KTY 81/210 in EMRAX\nstator to GND at the motor connector; 2.49k bias from\n+3.3 V [TBV] (PALTA fitted 10k - changed for KTY midscale),\n2.2 uF filter + BAT54S clamp per PALTA TEMP channel.\nFront end accommodates KTY81 / PT1000 / NTC10k by bias\nresistor choice."
+	(text "Motor temperature (SPEC 8.3 / D022, review 3 MN-11). The EMRAX KTY 81/210 is obsolete\n(NXP EOL 2020) and SPEC 8.3 / D022 promise a RESISTOR-SELECTABLE front end covering\nPT1000 / KTY8x / NTC 10k. The sheet previously had only the fixed 2.49k, so that claim\nwas not implemented. Three parallel bias positions from +3.3 V are now provided -\nFIT EXACTLY ONE:\n  R839  2.49k  FITTED - KTY 81/210 or KTY83/84 (1630-2620 R over -55..150 C;\n                        2.00k at 25 C -> 1.47 V, good midscale)\n  R840  1.00k  DNP    - PT1000 (1000-1758 R over 0..200 C -> 1.65-2.09 V);\n                        the D022-preferred sensor\n  R841  10.0k  DNP    - NTC 10k B3988 (VESC 'NTC 10k' default; 10k at 25 C -> 1.65 V)\nSensor returns to GND at the motor connector J1205. 2.2 uF filter + BAT54S clamp per\nthe PALTA TEMP channel. All three are VESC-supported natively; order the motor with\nPT1000 where offered (D022)."
 		(exclude_from_sim no)
 		(at 325.12 227.0 0)
 		(effects
@@ -15225,5 +15225,297 @@
 		)
 		(uuid "4d4c87e8-493a-4ea4-b7d3-a649e3654879")
 	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 302.26 213.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "f1cb5f5b-cdd2-475a-883b-a0008e4dcdc1")
+		(property "Reference" "#PWR0870"
+			(at 304.8 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 302.26 209.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 302.26 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 302.26 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 302.26 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/653a6882-bc9f-4401-9b94-701a8a46ab64"
+					(reference "#PWR0870")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 302.26 217.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "99a452d8-72e9-4204-b195-6cdfa1980138")
+		(property "Reference" "R840"
+			(at 304.8 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1.00k"
+			(at 304.8 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 302.26 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 302.26 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 302.26 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/653a6882-bc9f-4401-9b94-701a8a46ab64"
+					(reference "R840")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 302.26 220.98) (xy 302.26 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b51649f-581a-4e60-9936-f3bdb1dee4fd")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 312.42 213.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "5ca95ad2-1f72-495c-90b4-adb07dcdd08a")
+		(property "Reference" "#PWR0871"
+			(at 314.96 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 312.42 209.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 312.42 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 312.42 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 312.42 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/653a6882-bc9f-4401-9b94-701a8a46ab64"
+					(reference "#PWR0871")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 312.42 217.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "1029bfc9-38b1-4e27-96b5-d0c74e0e1f22")
+		(property "Reference" "R841"
+			(at 314.96 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10.0k"
+			(at 314.96 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 312.42 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 312.42 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 312.42 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mcuc_inverter"
+				(path "/689a95c8-82a6-4e82-9207-262af70daca3/653a6882-bc9f-4401-9b94-701a8a46ab64"
+					(reference "R841")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 312.42 220.98) (xy 312.42 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64b01523-5f3b-421a-b34f-bacf923d934c")
+	)
+	(wire
+		(pts
+			(xy 302.26 226.06) (xy 312.42 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52e7d49c-627f-4a9e-a500-d6faa6fb1ab3")
+	)
+	(label "MOTOR_TEMP"
+		(at 307.34 226.06 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "881f3916-d3c6-4da8-a2cb-9bcda2e4d98f")
+	)
+
 	(embedded_fonts no)
 )

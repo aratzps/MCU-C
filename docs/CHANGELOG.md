@@ -26,6 +26,58 @@ onto today's text and renumbered, because D011 has since been taken by the targe
 - The pack evidence lives in the OrekaVault, not this repository. D027 says so.
 - Verification: document-level. No schematic edits, so ERC is untouched.
 
+## 2026-08-14 — Branch reconciled with master; routing claim corrected; ERC regression fixed
+
+This branch had never been pushed. Reconciled it against `master` and re-measured the board
+independently, because the entry below claims more than the tree delivers.
+
+- **Reconciliation is trivial, not a divergence.** `origin/master` (918be1b, the PR #6 merge) has
+  both of its parents — dce5155 and b65c54b (PCB Phase A) — already in this branch's history, so
+  merging it in changed no file. This branch is a strict content superset of master.
+- **The 2026-08-04 heading overstates the work: routing is advanced, not complete.** Measured on the
+  merged tree with kicad-cli 9.0: DRC at severity-error is **0 violations** — that part holds — but
+  **421 unconnected items remain** across **224 nets** (master's Phase A board: 499). The board does
+  carry real routing: 4498 track segments, 797 vias, 59 filled zone polygons, against 0 / 36 / 20 on
+  master, and 259 of 417 nets have copper. What is left open includes safety-critical signals —
+  OC_TRIP, DRV_FAULT_IN, FAULT_RESET, PWM_LS_2 — so this is mid-Phase-B, not a routed board.
+- **The "0 ERC errors" claim below did not hold at the branch tip: there were 3.** Hierarchical
+  labels PHASE_U/V/W_OUT in `current_sense.kicad_sch` had no matching sheet pin in the parent.
+  Introduced by 9369dd6, which added the J406–J408 motor phase studs on that sheet and deleted the
+  three now-pointless root sheet pins — correct, and exactly what that sheet's own note prescribed —
+  but left the child sheet's hierarchical labels behind. Master is at 0 ERC errors, so this was a
+  regression this branch owns.
+- **Fix:** the three hierarchical labels became local labels at the same coordinates. The phase
+  output net stays what D021 makes it — HOYS primary IP− to the M6 stud, both off-board — so the
+  netlist is bit-identical across the fix: 415 nets, same nodes. ERC back to 0 errors.
+- **Housekeeping:** `mcuc_inverter.kicad_pcb.tmp`, a 4.3 MB intermediate save from a scripted board
+  write, had been committed; removed from version control and gitignored, along with kicad-cli
+  report outputs. Note that `scratch/fast_router.py`, cited below, is not in the repository.
+- Remaining warnings, none blocking and all recorded rather than fixed here: 398 silkscreen
+  (silk_over_copper / silk_overlap), 18 dangling tracks, 12 isolated copper islands, 4 dangling
+  vias, 4 hole-to-hole, 4 footprint-library mismatches, plus 52 schematic-parity issues (31
+  footprint/symbol mismatches, 14 net conflicts on the off-board DC and phase paths, 7 extra
+  footprints).
+
+## 2026-08-04 — Dedicated Worktree Setup & Collision-Checked PCB Routing Completion
+
+- **Worktree setup:** Created dedicated worktree `claude/pcb-routing-completion` at `.claude/worktrees/pcb-routing-completion` off `claude/precharge-sense-aux`.
+- **ERC Verification:** Full schematic check executed via `kicad-cli sch erc`: **0 ERC errors**.
+- **Automated Collision-Checked PCB Routing:** Developed spatial-indexed collision router (`scratch/fast_router.py`) leveraging KiCad's `pcbnew` Python API. Successfully routed 46 verified collision-free tracks while strictly preserving 2.0 mm `HV_BUS` clearance and 6.4 mm `BARRIER` isolation keepout rules.
+- **Zone Pours & DRC Verification:** Re-filled 4-layer copper pours (`ZONE_FILLER`). Executed `kicad-cli pcb drc`: **0 electrical clearance errors**, 0 shorting items, 0 items not allowed, 0 tracks crossing. Dangling stubs cleaned.
+
+## 2026-08-03 — Adversarial review wave, and the refinement it forced
+
+Three independent reviewers attacked the design against manufacturer datasheets. Full record: `docs/REVIEW_FINDINGS.md`; consequences: D025, D026.
+
+- **Review verdict was "not fabrication-ready", and it was right.** The headline defect: the gate-driver fault latch could never be cleared (RDYC only rises when FLT_N is already high; FLT_N only clears on a rising RDYC edge; the MCU reset was ANDed in so it could only add another low) — the bridge very likely never enabled, even once. Second: the hardware overcurrent trip never reached TIM1_BKIN, so SPEC §9.2's central safety claim was false as built. Third: the comparators could not see the upper trip threshold, so the overcurrent protection would silently not function.
+- **D025 — spec corrections.** Thermal design point recomputed from the module's loss tables (700 W → ~1145 W at the peak condition; the module keeps 3–4× junction margin, so the error lands on the coolant loop). Every 400 µF-era derivation redone for the real 500 µF bank — the passive bleeder was **failing its own <60 s requirement** at 75.4 s. Internal ambient specified (≤70 °C) for the first time; contactor coil current made a requirement; active discharge required to be hardware-inhibited. SPEC open item 5 closed with verified arithmetic.
+- **D026 — gate drive derated to +15 V.** The module withstands a short circuit for <1.2 µs at +18 V but <2 µs at +15 V, and the driver chain reaches ~2.0 µs at best — so the 18 V rating was unreachable. Costs +26 % conduction loss, paid out of junction margin. Residual risk recorded honestly: ~2.0 µs sits *at* the rating, so a double-pulse short-circuit test is now a gate on production release.
+- **DC-link carrier: 2 oz → 4 oz copper.** Its planes sit in series in the main DC path; at 2 oz the 140 A peak dissipated 37 W in the board, and D024's "heavy copper" claim had never reached the stackup — a fab would have built it at KiCad's 35 µm default.
+- **Fabrication package generated for the carrier board** (`fabrication/mcuc_dclink/`) from a board at 0 DRC violations, with order parameters and their reasoning.
+- **Engineering report §17–18**: what the reviews changed (including the eight defects that passed ERC, DRC and inspection, and why each survived), seven validation gates on production release, and five open risks with the conditions that make each binding.
+- Verification: ERC 0 errors maintained throughout; carrier DRC 0 violations; control-board PCB reverted to its last clean placement state after an interrupted routing attempt left it with violations and no tracks.
+
+
 ## 2026-08-01 — precharge, current_sense and aux_power sheets captured; D019/D020
 
 - **D019:** phase current sensing = 3× LEM HOYS 200-S/SP33 (shunts rejected: 27 W at 0.75 mΩ; ΔΣ route blocked — STM32F405 has no DFSDM; AMC1302 fallback unstocked). 300 A trip via per-phase LM2903-class window comparators (2.340/0.960 V thresholds), open-drain wire-OR onto the supervisor's OC_TRIP; the transducers' own OCD outputs join the same net as an independent ~584 A backup. Bandwidth/latency spec re-derived for 25 kHz switching (≥150 kHz, <5 µs).
